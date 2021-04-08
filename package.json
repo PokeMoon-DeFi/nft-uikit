@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -24,7 +23,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "rollup": "rollup -c"
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.2.1",
     "@storybook/addon-actions": "^6.2.5",
     "@storybook/addon-essentials": "^6.2.5",
     "@storybook/addon-links": "^6.2.5",
@@ -62,7 +63,13 @@
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.2.5",
     "@types/styled-components": "^5.1.9",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-styles": "^3.14.1",
     "storybook-addon-designs": "^5.4.5",
-    "storybook-addon-material-ui": "^0.9.0-alpha.24"
+    "storybook-addon-material-ui": "^0.9.0-alpha.24",
+    "tslib": "^2.2.0"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^4.11.3"
   }
 }
