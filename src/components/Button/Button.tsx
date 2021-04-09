@@ -4,6 +4,7 @@ import MaterialButton, {
   ButtonProps as MaterialProps,
 } from "@material-ui/core/Button";
 import styled from "styled-components";
+import icon from "../../stories/assets/code-brackets.svg";
 
 export interface ButtonProps extends MaterialProps {
   /**
@@ -26,6 +27,8 @@ export interface ButtonProps extends MaterialProps {
    * Optional click handler
    */
   onClick?: () => void;
+
+  icon: HTMLOrSVGElement;
 }
 
 const StyledButton = styled.button`
@@ -33,6 +36,10 @@ const StyledButton = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 83px;
   font-family: "Josefin Sans", sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
 `;
 
 /**
