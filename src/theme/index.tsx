@@ -1,6 +1,16 @@
 import purple from "@material-ui/core/colors/purple";
 import green from "@material-ui/core/colors/green";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, DefaultTheme } from "styled-components";
+
+declare module "styled-components" {
+  /* eslint-disable @typescript-eslint/no-empty-interface */
+  export interface DefaultTheme {
+    colors: {
+      textSubtle: string;
+      input: string;
+    };
+  }
+}
 
 export const GlobalStyle = createGlobalStyle`
 body {
@@ -10,24 +20,11 @@ body {
 }
 `;
 
-const Theme = {
-  palette: {
-    primary: {
-      main: purple[500],
-    },
-    secondary: {
-      main: green[500],
-    },
+const Theme: DefaultTheme = {
+  colors: {
+    textSubtle: "red",
+    input: "green",
   },
-  fontFamily: [
-    '"futura-pt',
-    '"Helvetica Neue"',
-    "Arial",
-    "sans-serif",
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
-  ].join(","),
 };
 
 export default Theme;

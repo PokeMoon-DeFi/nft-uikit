@@ -29,11 +29,10 @@ export interface ButtonProps extends MaterialProps {
 }
 
 const StyledButton = styled(MaterialButton)`
-  background-color: ${(props) => props.theme.palette.primary.main};
+  background-color: green;
   &:hover {
     background-color: red;
   }
-  font-family: ${(props) => props.theme.fontFamily};
 `;
 
 /**
