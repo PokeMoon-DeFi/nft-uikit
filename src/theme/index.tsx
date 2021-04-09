@@ -1,5 +1,3 @@
-import purple from "@material-ui/core/colors/purple";
-import green from "@material-ui/core/colors/green";
 import { createGlobalStyle, DefaultTheme } from "styled-components";
 
 declare module "styled-components" {
