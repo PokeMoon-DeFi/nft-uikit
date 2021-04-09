@@ -1,9 +1,9 @@
-import React from "react";
+import React, { SVGProps } from "react";
 import "./button.css";
 import { ButtonBase, ButtonBaseProps } from "@material-ui/core";
 
 import styled from "styled-components";
-import icon from "../../stories/assets/code-brackets.svg";
+import { Backpack, SvgProps } from "../Svg";
 
 export interface ButtonProps extends ButtonBaseProps {
   /**
@@ -27,7 +27,7 @@ export interface ButtonProps extends ButtonBaseProps {
    */
   onClick?: () => void;
 
-  icon: HTMLOrSVGElement;
+  icon: string;
 }
 
 const StyledButton = styled(ButtonBase)`
@@ -39,7 +39,22 @@ const StyledButton = styled(ButtonBase)`
   flex-direction: row;
   align-content: center;
   align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  padding: 10px;
+  flex: auto;
 `;
+
+const StyledBackpack = styled(Backpack)``;
+
+const getIcon = (name: string, props: any) => {
+  switch (name) {
+    case "Backpack":
+      return <Backpack {...props} />;
+    default:
+      return Backpack;
+  }
+};
 
 /**
  * Primary UI component for user interaction
@@ -48,7 +63,15 @@ export const Button: React.FC<ButtonProps> = ({
   primary = false,
   size = "medium",
   label,
+  icon,
   ...props
 }) => {
-  return <StyledButton {...props}>{label}</StyledButton>;
+  const BackpackIcon = () => getIcon("Backpack", { width: 20, height: 30 });
+
+  return (
+    <StyledButton {...props}>
+      {label}
+      <BackpackIcon />{" "}
+    </StyledButton>
+  );
 };

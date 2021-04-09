@@ -3,6 +3,7 @@ import { Story, Meta } from "@storybook/react";
 
 import { Button, ButtonProps } from "./Button";
 import { withDesign } from "storybook-addon-designs";
+import { Backpack } from "../Svg";
 
 export default {
   title: "Example/Button",
@@ -25,6 +26,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
   label: "Button",
+  icon: "Backpack",
 };
 
 export const Secondary = Template.bind({});
