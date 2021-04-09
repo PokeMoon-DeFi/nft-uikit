@@ -31,7 +31,11 @@ export interface ButtonProps extends MaterialProps {
 
 const StyledButton = withTheme(styled(MaterialButton)`
   background-color: ${(props) => props.theme.palette.primary.main};
+  &:hover {
+    background-color: red;
+  }
 `);
+
 /**
  * Primary UI component for user interaction
  */
