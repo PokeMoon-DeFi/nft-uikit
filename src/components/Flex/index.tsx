@@ -9,7 +9,9 @@ export interface FlexProps {
 const StyledFlex = styled.div`
   display: flex;
   flex: auto;
-  background-color: #5a5a5a;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  justify-content: center;
 `;
 
 const FlexContainer = ({

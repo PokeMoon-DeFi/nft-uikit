@@ -17,5 +17,5 @@ export const Template: Story<FlexProps> = (args) => (
 
 Template.args = {
   width: 300,
-  height: 300,
+  height: 100,
 };

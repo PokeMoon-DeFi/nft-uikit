@@ -28,11 +28,11 @@ export interface ButtonProps extends MaterialProps {
   onClick?: () => void;
 }
 
-const StyledButton = styled(MaterialButton)`
-  background-color: green;
-  &:hover {
-    background-color: red;
-  }
+const StyledButton = styled.button`
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 83px;
+  font-family: "Josefin Sans", sans-serif;
 `;
 
 /**
