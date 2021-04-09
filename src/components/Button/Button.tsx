@@ -1,12 +1,11 @@
 import React from "react";
 import "./button.css";
-import MaterialButton, {
-  ButtonProps as MaterialProps,
-} from "@material-ui/core/Button";
+import { ButtonBase, ButtonBaseProps } from "@material-ui/core";
+
 import styled from "styled-components";
 import icon from "../../stories/assets/code-brackets.svg";
 
-export interface ButtonProps extends MaterialProps {
+export interface ButtonProps extends ButtonBaseProps {
   /**
    * Is this the principal call to action on the page?
    */
@@ -31,7 +30,7 @@ export interface ButtonProps extends MaterialProps {
   icon: HTMLOrSVGElement;
 }
 
-const StyledButton = styled.button`
+const StyledButton = styled(ButtonBase)`
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 83px;
