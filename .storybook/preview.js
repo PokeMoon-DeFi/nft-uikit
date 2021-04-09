@@ -1,6 +1,5 @@
-import { muiTheme } from "storybook-addon-material-ui";
-import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
-import theme from "../src/theme";
+import { ThemeProvider } from "styled-components";
+import Theme, { GlobalStyle } from "../src/theme";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -19,11 +18,12 @@ export const parameters = {
 export const decorators = [
   (Story) => {
     return (
-      <ThemeProvider theme={theme}>
-        <StylesProvider injectFirst>
+      <>
+        <ThemeProvider theme={Theme}>
+          <GlobalStyle />
           <Story />
-        </StylesProvider>
-      </ThemeProvider>
+        </ThemeProvider>
+      </>
     );
   },
 ];

@@ -4,7 +4,6 @@ import MaterialButton, {
   ButtonProps as MaterialProps,
 } from "@material-ui/core/Button";
 import styled from "styled-components";
-import { withTheme } from "@material-ui/core/styles";
 
 export interface ButtonProps extends MaterialProps {
   /**
@@ -29,12 +28,13 @@ export interface ButtonProps extends MaterialProps {
   onClick?: () => void;
 }
 
-const StyledButton = withTheme(styled(MaterialButton)`
+const StyledButton = styled(MaterialButton)`
   background-color: ${(props) => props.theme.palette.primary.main};
   &:hover {
     background-color: red;
   }
-`);
+  font-family: ${(props) => props.theme.fontFamily};
+`;
 
 /**
  * Primary UI component for user interaction
