@@ -4,6 +4,7 @@ import MaterialButton, {
   ButtonProps as MaterialProps,
 } from "@material-ui/core/Button";
 import styled from "styled-components";
+import { withTheme } from "@material-ui/core/styles";
 
 export interface ButtonProps extends MaterialProps {
   /**
@@ -28,9 +29,9 @@ export interface ButtonProps extends MaterialProps {
   onClick?: () => void;
 }
 
-const StyledButton = styled(MaterialButton)`
-  background-color: #ff1cb3;
-`;
+const StyledButton = withTheme(styled(MaterialButton)`
+  background-color: ${(props) => props.theme.palette.primary.main};
+`);
 /**
  * Primary UI component for user interaction
  */
