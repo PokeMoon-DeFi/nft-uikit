@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Button } from "../Button/Button";
 import { PokemoonCard, PokemoonNft } from "../../constants/types";
 import Theme from "../../theme";
+import { getRarityGradient, getTypeColor } from "../../utils";
 
 interface NftInfoProps {
   nft: PokemoonNft;
@@ -17,7 +18,7 @@ const Container = styled.div`
 
 const PrimaryInfo = styled.div`
   display: flex;
-  background: linear-gradient(125deg, ${Theme.rarity.legendary.light} 0%, ${Theme.rarity.legendary.dark} 46%, black 46.2%, black 100%);
+  background: ;
   flex-direction: row;
   padding: 8px;
   margin-bottom: 6px;
@@ -106,29 +107,34 @@ const NftInfo = (props: NftInfoProps) => {
         description: "0",
       };
   const rarity: string = props.nft.rarity ? props.nft.rarity : "0";
+  
+  const rarityGradient = getRarityGradient(rarity);
+  const typeColor = getTypeColor(card.type);
 
   return (
     <Container>
-      <PrimaryInfo>
+      <PrimaryInfo style={{background: rarityGradient}}>
         <NR>
           <Number>No. 1</Number>
           <Rarity>{rarity}</Rarity>
         </NR>
         <Name>{card.name}</Name>
       </PrimaryInfo>
-      <SecondaryInfo>
+      <SecondaryInfo style={{ background: typeColor}}>
         <PokemoonType>{card.type}</PokemoonType>
         <SetName>{card.set}</SetName>
       </SecondaryInfo>
       <ArtistInfo>
         Artist
         <ArtistName>{card.artist?.name}</ArtistName>
-        {card.artist?.instagram ? <ArtistInsta>({card.artist?.instagram})</ArtistInsta> : <></>}
+        {card.artist?.instagram ? (
+          <ArtistInsta>({card.artist?.instagram})</ArtistInsta>
+        ) : (
+          <></>
+        )}
       </ArtistInfo>
       <Description>
-        <DescriptionText>
-          "{card.description}"
-        </DescriptionText>
+        <DescriptionText>"{card.description}"</DescriptionText>
         <FooterImage>img</FooterImage>
       </Description>
     </Container>

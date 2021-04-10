@@ -10,6 +10,7 @@ export const POKEMOON_TYPES = {
   LIGHTNING: "Lightning",
   GRASS: "Grass",
   FIRE: "Fire",
+  WATER: "Water",
 };
 
 export const POKEMOON_RARITY = {
