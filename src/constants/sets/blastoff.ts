@@ -1,5 +1,5 @@
 import { ARTISTS, CARDS_SETS, POKEMOON_TYPES } from "../nftData";
-import { PokemoonCard } from "../types";
+import { PokemoonCard, PokemoonNft } from "../types";
 
 export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
   {
@@ -131,5 +131,14 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
     set: CARDS_SETS[2114],
     description: "It's too adorable for words",
     artist: ARTISTS.Mathijs,
+  },
+];
+
+export const NFT_LIST: PokemoonNft[] = [
+  { 
+    tokenId: '100001',
+    imageUrl: '001meownautC.png',
+    card: BLAST_OFF_CARD_INFO.filter((card) => card.number === 1),
+    rarity: 'C',
   },
 ];

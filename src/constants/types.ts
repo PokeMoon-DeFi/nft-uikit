@@ -5,7 +5,7 @@ export interface ArtistInfo {
 }
 
 /**
- * PokeMoon Card Info
+ * PokeMoon Card: number, name, type, set, description/blurb, and artist info
  */
 export interface PokemoonCard {
   number: Number;
@@ -18,10 +18,11 @@ export interface PokemoonCard {
 
 /**
  * PokeMoon NFT with unique pair tokenId and rarity. PokeMoon card info is 
- * shard across multiple tokenIds
+ * shared across multiple tokenIds
  */
 export interface PokemoonNft {
   tokenId: string;
+  imageUrl: string;
   card: PokemoonCard;
   // Depending on prefixrt's implementation tokenId
   rarity: string;
