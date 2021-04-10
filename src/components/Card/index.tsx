@@ -21,6 +21,7 @@ const StyledCard = styled(Card)<StyledCardProps>`
     cardId = cardId ?? "001meownautC.png";
     return "url(cards/" + cardId + ")";
   }};
+  min-width: 200px;
 
   background-size: cover;
 

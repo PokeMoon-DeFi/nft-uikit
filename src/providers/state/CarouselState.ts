@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { NFT_LIST } from "../../constants/sets/blastoff";
 import { PokemoonNft } from "../../constants/types";
 
 interface State {
@@ -6,10 +7,7 @@ interface State {
 }
 
 const initialState: State = {
-  nfts: [
-    { tokenId: "0", imageUrl: "002pikapuffUC.png" },
-    { tokenId: "1", imageUrl: "015rashscratchumR.png" },
-  ],
+  nfts: [...NFT_LIST],
 };
 
 export const asyncFetchIds = createAsyncThunk(
@@ -20,6 +18,8 @@ export const asyncFetchIds = createAsyncThunk(
     return { tokenId: "2", imageUrl: "012goldenkobanC.png" };
   }
 );
+
+const updatedState = { nfts: NFT_LIST };
 
 export const carouselSlice = createSlice({
   name: "carousel",
