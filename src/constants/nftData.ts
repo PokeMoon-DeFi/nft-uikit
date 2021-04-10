@@ -41,5 +41,6 @@ export const ARTISTS = {
   },
   Mathijs: {
     name: "Mathijs",
+    instagram: "@mathijs_cheese"
   },
 }
