@@ -19,8 +19,6 @@ export const asyncFetchIds = createAsyncThunk(
   }
 );
 
-const updatedState = { nfts: NFT_LIST };
-
 export const carouselSlice = createSlice({
   name: "carousel",
   initialState,

@@ -21,13 +21,13 @@ export interface ButtonProps extends ButtonBaseProps {
   /**
    * Button contents
    */
-  label: string;
+  label?: string;
   /**
    * Optional click handler
    */
   onClick?: () => void;
 
-  icon: string;
+  icon?: string;
 }
 
 const StyledButton = styled(ButtonBase)`
@@ -43,16 +43,20 @@ const StyledButton = styled(ButtonBase)`
   width: 100px;
   padding: 10px;
   flex: auto;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    transition: 0.33s ease;
+  }
 `;
 
-const StyledBackpack = styled(Backpack)``;
-
-const getIcon = (name: string) => {
+const getIcon = (name: string | undefined) => {
   switch (name) {
     case "Backpack":
       return Backpack;
     default:
-      return Backpack;
+      return null;
   }
 };
 
@@ -66,12 +70,12 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   ...props
 }) => {
-  const BackpackIcon = getIcon(icon);
+  const ButtonIcon = getIcon(icon);
 
   return (
     <StyledButton {...props}>
       {label}
-      <BackpackIcon width={20} />
+      {ButtonIcon ? <ButtonIcon height={20} /> : null}
     </StyledButton>
   );
 };
