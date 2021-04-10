@@ -47,10 +47,10 @@ const StyledButton = styled(ButtonBase)`
 
 const StyledBackpack = styled(Backpack)``;
 
-const getIcon = (name: string, props: any) => {
+const getIcon = (name: string) => {
   switch (name) {
     case "Backpack":
-      return <Backpack {...props} />;
+      return Backpack;
     default:
       return Backpack;
   }
@@ -66,12 +66,12 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   ...props
 }) => {
-  const BackpackIcon = () => getIcon("Backpack", { width: 20, height: 30 });
+  const BackpackIcon = getIcon(icon);
 
   return (
     <StyledButton {...props}>
       {label}
-      <BackpackIcon />{" "}
+      <BackpackIcon width={20} />
     </StyledButton>
   );
 };
