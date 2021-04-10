@@ -10,7 +10,7 @@ export default {
   },
 } as Meta;
 
-export const Carousel: Story = () => (
+export const Cards: Story = () => (
   <div style={{ display: "flex" }}>
     <Card cardId="002pikapuffUC.png" />
     <Card cardId="015rashscratchumL.png" />

@@ -1,6 +1,8 @@
 import { ThemeProvider } from "styled-components";
 import Theme, { GlobalStyle } from "../src/theme";
 import { StylesProvider } from "@material-ui/core/styles";
+import { Provider } from "react-redux";
+import store from "../src/providers";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -20,12 +22,14 @@ export const decorators = [
   (Story) => {
     return (
       <>
-        <StylesProvider injectFirst>
-          <ThemeProvider theme={Theme}>
-            <GlobalStyle />
-            <Story />
-          </ThemeProvider>
-        </StylesProvider>
+        <Provider store={store}>
+          <StylesProvider injectFirst>
+            <ThemeProvider theme={Theme}>
+              <GlobalStyle />
+              <Story />
+            </ThemeProvider>
+          </StylesProvider>
+        </Provider>
       </>
     );
   },

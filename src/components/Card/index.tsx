@@ -17,8 +17,10 @@ const StyledCard = styled(Card)<StyledCardProps>`
   transition: 0.4s ease-out;
   position: relative;
   left: 0px;
-  background: url(${({ cardId }) =>
-    cardId ? "cards/" + cardId : "cards/001meownautC.png"});
+  background: ${({ cardId }) => {
+    cardId = cardId ?? "001meownautC.png";
+    return "url(cards/" + cardId + ")";
+  }};
 
   background-size: cover;
 
@@ -36,6 +38,4 @@ const StyledCard = styled(Card)<StyledCardProps>`
   }
 `;
 
-export default (props: StyledCardProps) => {
-  return <StyledCard {...props} />;
-};
+export default StyledCard;

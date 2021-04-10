@@ -33,7 +33,8 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
     name: "Rattish",
     type: "Grass",
     set: CARDS_SETS[2114],
-    description: "There are rodents who can cook, and those who teach Kung Fu. But some of them just wish to sit and contemplate the view.",
+    description:
+      "There are rodents who can cook, and those who teach Kung Fu. But some of them just wish to sit and contemplate the view.",
     artist: ARTISTS.Ilya,
   },
   {
@@ -49,7 +50,8 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
     name: "Chartortle",
     type: POKEMOON_TYPES.FIRE,
     set: CARDS_SETS[2114],
-    description: "Chartortles are known to reheat banana and anchovy pizza with the flame from their firey tails.",
+    description:
+      "Chartortles are known to reheat banana and anchovy pizza with the flame from their firey tails.",
     artist: ARTISTS.Armilo,
   },
   {
@@ -73,7 +75,8 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
     name: "Kadalax",
     type: POKEMOON_TYPES.PSYCHIC,
     set: CARDS_SETS[2114],
-    description: "Contrary to popular belief, it's not alway pleasant getting big spooned.",
+    description:
+      "Contrary to popular belief, it's not alway pleasant getting big spooned.",
     artist: ARTISTS.Ilya,
   },
   {
@@ -81,7 +84,8 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
     name: "Kadalax Slim",
     type: POKEMOON_TYPES.PSYCHIC,
     set: CARDS_SETS[2114],
-    description: "Some Kadalax, having conquered their material vices, are able to sustain themselves off air and thought alone.",
+    description:
+      "Some Kadalax, having conquered their material vices, are able to sustain themselves off air and thought alone.",
     artist: ARTISTS.Ilya,
   },
   {
@@ -135,10 +139,10 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
 ];
 
 export const NFT_LIST: PokemoonNft[] = [
-  { 
-    tokenId: '100001',
-    imageUrl: '001meownautC.png',
-    card: BLAST_OFF_CARD_INFO.filter((card) => card.number === 1),
-    rarity: 'C',
+  {
+    tokenId: "100001",
+    imageUrl: "001meownautC.png",
+    card: BLAST_OFF_CARD_INFO.find((card) => card.number === 1),
+    rarity: "C",
   },
 ];
