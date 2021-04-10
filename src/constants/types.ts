@@ -23,7 +23,7 @@ export interface PokemoonCard {
 export interface PokemoonNft {
   tokenId: string;
   imageUrl: string;
-  card: PokemoonCard;
+  card?: PokemoonCard;
   // Depending on prefixrt's implementation tokenId
   rarity: string;
 }
