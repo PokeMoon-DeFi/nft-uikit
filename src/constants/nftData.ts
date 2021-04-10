@@ -12,6 +12,14 @@ export const POKEMOON_TYPES = {
   FIRE: "Fire",
 };
 
+export const POKEMOON_RARITY = {
+  COMMON: "Common",
+  UNCOMMON: "Uncommon",
+  RARE: "Rare",
+  LEGENDARY: "Legendary",
+  MOONLIKE: "Moonlike",
+}
+
 export const ARTISTS = {
   Armilo: {
     name: "Armilo Barrios",
