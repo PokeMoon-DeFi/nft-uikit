@@ -4,6 +4,7 @@ import { Button } from "../Button/Button";
 import { PokemoonCard, PokemoonNft } from "../../constants/types";
 import Theme from "../../theme";
 import { getRarityGradient, getTypeColor } from "../../utils";
+import Icon from "../Svg/Icons/Moon";
 
 interface NftInfoProps {
   nft: PokemoonNft;
@@ -18,9 +19,8 @@ const Container = styled.div`
 
 const PrimaryInfo = styled.div`
   display: flex;
-  background: ;
   flex-direction: row;
-  padding: 8px;
+  padding: 6px;
   margin-bottom: 6px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
@@ -46,9 +46,8 @@ const Name = styled.span`
 
 const SecondaryInfo = styled.div`
   display: flex;
-  background-color: ${Theme.types.psychic};
   justify-content: center;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 6px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
@@ -83,7 +82,7 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  padding: 10px;
+  padding: 12px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 const DescriptionText = styled.div`
@@ -91,9 +90,8 @@ const DescriptionText = styled.div`
   font-style: oblique;
   padding: 12px;
 `;
-const FooterImage = styled.div`
+const FooterIcon = styled.div`
   text-align: center;
-  padding: 6px;
 `;
 
 const NftInfo = (props: NftInfoProps) => {
@@ -107,20 +105,19 @@ const NftInfo = (props: NftInfoProps) => {
         description: "0",
       };
   const rarity: string = props.nft.rarity ? props.nft.rarity : "0";
-  
   const rarityGradient = getRarityGradient(rarity);
   const typeColor = getTypeColor(card.type);
 
   return (
     <Container>
-      <PrimaryInfo style={{background: rarityGradient}}>
+      <PrimaryInfo style={{ background: rarityGradient }}>
         <NR>
-          <Number>No. 1</Number>
+          <Number>No.{card.number}</Number>
           <Rarity>{rarity}</Rarity>
         </NR>
         <Name>{card.name}</Name>
       </PrimaryInfo>
-      <SecondaryInfo style={{ background: typeColor}}>
+      <SecondaryInfo style={{ background: typeColor }}>
         <PokemoonType>{card.type}</PokemoonType>
         <SetName>{card.set}</SetName>
       </SecondaryInfo>
@@ -135,7 +132,9 @@ const NftInfo = (props: NftInfoProps) => {
       </ArtistInfo>
       <Description>
         <DescriptionText>"{card.description}"</DescriptionText>
-        <FooterImage>img</FooterImage>
+        <FooterIcon>
+          <Icon />
+        </FooterIcon>
       </Description>
     </Container>
   );

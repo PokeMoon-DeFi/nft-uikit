@@ -13,13 +13,13 @@ declare module "styled-components" {
         primary: string;
         light: string;
         dark: string;
-      }
+      };
       moonlike: {
         primary: string;
         light: string;
         dark: string;
-      }
-    }
+      };
+    };
     types: {
       item: string;
       supporter: string;
@@ -28,7 +28,7 @@ declare module "styled-components" {
       grass: string;
       fire: string;
       water: string;
-    }
+    };
   }
 }
 
@@ -48,7 +48,7 @@ const Theme: DefaultTheme = {
     uncommon: "#61D99D",
     rare: "#05A5EE",
     legendary: {
-      primary: "",
+      primary: "#f1bf19",
       light: "#FFCA1B",
       dark: "#D0951F",
     },
@@ -56,7 +56,7 @@ const Theme: DefaultTheme = {
       primary: "",
       light: "#3515D5",
       dark: "#7000D2",
-    }
+    },
   },
   types: {
     item: "",

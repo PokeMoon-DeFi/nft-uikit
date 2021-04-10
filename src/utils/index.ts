@@ -6,31 +6,31 @@ export const getRarityGradient = (rarity: string) => {
   let endColor: string;
   switch (rarity) {
     case POKEMOON_RARITY.COMMON:
-      startColor = Theme.rarity.common
-      endColor = Theme.rarity.common
-      break
+      startColor = Theme.rarity.common;
+      endColor = Theme.rarity.common;
+      break;
     case POKEMOON_RARITY.UNCOMMON:
-      startColor = Theme.rarity.uncommon
-      endColor = Theme.rarity.uncommon
+      startColor = Theme.rarity.uncommon;
+      endColor = Theme.rarity.uncommon;
       break;
     case POKEMOON_RARITY.RARE:
-      startColor = Theme.rarity.rare
-      endColor = Theme.rarity.rare
+      startColor = Theme.rarity.rare;
+      endColor = Theme.rarity.rare;
       break;
     case POKEMOON_RARITY.LEGENDARY:
-      startColor = Theme.rarity.legendary.light
-      endColor = Theme.rarity.legendary.dark      
+      startColor = Theme.rarity.legendary.light;
+      endColor = Theme.rarity.legendary.dark;
       break;
     case POKEMOON_RARITY.MOONLIKE:
-      startColor = Theme.rarity.moonlike.light
-      endColor = Theme.rarity.moonlike.dark
+      startColor = Theme.rarity.moonlike.light;
+      endColor = Theme.rarity.moonlike.dark;
       break;
     default:
       throw new Error("Invalid Rarity");
   }
-  const gradientString = `linear-gradient(125deg, ${startColor} 0%, ${endColor} 46%, #111111 46.2%, #111111 100%)`
-  return gradientString
-}
+  const gradientString = `linear-gradient(120deg, ${startColor} 0%, ${endColor} 47%, #111111 47.3%, #111111 100%)`;
+  return gradientString;
+};
 
 export const getTypeColor = (type: string) => {
   let color: string;
@@ -57,8 +57,8 @@ export const getTypeColor = (type: string) => {
       color = Theme.types.water;
       break;
     default:
-      color = "#ffffff"
+      color = "#ffffff";
       break;
   }
-  return color
-}
+  return color;
+};
