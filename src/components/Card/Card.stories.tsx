@@ -12,9 +12,9 @@ export default {
 
 export const Carousel: Story = () => (
   <div style={{ display: "flex" }}>
-    <Card />
-    <Card />
-    <Card />
+    <Card cardId="002pikapuffUC.png" />
+    <Card cardId="015rashscratchumL.png" />
+    <Card cardId="016babymeownautML.png" />
     <Card />
   </div>
 );

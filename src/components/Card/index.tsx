@@ -1,8 +1,12 @@
 import React from "react";
-import { Card } from "@material-ui/core";
+import { Card, CardProps } from "@material-ui/core";
 import styled from "styled-components";
 
-const StyledCard = styled(Card)`
+interface StyledCardProps extends CardProps {
+  cardId?: string;
+}
+
+const StyledCard = styled(Card)<StyledCardProps>`
   display: flex;
   height: 280px;
   width: 200px;
@@ -13,6 +17,11 @@ const StyledCard = styled(Card)`
   transition: 0.4s ease-out;
   position: relative;
   left: 0px;
+  background: url(${({ cardId }) =>
+    cardId ? "cards/" + cardId : "cards/001meownautC.png"});
+
+  background-size: cover;
+
   &:not(::first-child) {
     margin-left: -50px;
   }
@@ -27,4 +36,6 @@ const StyledCard = styled(Card)`
   }
 `;
 
-export default StyledCard;
+export default (props: StyledCardProps) => {
+  return <StyledCard {...props} />;
+};
