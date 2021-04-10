@@ -1,5 +1,5 @@
-import { ARTISTS, CARDS_SETS, POKEMOON_TYPES } from "../../constants/nftData";
-import { PokemoonCard } from "./types";
+import { ARTISTS, CARDS_SETS, POKEMOON_TYPES } from "../nftData";
+import { PokemoonCard } from "../types";
 
 export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
   {
@@ -111,7 +111,7 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
   {
     number: 14,
     name: "Change Teams",
-    type: POKEMOON_TYPES.ITEM,
+    type: POKEMOON_TYPES.SUPPORTER,
     set: CARDS_SETS[2114],
     description: "",
     artist: ARTISTS.NinjaGuy,
@@ -119,7 +119,7 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
   {
     number: 15,
     name: "Rash Scratchum",
-    type: POKEMOON_TYPES.ITEM,
+    type: POKEMOON_TYPES.SUPPORTER,
     set: CARDS_SETS[2114],
     description: "",
     artist: ARTISTS.NinjaGuy,
@@ -127,7 +127,7 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
   {
     number: 16,
     name: "Baby Meownaut",
-    type: POKEMOON_TYPES.ITEM,
+    type: POKEMOON_TYPES.PSYCHIC,
     set: CARDS_SETS[2114],
     description: "It's too adorable for words",
     artist: ARTISTS.Mathijs,
