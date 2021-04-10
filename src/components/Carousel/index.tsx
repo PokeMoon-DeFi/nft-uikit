@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useAppSelector, useAppDispatch } from "../../providers/state/hooks";
 import { asyncFetchIds } from "../../providers/state/CarouselState";
-
+import { useSpring, animated } from "react-spring";
 import Card from "../Card";
+import styled from "styled-components";
 import zIndex from "@material-ui/core/styles/zIndex";
 
 const Carousel: React.FC = () => {
@@ -13,6 +14,20 @@ const Carousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const dispatch = useDispatch();
+
+  const spring = useSpring({ opacity: 1, from: { opacity: 0 } });
+
+  const Overlay = styled(animated.div)`
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: opacity;
+    background-attachment: fixed;
+    /* poin: opacity === 0 ? "none" : "visible", */
+    /* backgroundAttachment: "fixed", */
+  `;
 
   useEffect(() => {
     dispatch(asyncFetchIds(1));
@@ -44,20 +59,15 @@ const Carousel: React.FC = () => {
   };
 
   return (
-    <div style={{ display: "flex" }}>
-      <div
-        style={{
-          backgroundColor: "black",
-          flex: 1,
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          zIndex: 1,
-          opacity: opacity,
-          pointerEvents: opacity === 0 ? "none" : "visible",
-          backgroundAttachment: "fixed",
-        }}
-      />
+    <div
+      style={{
+        display: "inline-flex",
+        flex: 1,
+        overflow: "scroll",
+        margin: "30px",
+      }}
+    >
+      {/* <Overlay /> */}
       {carousel?.nfts?.map((nft, index) => (
         <Card
           cardId={nft.imageUrl}
