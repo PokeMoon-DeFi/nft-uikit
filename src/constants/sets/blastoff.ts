@@ -31,7 +31,7 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
   {
     number: 4,
     name: "Rattish",
-    type: "Grass",
+    type: POKEMOON_TYPES.GRASS,
     set: CARDS_SETS[2114],
     description:
       "There are rodents who can cook, and those who teach Kung Fu. But some of them just wish to sit and contemplate the view.",
@@ -133,7 +133,7 @@ export const BLAST_OFF_CARD_INFO: PokemoonCard[] = [
     name: "Baby Meownaut",
     type: POKEMOON_TYPES.PSYCHIC,
     set: CARDS_SETS[2114],
-    description: "It's too adorable for words",
+    description: "It's too adorable for words.",
     artist: ARTISTS.Mathijs,
   },
 ];
