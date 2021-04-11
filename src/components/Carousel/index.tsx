@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { UIEventHandler, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useAppSelector, useAppDispatch } from "../../providers/state/hooks";
 import { asyncFetchIds } from "../../providers/state/CarouselState";
@@ -7,26 +7,19 @@ import GridList from "@material-ui/core/GridList";
 import Card from "../Card";
 import styled from "styled-components";
 
-const StyledContainer = styled.div`
+import { useDrag, useGesture, useScroll } from "react-use-gesture";
+
+const StyledContainer = styled(animated.div)`
   flex: 1;
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
-  padding: 10px;
+  padding: 50px 10px;
   background-color: black;
   z-index: 1;
   position: relative;
   -webkit-overflow-scrolling: touch;
-`;
-
-const StyledGridList = styled.div`
-  /* min-height: 200px; */
-  /* transform: translateZ(0); */
-  /* display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(6, calc(50% - 40px));
-  grid-template-rows: minmax(150px, 1fr); */
 `;
 
 const Overlay = styled(animated.div)`
@@ -34,12 +27,12 @@ const Overlay = styled(animated.div)`
   position: fixed;
   background-attachment: fixed;
   top: 0;
-  bottom: 0;
+  /* bottom: 0; */
   left: 0;
-  right: 0;
+  /* right: 0; */
 
-  /* width: 100%;
-  height: 100%; */
+  width: 100%;
+  height: 100%;
   flex: 1;
   z-index: 0;
   opacity: 0.2;
@@ -85,13 +78,34 @@ const Carousel: React.FC = () => {
     }
   };
 
-  const HandleScroll = (e) => {
-    console.log(e.target.scrollLeft);
-  };
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const ref = useRef(null);
+
+  const bind = useGesture(
+    {
+      onDrag: ({ movement: [x] }) => {
+        setScrollLeft(scrollLeft - x / 25);
+      },
+      onWheel: ({ event }) => {
+        setScrollLeft(scrollLeft + event.deltaY);
+      },
+    },
+    {
+      domTarget: ref,
+      eventOptions: { passive: false },
+    }
+  );
+
+  useEffect(() => {
+    if (ref && ref.current) {
+      // @ts-ignore
+      ref.current.scrollLeft = scrollLeft;
+    }
+  }, [scrollLeft]);
 
   return (
-    <StyledContainer onScroll={HandleScroll}>
-      <Overlay style={spring} />
+    <StyledContainer {...bind()} style={{ touchAction: "pan-y" }} ref={ref}>
+      {/* <Overlay style={spring} /> */}
 
       {carousel?.nfts?.map((nft, index) => (
         <Card
@@ -101,9 +115,6 @@ const Carousel: React.FC = () => {
           onClick={() => selectCard(index)}
         />
       ))}
-      {/* <StyledGridList> */}
-
-      {/* </StyledGridList> */}
     </StyledContainer>
   );
 };
