@@ -1,9 +1,15 @@
-import React from "react";
+import React, { PropsWithRef, useImperativeHandle, useRef } from "react";
 import { Card, CardProps } from "@material-ui/core";
 import styled from "styled-components";
 
-interface StyledCardProps extends CardProps {
+interface StyledCardProps {
   cardId?: string;
+  active?: boolean;
+  onClick: () => void;
+}
+
+interface CardHandle {
+  focus: () => void;
 }
 
 const StyledCard = styled.div<StyledCardProps>`
@@ -24,6 +30,12 @@ const StyledCard = styled.div<StyledCardProps>`
   aspect-ratio: 746/1038;
   flex: 0 0 auto;
 
+  ${({ active }) => {
+    if (active) {
+      return "box-shadow: 10px 5px 5px red;";
+    }
+  }}
+
   &:not(::first-child) {
     margin-left: -50px;
   }
@@ -38,4 +50,15 @@ const StyledCard = styled.div<StyledCardProps>`
   }
 `;
 
-export default StyledCard;
+const C = React.forwardRef<CardHandle, StyledCardProps>((props, ref) => {
+  const cardRef = useRef();
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      console.log("FOCUSED: " + cardRef.current);
+    },
+  }));
+  //@ts-ignore
+  return <StyledCard ref={cardRef} {...props} />;
+});
+
+export default C;
