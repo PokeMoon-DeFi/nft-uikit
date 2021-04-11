@@ -78,16 +78,20 @@ const Carousel: React.FC = () => {
     }
   };
 
-  const [scrollLeft, setScrollLeft] = useState(0);
   const ref = useRef(null);
+  const [{ scrollLeft }, setSpringSroll] = useSpring(() => ({
+    scrollLeft: 0,
+  }));
 
   const bind = useGesture(
     {
       onDrag: ({ movement: [x] }) => {
-        setScrollLeft(scrollLeft - x / 25);
+        const res = scrollLeft.get() - x / 2.5;
+        setSpringSroll({ scrollLeft: res });
       },
       onWheel: ({ event }) => {
-        setScrollLeft(scrollLeft + event.deltaY);
+        const res = scrollLeft.get() + event.deltaY * 1.5;
+        setSpringSroll({ scrollLeft: res });
       },
     },
     {
@@ -96,15 +100,13 @@ const Carousel: React.FC = () => {
     }
   );
 
-  useEffect(() => {
-    if (ref && ref.current) {
-      // @ts-ignore
-      ref.current.scrollLeft = scrollLeft;
-    }
-  }, [scrollLeft]);
-
   return (
-    <StyledContainer {...bind()} style={{ touchAction: "pan-y" }} ref={ref}>
+    <StyledContainer
+      {...bind()}
+      style={{ touchAction: "pan-y" }}
+      ref={ref}
+      scrollLeft={scrollLeft}
+    >
       {/* <Overlay style={spring} /> */}
 
       {carousel?.nfts?.map((nft, index) => (
