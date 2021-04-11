@@ -3,9 +3,48 @@ import { useDispatch } from "react-redux";
 import { useAppSelector, useAppDispatch } from "../../providers/state/hooks";
 import { asyncFetchIds } from "../../providers/state/CarouselState";
 import { useSpring, animated } from "react-spring";
+import GridList from "@material-ui/core/GridList";
 import Card from "../Card";
 import styled from "styled-components";
-import zIndex from "@material-ui/core/styles/zIndex";
+
+const StyledContainer = styled.div`
+  flex: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px;
+  background-color: black;
+  z-index: 1;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+`;
+
+const StyledGridList = styled.div`
+  /* min-height: 200px; */
+  /* transform: translateZ(0); */
+  /* display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, calc(50% - 40px));
+  grid-template-rows: minmax(150px, 1fr); */
+`;
+
+const Overlay = styled(animated.div)`
+  background-color: red;
+  position: fixed;
+  background-attachment: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  /* width: 100%;
+  height: 100%; */
+  flex: 1;
+  z-index: 0;
+  opacity: 0.2;
+  /* transform: translateZ(1); */
+`;
 
 const Carousel: React.FC = () => {
   const carousel = useAppSelector((state) => state.carousel);
@@ -16,18 +55,6 @@ const Carousel: React.FC = () => {
   const dispatch = useDispatch();
 
   const spring = useSpring({ opacity: 1, from: { opacity: 0 } });
-
-  const Overlay = styled(animated.div)`
-    background-color: black;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: opacity;
-    background-attachment: fixed;
-    /* poin: opacity === 0 ? "none" : "visible", */
-    /* backgroundAttachment: "fixed", */
-  `;
 
   useEffect(() => {
     dispatch(asyncFetchIds(1));
@@ -58,25 +85,26 @@ const Carousel: React.FC = () => {
     }
   };
 
+  const HandleScroll = (e) => {
+    console.log(e.target.scrollLeft);
+  };
+
   return (
-    <div
-      style={{
-        display: "inline-flex",
-        flex: 1,
-        overflow: "scroll",
-        margin: "30px",
-      }}
-    >
-      {/* <Overlay /> */}
+    <StyledContainer onScroll={HandleScroll}>
+      <Overlay style={spring} />
+
       {carousel?.nfts?.map((nft, index) => (
         <Card
           cardId={nft.imageUrl}
           key={index.toString()}
-          style={{ zIndex: zState[index] }}
+          style={{ zIndex: index }}
           onClick={() => selectCard(index)}
         />
       ))}
-    </div>
+      {/* <StyledGridList> */}
+
+      {/* </StyledGridList> */}
+    </StyledContainer>
   );
 };
 

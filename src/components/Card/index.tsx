@@ -6,10 +6,7 @@ interface StyledCardProps extends CardProps {
   cardId?: string;
 }
 
-const StyledCard = styled(Card)<StyledCardProps>`
-  display: flex;
-  height: 280px;
-  width: 200px;
+const StyledCard = styled.div<StyledCardProps>`
   background-color: #17141d;
   border-radius: 10px;
   box-shadow: -1rem 0 3rem #000;
@@ -21,9 +18,11 @@ const StyledCard = styled(Card)<StyledCardProps>`
     cardId = cardId ?? "001meownautC.png";
     return "url(cards/" + cardId + ")";
   }};
-  min-width: 200px;
 
   background-size: cover;
+  width: 200px;
+  aspect-ratio: 746/1038;
+  flex: 0 0 auto;
 
   &:not(::first-child) {
     margin-left: -50px;
