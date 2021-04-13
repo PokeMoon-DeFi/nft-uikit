@@ -35,11 +35,16 @@ const StyledLabel = styled.span`
   font-size: 3rem;
 `;
 
-export default () => {
+interface BalanceCounterProps {
+  imgUrl: string;
+  balance: number;
+}
+
+export default (props: BalanceCounterProps) => {
   return (
     <BalanceCounter>
-      <StyledPBall src={"images/MAXRBALL.png"} />
-      <StyledLabel>1280.29</StyledLabel>
+      <StyledPBall src={props.imgUrl} />
+      <StyledLabel>{props.balance.toFixed(4)}</StyledLabel>
     </BalanceCounter>
   );
 };
