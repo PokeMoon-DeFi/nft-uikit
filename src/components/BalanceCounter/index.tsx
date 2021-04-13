@@ -29,7 +29,7 @@ const StyledPBall = styled.img`
 
 const StyledLabel = styled.span`
   position: absolute;
-  right: 22.5%;
+  right: 17%;
   justify-content: center;
   text-align: center;
   font-size: 3rem;
