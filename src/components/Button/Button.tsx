@@ -3,7 +3,7 @@ import "./button.css";
 import { ButtonBase, ButtonBaseProps } from "@material-ui/core";
 
 import styled from "styled-components";
-import { Backpack, SvgProps } from "../Svg";
+import { Backpack, SvgProps, Buy } from "../Svg";
 
 export interface ButtonProps extends ButtonBaseProps {
   /**
@@ -41,7 +41,7 @@ const StyledButton = styled(ButtonBase)`
   align-items: center;
   justify-content: space-between;
   width: 100px;
-  padding: 10px;
+  padding: 10px 25px;
   flex: auto;
 
   &:hover {
@@ -55,6 +55,8 @@ const getIcon = (name: string | undefined) => {
   switch (name) {
     case "Backpack":
       return Backpack;
+    case "Buy":
+      return Buy;
     default:
       return null;
   }
@@ -75,7 +77,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <StyledButton {...props}>
       {label}
-      {ButtonIcon ? <ButtonIcon height={20} /> : null}
+      {ButtonIcon ? <ButtonIcon width={40} /> : null}
     </StyledButton>
   );
 };

@@ -14,6 +14,24 @@ export interface HeaderProps {
 const gradient =
   "linear-gradient(120deg, #111111 0%, #ffffff 47%, #111111 47.3%, #111111 100%)";
 
+const BalanceCounter = styled.div`
+  width: 200;
+  height: 50%;
+  position: absolute;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  display: flex;
+  background: linear-gradient(
+    120deg,
+    #111111 0%,
+    #ffffff 47%,
+    #111111 47.3%,
+    #111111 100%
+  );
+`;
+
 export const Header: React.FC<HeaderProps> = ({
   user,
   onLogin,
@@ -46,6 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
         </svg>
         <h1>Acme</h1>
       </div>
+      <BalanceCounter>1280.09</BalanceCounter>
     </div>
   </header>
 );

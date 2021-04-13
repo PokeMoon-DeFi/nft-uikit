@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const BalanceCounter = styled.div`
   width: 50%;
-  max-width: 600px;
-  height: 6rem;
+  max-width: 400px;
+  height: 3rem;
   justify-content: space-between;
   position: relative;
   align-items: center;
@@ -32,10 +32,10 @@ const StyledLabel = styled.span`
   right: 17%;
   justify-content: center;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
 `;
 
-interface BalanceCounterProps {
+interface BalanceCounterProps extends React.HTMLAttributes<HTMLDivElement> {
   imgUrl: string;
   balance: number;
 }

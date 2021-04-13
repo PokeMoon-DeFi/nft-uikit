@@ -1,5 +1,5 @@
 section {
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 24px;
   padding: 48px 20px;
@@ -66,4 +66,12 @@ li {
 
 .tip-wrapper svg path {
   fill: #1ea7fd;
+}
+
+article {
+  background: radial-gradient(
+    58.94% 58.94% at 50% 50%,
+    #014482 0%,
+    #210035 100%
+  );
 }
