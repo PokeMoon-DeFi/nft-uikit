@@ -1,19 +1,12 @@
-import React, {
-  UIEventHandler,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useAppSelector, useAppDispatch } from "../../providers/state/hooks";
+import { useAppSelector } from "../../providers/state/hooks";
 import { asyncFetchIds } from "../../providers/state/CarouselState";
 import { useSpring, animated } from "react-spring";
-import GridList from "@material-ui/core/GridList";
 import Card from "../Card";
 import styled from "styled-components";
 
-import { useDrag, useGesture, useScroll } from "react-use-gesture";
+import { useGesture } from "react-use-gesture";
 
 const StyledContainer = styled(animated.div)`
   flex: 1;
@@ -56,23 +49,7 @@ const Carousel: React.FC = () => {
   //   dispatch(asyncFetchIds(1));
   // }, [dispatch]);
 
-  const selectCard = (index: number) => {
-    // if (consumeClick) {
-    //   console.log("consuming click");
-    //   setConsumeClick(false);
-    //   return;
-    // }
-    console.log({ index });
-
-    if (activeIndex === index) {
-      setActiveIndex(-1);
-      return;
-    }
-
-    setActiveIndex(index);
-  };
-
-  const cardRefs = useRef(new Array());
+  const cardRefs = useRef<any[]>([]);
   const cardCallback = useCallback(
     (idx) => {
       console.log({ idx });
@@ -81,13 +58,17 @@ const Carousel: React.FC = () => {
         return;
       }
       if (idx === activeIndex) {
+        cardRefs.current[activeIndex]?.setFocus(false);
         setActiveIndex(-1);
       } else {
-        console.log(cardRefs.current[idx].focus());
+        cardRefs.current[idx]?.setFocus(true);
+        if (activeIndex !== -1) {
+          cardRefs.current[activeIndex]?.setFocus(false);
+        }
         setActiveIndex(idx);
       }
     },
-    [activeIndex, consumeClick]
+    [activeIndex, consumeClick, cardRefs]
   );
 
   const ref = useRef(null);
@@ -130,7 +111,7 @@ const Carousel: React.FC = () => {
           cardId={nft.imageUrl}
           key={index.toString()}
           onClick={() => cardCallback(index)}
-          active={activeIndex === index}
+          // active={activeIndex === index}
           ref={(r) => (cardRefs.current[index] = r)}
         />
       ))}

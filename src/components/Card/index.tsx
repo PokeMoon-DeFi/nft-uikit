@@ -1,4 +1,9 @@
-import React, { PropsWithRef, useImperativeHandle, useRef } from "react";
+import React, {
+  PropsWithRef,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import { Card, CardProps } from "@material-ui/core";
 import styled from "styled-components";
 
@@ -9,15 +14,15 @@ interface StyledCardProps {
 }
 
 interface CardHandle {
-  focus: () => void;
+  setFocus: (active: boolean) => void;
 }
 
 const StyledCard = styled.div<StyledCardProps>`
   background-color: #17141d;
   border-radius: 10px;
-  box-shadow: -1rem 0 3rem #000;
+
   /*   margin-left: -50px; */
-  transition: 0.4s ease-out;
+  /* transition: 0.4s ease-out; */
   position: relative;
   left: 0px;
   background: ${({ cardId }) => {
@@ -33,7 +38,7 @@ const StyledCard = styled.div<StyledCardProps>`
   ${({ active }) => {
     if (active) {
       return "box-shadow: 10px 5px 5px red;";
-    }
+    } else return "box-shadow: -1rem 0 3rem #000;";
   }}
 
   &:not(::first-child) {
@@ -52,13 +57,14 @@ const StyledCard = styled.div<StyledCardProps>`
 
 const C = React.forwardRef<CardHandle, StyledCardProps>((props, ref) => {
   const cardRef = useRef();
+  const [active, setActive] = useState(false);
   useImperativeHandle(ref, () => ({
-    focus: () => {
-      console.log("FOCUSED: " + cardRef.current);
+    setFocus: (active) => {
+      setActive(active);
     },
   }));
   //@ts-ignore
-  return <StyledCard ref={cardRef} {...props} />;
+  return <StyledCard ref={cardRef} {...props} active={active} />;
 });
 
 export default C;
