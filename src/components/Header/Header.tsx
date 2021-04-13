@@ -1,5 +1,6 @@
 import React from "react";
 
+import styled from "styled-components";
 import { Button } from "../Button/Button";
 import "./header.css";
 
@@ -10,6 +11,9 @@ export interface HeaderProps {
   onCreateAccount: () => void;
 }
 
+const gradient =
+  "linear-gradient(120deg, #111111 0%, #ffffff 47%, #111111 47.3%, #111111 100%)";
+
 export const Header: React.FC<HeaderProps> = ({
   user,
   onLogin,
@@ -17,7 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   onCreateAccount,
 }) => (
   <header>
-    <div className="wrapper">
+    <div className="wrapper" style={{ position: "relative" }}>
       <div>
         <svg
           width="32"
@@ -41,21 +45,6 @@ export const Header: React.FC<HeaderProps> = ({
           </g>
         </svg>
         <h1>Acme</h1>
-      </div>
-      <div>
-        {user ? (
-          <Button size="small" onClick={onLogout} label="Log out" />
-        ) : (
-          <>
-            <Button size="small" onClick={onLogin} label="Log in" />
-            <Button
-              primary
-              size="small"
-              onClick={onCreateAccount}
-              label="Sign up"
-            />
-          </>
-        )}
       </div>
     </div>
   </header>
