@@ -20,6 +20,6 @@ export const Counter: Story = () => (
       alignItems: "center",
     }}
   >
-    <BalanceCounter />
+    <BalanceCounter imgUrl="images/MAXRBALL.png" balance={2058.19} />
   </div>
 );
