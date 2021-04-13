@@ -1,72 +1,121 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useAppSelector, useAppDispatch } from "../../providers/state/hooks";
+import { useAppSelector } from "../../providers/state/hooks";
 import { asyncFetchIds } from "../../providers/state/CarouselState";
-
+import { useSpring, animated } from "react-spring";
 import Card from "../Card";
-import zIndex from "@material-ui/core/styles/zIndex";
+import styled from "styled-components";
+
+import { useGesture } from "react-use-gesture";
+
+const StyledContainer = styled(animated.div)`
+  flex: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 50px 10px;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+`;
+
+const Overlay = styled(animated.div)`
+  background-color: red;
+  position: fixed;
+  background-attachment: fixed;
+  top: 0;
+  /* bottom: 0; */
+  left: 0;
+  /* right: 0; */
+
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  z-index: 0;
+  opacity: 0.2;
+  /* transform: translateZ(1); */
+`;
 
 const Carousel: React.FC = () => {
-  const carousel = useAppSelector((state) => state.carousel);
-  const [zState, setZState] = useState(carousel.nfts?.map((nft) => 0));
-  const [opacity, setOpacity] = useState(0);
+  const nfts = useAppSelector((state) => state.carousel?.nfts);
+  const [consumeClick, setConsumeClick] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(asyncFetchIds(1));
-  }, [dispatch]);
+  const spring = useSpring({ opacity: 1, from: { opacity: 0 } });
 
-  const selectCard = (index: number) => {
-    const updatedState = zState;
-    let foundCard = false;
+  // useEffect(() => {
+  //   dispatch(asyncFetchIds(1));
+  // }, [dispatch]);
 
-    if (activeIndex === index) {
-      //unfocus
-      setOpacity(0);
-      updatedState[activeIndex] = 0;
-      setZState(updatedState);
-      setActiveIndex(-1);
-      return;
+  const cardRefs = useRef<any[]>([]);
+  const cardCallback = useCallback(
+    (idx) => {
+      console.log({ idx });
+      if (consumeClick) {
+        setConsumeClick(false);
+        return;
+      }
+      if (idx === activeIndex) {
+        cardRefs.current[activeIndex]?.setFocus(false);
+        setActiveIndex(-1);
+      } else {
+        cardRefs.current[idx]?.setFocus(true);
+        if (activeIndex !== -1) {
+          cardRefs.current[activeIndex]?.setFocus(false);
+        }
+        setActiveIndex(idx);
+      }
+    },
+    [activeIndex, consumeClick, cardRefs]
+  );
+
+  const ref = useRef(null);
+  const [{ scrollLeft }, setSpringSroll] = useSpring(() => ({
+    scrollLeft: 0,
+  }));
+
+  const bind = useGesture(
+    {
+      onDrag: ({ movement: [x] }) => {
+        const res = scrollLeft.get() - x / 2.5;
+        setSpringSroll({ scrollLeft: res });
+      },
+      onDragEnd: ({ event }) => {
+        setConsumeClick(true);
+      },
+      onWheel: ({ event }) => {
+        const res = scrollLeft.get() + event.deltaY * 1.5;
+        setSpringSroll({ scrollLeft: res });
+      },
+    },
+    {
+      drag: { delay: 200 },
+      domTarget: ref,
+      eventOptions: { passive: false },
     }
-
-    if (updatedState && updatedState.length >= index) {
-      updatedState[index] = 2;
-      foundCard = true;
-    }
-
-    setZState(updatedState);
-    if (foundCard) {
-      setActiveIndex(index);
-      setOpacity(1);
-    }
-  };
+  );
 
   return (
-    <div style={{ display: "flex" }}>
-      <div
-        style={{
-          backgroundColor: "black",
-          flex: 1,
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          zIndex: 1,
-          opacity: opacity,
-          pointerEvents: opacity === 0 ? "none" : "visible",
-          backgroundAttachment: "fixed",
-        }}
-      />
-      {carousel?.nfts?.map((nft, index) => (
+    <StyledContainer
+      {...bind()}
+      style={{ touchAction: "pan-y" }}
+      ref={ref}
+      scrollLeft={scrollLeft}
+    >
+      {/* <Overlay style={spring} /> */}
+
+      {nfts?.map((nft, index) => (
         <Card
           cardId={nft.imageUrl}
           key={index.toString()}
-          style={{ zIndex: zState[index] }}
-          onClick={() => selectCard(index)}
+          onClick={() => cardCallback(index)}
+          // active={activeIndex === index}
+          ref={(r) => (cardRefs.current[index] = r)}
         />
       ))}
-    </div>
+    </StyledContainer>
   );
 };
 
