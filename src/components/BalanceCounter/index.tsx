@@ -2,33 +2,37 @@ import styled from "styled-components";
 
 const BalanceCounter = styled.div`
   width: 50%;
-  max-width: 300px;
-  height: 2rem;
-  justify-content: center;
-  position: "relative";
+  max-width: 600px;
+  height: 6rem;
+  justify-content: space-between;
+  position: relative;
   align-items: center;
   flex: 1;
   display: flex;
+  padding: 6px 24px;
   background: linear-gradient(
     120deg,
     #111111 0%,
-    #111111 25%,
-    #ffffff 25.3%,
+    #111111 33%,
+    #ffffff 33.3%,
     #ffffff 100%
   );
 `;
 
 const StyledPBall = styled.img`
-  height: 100%;
-
-  position: absolute;
-
-  left: 0;
   aspect-ratio: 1;
+  height: 65%;
+  text-align: center;
+  position: absolute;
+  left: 9%;
 `;
 
 const StyledLabel = styled.span`
-  flex: 3;
+  position: absolute;
+  right: 22.5%;
+  justify-content: center;
+  text-align: center;
+  font-size: 3rem;
 `;
 
 export default () => {

@@ -15,7 +15,7 @@ export const Counter: Story = () => (
       backgroundColor: "#C8C8C8",
       display: "flex",
       flex: 1,
-      height: "400px",
+      height: "200px",
       justifyContent: "center",
       alignItems: "center",
     }}
