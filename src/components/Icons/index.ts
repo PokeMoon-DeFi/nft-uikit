@@ -1,9 +1,7 @@
-import styled, { css, keyframes } from "styled-components";
-import { SvgProps } from "./types";
-
-const Svg = styled.svg``;
-
-Svg.defaultProps = {
-  width: "20px",
-  xmlns: "http://www.w3.org/2000/svg",
-};
+export { default as Backpack } from "./Backpack";
+export { default as Buy } from "./Buy";
+export { default as Koban } from "./Koban";
+export { default as Metamask } from "./Metamask";
+export { default as Moon } from "./Moon";
+export { default as Transfer } from "./Transfer";
+export { default as Wynaut } from "./Wynaut";

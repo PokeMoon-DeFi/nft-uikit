@@ -1,6 +1,6 @@
 import Flex from "../Flex";
 import styled from "styled-components";
-import { Button } from "../Button/Button";
+import Button from "../Button";
 
 const Container = styled.div`
   display: flex;

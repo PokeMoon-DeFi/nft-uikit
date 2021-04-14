@@ -1,10 +1,15 @@
 import React from "react";
-import Svg from "../Svg";
-import { SvgProps } from "../types";
+import Svg, { SvgProps } from "../Svg";
 
 const Icon: React.FC<SvgProps> = (props) => {
   return (
-    <Svg xmlns="http://www.w3.org/2000/svg" viewBox="-137 239.9 321 362" width="2em" height="2em" {...props}>
+    <Svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="-137 239.9 321 362"
+      width="2em"
+      height="2em"
+      {...props}
+    >
       <radialGradient
         id="mnt_token__a"
         cx={23.449}

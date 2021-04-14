@@ -1,11 +1,7 @@
-import Flex from "../Flex";
 import styled from "styled-components";
-import { Button } from "../Button/Button";
 import { PokemoonCard, PokemoonNft } from "../../constants/types";
-import Theme from "../../theme";
 import { getRarityGradient, getTypeColor } from "../../utils";
-import Icon from "../Svg/Icons/Moon";
-
+import { Moon as Icon } from "../Icons";
 interface NftInfoProps {
   nft: PokemoonNft;
 }

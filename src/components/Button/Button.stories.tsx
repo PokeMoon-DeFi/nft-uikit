@@ -1,9 +1,8 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Button, ButtonProps } from "./Button";
+import Button, { ButtonProps } from ".";
 import { withDesign } from "storybook-addon-designs";
-import { Backpack } from "../Svg";
 
 export default {
   title: "Example/Button",

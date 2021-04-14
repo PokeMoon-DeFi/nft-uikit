@@ -1,9 +1,8 @@
-import React, { SVGProps } from "react";
+import React from "react";
 import "./button.css";
 import { ButtonBase, ButtonBaseProps } from "@material-ui/core";
-
+import { Backpack, Buy } from "../Icons";
 import styled from "styled-components";
-import { Backpack, SvgProps, Buy } from "../Svg";
 
 export interface ButtonProps extends ButtonBaseProps {
   /**
@@ -65,7 +64,7 @@ const getIcon = (name: string | undefined) => {
 /**
  * Primary UI component for user interaction
  */
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   primary = false,
   size = "medium",
   label,
@@ -81,3 +80,5 @@ export const Button: React.FC<ButtonProps> = ({
     </StyledButton>
   );
 };
+
+export default Button;

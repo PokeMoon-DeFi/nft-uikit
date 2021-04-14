@@ -1,10 +1,4 @@
-import React, {
-  PropsWithRef,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
-import { Card, CardProps } from "@material-ui/core";
+import React, { useImperativeHandle, useRef, useState } from "react";
 import styled from "styled-components";
 
 interface StyledCardProps {
@@ -55,7 +49,7 @@ const StyledCard = styled.div<StyledCardProps>`
   }
 `;
 
-const C = React.forwardRef<CardHandle, StyledCardProps>((props, ref) => {
+const Card = React.forwardRef<CardHandle, StyledCardProps>((props, ref) => {
   const cardRef = useRef();
   const [active, setActive] = useState(false);
   useImperativeHandle(ref, () => ({
@@ -67,4 +61,4 @@ const C = React.forwardRef<CardHandle, StyledCardProps>((props, ref) => {
   return <StyledCard ref={cardRef} {...props} active={active} />;
 });
 
-export default C;
+export default Card;

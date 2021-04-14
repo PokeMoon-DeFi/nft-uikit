@@ -1,6 +1,5 @@
 import React from "react";
-import Svg from "../Svg";
-import { SvgProps } from "../types";
+import Svg, { SvgProps } from "../Svg";
 
 const Icon: React.FC<SvgProps> = (props) => {
   return (
@@ -17,7 +16,9 @@ const Icon: React.FC<SvgProps> = (props) => {
       {...props}
     >
       <style>
-        {".koban__st0{fill:#46c4d5}.koban__st2{fill:#119ba5}.koban__st6{fill:#19140d}.koban__st16{fill:#fff}"}
+        {
+          ".koban__st0{fill:#46c4d5}.koban__st2{fill:#119ba5}.koban__st6{fill:#19140d}.koban__st16{fill:#fff}"
+        }
       </style>
       <path
         id="koban__XMLID_69_"
@@ -38,7 +39,13 @@ const Icon: React.FC<SvgProps> = (props) => {
         <stop offset={0.46} stopColor="#f9ed32" />
         <stop offset={1} stopColor="#f7941e" />
       </radialGradient>
-      <circle id="koban__XMLID_2_" cx={251.3} cy={250.7} r={230.2} fill="url(#koban__XMLID_10_)" />
+      <circle
+        id="koban__XMLID_2_"
+        cx={251.3}
+        cy={250.7}
+        r={230.2}
+        fill="url(#koban__XMLID_10_)"
+      />
       <path
         id="koban__XMLID_48_"
         className="koban__st0"
@@ -89,12 +96,24 @@ const Icon: React.FC<SvgProps> = (props) => {
         className="koban__st0"
         d="M367.4 420.6L344 386.4c-15.6-22.9-31.2-45.7-46.8-68.6-9.4-13.7-18.7-27.4-28.1-41-5.4-7.9-10.8-15.8-16.2-23.8-.2-.3-.4-.7-.7-1.2 1-.1 1.7.5 2.3.8 60.1 30 120.1 60.1 180.2 90.1.8.4 1.7.7 2.5 1.1-3.5 7.2-7.7 14-12.1 20.7-4.7 7.1-9.9 13.9-15.8 20.1-3.8 4-7.3 8.3-11.4 12.1-9 8.4-18.4 16.4-28.7 23.2-.6.3-1.2.5-1.8.7z"
       />
-      <radialGradient id="koban__XMLID_11_" cx={256.349} cy={242.311} r={192.445} gradientUnits="userSpaceOnUse">
+      <radialGradient
+        id="koban__XMLID_11_"
+        cx={256.349}
+        cy={242.311}
+        r={192.445}
+        gradientUnits="userSpaceOnUse"
+      >
         <stop offset={0} stopColor="#364da1" />
         <stop offset={0.565} stopColor="#2d62ae" stopOpacity={0.7} />
         <stop offset={1} stopColor="#0090d0" stopOpacity={0} />
       </radialGradient>
-      <circle id="koban__XMLID_1_" cx={256.3} cy={242.3} r={192.4} fill="url(#koban__XMLID_11_)" />
+      <circle
+        id="koban__XMLID_1_"
+        cx={256.3}
+        cy={242.3}
+        r={192.4}
+        fill="url(#koban__XMLID_11_)"
+      />
       <g id="koban__XMLID_23_">
         <radialGradient
           id="koban__XMLID_12_"
@@ -150,7 +169,13 @@ const Icon: React.FC<SvgProps> = (props) => {
         </clipPath>
       </g>
       <g id="koban__XMLID_20_">
-        <radialGradient id="koban__XMLID_32_" cx={252.302} cy={250.766} r={209.667} gradientUnits="userSpaceOnUse">
+        <radialGradient
+          id="koban__XMLID_32_"
+          cx={252.302}
+          cy={250.766}
+          r={209.667}
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset={0} stopColor="#f15a29" />
           <stop offset={1} stopColor="#f9ed32" />
         </radialGradient>

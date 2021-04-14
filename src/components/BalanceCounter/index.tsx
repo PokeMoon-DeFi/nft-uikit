@@ -40,7 +40,7 @@ interface BalanceCounterProps extends React.HTMLAttributes<HTMLDivElement> {
   balance: number;
 }
 
-export default (props: BalanceCounterProps) => {
+const BalanceContainer = (props: BalanceCounterProps) => {
   return (
     <BalanceCounter>
       <StyledPBall src={props.imgUrl} />
@@ -48,3 +48,5 @@ export default (props: BalanceCounterProps) => {
     </BalanceCounter>
   );
 };
+
+export default BalanceContainer;

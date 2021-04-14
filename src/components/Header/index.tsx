@@ -1,7 +1,6 @@
 import React from "react";
 
 import styled from "styled-components";
-import { Button } from "../Button/Button";
 import "./header.css";
 
 export interface HeaderProps {
@@ -32,7 +31,7 @@ const BalanceCounter = styled.div`
   );
 `;
 
-export const Header: React.FC<HeaderProps> = ({
+const Header: React.FC<HeaderProps> = ({
   user,
   onLogin,
   onLogout,
@@ -68,3 +67,5 @@ export const Header: React.FC<HeaderProps> = ({
     </div>
   </header>
 );
+
+export default Header;
