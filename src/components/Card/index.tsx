@@ -4,7 +4,7 @@ import styled from "styled-components";
 interface StyledCardProps {
   cardId?: string;
   active?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 interface CardHandle {
