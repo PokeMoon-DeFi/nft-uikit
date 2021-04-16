@@ -36,18 +36,14 @@ const Overlay = styled(animated.div)`
   /* transform: translateZ(1); */
 `;
 
-const Carousel: React.FC = () => {
-  const nfts = useAppSelector((state) => state.carousel?.nfts);
+export interface CarouselProps {
+  nfts: any;
+}
+
+const Carousel: React.FC<CarouselProps> = ({ nfts, ...props }) => {
+  // const nfts = useAppSelector((state) => state.carousel?.nfts);
   const [consumeClick, setConsumeClick] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
-
-  const dispatch = useDispatch();
-
-  const spring = useSpring({ opacity: 1, from: { opacity: 0 } });
-
-  // useEffect(() => {
-  //   dispatch(asyncFetchIds(1));
-  // }, [dispatch]);
 
   const cardRefs = useRef<any[]>([]);
   const cardCallback = useCallback(
