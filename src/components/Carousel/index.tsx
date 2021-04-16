@@ -9,13 +9,17 @@ import { PokemoonNft } from "../../constants/nfts/types";
 import { useGesture } from "react-use-gesture";
 
 const StyledContainer = styled(animated.div)`
-  flex: 1;
   display: flex;
+  width: 80%;
+  height: 400px;
   flex-wrap: nowrap;
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: hidden;
-  padding: 50px 10px;
+  align-items: center;
+  /* padding: 50px 10px; */
   position: relative;
+  flex-direction: row;
+  justify-content: flex-start;
   -webkit-overflow-scrolling: touch;
 `;
 
@@ -102,7 +106,7 @@ const Carousel: React.FC<CarouselProps> = ({ nfts, ...props }) => {
     >
       {/* <Overlay style={spring} /> */}
 
-      {nfts?.map((nft, index) => (
+      {nfts?.slice(0, 4).map((nft, index) => (
         <Card
           cardId={nft.imageUrl}
           key={index.toString()}

@@ -1,5 +1,6 @@
 import React, { useImperativeHandle, useRef, useState } from "react";
 import styled from "styled-components";
+import Button from "components/Button";
 
 interface StyledCardProps {
   cardId?: string;
@@ -24,15 +25,22 @@ const StyledCard = styled.div<StyledCardProps>`
     return "url(images/cards/" + cardId + ")";
   }};
 
-  background-size: cover;
-  width: 200px;
+  background-size: contain;
+
+  height: 200px;
+  background-repeat: no-repeat;
+
   aspect-ratio: 746/1038;
   flex: 0 0 auto;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   ${({ active }) => {
     if (active) {
       return "box-shadow: 10px 5px 5px red;";
-    } else return "box-shadow: -1rem 0 3rem #000;";
+    } else return "box-shadow: -.5rem 0 1rem #000;";
   }}
 
   &:not(::first-child) {
@@ -49,16 +57,40 @@ const StyledCard = styled.div<StyledCardProps>`
   }
 `;
 
-const Card = React.forwardRef<CardHandle, StyledCardProps>((props, ref) => {
-  const cardRef = useRef();
-  const [active, setActive] = useState(false);
-  useImperativeHandle(ref, () => ({
-    setFocus: (active) => {
-      setActive(active);
-    },
-  }));
-  //@ts-ignore
-  return <StyledCard ref={cardRef} {...props} active={active} />;
-});
+const HoverMenu = styled.div`
+  left: 50px;
+  z-index: 1;
+  background-color: white;
+  margin-left: 10px;
+`;
+
+const Card = React.forwardRef<CardHandle, StyledCardProps>(
+  ({ cardId, ...props }, ref) => {
+    const cardRef = useRef(null);
+    const [active, setActive] = useState(false);
+    useImperativeHandle(ref, () => ({
+      setFocus: (active) => {
+        setActive(active);
+      },
+    }));
+    //@ts-ignore
+    return (
+      <div
+        style={{
+          position: "relative",
+          marginRight: active ? 40 : 0,
+          display: "flex",
+        }}
+      >
+        <StyledCard ref={cardRef} {...props} active={active}></StyledCard>
+        {active && (
+          <HoverMenu>
+            <Button label="Info" icon="Backpack" />
+          </HoverMenu>
+        )}
+      </div>
+    );
+  }
+);
 
 export default Card;
