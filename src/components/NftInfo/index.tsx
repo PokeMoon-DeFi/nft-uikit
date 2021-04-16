@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PokemoonCard, PokemoonNft } from "../../constants/types";
+import { PokemoonCard, PokemoonNft } from "../../constants/nfts/types";
 import { getRarityGradient, getTypeColor } from "../../utils";
 import { Moon as Icon } from "../Icons";
 interface NftInfoProps {
@@ -97,7 +97,6 @@ const NftInfo = (props: NftInfoProps) => {
         number: 0,
         name: "0",
         type: "0",
-        set: "0",
         description: "0",
       };
   const rarity: string = props.nft.rarity ? props.nft.rarity : "0";
@@ -115,7 +114,6 @@ const NftInfo = (props: NftInfoProps) => {
       </PrimaryInfo>
       <SecondaryInfo style={{ background: typeColor }}>
         <PokemoonType>{card.type}</PokemoonType>
-        <SetName>{card.set}</SetName>
       </SecondaryInfo>
       <ArtistInfo>
         Artist

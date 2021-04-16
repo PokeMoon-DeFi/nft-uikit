@@ -27,7 +27,13 @@ declare module "styled-components" {
       lightning: string;
       grass: string;
       fire: string;
+      fighting: string;
       water: string;
+      colorless: string;
+      darkness: string;
+      dragon: string;
+      metal: string;
+      fairy: string;
     };
   }
 }
@@ -66,6 +72,12 @@ const Theme: DefaultTheme = {
     grass: "",
     fire: "#EE4D4E",
     water: "",
+    fighting: "",
+    colorless: "",
+    darkness: "",
+    dragon: "",
+    metal: "",
+    fairy: "",
   },
 };
 

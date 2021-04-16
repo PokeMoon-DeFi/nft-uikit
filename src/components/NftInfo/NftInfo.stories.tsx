@@ -1,7 +1,6 @@
 import { Story, Meta } from "@storybook/react";
-import { NFT_LIST } from "../../constants/sets/blastoff";
-import { PokemoonNft } from "../../constants/types";
-import Theme from "../../theme";
+import NFT_LIST from "../../constants/nfts/2114";
+import { PokemoonNft } from "../../constants/nfts/types";
 import NftInfo from "./index";
 
 export default {

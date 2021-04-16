@@ -11,19 +11,18 @@ export interface PokemoonCard {
   number: number;
   name: string;
   type: string;
-  set: string;
   description: string;
   artist?: ArtistInfo;
 }
 
 /**
- * PokeMoon NFT with unique pair tokenId and rarity. PokeMoon card info is
+ * PokeMoon NFT with unique tokenId and asset for each card number + rarity. PokeMoon card info is
  * shared across multiple tokenIds
  */
 export interface PokemoonNft {
   tokenId: string;
   imageUrl: string;
   card?: PokemoonCard;
-  // Depending on prefixrt's implementation tokenId
+  set?: string;
   rarity?: string;
 }

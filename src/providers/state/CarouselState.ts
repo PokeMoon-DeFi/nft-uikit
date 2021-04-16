@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { NFT_LIST } from "../../constants/sets/blastoff";
-import { PokemoonNft } from "../../constants/types";
+import NFT_LIST from "../../constants/nfts/2114";
+import { PokemoonNft } from "../../constants/nfts/types";
 
 interface State {
   nfts?: Array<PokemoonNft>;
