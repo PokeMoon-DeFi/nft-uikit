@@ -1,7 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../providers/state/hooks";
-import { asyncFetchIds } from "../../providers/state/CarouselState";
 import { useSpring, animated } from "react-spring";
 import Card from "../Card";
 import styled from "styled-components";
@@ -89,6 +86,10 @@ const Carousel: React.FC<CarouselProps> = ({ nfts, ...props }) => {
         const res = scrollLeft.get() + event.deltaY * 1.5;
         setSpringSroll({ scrollLeft: res });
       },
+      onScrollEnd: () => {
+        const element = ref.current;
+        setSpringSroll({ scrollLeft: element.scrollLeft, immediate: true });
+      },
     },
     {
       drag: { delay: 200 },
@@ -106,9 +107,9 @@ const Carousel: React.FC<CarouselProps> = ({ nfts, ...props }) => {
     >
       {/* <Overlay style={spring} /> */}
 
-      {nfts?.slice(0, 4).map((nft, index) => (
+      {nfts?.map((nft, index) => (
         <Card
-          cardId={nft.imageUrl}
+          imageUrl={nft.imageUrl}
           key={index.toString()}
           onClick={() => cardCallback(index)}
           // active={activeIndex === index}

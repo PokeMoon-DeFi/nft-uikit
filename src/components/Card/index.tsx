@@ -4,6 +4,7 @@ import Button from "components/Button";
 
 interface StyledCardProps {
   cardId?: string;
+  imageUrl?: string;
   active?: boolean;
   onClick?: () => void;
 }
@@ -20,9 +21,9 @@ const StyledCard = styled.div<StyledCardProps>`
   /* transition: 0.4s ease-out; */
   position: relative;
   left: 0px;
-  background: ${({ cardId }) => {
-    cardId = cardId ?? "001meownautC.png";
-    return "url(images/cards/" + cardId + ")";
+  background: ${({ imageUrl }) => {
+    imageUrl = imageUrl ?? "001meownautC.png";
+    return "url(images/cards/" + imageUrl + ")";
   }};
 
   background-size: contain;
@@ -65,7 +66,7 @@ const HoverMenu = styled.div`
 `;
 
 const Card = React.forwardRef<CardHandle, StyledCardProps>(
-  ({ cardId, ...props }, ref) => {
+  ({ cardId, imageUrl, ...props }, ref) => {
     const cardRef = useRef(null);
     const [active, setActive] = useState(false);
     useImperativeHandle(ref, () => ({
@@ -73,6 +74,7 @@ const Card = React.forwardRef<CardHandle, StyledCardProps>(
         setActive(active);
       },
     }));
+
     //@ts-ignore
     return (
       <div
@@ -82,7 +84,12 @@ const Card = React.forwardRef<CardHandle, StyledCardProps>(
           display: "flex",
         }}
       >
-        <StyledCard ref={cardRef} {...props} active={active}></StyledCard>
+        <StyledCard
+          ref={cardRef}
+          imageUrl={imageUrl}
+          {...props}
+          active={active}
+        ></StyledCard>
         {active && (
           <HoverMenu>
             <Button label="Info" icon="Backpack" />

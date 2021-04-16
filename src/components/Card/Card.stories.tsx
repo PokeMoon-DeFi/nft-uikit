@@ -13,13 +13,13 @@ export default {
 export const Cards: Story = () => (
   <div style={{ display: "flex", padding: 0 }}>
     <Card
-      cardId="002pikapuffUC.png"
+      imageUrl="002pikapuffUC.png"
       onClick={() => {
         console.log("clicked");
       }}
     />
-    <Card cardId="015rashscratchumL.png" />
-    <Card cardId="016babymeownautML.png" />
+    <Card imageUrl="015rashscratchumL.png" />
+    <Card imageUrl="016babymeownautML.png" />
     <Card />
     <div
       style={{
