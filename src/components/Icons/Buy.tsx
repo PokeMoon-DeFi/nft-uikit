@@ -5,6 +5,8 @@ const Icon: React.FC<SvgProps> = (props) => {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
+      width={45}
+      height={50}
       viewBox="0 0 100 100"
       {...props}
       fill="green"

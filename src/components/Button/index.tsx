@@ -1,5 +1,4 @@
 import React from "react";
-import "./button.css";
 import { ButtonBase, ButtonBaseProps } from "@material-ui/core";
 import { Backpack, Buy } from "../Icons";
 import styled from "styled-components";
@@ -29,9 +28,9 @@ export interface ButtonProps extends ButtonBaseProps {
   icon?: string;
 }
 
-const StyledButton = styled(ButtonBase)`
+const StyledButton = styled.button`
   background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   border-radius: 83px;
   font-family: "Josefin Sans", sans-serif;
   display: flex;
@@ -39,14 +38,19 @@ const StyledButton = styled(ButtonBase)`
   align-content: center;
   align-items: center;
   justify-content: space-between;
-  width: 100px;
-  padding: 10px 25px;
-  flex: auto;
+
+  flex: none;
+
+  padding-left: 10px;
 
   &:hover {
     background-color: black;
     color: white;
     transition: 0.33s ease;
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -75,8 +79,10 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <StyledButton {...props}>
-      {label}
-      {ButtonIcon ? <ButtonIcon width={40} /> : null}
+      <span>{label}</span>
+      {ButtonIcon ? (
+        <ButtonIcon height={"80%"} style={{ paddingLeft: 20 }} />
+      ) : null}
     </StyledButton>
   );
 };
