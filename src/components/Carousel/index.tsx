@@ -5,8 +5,7 @@ import { asyncFetchIds } from "../../providers/state/CarouselState";
 import { useSpring, animated } from "react-spring";
 import Card from "../Card";
 import styled from "styled-components";
-import { PokemoonNft } from "../../constants/types";
-
+import { PokemoonNft } from "../../constants/nfts/types";
 import { useGesture } from "react-use-gesture";
 
 const StyledContainer = styled(animated.div)`
