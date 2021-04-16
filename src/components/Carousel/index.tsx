@@ -5,6 +5,7 @@ import { asyncFetchIds } from "../../providers/state/CarouselState";
 import { useSpring, animated } from "react-spring";
 import Card from "../Card";
 import styled from "styled-components";
+import { PokemoonNft } from "../../constants/types";
 
 import { useGesture } from "react-use-gesture";
 
@@ -37,7 +38,7 @@ const Overlay = styled(animated.div)`
 `;
 
 export interface CarouselProps {
-  nfts: any;
+  nfts?: Array<PokemoonNft>;
 }
 
 const Carousel: React.FC<CarouselProps> = ({ nfts, ...props }) => {
