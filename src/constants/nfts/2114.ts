@@ -1,5 +1,6 @@
 import { PokemoonCard, PokemoonNft } from "./types";
-import { ARTISTS, PM_RARITY, PM_TYPES } from ".";
+import ARTISTS from "./artists";
+import { PM_RARITY, PM_TYPES } from ".";
 
 export const BLAST_OFF_CARDS: PokemoonCard[] = [
   {

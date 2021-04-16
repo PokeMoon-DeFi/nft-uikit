@@ -26,3 +26,8 @@ export interface PokemoonNft {
   set?: string;
   rarity?: string;
 }
+
+export interface CardSet {
+  name: string;
+  cards: PokemoonNft[];
+}
