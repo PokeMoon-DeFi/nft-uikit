@@ -21,7 +21,7 @@ const StyledCard = styled.div<StyledCardProps>`
   left: 0px;
   background: ${({ cardId }) => {
     cardId = cardId ?? "001meownautC.png";
-    return "url(cards/" + cardId + ")";
+    return "url(images/cards/" + cardId + ")";
   }};
 
   background-size: cover;
