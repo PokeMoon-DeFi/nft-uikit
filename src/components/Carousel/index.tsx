@@ -47,6 +47,39 @@ const Carousel: React.FC<CarouselProps> = ({ nfts, ...props }) => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const cardRefs = useRef<any[]>([]);
+
+  const ref = useRef<HTMLDivElement>(null);
+  const [{ scrollLeft }, setSpringScroll] = useSpring(() => ({
+    scrollLeft: 0,
+  }));
+
+  const bind = useGesture(
+    {
+      onDrag: ({ movement: [x] }) => {
+        const res = scrollLeft.get() - x / 2.5;
+        setSpringScroll({ scrollLeft: res });
+      },
+      onDragEnd: ({ event }) => {
+        setConsumeClick(true);
+      },
+      onWheel: ({ event }) => {
+        const res = scrollLeft.get() + event.deltaY * 1.5;
+        setSpringScroll({ scrollLeft: res });
+      },
+      onScrollEnd: () => {
+        const element = ref.current;
+        if (element) {
+          setSpringScroll({ scrollLeft: element.scrollLeft, immediate: true });
+        }
+      },
+    },
+    {
+      drag: { delay: 200 },
+      domTarget: ref,
+      eventOptions: { passive: false },
+    }
+  );
+
   const cardCallback = useCallback(
     (idx) => {
       console.log({ idx });
@@ -59,43 +92,23 @@ const Carousel: React.FC<CarouselProps> = ({ nfts, ...props }) => {
         setActiveIndex(-1);
       } else {
         cardRefs.current[idx]?.setFocus(true);
+
+        if (nfts && idx === nfts?.length - 1) {
+          const element = ref.current;
+          if (element) {
+            //TODO: Refer to a constant for UI menu width
+            const maxScrollLeft = element.scrollLeft + 150;
+            setSpringScroll({ scrollLeft: maxScrollLeft });
+          }
+        }
+
         if (activeIndex !== -1) {
           cardRefs.current[activeIndex]?.setFocus(false);
         }
         setActiveIndex(idx);
       }
     },
-    [activeIndex, consumeClick, cardRefs]
-  );
-
-  const ref = useRef(null);
-  const [{ scrollLeft }, setSpringSroll] = useSpring(() => ({
-    scrollLeft: 0,
-  }));
-
-  const bind = useGesture(
-    {
-      onDrag: ({ movement: [x] }) => {
-        const res = scrollLeft.get() - x / 2.5;
-        setSpringSroll({ scrollLeft: res });
-      },
-      onDragEnd: ({ event }) => {
-        setConsumeClick(true);
-      },
-      onWheel: ({ event }) => {
-        const res = scrollLeft.get() + event.deltaY * 1.5;
-        setSpringSroll({ scrollLeft: res });
-      },
-      onScrollEnd: () => {
-        const element = ref.current;
-        setSpringSroll({ scrollLeft: element.scrollLeft, immediate: true });
-      },
-    },
-    {
-      drag: { delay: 200 },
-      domTarget: ref,
-      eventOptions: { passive: false },
-    }
+    [activeIndex, consumeClick, cardRefs, nfts, setSpringScroll]
   );
 
   return (
