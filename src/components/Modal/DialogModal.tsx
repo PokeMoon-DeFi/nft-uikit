@@ -9,6 +9,7 @@ import Button from "components/Button";
 
 interface ModalProps extends DialogProps {
   handleClose: () => void;
+  handleConfirm?: () => void;
   title?: string;
   content?: string;
 }
@@ -17,6 +18,7 @@ const Modal: React.FC<ModalProps> = ({
   title,
   content,
   handleClose,
+  handleConfirm,
   ...props
 }) => {
   return (
@@ -29,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({
         <Button onClick={handleClose} color="primary">
           Disagree
         </Button>
-        <Button onClick={handleClose} color="primary" autoFocus>
+        <Button onClick={handleConfirm} color="primary" autoFocus>
           Agree
         </Button>
       </DialogActions>

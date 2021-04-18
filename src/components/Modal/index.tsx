@@ -1,1 +1,1 @@
-export * from "./DialogModal";
+export { default as Modal } from "./DialogModal";
