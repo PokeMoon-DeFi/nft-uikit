@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { PokemoonCard, PokemoonNft } from "../../constants/nfts/types";
 import { getRarityGradient, getTypeColor } from "../../utils";
 import { Moon as Icon } from "../Icons";
+
 interface NftInfoProps {
   nft: PokemoonNft;
 }

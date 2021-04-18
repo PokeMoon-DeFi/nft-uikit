@@ -1,4 +1,4 @@
-import { ArtistInfo } from "./types";
+import { ArtistInfo } from "../../constants";
 
 const ARTISTS: { [key: string]: ArtistInfo } = {
   Armilo: {
