@@ -32,6 +32,7 @@ const StyledButton = styled.button`
   background: #ffffff;
 
   border-radius: 83px;
+  padding: 10px;
   font-family: "Josefin Sans", sans-serif;
   display: flex;
   flex-direction: row;
@@ -40,8 +41,6 @@ const StyledButton = styled.button`
   justify-content: space-between;
 
   flex: none;
-
-  padding-left: 10px;
 
   &:hover {
     background-color: black;
@@ -73,6 +72,7 @@ const Button: React.FC<ButtonProps> = ({
   size = "medium",
   label,
   icon,
+  children,
   ...props
 }) => {
   const ButtonIcon = getIcon(icon);
@@ -80,6 +80,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <StyledButton {...props}>
       <span>{label}</span>
+      {children}
       {ButtonIcon ? (
         <ButtonIcon height={"80%"} style={{ paddingLeft: 20 }} />
       ) : null}
