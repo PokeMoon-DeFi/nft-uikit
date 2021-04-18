@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import NFT_LIST from "../../constants/nfts/2114";
+import BLAST_OFF_COLLECTION from "constants/nfts/2114";
 import { PokemoonNft } from "../../constants/nfts/types";
 
 interface State {
@@ -7,7 +7,7 @@ interface State {
 }
 
 const initialState: State = {
-  nfts: [...NFT_LIST],
+  nfts: [...BLAST_OFF_COLLECTION],
 };
 
 export const asyncFetchIds = createAsyncThunk(
