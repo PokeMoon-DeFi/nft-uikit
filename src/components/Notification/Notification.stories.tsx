@@ -15,6 +15,7 @@ export const Demo: Story = () => {
       <Button label="Pop notty" onClick={() => setOpen(true)} />
       <Notification
         open={open}
+        message={"Chaining blocks...."}
         handleClose={() => {
           setOpen(false);
         }}

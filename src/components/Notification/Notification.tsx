@@ -6,11 +6,13 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 interface NotificationProps extends SnackbarProps {
   handleClose: () => void;
+  message?: string;
 }
 
 const Notification: React.FC<NotificationProps> = ({
   open,
   handleClose,
+  message,
   ...props
 }) => {
   const handleCloseWrapper = (
@@ -33,7 +35,7 @@ const Notification: React.FC<NotificationProps> = ({
         open={open}
         autoHideDuration={6000}
         onClose={handleCloseWrapper}
-        message="Chaining blocks..."
+        message={message}
         action={
           <React.Fragment>
             <CircularProgress style={{ marginRight: 20 }} size={30} />
