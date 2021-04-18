@@ -123,7 +123,7 @@ export const BLAST_OFF_CARDS: PokemoonCard[] = [
   },
 ];
 
-const NFT_LIST: PokemoonNft[] = [
+const BLAST_OFF_COLLECTION: PokemoonNft[] = [
   {
     tokenId: "11000000",
     imageUrl: "001meownautC.png",
@@ -438,4 +438,4 @@ const NFT_LIST: PokemoonNft[] = [
   },
 ];
 
-export default NFT_LIST;
+export default BLAST_OFF_COLLECTION;
