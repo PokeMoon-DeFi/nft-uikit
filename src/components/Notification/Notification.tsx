@@ -3,16 +3,22 @@ import Snackbar, { SnackbarProps } from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import styled from "styled-components";
+import { Button } from "@material-ui/core";
 
 interface NotificationProps extends SnackbarProps {
   handleClose: () => void;
   message?: string;
+  href?: string;
+  linkLabel?: string;
 }
 
 const Notification: React.FC<NotificationProps> = ({
   open,
   handleClose,
   message,
+  linkLabel,
+  href,
   ...props
 }) => {
   const handleCloseWrapper = (
@@ -38,7 +44,16 @@ const Notification: React.FC<NotificationProps> = ({
         message={message}
         action={
           <React.Fragment>
-            <CircularProgress style={{ marginRight: 20 }} size={30} />
+            {href ? (
+              <Button
+                href={href}
+                style={{ backgroundColor: "pink", color: "blue" }}
+              >
+                {linkLabel}
+              </Button>
+            ) : (
+              <CircularProgress style={{ marginRight: 20 }} size={30} />
+            )}
             <IconButton
               size="small"
               aria-label="close"

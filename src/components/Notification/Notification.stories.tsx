@@ -23,3 +23,22 @@ export const Demo: Story = () => {
     </>
   );
 };
+
+export const PackBought: Story = () => {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <>
+      <Button label="Pop notty" onClick={() => setOpen(true)} />
+      <Notification
+        open={open}
+        message={"Pack secured"}
+        href={"/packId"}
+        linkLabel={"Check it out"}
+        handleClose={() => {
+          setOpen(false);
+        }}
+      />
+    </>
+  );
+};
