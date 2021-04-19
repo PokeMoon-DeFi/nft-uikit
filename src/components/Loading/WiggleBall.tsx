@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface WiggleBallProps extends React.HTMLAttributes<HTMLDivElement> {
   src?: string;
+  height?: number;
 }
 
 const Ball = styled.div<WiggleBallProps>`
@@ -58,10 +59,10 @@ const Ball = styled.div<WiggleBallProps>`
   }
 `;
 
-const WiggleBall: React.FC<WiggleBallProps> = ({ src, ...props }) => {
+const WiggleBall: React.FC<WiggleBallProps> = ({ src, height, ...props }) => {
   return (
     <Ball {...props}>
-      <img height={80} src={src} alt={"sdaf"} />
+      <img height={height ? height : 80} src={src} alt={"sdaf"} />
     </Ball>
   );
 };

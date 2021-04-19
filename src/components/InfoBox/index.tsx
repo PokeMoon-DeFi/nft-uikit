@@ -1,4 +1,3 @@
-import Flex from "../Flex";
 import styled from "styled-components";
 import Button from "../Button";
 

@@ -1,20 +1,21 @@
 import { Story, Meta } from "@storybook/react";
 import WiggleBall from "./WiggleBall";
-import Loading from "./Loading";
+import { Content, Page } from "../layout";
 
 export default {
   title: "Wiggling Balls",
 } as Meta;
 
 export const LoadingEx: Story = () => {
-  return <Loading />;
+  return (
+    <Page>
+      <Content>
+        <WiggleBall src={"/images/balls/MAXRBALL.png"} />
+      </Content>
+    </Page>
+  );
 };
 
 export const Wiggle: Story = () => {
-  return (
-    <WiggleBall
-      style={{ maxHeight: 80 }}
-      src={"/images/MAXRBALL.png"}
-    ></WiggleBall>
-  );
+  return <WiggleBall src={"/images/balls/MAXRBALL.png"}></WiggleBall>;
 };

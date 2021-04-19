@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Dialog, { DialogProps } from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";

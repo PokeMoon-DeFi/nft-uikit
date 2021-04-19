@@ -44,7 +44,7 @@ export const Page: React.FC<PageProps> = ({
       }}
     >
       <BalanceCounter
-        imgUrl="images/MAXRBALL.png"
+        imgUrl="images/balls/MAXRBALL.png"
         balance={1204.0239}
         style={{}}
       />
@@ -58,7 +58,7 @@ export const Page: React.FC<PageProps> = ({
         alignItems: "center",
       }}
     >
-      <StyledBoosterPack src="images/Blastoff.png" />
+      <StyledBoosterPack src="images/packs/Blastoff.png" />
       <Button
         style={{ margin: "3rem", width: "100%", fontSize: 26 }}
         label="Buy"

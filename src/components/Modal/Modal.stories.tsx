@@ -3,10 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import Button from "../Button";
 import Modal from "./DialogModal";
 import InspectCard from "./InspectCard";
-import NftInfo from "../NftInfo";
 import { PM_RARITY, PM_TYPES, PokemoonNft } from "../../constants/nfts";
-import styled from "styled-components";
-import { Grid } from "@material-ui/core";
 
 export default {
   title: "Modal",
@@ -15,7 +12,7 @@ export default {
 const title = "Purchase Pokemoon Booster Pack?";
 const content = "Lorem ipsum bullshit";
 
-export const Demo: Story = (args) => {
+export const Demo: Story = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
