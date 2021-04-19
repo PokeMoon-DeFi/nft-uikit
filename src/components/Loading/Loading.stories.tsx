@@ -6,5 +6,5 @@ export default {
 } as Meta;
 
 export const Wiggle: Story = () => {
-  return <WiggleBall></WiggleBall>;
+  return <WiggleBall src={"/images/MAXRBALL.png"}></WiggleBall>;
 };

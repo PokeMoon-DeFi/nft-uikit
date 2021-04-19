@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-const Ball = styled.div`
+interface WiggleBallProps extends React.HTMLAttributes<HTMLDivElement> {
+  src?: string;
+}
+
+const Ball = styled.div<WiggleBallProps>`
   display: inline-block;
   animation: anti-wiggle 2s ease-in-out infinite;
   transform-origin: bottom center;
@@ -54,10 +58,10 @@ const Ball = styled.div`
   }
 `;
 
-const WiggleBall: React.FC = (props) => {
+const WiggleBall: React.FC<WiggleBallProps> = ({ src, ...props }) => {
   return (
     <Ball {...props}>
-      <img src={"/images/MAXRBALL.png"} alt={"sdaf"} />
+      <img src={src} alt={"sdaf"} />
     </Ball>
   );
 };
