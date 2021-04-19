@@ -3,6 +3,8 @@ import { Story, Meta } from "@storybook/react";
 import Button from "../Button";
 import Modal from "./DialogModal";
 import InspectCard from "./InspectCard";
+import NftInfo from "../NftInfo";
+import { PM_RARITY, PM_TYPES, PokemoonNft } from "../../constants/nfts";
 
 export default {
   title: "Modal",
@@ -27,12 +29,30 @@ export const Demo: Story = (args) => {
   );
 };
 
+const n: PokemoonNft = {
+  tokenId: "11000000",
+  imageUrl: "001meownautC.png",
+  card: {
+    number: 1,
+    name: "Meownaut",
+    type: PM_TYPES.PSYCHIC,
+    description:
+      "Legend says that the bioluminescent coin in a Meownaut's chest is the source of its resilience and good fortune.",
+    artist: {
+      name: "Armilo Barrios",
+    },
+  },
+  rarity: PM_RARITY.C,
+};
+
 export const Inspect: Story = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
       <Button label="Open Modal" onClick={() => setOpen(true)} />
-      <InspectCard open={open} handleClose={() => setOpen(false)} />
+      <InspectCard open={open} handleClose={() => setOpen(false)}>
+        <NftInfo nft={n} />
+      </InspectCard>
     </>
   );
 };

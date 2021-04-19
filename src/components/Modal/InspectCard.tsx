@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -31,6 +31,7 @@ const Transition = React.forwardRef(function Transition(
 const InspectCard: React.FC<InspectorProps> = ({
   open,
   handleClose,
+  children,
   ...props
 }) => {
   return (
@@ -58,18 +59,17 @@ const InspectCard: React.FC<InspectorProps> = ({
             </Button>
           </Toolbar>
         </AppBar>
-        <List>
-          <ListItem button>
-            <ListItemText primary="Phone ringtone" secondary="Titania" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemText
-              primary="Default notification ringtone"
-              secondary="Tethys"
-            />
-          </ListItem>
-        </List>
+        <div
+          style={{
+            display: "flex",
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {children}
+        </div>
       </Dialog>
     </div>
   );
