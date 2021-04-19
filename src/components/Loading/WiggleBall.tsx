@@ -61,7 +61,7 @@ const Ball = styled.div<WiggleBallProps>`
 const WiggleBall: React.FC<WiggleBallProps> = ({ src, ...props }) => {
   return (
     <Ball {...props}>
-      <img src={src} alt={"sdaf"} />
+      <img height={80} src={src} alt={"sdaf"} />
     </Ball>
   );
 };

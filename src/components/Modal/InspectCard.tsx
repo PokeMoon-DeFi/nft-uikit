@@ -26,6 +26,11 @@ interface InspectorProps extends DialogProps {
   content?: string;
 }
 
+const ERROR_NFT: PokemoonNft = {
+  tokenId: "error",
+  imageUrl: "error.png",
+};
+
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement },
   ref: React.Ref<unknown>
@@ -119,7 +124,7 @@ const InspectCard: React.FC<InspectorProps> = ({
                 display: "flex",
               }}
             >
-              <NftInfo nft={nft ?? null} />
+              <NftInfo nft={nft ?? ERROR_NFT} />
             </StyledInfo>
           </Grid>
         </div>
