@@ -1,20 +1,14 @@
 import { Flex } from "components";
+import { Content, Page } from "components/layout";
 import WiggleBall from "./WiggleBall";
 
 const Loading: React.FC = ({ ...props }) => {
   return (
-    <div
-      style={{
-        height: "100%",
-        padding: 0,
-        margin: 0,
-        display: "flex",
-        justifyContent: "center",
-        textAlign: "center",
-      }}
-    >
-      <WiggleBall src={"/images/MAXRBALL.png"} />
-    </div>
+    <Page>
+      <Content>
+        <WiggleBall src={"/images/MAXRBALL.png"} />
+      </Content>
+    </Page>
   );
 };
 export default Loading;
