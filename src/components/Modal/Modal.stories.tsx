@@ -5,6 +5,8 @@ import Modal from "./DialogModal";
 import InspectCard from "./InspectCard";
 import NftInfo from "../NftInfo";
 import { PM_RARITY, PM_TYPES, PokemoonNft } from "../../constants/nfts";
+import styled from "styled-components";
+import { Grid } from "@material-ui/core";
 
 export default {
   title: "Modal",
@@ -46,13 +48,11 @@ const n: PokemoonNft = {
 };
 
 export const Inspect: Story = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   return (
     <>
       <Button label="Open Modal" onClick={() => setOpen(true)} />
-      <InspectCard open={open} handleClose={() => setOpen(false)}>
-        <NftInfo nft={n} />
-      </InspectCard>
+      <InspectCard nft={n} open={open} handleClose={() => setOpen(false)} />
     </>
   );
 };
