@@ -23,7 +23,7 @@ const StyledCard = styled.div<StyledCardProps>`
   left: 0px;
   background: ${({ imageUrl }) => {
     imageUrl = imageUrl ?? "001meownautC.png";
-    return "url(images/cards/" + imageUrl + ")";
+    return "url(/images/cards/" + imageUrl + ")";
   }};
 
   background-size: contain;
