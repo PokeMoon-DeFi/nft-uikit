@@ -12,3 +12,4 @@ export { default as Svg } from "./Svg";
 export type { SvgProps } from "./Svg";
 export * from "./Notification";
 export * from "./layout";
+export { default as Particles } from "./Particles";

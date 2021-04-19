@@ -1,4 +1,3 @@
-import zIndex from "@material-ui/core/styles/zIndex";
 import Particles, { ISourceOptions } from "react-tsparticles";
 import particleOptions from "./particles.json";
 
