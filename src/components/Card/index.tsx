@@ -22,7 +22,7 @@ const StyledCard = styled.div<StyledCardProps>`
   position: relative;
   left: 0px;
   background: ${({ imageUrl }) => {
-    imageUrl = imageUrl ?? "001meownautC.png";
+    if (!imageUrl) return;
     return "url(/images/cards/" + imageUrl + ")";
   }};
 
