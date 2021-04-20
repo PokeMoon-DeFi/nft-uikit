@@ -7,11 +7,13 @@ interface Params {
   id: string;
 }
 
+
 const PackViewer: React.FC = () => {
   const { id } = useParams<Params>();
+  
   console.log(id);
 
-  return <Carousel nfts={NFT_LIST} />;
+  return <Carousel nfts={NFT_LIST} handleSubMenuCommand={() => null} />
 };
 
 export default PackViewer;
