@@ -79,10 +79,12 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <StyledButton {...props}>
-      <span>{label}</span>
+      <span style={{ marginLeft: 10, textAlign: "center", fontSize: 16 }}>
+        {label}
+      </span>
       {children}
       {ButtonIcon ? (
-        <ButtonIcon height={"80%"} style={{ paddingLeft: 20 }} />
+        <ButtonIcon height={"5vh"} style={{ paddingLeft: 20 }} />
       ) : null}
     </StyledButton>
   );

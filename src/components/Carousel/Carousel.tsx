@@ -44,7 +44,6 @@ export interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ nfts, ...props }) => {
-  // const nfts = useAppSelector((state) => state.carousel?.nfts);
   const [consumeClick, setConsumeClick] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
 
