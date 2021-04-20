@@ -41,9 +41,14 @@ const Overlay = styled(animated.div)`
 
 export interface CarouselProps {
   nfts?: Array<PokemoonNft>;
+  handleSubMenuCommand: (command: string, cardIdx: number) => void;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ nfts, ...props }) => {
+const Carousel: React.FC<CarouselProps> = ({
+  nfts,
+  handleSubMenuCommand,
+  ...props
+}) => {
   const [consumeClick, setConsumeClick] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -125,6 +130,7 @@ const Carousel: React.FC<CarouselProps> = ({ nfts, ...props }) => {
           imageUrl={nft.imageUrl}
           key={index.toString()}
           onClick={() => cardCallback(index)}
+          onSubMenuSelect={(command) => handleSubMenuCommand(command, index)}
           // active={activeIndex === index}
           ref={(r) => (cardRefs.current[index] = r)}
         />

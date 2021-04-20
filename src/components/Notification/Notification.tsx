@@ -3,7 +3,6 @@ import Snackbar, { SnackbarProps } from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 interface NotificationProps extends SnackbarProps {
