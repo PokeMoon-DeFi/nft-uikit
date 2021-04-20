@@ -17,7 +17,6 @@ import styled from "styled-components";
 interface InspectorProps extends DialogProps {
   handleClose: () => void;
   nft?: PokemoonNft;
-  handleConfirm?: () => void;
   title?: string;
   content?: string;
 }
@@ -117,7 +116,7 @@ const InspectCard: React.FC<InspectorProps> = ({
             display: "flex",
           }}
         >
-          <NftInfo nft={nft ?? ERROR_NFT} />
+          {nft && <NftInfo nft={nft} />}
         </StyledInfo>
       </Grid>
     </Dialog>
