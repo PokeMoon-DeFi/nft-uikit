@@ -5,6 +5,7 @@ import Modal from "./DialogModal";
 import InspectCard from "./InspectCard";
 import { PM_RARITY, PM_TYPES, PokemoonNft } from "../../constants/nfts";
 import { Page, Content } from "../layout";
+import SendToAddress from "./SendToAddress";
 
 export default {
   title: "Modal",
@@ -52,6 +53,27 @@ export const Inspect: Story = () => {
       <Content>
         <Button label="Open Modal" onClick={() => setOpen(true)} />
         <InspectCard nft={n} open={open} handleClose={() => setOpen(false)} />
+      </Content>
+    </Page>
+  );
+};
+
+export const TransferToAddress: Story = () => {
+  const [open, setOpen] = React.useState(true);
+
+  return (
+    <Page>
+      <Content>
+        <Button label="Transfer Pack" onClick={() => setOpen(true)} />
+        <SendToAddress
+          handleClose={() => setOpen(false)}
+          handleConfirm={(address) => {
+            setOpen(false);
+            console.log(`send to ${address}`);
+          }}
+          open={open}
+          onClose={() => setOpen(false)}
+        />
       </Content>
     </Page>
   );
