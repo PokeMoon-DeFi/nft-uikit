@@ -47,7 +47,11 @@ const Notification: React.FC<NotificationProps> = ({
             {href ? (
               <Button
                 href={href}
-                style={{ backgroundColor: "pink", color: "blue" }}
+                style={{
+                  backgroundColor: "pink",
+                  color: "blue",
+                  pointerEvents: "auto",
+                }}
               >
                 {linkLabel}
               </Button>

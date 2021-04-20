@@ -10,6 +10,7 @@ const StyledContainer = styled(animated.div)`
   display: flex;
   width: 80%;
   height: 400px;
+
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
@@ -17,7 +18,7 @@ const StyledContainer = styled(animated.div)`
   /* padding: 50px 10px; */
   position: relative;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   -webkit-overflow-scrolling: touch;
 `;
 
