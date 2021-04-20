@@ -13,7 +13,7 @@ export default {
 export const Basic: Story = () => (
   <Page>
     <Content>
-      <Carousel nfts={NFT_LIST} />
+      <Carousel nfts={NFT_LIST} handleSubMenuCommand={() => null} />
     </Content>
   </Page>
 );
