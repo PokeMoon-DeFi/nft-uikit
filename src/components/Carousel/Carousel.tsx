@@ -72,7 +72,7 @@ const Carousel: React.FC<CarouselProps> = ({
       // your element doesn't have overflow
       setIsOverflow(false);
     }
-  }, [size]);
+  }, [size, nfts]);
 
   const bind = useGesture(
     {
