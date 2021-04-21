@@ -1,7 +1,7 @@
 import Carousel from "./Carousel";
 import { Story, Meta } from "@storybook/react";
 import { Page, Content } from "../../components/layout";
-import NFT_LIST from "./storyData";
+import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PackViewer from "./PackViewer";
 
@@ -13,7 +13,7 @@ export default {
 export const Basic: Story = () => (
   <Page>
     <Content>
-      <Carousel nfts={NFT_LIST.slice(0, 9)} handleSubMenuCommand={() => null} />
+      <Carousel nfts={BLAST_OFF_COLLECTION} handleSubMenuCommand={() => null} />
     </Content>
   </Page>
 );

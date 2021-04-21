@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import Button from "../Button";
 import Modal from "./DialogModal";
-import InspectCard from "./InspectCard";
+import InspectCard from "./InspectCard2";
 import { PM_RARITY, PM_TYPES, PokemoonNft } from "../../constants/nfts";
 import { Page, Content } from "../layout";
 import SendToAddress from "./SendToAddress";

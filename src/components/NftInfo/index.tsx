@@ -1,7 +1,18 @@
+import { PM_TYPES } from "../../constants";
 import styled from "styled-components";
 import { PokemoonCard, PokemoonNft } from "../../constants/nfts/types";
 import { getRarityGradient, getTypeColor } from "../../utils";
-import { Moon as Icon } from "../Icons";
+import {
+  Colorless,
+  Dragon,
+  Fire,
+  Grass,
+  Lightning,
+  Moon as Icon,
+  Psychic,
+  Water,
+} from "../Icons";
+import { SvgProps } from "components/Svg";
 
 interface NftInfoProps {
   nft: PokemoonNft;
@@ -11,7 +22,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  max-width: 360px;
+  max-width: 420px;
 `;
 
 const PrimaryInfo = styled.div`
@@ -47,10 +58,13 @@ const SecondaryInfo = styled.div`
   padding: 12px;
   margin-bottom: 6px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-`;
-const PokemoonType = styled.span`
   color: #ffffff;
 `;
+const PokemoonType = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const SetName = styled.span`
   color: #ffffff;
   font-weight: bold;
@@ -90,6 +104,28 @@ const DescriptionText = styled.div`
 const FooterIcon = styled.div`
   text-align: center;
 `;
+const getIcon = (type: string | undefined) => {
+  switch (type) {
+    case PM_TYPES.COLORLESS:
+      return Colorless;
+    case PM_TYPES.FIRE:
+      return Fire;
+    case PM_TYPES.GRASS:
+      return Grass;
+    case PM_TYPES.ITEM:
+      break;
+    case PM_TYPES.LIGHTNING:
+      return Lightning;
+    case PM_TYPES.PSYCHIC:
+      return Psychic;
+    case PM_TYPES.SUPPORTER:
+      break;
+    case PM_TYPES.WATER:
+      return Water;
+    default:
+      return null;
+  }
+};
 
 const NftInfo = (props: NftInfoProps) => {
   const card: PokemoonCard = props.nft.card
@@ -103,6 +139,7 @@ const NftInfo = (props: NftInfoProps) => {
   const rarity: string = props.nft.rarity ? props.nft.rarity : "0";
   const rarityGradient = getRarityGradient(rarity);
   const typeColor = getTypeColor(card.type);
+  const TypeIcon = getIcon(card.type);
 
   return (
     <Container>
@@ -113,8 +150,16 @@ const NftInfo = (props: NftInfoProps) => {
         </NR>
         <Name>{card.name}</Name>
       </PrimaryInfo>
-      <SecondaryInfo style={{ background: typeColor }}>
-        <PokemoonType>{card.type}</PokemoonType>
+      <SecondaryInfo style={{ background: typeColor, fill: "white" }}>
+        <PokemoonType>
+          {TypeIcon ? (
+            <TypeIcon
+              height={"3.6vh"}
+              style={{ marginLeft: "6px", marginRight: "6px" }}
+            />
+          ) : null}
+          {card.type}
+        </PokemoonType>
       </SecondaryInfo>
       <ArtistInfo>
         Artist

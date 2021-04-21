@@ -59,11 +59,7 @@ export const Page: React.FC<PageProps> = ({
       }}
     >
       <StyledBoosterPack src="images/packs/Blastoff.png" />
-      <Button
-        style={{ margin: "3rem", width: "100%", fontSize: 26 }}
-        label="Buy"
-        icon="Buy"
-      />
+      <Button label="Buy" icon="Buy" />
     </div>
   </Container>
 );
