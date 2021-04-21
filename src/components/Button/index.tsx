@@ -5,27 +5,7 @@ import { ButtonBaseProps } from "@material-ui/core";
 import { Backpack, Buy, Run, Transfer } from "components/Icons";
 
 export interface ButtonProps extends ButtonBaseProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: "small" | "medium" | "large";
-  /**
-   * Button contents
-   */
   label?: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
-
   icon?: string;
 }
 
@@ -72,11 +52,17 @@ const getIcon = (name: string | undefined) => {
 /**
  * Primary UI component for user interaction
  */
-const NewButton: React.FC<ButtonProps> = ({ label, icon, ...props }) => {
+const NewButton: React.FC<ButtonProps> = ({
+  label,
+  icon,
+  children,
+  ...props
+}) => {
   const ButtonIcon = getIcon(icon);
 
   return (
-    <StyledButton variant="contained">
+    //@ts-ignore
+    <StyledButton variant="contained" {...props}>
       <span style={{ marginLeft: 6 }}>{label}</span>
       {ButtonIcon ? (
         <ButtonIcon height={"10vh"} style={{ paddingLeft: "1em" }} />
