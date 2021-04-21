@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { PokemoonNft } from "../../constants/nfts/types";
 import { useGesture } from "react-use-gesture";
 import { useLocation, useParams } from "react-router-dom";
+import useWindowSize from "hooks/useWindowSize";
 
 const StyledContainer = styled(animated.div)`
   display: flex;
@@ -51,6 +52,9 @@ const Carousel: React.FC<CarouselProps> = ({
 }) => {
   const [consumeClick, setConsumeClick] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [isOverflow, setIsOverflow] = useState(false);
+
+  const size = useWindowSize();
 
   const cardRefs = useRef<any[]>([]);
 
@@ -58,6 +62,17 @@ const Carousel: React.FC<CarouselProps> = ({
   const [{ scrollLeft }, setSpringScroll] = useSpring(() => ({
     scrollLeft: 0,
   }));
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!!element && element.offsetWidth < element.scrollWidth) {
+      // your element have overflow
+      setIsOverflow(true);
+    } else {
+      // your element doesn't have overflow
+      setIsOverflow(false);
+    }
+  }, [size]);
 
   const bind = useGesture(
     {
@@ -119,7 +134,10 @@ const Carousel: React.FC<CarouselProps> = ({
   return (
     <StyledContainer
       {...bind()}
-      style={{ touchAction: "pan-y" }}
+      style={{
+        touchAction: "pan-y",
+        justifyContent: isOverflow ? "flex-start" : "center",
+      }}
       ref={ref}
       scrollLeft={scrollLeft}
     >
