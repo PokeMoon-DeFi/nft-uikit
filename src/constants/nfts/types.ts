@@ -32,7 +32,8 @@ export interface PokemoonNft {
 /**
  * ERC-721 that can be evaluated back to master NFT data
  */
-export interface BlastoffPack {
-  packId: string;
+export interface PokemoonPack {
+  name: string;
+  pokeball: string;
   cards: PokemoonNft[];
 }

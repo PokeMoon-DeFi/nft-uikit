@@ -79,10 +79,6 @@ const InspectCard: React.FC<InspectorProps> = ({
           >
             <CloseIcon />
           </IconButton>
-          <Typography variant="h6">Sound</Typography>
-          <Button autoFocus color="inherit" onClick={handleClose}>
-            save
-          </Button>
         </Toolbar>
       </AppBar>
       <Grid
