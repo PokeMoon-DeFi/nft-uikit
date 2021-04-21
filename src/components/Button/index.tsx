@@ -1,25 +1,45 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+import { ButtonBase, ButtonBaseProps } from "@material-ui/core";
+import { Backpack, Buy } from "../Icons";
 import styled from "styled-components";
-import { ButtonBaseProps } from "@material-ui/core";
-import { Backpack, Buy, Run, Transfer } from "components/Icons";
 
 export interface ButtonProps extends ButtonBaseProps {
+  /**
+   * Is this the principal call to action on the page?
+   */
+  primary?: boolean;
+  /**
+   * What background color to use
+   */
+  backgroundColor?: string;
+  /**
+   * How large should the button be?
+   */
+  size?: "small" | "medium" | "large";
+  /**
+   * Button contents
+   */
   label?: string;
+  /**
+   * Optional click handler
+   */
+  onClick?: () => void;
+
   icon?: string;
 }
 
-const StyledButton = styled(Button)`
+const StyledButton = styled.button`
   background: #ffffff;
 
-  border-radius: 48px;
-  padding: 18px;
-  font-family: "futura-pt", sans-serif;
+  border-radius: 83px;
+  padding: 10px;
+  font-family: "Josefin Sans", sans-serif;
   display: flex;
   flex-direction: row;
   align-content: center;
   align-items: center;
   justify-content: space-between;
+
   flex: none;
 
   &:hover {
@@ -40,10 +60,6 @@ const getIcon = (name: string | undefined) => {
       return Backpack;
     case "Buy":
       return Buy;
-    case "Run":
-      return Run;
-    case "Transfer":
-      return Transfer;
     default:
       return null;
   }
@@ -52,7 +68,9 @@ const getIcon = (name: string | undefined) => {
 /**
  * Primary UI component for user interaction
  */
-const NewButton: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
+  primary = false,
+  size = "medium",
   label,
   icon,
   children,
@@ -61,14 +79,16 @@ const NewButton: React.FC<ButtonProps> = ({
   const ButtonIcon = getIcon(icon);
 
   return (
-    //@ts-ignore
-    <StyledButton variant="contained" {...props}>
-      <span style={{ marginLeft: 6 }}>{label}</span>
+    <StyledButton {...props}>
+      <span style={{ marginLeft: 10, textAlign: "center", fontSize: 16 }}>
+        {label}
+      </span>
+      {children}
       {ButtonIcon ? (
-        <ButtonIcon height={"10vh"} style={{ paddingLeft: "1em" }} />
+        <ButtonIcon height={"5vh"} style={{ paddingLeft: 20 }} />
       ) : null}
     </StyledButton>
   );
 };
 
-export default NewButton;
+export default Button;

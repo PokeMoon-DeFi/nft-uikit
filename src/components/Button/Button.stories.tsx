@@ -29,26 +29,27 @@ Template.parameters = {
   },
 };
 
-export const Backpack = Template.bind({});
-Backpack.args = {
+export const Primary = Template.bind({});
+Primary.args = {
+  primary: true,
   label: "Backpack",
   icon: "Backpack",
 };
 
-export const Buy = Template.bind({});
-Buy.args = {
+export const Secondary = Template.bind({});
+Secondary.args = {
   label: "Buy",
   icon: "Buy",
 };
 
-export const Run = Template.bind({});
-Run.args = {
-  label: "Run",
-  icon: "Run",
+export const Large = Template.bind({});
+Large.args = {
+  size: "large",
+  label: "Button",
 };
 
-export const Transfer = Template.bind({});
-Transfer.args = {
-  size: "Transfer",
-  label: "Transfer",
+export const Small = Template.bind({});
+Small.args = {
+  size: "small",
+  label: "Button",
 };
