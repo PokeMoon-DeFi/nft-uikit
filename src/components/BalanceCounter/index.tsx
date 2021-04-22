@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
 const BalanceCounter = styled.div`
-  width: 50%;
+  /* width: 100%; */
   max-width: 400px;
+  max-height: 5rem;
   height: 3rem;
   justify-content: space-between;
   position: relative;
   align-items: center;
-  flex: 1;
   display: flex;
-  padding: 6px 24px;
+  flex: 1;
+  width: 100%;
+
+  /* padding: 6px 24px; */
   background: linear-gradient(
     120deg,
     #111111 0%,
@@ -42,7 +45,7 @@ interface BalanceCounterProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const BalanceContainer = (props: BalanceCounterProps) => {
   return (
-    <BalanceCounter>
+    <BalanceCounter {...props}>
       <StyledPBall src={props.imgUrl} />
       <StyledLabel>{props.balance.toFixed(4)}</StyledLabel>
     </BalanceCounter>

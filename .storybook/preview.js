@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import Theme, { GlobalStyle } from "../src/theme";
 import { StylesProvider } from "@material-ui/core/styles";
+import { ThemeProvider as MaterialThemeProvider } from "@material-ui/core/styles";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -20,12 +21,14 @@ export const decorators = [
   (Story) => {
     return (
       <>
-        <StylesProvider injectFirst>
-          <ThemeProvider theme={Theme}>
-            <GlobalStyle />
-            <Story />
-          </ThemeProvider>
-        </StylesProvider>
+        <MaterialThemeProvider>
+          <StylesProvider injectFirst>
+            <ThemeProvider theme={Theme}>
+              <GlobalStyle />
+              <Story />
+            </ThemeProvider>
+          </StylesProvider>
+        </MaterialThemeProvider>
       </>
     );
   },

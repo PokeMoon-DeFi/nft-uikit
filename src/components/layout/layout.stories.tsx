@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react";
-import { Page, Content, Header } from "./index";
-import NavHeader from "../Navigation";
+import { Page, Content } from "./index";
+import NavHeader from "../Navigation/FullDemo";
 
 export default {
   title: "Layout",
