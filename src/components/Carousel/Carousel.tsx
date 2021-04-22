@@ -1,26 +1,30 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "react-spring";
-import Card from "../Card";
+import PokemoonCard from "../Card";
 import styled from "styled-components";
 import { PokemoonNft } from "../../constants/nfts/types";
 import { useGesture } from "react-use-gesture";
 import { useLocation, useParams } from "react-router-dom";
 import useWindowSize from "hooks/useWindowSize";
+import GridList from "@material-ui/core/GridList";
+import Container from "@material-ui/core/Container";
+import RootRef from "@material-ui/core/RootRef";
+import Grid from "@material-ui/core/Grid";
+import { useTheme } from "@material-ui/core";
 
-const StyledContainer = styled(animated.div)`
-  display: flex;
-  width: 80%;
-  height: 400px;
+const StyledContainer = styled(animated(RootRef))`
+  height: 100vh;
 
-  flex-wrap: nowrap;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
   align-items: center;
-  /* padding: 50px 10px; */
   position: relative;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+
   -webkit-overflow-scrolling: touch;
+  display: flex;
+  background-color: green;
 `;
 
 const Overlay = styled(animated.div)`
@@ -42,7 +46,7 @@ const Overlay = styled(animated.div)`
 
 export interface CarouselProps {
   nfts?: Array<PokemoonNft>;
-  handleSubMenuCommand: (command: string, cardIdx: number) => void;
+  handleSubMenuCommand?: (command: string, cardIdx: number) => void;
 }
 
 const Carousel: React.FC<CarouselProps> = ({
@@ -57,103 +61,116 @@ const Carousel: React.FC<CarouselProps> = ({
   const size = useWindowSize();
 
   const cardRefs = useRef<any[]>([]);
+  const theme = useTheme();
 
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef();
   const [{ scrollLeft }, setSpringScroll] = useSpring(() => ({
     scrollLeft: 0,
   }));
 
+  // useEffect(() => {
+  //   const element = ref.current;
+  //   if (!!element && element.offsetWidth < element.scrollWidth) {
+  //     // your element have overflow
+  //     setIsOverflow(true);
+  //   } else {
+  //     // your element doesn't have overflow
+  //     setIsOverflow(false);
+  //   }
+  // }, [size, nfts]);
+
+  // const bind = useGesture(
+  //   {
+  //     onDrag: ({ movement: [x] }) => {
+  //       const res = scrollLeft.get() - x / 2.5;
+  //       setSpringScroll({ scrollLeft: res });
+  //     },
+  //     onDragEnd: ({ event }) => {
+  //       setConsumeClick(true);
+  //     },
+  //     onWheel: ({ event }) => {
+  //       const res = scrollLeft.get() + event.deltaY * 1.5;
+  //       setSpringScroll({ scrollLeft: res });
+  //     },
+  //     onScrollEnd: () => {
+  //       const element = ref.current;
+  //       if (element) {
+  //         setSpringScroll({ scrollLeft: element.scrollLeft, immediate: true });
+  //       }
+  //     },
+  //   },
+  //   {
+  //     drag: { delay: 200 },
+  //     domTarget: ref,
+  //     eventOptions: { passive: false },
+  //   }
+  // );
+
   useEffect(() => {
-    const element = ref.current;
-    if (!!element && element.offsetWidth < element.scrollWidth) {
-      // your element have overflow
-      setIsOverflow(true);
-    } else {
-      // your element doesn't have overflow
-      setIsOverflow(false);
-    }
-  }, [size, nfts]);
+    console.log(ref.current);
+  }, []);
 
-  const bind = useGesture(
-    {
-      onDrag: ({ movement: [x] }) => {
-        const res = scrollLeft.get() - x / 2.5;
-        setSpringScroll({ scrollLeft: res });
-      },
-      onDragEnd: ({ event }) => {
-        setConsumeClick(true);
-      },
-      onWheel: ({ event }) => {
-        const res = scrollLeft.get() + event.deltaY * 1.5;
-        setSpringScroll({ scrollLeft: res });
-      },
-      onScrollEnd: () => {
-        const element = ref.current;
-        if (element) {
-          setSpringScroll({ scrollLeft: element.scrollLeft, immediate: true });
-        }
-      },
-    },
-    {
-      drag: { delay: 200 },
-      domTarget: ref,
-      eventOptions: { passive: false },
-    }
-  );
+  // const cardCallback = useCallback(
+  //   (idx) => {
+  //     if (consumeClick) {
+  //       setConsumeClick(false);
+  //       return;
+  //     }
+  //     if (idx === activeIndex) {
+  //       cardRefs.current[activeIndex]?.setFocus(false);
+  //       setActiveIndex(-1);
+  //     } else {
+  //       cardRefs.current[idx]?.setFocus(true);
 
-  const cardCallback = useCallback(
-    (idx) => {
-      if (consumeClick) {
-        setConsumeClick(false);
-        return;
-      }
-      if (idx === activeIndex) {
-        cardRefs.current[activeIndex]?.setFocus(false);
-        setActiveIndex(-1);
-      } else {
-        cardRefs.current[idx]?.setFocus(true);
+  //       if (nfts && idx === nfts?.length - 1) {
+  //         const element = ref.current;
+  //         if (element) {
+  //           //TODO: Refer to a constant for UI menu width
+  //           const maxScrollLeft = element.scrollLeft + 150;
+  //           setSpringScroll({ scrollLeft: maxScrollLeft });
+  //         }
+  //       }
 
-        if (nfts && idx === nfts?.length - 1) {
-          const element = ref.current;
-          if (element) {
-            //TODO: Refer to a constant for UI menu width
-            const maxScrollLeft = element.scrollLeft + 150;
-            setSpringScroll({ scrollLeft: maxScrollLeft });
-          }
-        }
-
-        if (activeIndex !== -1) {
-          cardRefs.current[activeIndex]?.setFocus(false);
-        }
-        setActiveIndex(idx);
-      }
-    },
-    [activeIndex, consumeClick, cardRefs, nfts, setSpringScroll]
-  );
-
+  //       if (activeIndex !== -1) {
+  //         cardRefs.current[activeIndex]?.setFocus(false);
+  //       }
+  //       setActiveIndex(idx);
+  //     }
+  //   },
+  //   [activeIndex, consumeClick, cardRefs, nfts, setSpringScroll]
+  // );
   return (
-    <StyledContainer
-      {...bind()}
-      style={{
-        touchAction: "pan-y",
-        justifyContent: isOverflow ? "flex-start" : "center",
-      }}
-      ref={ref}
-      scrollLeft={scrollLeft}
-    >
-      {/* <Overlay style={spring} /> */}
-
-      {nfts?.map((nft, index) => (
-        <Card
-          imageUrl={nft.imageUrl}
-          key={index.toString()}
-          onClick={() => cardCallback(index)}
-          onSubMenuSelect={(command) => handleSubMenuCommand(command, index)}
-          // active={activeIndex === index}
-          ref={(r) => (cardRefs.current[index] = r)}
-        />
-      ))}
-    </StyledContainer>
+    <RootRef rootRef={ref}>
+      <Grid container spacing={5}>
+        {nfts?.map((nft, index) => (
+          <Grid
+            item
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: 20,
+            }}
+            key={index}
+            xs={12}
+            sm={6}
+            md={4}
+          >
+            <PokemoonCard
+              imageUrl={nft.imageUrl}
+              key={index.toString()}
+              onClick={() => {}}
+              onSubMenuSelect={
+                handleSubMenuCommand
+                  ? (command) => handleSubMenuCommand(command, index)
+                  : () => {}
+              }
+              // active={activeIndex === index}
+              ref={(r) => (cardRefs.current[index] = r)}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </RootRef>
   );
 };
 

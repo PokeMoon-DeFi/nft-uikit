@@ -1,10 +1,10 @@
 import React from "react";
-import Card from "./index";
+import PokemoonCard from "./index";
 import { Story, Meta } from "@storybook/react";
 
 export default {
   title: "Cards",
-  component: Card,
+  component: PokemoonCard,
   argTypes: {
     backgroundColor: { control: "color" },
   },
@@ -12,15 +12,15 @@ export default {
 
 export const Cards: Story = () => (
   <div style={{ display: "flex", padding: 0 }}>
-    <Card
+    <PokemoonCard
       imageUrl="002pikapuffUC.png"
       onClick={() => {
         console.log("clicked");
       }}
     />
-    <Card imageUrl="015rashscratchumL.png" />
-    <Card imageUrl="016babymeownautML.png" />
-    <Card />
+    <PokemoonCard imageUrl="015rashscratchumL.png" />
+    <PokemoonCard imageUrl="016babymeownautML.png" />
+    <PokemoonCard />
     <div
       style={{
         backgroundColor: "black",
