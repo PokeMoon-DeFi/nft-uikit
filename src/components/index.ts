@@ -1,7 +1,7 @@
 export { default as BalanceCounter } from "./BalanceCounter";
 export { default as Button } from "./Button";
-export { default as Card } from "./Card";
-export * from "./Carousel";
+export { default as PokemoonCard } from "./Card";
+export * from "./Gallery";
 export * from "./Loading";
 export { default as Flex } from "./Flex";
 export { default as Header } from "./Header";

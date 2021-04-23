@@ -1,4 +1,4 @@
-import Carousel from "./Carousel";
+import Gallery from "./Gallery";
 import { Story, Meta } from "@storybook/react";
 import { Page, Content } from "../../components/layout";
 import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
@@ -7,13 +7,13 @@ import PackViewer from "./PackViewer";
 
 export default {
   title: "Carousel",
-  component: Carousel,
+  component: Gallery,
 } as Meta;
 
 export const Basic: Story = () => (
   <Page>
     <Content>
-      <Carousel nfts={BLAST_OFF_COLLECTION} handleSubMenuCommand={() => null} />
+      <Gallery nfts={BLAST_OFF_COLLECTION} handleSubMenuCommand={() => null} />
     </Content>
   </Page>
 );

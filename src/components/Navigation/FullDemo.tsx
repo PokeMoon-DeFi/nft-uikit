@@ -8,7 +8,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Hidden from "@material-ui/core/Hidden";
 import Typography from "@material-ui/core/Typography";
-import { Fab } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/AddIcCallRounded";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import Container from "@material-ui/core/Container";
@@ -18,9 +17,10 @@ import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 import StoreOutlinedIcon from "@material-ui/icons/StoreOutlined";
 import PhotoSizeSelectActualIcon from "@material-ui/icons/PhotoSizeSelectActual";
-import { Carousel } from "../Carousel";
+import { Gallery } from "../Gallery";
 import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
 import Toolbar from "@material-ui/core/Toolbar";
+import { Fab } from "components/Fab";
 
 //TODO: Swap icons for pokemoon stuff
 const linkConfig = [
@@ -59,30 +59,24 @@ const ACCOUNT = "0xce753a7d4C36339B1e427684402bE0D53064FeA6";
 const NavHeader: FC = () => {
   const theme = useTheme();
   return (
-    <div
-      style={{
-        overflow: "hidden",
-        // paddingBottom: "12vh",
-        position: "relative",
-      }}
-    >
+    <>
       <AppBar
         style={{
           background:
             "radial-gradient(58.94% 58.94% at 50% 50%, #014482 0%, #210035 100%)",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
-          flexDirection: "row",
-          paddingLeft: 10,
-          marginLeft: 0,
-          paddingRight: 20,
-          fontSize: 12,
-          textAlign: "center",
-          alignItems: "center",
+          // flexDirection: "row",
+          // paddingLeft: 10,
+          // marginLeft: 0,
+          // paddingRight: 20,
+          // fontSize: 12,
+          // textAlign: "center",
+          // alignItems: "center",
         }}
-        position="static"
+        position={"fixed"}
       >
-        <Toolbar style={{ flex: 1 }}>
+        <Toolbar>
           <Logo
             style={{
               height: "10vh",
@@ -133,44 +127,19 @@ const NavHeader: FC = () => {
           </Hidden>
         </Toolbar>
       </AppBar>
+      <Fab />
       <Container
         style={{
           height: "88%",
-          // padding: 30,
           marginBottom: 0,
           overflow: "auto",
         }}
         maxWidth="md"
       >
-        <Carousel nfts={BLAST_OFF_COLLECTION} />
-        <Hidden smUp>
-          <SpeedDial
-            ariaLabel="Speed Dial"
-            color="primary"
-            aria-label="add"
-            icon={<SpeedDialIcon />}
-            open={true}
-            style={{
-              position: "absolute",
-              bottom: theme.spacing(2),
-              right: theme.spacing(2),
-            }}
-          >
-            {linkConfig.reverse().map((link) => {
-              return (
-                <SpeedDialAction
-                  key={link.label}
-                  icon={link.icon}
-                  tooltipTitle={link.label}
-                  tooltipOpen
-                  onClick={() => (window.location.href = link.target)}
-                />
-              );
-            })}
-          </SpeedDial>
-        </Hidden>
+        {/* <Fab /> */}
+        <Gallery nfts={BLAST_OFF_COLLECTION} />
       </Container>
-    </div>
+    </>
   );
 };
 export default NavHeader;

@@ -53,6 +53,7 @@ const StyledButton = styled.button`
 
   &:active {
     background-color: black;
+    color: white;
     transform: scale(1.1, 1.1);
     transition: 0.01s ease;
     fill: white;

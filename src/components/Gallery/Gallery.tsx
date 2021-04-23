@@ -49,7 +49,7 @@ export interface CarouselProps {
   handleSubMenuCommand?: (command: string, cardIdx: number) => void;
 }
 
-const Carousel: React.FC<CarouselProps> = ({
+const Gallery: React.FC<CarouselProps> = ({
   nfts,
   handleSubMenuCommand,
   ...props
@@ -106,10 +106,6 @@ const Carousel: React.FC<CarouselProps> = ({
   //   }
   // );
 
-  useEffect(() => {
-    console.log(ref.current);
-  }, []);
-
   // const cardCallback = useCallback(
   //   (idx) => {
   //     if (consumeClick) {
@@ -141,7 +137,7 @@ const Carousel: React.FC<CarouselProps> = ({
   // );
   return (
     <RootRef rootRef={ref}>
-      <Grid container spacing={5}>
+      <Grid container spacing={5} style={{ paddingTop: 75 }}>
         {nfts?.map((nft, index) => (
           <Grid
             item
@@ -174,4 +170,4 @@ const Carousel: React.FC<CarouselProps> = ({
   );
 };
 
-export default Carousel;
+export default Gallery;
