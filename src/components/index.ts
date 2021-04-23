@@ -2,6 +2,7 @@ export { default as BalanceCounter } from "./BalanceCounter";
 export { default as Button } from "./Button";
 export { default as CardContainer } from "./Card";
 export * from "./Gallery";
+export * from "./Fab";
 export * from "./Loading";
 export { default as Flex } from "./Flex";
 export { default as Header } from "./Header";
