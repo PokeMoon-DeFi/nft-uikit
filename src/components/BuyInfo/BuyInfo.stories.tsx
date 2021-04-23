@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { Divider } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
+import { PokemoonNft } from "../../constants/index";
 
 export default {
   title: "BuyInfo",
@@ -18,8 +19,6 @@ const p: any = {
   lastPackId: 42,
   pbPrice: 0.1,
 };
-
-const StyledImage = styled.img``;
 
 export const Default: Story = () => {
   const theme = useTheme();
@@ -39,7 +38,7 @@ export const Default: Story = () => {
           style={{ maxWidth: "400px", maxHeight: "100%" }}
         />
       </Grid>
-      {/* <Grid item md={6} /> */}
+
       <Grid
         item
         sm={6}
