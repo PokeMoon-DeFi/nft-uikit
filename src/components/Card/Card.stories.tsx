@@ -1,7 +1,8 @@
 import React from "react";
 import PokemoonCard from "./index";
 import { Story, Meta } from "@storybook/react";
-
+import Pack from "./Pack";
+import { Grid } from "@material-ui/core";
 export default {
   title: "Cards",
   component: PokemoonCard,
@@ -33,3 +34,12 @@ export const Cards: Story = () => (
     ></div>
   </div>
 );
+
+export const Packs: Story = () => {
+  return (
+    <Grid container>
+      <Pack />
+      <Pack />
+    </Grid>
+  );
+};

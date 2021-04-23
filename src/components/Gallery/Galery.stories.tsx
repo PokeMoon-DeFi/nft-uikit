@@ -1,12 +1,13 @@
 import Gallery from "./Gallery";
 import { Story, Meta } from "@storybook/react";
-import { Page, Content } from "../../components/layout";
+import { Page, Content } from "../layout";
 import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PackViewer from "./PackViewer";
+import PackCollection from "./PackCollection";
 
 export default {
-  title: "Carousel",
+  title: "Gallery",
   component: Gallery,
 } as Meta;
 
@@ -30,3 +31,7 @@ export const PackId: Story = () => (
     </Content>
   </Page>
 );
+
+export const ViewPackCollection: Story = () => {
+  return <PackCollection />;
+};
