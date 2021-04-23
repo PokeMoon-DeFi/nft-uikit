@@ -8,11 +8,11 @@ import Button from "components/Button";
 
 const Pack: FC = () => {
   return (
-    <Card style={{ maxWidth: 400 }}>
+    <Card style={{ maxWidth: 400, backgroundColor: "grey" }}>
       <CardMedia
         image={"/images/packs/Blastoff.png"}
         component="img"
-        // style={{ backgroundSize: "cover", height: 300, width: "100%" }}
+        style={{ paddingTop: 20 }}
       ></CardMedia>
       <CardContent>
         <Typography>Blastoff Pack #13</Typography>

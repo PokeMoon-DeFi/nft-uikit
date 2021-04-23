@@ -6,10 +6,4 @@ export default {
   title: "Layout",
 } as Meta;
 
-export const Basic: Story = () => (
-  <>
-    <Page>
-      <NavHeader />
-    </Page>
-  </>
-);
+export const Basic: Story = () => <NavHeader />;
