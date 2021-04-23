@@ -35,6 +35,12 @@ const getImageUrl = (imageUrl: string | undefined) => {
   return `/images/cards/${imageUrl}`;
 };
 
+const StyledCardContent = styled(CardContent)`
+  background: white;
+  border-radius: 10px 10px 0px 0px;
+  box-shadow: 0 -4px 15px 1px black;
+`;
+
 const PokemoonCard = React.forwardRef<CardHandle, CardWrapper>(
   ({ imageUrl, onSubMenuSelect, onClick }, ref) => {
     const cardRef = useRef(null);
@@ -53,10 +59,13 @@ const PokemoonCard = React.forwardRef<CardHandle, CardWrapper>(
 
     return (
       <Card
+        elevation={10}
         style={{
           height: "100%",
           flex: 1,
           flexDirection: "column",
+          backgroundColor: "transparent",
+          borderRadius: 10,
         }}
       >
         {/* <CardHeader title="Pokemoon" /> */}
@@ -67,7 +76,7 @@ const PokemoonCard = React.forwardRef<CardHandle, CardWrapper>(
             backgroundPosition: "left 0px top 0px",
           }}
         />
-        <CardContent>
+        <StyledCardContent>
           <Typography variant="h5" gutterBottom>
             Dis Mon
           </Typography>
@@ -75,8 +84,8 @@ const PokemoonCard = React.forwardRef<CardHandle, CardWrapper>(
             This is a media card. You can use this section to describe the
             content.
           </Typography>
-        </CardContent>
-        <CardActions>
+        </StyledCardContent>
+        <CardActions style={{ background: "white" }}>
           <Button label="Inspect" onClick={modalCallback} />
         </CardActions>
       </Card>

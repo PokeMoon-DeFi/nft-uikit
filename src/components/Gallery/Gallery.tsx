@@ -9,7 +9,7 @@ import useWindowSize from "hooks/useWindowSize";
 import GridList from "@material-ui/core/GridList";
 import Container from "@material-ui/core/Container";
 import RootRef from "@material-ui/core/RootRef";
-import Grid from "@material-ui/core/Grid";
+import Grid, { GridProps } from "@material-ui/core/Grid";
 import { useTheme } from "@material-ui/core";
 
 const StyledContainer = styled(animated(RootRef))`
@@ -44,7 +44,7 @@ const Overlay = styled(animated.div)`
   /* transform: translateZ(1); */
 `;
 
-export interface CarouselProps {
+export interface CarouselProps extends GridProps {
   nfts?: Array<PokemoonNft>;
   handleSubMenuCommand?: (command: string, cardIdx: number) => void;
 }
@@ -58,7 +58,7 @@ const Gallery: React.FC<CarouselProps> = ({
 
   return (
     <RootRef rootRef={ref}>
-      <Grid container spacing={5} style={{ paddingTop: "11.5vh" }}>
+      <Grid container spacing={5} {...props}>
         {nfts?.map((nft, index) => (
           <Grid
             item

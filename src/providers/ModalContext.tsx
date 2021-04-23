@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import styled from "styled-components";
 import Modal from "@material-ui/core/Modal";
+import Dialog from "@material-ui/core/Dialog";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 interface ModalContextProps {
@@ -45,10 +46,10 @@ const ModalProvider: React.FC = ({ children }) => {
       }}
     >
       {modalNode && (
-        <Modal open={isOpen} onClose={handleDismiss}>
+        <Dialog open={isOpen} onClose={handleDismiss}>
           {/* @ts-ignore */}
           {modalNode}
-        </Modal>
+        </Dialog>
       )}
       {children}
     </ModalContext.Provider>
