@@ -42,10 +42,19 @@ const StyledButton = styled.button`
 
   flex: none;
 
-  &:hover {
+  @media (hover: hover) {
+    &:hover {
+      background-color: black;
+      color: white;
+      transition: 0.33s ease;
+      fill: white;
+    }
+  }
+
+  &:active {
     background-color: black;
-    color: white;
-    transition: 0.33s ease;
+    transform: scale(1.1, 1.1);
+    transition: 0.01s ease;
     fill: white;
   }
 

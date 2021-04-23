@@ -82,3 +82,4 @@ const Theme: DefaultTheme = {
 };
 
 export default Theme;
+export { default as MaterialTheme } from "./MaterialTheme";

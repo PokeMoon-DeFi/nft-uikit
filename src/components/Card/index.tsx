@@ -5,6 +5,10 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Paper from "@material-ui/core/Paper";
+import CardHeader from "@material-ui/core/CardHeader";
+import Typography from "@material-ui/core/Typography";
+import CardActions from "@material-ui/core/CardActions";
+
 interface StyledCardProps {
   imageUrl?: string;
   active?: boolean;
@@ -62,6 +66,10 @@ const HoverMenu = styled.div`
   justify-content: flex-start;
 `;
 
+const getImageUrl = (imageUrl: string | undefined) => {
+  return `/images/cards/${imageUrl}`;
+};
+
 const PokemoonCard = React.forwardRef<CardHandle, CardWrapper>(
   ({ imageUrl, onSubMenuSelect, onClick }, ref) => {
     const cardRef = useRef(null);
@@ -73,15 +81,34 @@ const PokemoonCard = React.forwardRef<CardHandle, CardWrapper>(
     }));
 
     return (
-      <Paper style={{ backgroundColor: "transparent" }}>
-        <img
-          width={746 / 3}
-          height={1038 / 3}
-          style={{ height: "100%" }}
-          src={`/images/cards/${imageUrl}`}
-          alt={"card"}
+      <Card
+        style={{
+          height: "100%",
+          flex: 1,
+          flexDirection: "column",
+        }}
+      >
+        {/* <CardHeader title="Pokemoon" /> */}
+        <CardMedia
+          image={getImageUrl(imageUrl)}
+          style={{
+            paddingTop: "75.25%",
+            backgroundPosition: "left 0px top 0px",
+          }}
         />
-      </Paper>
+        <CardContent>
+          <Typography variant="h5" gutterBottom>
+            Dis Mon
+          </Typography>
+          <Typography>
+            This is a media card. You can use this section to describe the
+            content.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button label="Inspect" />
+        </CardActions>
+      </Card>
     );
   }
 );
