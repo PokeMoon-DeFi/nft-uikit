@@ -43,12 +43,7 @@ const StyledCardContent = styled(CardContent)`
 const PokemoonCard = React.forwardRef<CardHandle, CardWrapper>(
   ({ nft, imageUrl, onSubMenuSelect, onClick }, ref) => {
     const cardRef = useRef(null);
-    const [onPresent, onDismiss] = useModal(
-      <div style={{}}>
-        {/* @ts-ignore */}
-        <InspectCard nft={nft} />
-      </div>
-    );
+    const [onPresent, onDismiss] = useModal(<InspectCard nft={nft} />);
     const [active, setActive] = useState(false);
     useImperativeHandle(ref, () => ({
       setFocus: (active) => {

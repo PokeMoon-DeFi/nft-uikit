@@ -23,7 +23,7 @@ const Transition = React.forwardRef(function Transition(
 });
 
 interface InspectorProps {
-  nft: PokemoonNft;
+  nft?: PokemoonNft;
 }
 
 const Wrapper = styled(Container)`
@@ -89,7 +89,7 @@ export const WrapperMQ = (nft: PokemoonNft | undefined) => {
 };
 
 const InspectCard: React.FC<InspectorProps> = ({ nft, children, ...props }) => {
-  return <>{WrapperMQ(nft)}</>;
+  return <>{nft && WrapperMQ(nft)}</>;
 };
 
 export default InspectCard;
