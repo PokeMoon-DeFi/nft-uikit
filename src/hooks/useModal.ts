@@ -1,5 +1,6 @@
 import { useCallback, useContext, useEffect } from "react";
 import { ModalContext } from "providers";
+import { DialogProps } from "@material-ui/core/Dialog";
 
 export type Handler = () => void;
 

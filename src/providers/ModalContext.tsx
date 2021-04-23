@@ -1,5 +1,15 @@
 import React, { createContext, useState } from "react";
-import Dialog from "@material-ui/core/Dialog";
+import Dialog, { DialogProps } from "@material-ui/core/Dialog";
+import { TransitionProps } from "@material-ui/core/transitions";
+import Slide from "@material-ui/core/Slide";
+
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & { children?: React.ReactElement },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 interface ModalContextProps {
   onPresent: (node: React.ReactNode, key?: string) => void;
   onDismiss: () => void;
@@ -41,12 +51,16 @@ const ModalProvider: React.FC = ({ children }) => {
         setCloseOnOverlayClick,
       }}
     >
-      {modalNode && (
-        <Dialog open={isOpen} onClose={handleDismiss}>
-          {/* @ts-ignore */}
-          {modalNode}
-        </Dialog>
-      )}
+      <Dialog
+        TransitionComponent={Transition}
+        onClick={handleOverlayDismiss}
+        open={isOpen}
+        onClose={handleDismiss}
+        fullScreen
+      >
+        {/* @ts-ignore */}
+        {modalNode}
+      </Dialog>
       {children}
     </ModalContext.Provider>
   );

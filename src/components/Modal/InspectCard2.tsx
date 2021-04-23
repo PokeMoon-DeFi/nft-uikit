@@ -13,6 +13,7 @@ import { Grid } from "@material-ui/core";
 import NftInfo from "../NftInfo";
 import styled from "styled-components";
 import { render } from "react-dom";
+import Container from "@material-ui/core/Container";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -25,8 +26,9 @@ interface InspectorProps {
   nft: PokemoonNft;
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled(Container)`
   display: flex;
+  flex: 1;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
@@ -66,12 +68,14 @@ export const WrapperMQ = (nft: PokemoonNft | undefined) => {
   const bi = `url("/images/types/${nft?.card?.type}${
     matches ? "wide 1" : "tall 1"
   }.png")`;
+
   return (
     <>
       <Wrapper
         style={{
           backgroundImage: bi,
         }}
+        maxWidth="lg"
       >
         <StyledImage
           height={"380vh"}

@@ -7,6 +7,7 @@ import { PM_RARITY, PM_TYPES, PokemoonNft } from "../../constants/nfts";
 import { Page, Content } from "../layout";
 import SendToAddress from "./SendToAddress";
 import { BLAST_OFF_CARDS, BLAST_OFF_COLLECTION } from "../../utils/StoryData";
+import useModal from "../../hooks/useModal";
 
 export default {
   title: "Modal",
@@ -40,11 +41,11 @@ const n: PokemoonNft = {
 
 export const Inspect: Story = () => {
   const [open, setOpen] = React.useState(true);
+  const [onPresent, onDismiss] = useModal(<InspectCard nft={n} />);
   return (
     <Page>
       <Content>
-        <Button label="Open Modal" onClick={() => setOpen(true)} />
-        <InspectCard nft={n} />
+        <Button label="Open Modal" onClick={onPresent} />
       </Content>
     </Page>
   );
