@@ -1,15 +1,17 @@
 import Button from "../Button";
 import styled from "styled-components";
-import Theme from "theme";
 import { PokemoonPack } from "../../constants/nfts/types";
-import { getRarityGradient, getTypeColor } from "../../utils";
-import { Moon as Icon } from "../Icons";
 
-interface BuyInfoProps {
+export interface BuyInfoProps {
   pack: PokemoonPack;
   price: number;
   lastPackId: number;
   pbPrice: number;
+  account: string;
+  allowance: number;
+  balance: number;
+  onApproveClicked: () => void;
+  onBuyClicked: () => void;
 }
 
 const Container = styled.div`
@@ -43,6 +45,7 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-color: #ffffff;
   padding: 6px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -56,11 +59,12 @@ const FooterIcon = styled.div`
   text-align: center;
 `;
 
-const BuyInfo = (props: BuyInfoProps) => {
+export const BuyInfo = (props: BuyInfoProps) => {
   const pack = props.pack;
   const price = props.price;
   const lastPackId = props.lastPackId;
   const pbPrice = props.pbPrice;
+  const { allowance, account, onApproveClicked, onBuyClicked, balance } = props;
   const totalPbValueBurned = lastPackId * 100 * pbPrice;
 
   return (
@@ -78,14 +82,25 @@ const BuyInfo = (props: BuyInfoProps) => {
           Packs Minted: {lastPackId} ({lastPackId * 5} Cards)
         </DescriptionText>
         <DescriptionText>Price: {price} PB</DescriptionText>
-        <Button
-          label="Buy"
-          icon="Buy"
-          style={{ margin: "6px auto", maxWidth: "210px" }}
-        />
+
+        {allowance <= 0 ? (
+          <Button
+            label="Approve"
+            icon="Buy"
+            onClick={onApproveClicked}
+            style={{ margin: "6px auto", maxWidth: "210px" }}
+          />
+        ) : balance > 100 ? (
+          <Button
+            label="Buy"
+            icon="Buy"
+            style={{ pointerEvents: "auto" }}
+            onClick={onBuyClicked}
+          />
+        ) : (
+          <Button label="Not enough pokeballs 😕" icon="Buy" disabled />
+        )}
       </Description>
     </Container>
   );
 };
-
-export default BuyInfo;

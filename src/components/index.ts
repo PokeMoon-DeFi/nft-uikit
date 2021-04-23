@@ -14,3 +14,4 @@ export * from "./layout";
 export { default as Particles } from "./Particles";
 export * from "./Modal";
 export * from "./Header";
+export * from "./BuyInfo";

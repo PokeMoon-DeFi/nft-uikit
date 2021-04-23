@@ -38,9 +38,8 @@ const StyledButton = styled.button`
   flex-direction: row;
   align-content: center;
   align-items: center;
-  justify-content: space-between;
-
-  flex: none;
+  justify-content: center;
+  max-width: 400px;
 
   @media (hover: hover) {
     &:hover {

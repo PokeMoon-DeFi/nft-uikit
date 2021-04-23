@@ -1,9 +1,7 @@
 import { Story, Meta } from "@storybook/react";
 import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
-import BuyInfo from "./index";
+import { BuyInfo, BuyInfoProps } from "./index";
 import Grid, { GridSpacing } from "@material-ui/core/Grid";
-import styled from "styled-components";
-import { Divider } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import { PokemoonNft } from "../../constants/index";
@@ -13,11 +11,20 @@ export default {
   component: BuyInfo,
 } as Meta;
 
-const p: any = {
+const p: BuyInfoProps = {
   pack: { name: "Blast Off", pokeball: "PB-2114", cards: BLAST_OFF_COLLECTION },
   price: 100,
   lastPackId: 42,
   pbPrice: 0.1,
+  allowance: 0,
+  balance: 200,
+  account: "1asdasdf",
+  onApproveClicked: () => {
+    console.log("approve clicked");
+  },
+  onBuyClicked: () => {
+    console.log("buy clicked ");
+  },
 };
 
 export const Default: Story = () => {
@@ -51,6 +58,7 @@ export const Default: Story = () => {
           price={p.price}
           lastPackId={p.lastPackId}
           pbPrice={p.pbPrice}
+          {...p}
         />
       </Grid>
     </Grid>
