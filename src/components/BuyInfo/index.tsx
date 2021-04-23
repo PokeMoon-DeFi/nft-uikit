@@ -92,7 +92,7 @@ export const BuyInfo = (props: BuyInfoProps) => {
         <DescriptionText>Price: {price} PB</DescriptionText>
         {!account ? (
           <Button label="Connect" icon="Backpack" onClick={onConnectClicked} />
-        ) : allowance > 0 ? (
+        ) : allowance <= 0 ? (
           <Button label="Approve" icon="Buy" onClick={onApproveClicked} />
         ) : balance > price ? (
           <Button label="Buy" icon="Buy" onClick={onBuyClicked} />
