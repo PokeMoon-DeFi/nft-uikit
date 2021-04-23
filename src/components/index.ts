@@ -1,6 +1,6 @@
 export { default as BalanceCounter } from "./BalanceCounter";
 export { default as Button } from "./Button";
-export { default as CardContainer } from "./Card";
+export * from "./Card";
 export * from "./Gallery";
 export * from "./Fab";
 export * from "./Loading";

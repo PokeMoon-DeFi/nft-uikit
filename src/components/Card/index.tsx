@@ -40,7 +40,7 @@ const StyledCardContent = styled(CardContent)`
   box-shadow: 0 -4px 15px 1px black;
 `;
 
-const PokemoonCard = React.forwardRef<CardHandle, CardWrapper>(
+export const NftCard = React.forwardRef<CardHandle, CardWrapper>(
   ({ nft, imageUrl, onSubMenuSelect, onClick }, ref) => {
     const cardRef = useRef(null);
     const [onPresent, onDismiss] = useModal(<InspectCard nft={nft} />);
@@ -90,4 +90,4 @@ const PokemoonCard = React.forwardRef<CardHandle, CardWrapper>(
   }
 );
 
-export default PokemoonCard;
+export { default as PackCard } from "./Pack";

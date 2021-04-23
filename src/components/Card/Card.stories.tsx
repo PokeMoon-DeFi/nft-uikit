@@ -1,11 +1,11 @@
 import React from "react";
-import PokemoonCard from "./index";
+import { NftCard } from "./index";
 import { Story, Meta } from "@storybook/react";
-import Pack from "./Pack";
+import PackCard from "./Pack";
 import { Grid } from "@material-ui/core";
 export default {
   title: "Cards",
-  component: PokemoonCard,
+  component: NftCard,
   argTypes: {
     backgroundColor: { control: "color" },
   },
@@ -13,15 +13,15 @@ export default {
 
 export const Cards: Story = () => (
   <div style={{ display: "flex", padding: 0 }}>
-    <PokemoonCard
+    <NftCard
       imageUrl="002pikapuffUC.png"
       onClick={() => {
         console.log("clicked");
       }}
     />
-    <PokemoonCard imageUrl="015rashscratchumL.png" />
-    <PokemoonCard imageUrl="016babymeownautML.png" />
-    <PokemoonCard />
+    <NftCard imageUrl="015rashscratchumL.png" />
+    <NftCard imageUrl="016babymeownautML.png" />
+    <NftCard />
     <div
       style={{
         backgroundColor: "black",
@@ -34,12 +34,16 @@ export const Cards: Story = () => (
     ></div>
   </div>
 );
-
+const pack = { packId: "0", imgUrl: "/images/packs/Blastoff.png" };
 export const Packs: Story = () => {
   return (
     <Grid direction="row">
-      <Pack />
-      <Pack />
+      <Grid item>
+        <PackCard pack={pack} />
+      </Grid>
+      <Grid item>
+        <PackCard pack={pack} />
+      </Grid>
     </Grid>
   );
 };
