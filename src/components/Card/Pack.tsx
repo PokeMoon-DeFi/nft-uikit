@@ -7,19 +7,17 @@ import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "components/Button";
 
-interface Pack {
+export interface Pack {
   packId: string;
+  imgUrl: string;
 }
-interface PackProps {
+export interface PackProps {
   pack: Pack;
   onPackSelected?: (packId: string) => void;
 }
 
-const PackCard: FC<PackProps> = ({
-  onPackSelected,
-  pack = { packId: "1" },
-}) => {
-  const { packId } = pack;
+const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
+  const { packId, imgUrl } = pack;
   return (
     <Card
       elevation={10}
@@ -29,13 +27,16 @@ const PackCard: FC<PackProps> = ({
       }}
     >
       {/* <CardHeader title="Pokemoon" /> */}
-      <CardMedia
-        image={"/images/packs/Blastoff.png"}
-        style={{
-          paddingTop: "75.25%",
-          backgroundPosition: "left 0px top 0px",
-        }}
-      />
+
+      {imgUrl && (
+        <CardMedia
+          image={imgUrl}
+          style={{
+            paddingTop: "75.25%",
+            backgroundPosition: "left 0px top 0px",
+          }}
+        />
+      )}
       <CardContent>
         <Typography>Blastoff Pack #13</Typography>
         <Typography>2x rares 1x uncommon 3x common</Typography>
