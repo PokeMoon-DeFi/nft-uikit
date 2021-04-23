@@ -10,6 +10,7 @@ export interface BuyInfoProps {
   account: string;
   allowance: number;
   balance: number;
+  onConnectClicked: () => void;
   onApproveClicked: () => void;
   onBuyClicked: () => void;
 }
@@ -64,7 +65,14 @@ export const BuyInfo = (props: BuyInfoProps) => {
   const price = props.price;
   const lastPackId = props.lastPackId;
   const pbPrice = props.pbPrice;
-  const { allowance, account, onApproveClicked, onBuyClicked, balance } = props;
+  const {
+    allowance,
+    account,
+    onApproveClicked,
+    onBuyClicked,
+    balance,
+    onConnectClicked,
+  } = props;
   const totalPbValueBurned = lastPackId * 100 * pbPrice;
 
   return (
@@ -82,21 +90,12 @@ export const BuyInfo = (props: BuyInfoProps) => {
           Packs Minted: {lastPackId} ({lastPackId * 5} Cards)
         </DescriptionText>
         <DescriptionText>Price: {price} PB</DescriptionText>
-
-        {allowance <= 0 ? (
-          <Button
-            label="Approve"
-            icon="Buy"
-            onClick={onApproveClicked}
-            style={{ margin: "6px auto", maxWidth: "210px" }}
-          />
-        ) : balance > 100 ? (
-          <Button
-            label="Buy"
-            icon="Buy"
-            style={{ pointerEvents: "auto" }}
-            onClick={onBuyClicked}
-          />
+        {!account ? (
+          <Button label="Connect" icon="Backpack" onClick={onConnectClicked} />
+        ) : allowance > 0 ? (
+          <Button label="Approve" icon="Buy" onClick={onApproveClicked} />
+        ) : balance > price ? (
+          <Button label="Buy" icon="Buy" onClick={onBuyClicked} />
         ) : (
           <Button label="Not enough pokeballs 😕" icon="Buy" disabled />
         )}

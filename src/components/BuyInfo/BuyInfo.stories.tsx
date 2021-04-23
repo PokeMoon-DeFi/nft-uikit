@@ -16,9 +16,12 @@ const p: BuyInfoProps = {
   price: 100,
   lastPackId: 42,
   pbPrice: 0.1,
-  allowance: 0,
+  allowance: 10,
   balance: 200,
-  account: "1asdasdf",
+  account: "",
+  onConnectClicked: () => {
+    console.log("on connect clicked");
+  },
   onApproveClicked: () => {
     console.log("approve clicked");
   },
