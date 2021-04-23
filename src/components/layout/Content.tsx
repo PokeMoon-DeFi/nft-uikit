@@ -1,13 +1,11 @@
 import styled from "styled-components";
+import Container from "@material-ui/core/Container";
+import { FC } from "react";
 
-const Content = styled.div`
-  width: 100%;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+const Content = styled(Container)`
+  height: "88%";
+  margin-bottom: 0;
+  overflow: "auto";
 `;
 
 export default Content;

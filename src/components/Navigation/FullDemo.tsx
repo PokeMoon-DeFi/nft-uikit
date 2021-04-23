@@ -1,15 +1,6 @@
-import { Header } from "components/layout";
-import { Logo } from "components/Icons";
-import Button from "components/Button";
 import styled from "styled-components";
-import AppBar from "@material-ui/core/AppBar";
-import BalanceCounter from "components/BalanceCounter";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-import Hidden from "@material-ui/core/Hidden";
 import Typography from "@material-ui/core/Typography";
-import AddIcon from "@material-ui/icons/AddIcCallRounded";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
 import Container from "@material-ui/core/Container";
 import { FC } from "react";
 import SpeedDial from "@material-ui/lab/SpeedDial";
@@ -22,6 +13,7 @@ import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
 import Toolbar from "@material-ui/core/Toolbar";
 import { Fab } from "components/Fab";
 import { NavHeader } from "components/Header";
+import { Content } from "components/layout";
 
 //TODO: Swap icons for pokemoon stuff
 const linkConfig = [
@@ -51,22 +43,13 @@ const StyledLinkContainer = styled(Typography)`
 const ACCOUNT = "0xce753a7d4C36339B1e427684402bE0D53064FeA6";
 
 const FullDemo: FC = () => {
-  const theme = useTheme();
   return (
     <>
       <NavHeader account={ACCOUNT} />
       <Fab />
-      <Container
-        style={{
-          height: "88%",
-          marginBottom: 0,
-          overflow: "auto",
-        }}
-        maxWidth="md"
-      >
-        {/* <Fab /> */}
+      <Content maxWidth="md">
         <Gallery nfts={BLAST_OFF_COLLECTION} />
-      </Container>
+      </Content>
     </>
   );
 };

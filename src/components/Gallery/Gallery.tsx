@@ -54,90 +54,11 @@ const Gallery: React.FC<CarouselProps> = ({
   handleSubMenuCommand,
   ...props
 }) => {
-  const [consumeClick, setConsumeClick] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(-1);
-  const [isOverflow, setIsOverflow] = useState(false);
-
-  const size = useWindowSize();
-
-  const cardRefs = useRef<any[]>([]);
-  const theme = useTheme();
-
   const ref = useRef();
-  const [{ scrollLeft }, setSpringScroll] = useSpring(() => ({
-    scrollLeft: 0,
-  }));
 
-  // useEffect(() => {
-  //   const element = ref.current;
-  //   if (!!element && element.offsetWidth < element.scrollWidth) {
-  //     // your element have overflow
-  //     setIsOverflow(true);
-  //   } else {
-  //     // your element doesn't have overflow
-  //     setIsOverflow(false);
-  //   }
-  // }, [size, nfts]);
-
-  // const bind = useGesture(
-  //   {
-  //     onDrag: ({ movement: [x] }) => {
-  //       const res = scrollLeft.get() - x / 2.5;
-  //       setSpringScroll({ scrollLeft: res });
-  //     },
-  //     onDragEnd: ({ event }) => {
-  //       setConsumeClick(true);
-  //     },
-  //     onWheel: ({ event }) => {
-  //       const res = scrollLeft.get() + event.deltaY * 1.5;
-  //       setSpringScroll({ scrollLeft: res });
-  //     },
-  //     onScrollEnd: () => {
-  //       const element = ref.current;
-  //       if (element) {
-  //         setSpringScroll({ scrollLeft: element.scrollLeft, immediate: true });
-  //       }
-  //     },
-  //   },
-  //   {
-  //     drag: { delay: 200 },
-  //     domTarget: ref,
-  //     eventOptions: { passive: false },
-  //   }
-  // );
-
-  // const cardCallback = useCallback(
-  //   (idx) => {
-  //     if (consumeClick) {
-  //       setConsumeClick(false);
-  //       return;
-  //     }
-  //     if (idx === activeIndex) {
-  //       cardRefs.current[activeIndex]?.setFocus(false);
-  //       setActiveIndex(-1);
-  //     } else {
-  //       cardRefs.current[idx]?.setFocus(true);
-
-  //       if (nfts && idx === nfts?.length - 1) {
-  //         const element = ref.current;
-  //         if (element) {
-  //           //TODO: Refer to a constant for UI menu width
-  //           const maxScrollLeft = element.scrollLeft + 150;
-  //           setSpringScroll({ scrollLeft: maxScrollLeft });
-  //         }
-  //       }
-
-  //       if (activeIndex !== -1) {
-  //         cardRefs.current[activeIndex]?.setFocus(false);
-  //       }
-  //       setActiveIndex(idx);
-  //     }
-  //   },
-  //   [activeIndex, consumeClick, cardRefs, nfts, setSpringScroll]
-  // );
   return (
     <RootRef rootRef={ref}>
-      <Grid container spacing={5} style={{ paddingTop: 75 }}>
+      <Grid container spacing={5} style={{ paddingTop: "11.5vh" }}>
         {nfts?.map((nft, index) => (
           <Grid
             item
@@ -160,8 +81,6 @@ const Gallery: React.FC<CarouselProps> = ({
                   ? (command) => handleSubMenuCommand(command, index)
                   : () => {}
               }
-              // active={activeIndex === index}
-              ref={(r) => (cardRefs.current[index] = r)}
             />
           </Grid>
         ))}

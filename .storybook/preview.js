@@ -3,6 +3,7 @@ import Theme, { GlobalStyle } from "../src/theme";
 import { StylesProvider } from "@material-ui/core/styles";
 import { ThemeProvider as MaterialThemeProvider } from "@material-ui/core/styles";
 import { MaterialTheme } from "../src/theme";
+import ModalProvider from "../src/providers/ModalContext";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -26,7 +27,9 @@ export const decorators = [
           <StylesProvider injectFirst>
             <ThemeProvider theme={Theme}>
               <GlobalStyle />
-              <Story />
+              <ModalProvider>
+                <Story />
+              </ModalProvider>
             </ThemeProvider>
           </StylesProvider>
         </MaterialThemeProvider>
