@@ -8,12 +8,10 @@ import {
   Fire,
   Grass,
   Lightning,
-  Moon as Icon,
+  Moon,
   Psychic,
   Water,
 } from "../Icons";
-import { SvgProps } from "components/Svg";
-import Theme from "theme";
 
 interface NftInfoProps {
   nft: PokemoonNft;
@@ -64,6 +62,7 @@ const SecondaryInfo = styled.div`
 const PokemoonType = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 const SetName = styled.span`
@@ -174,7 +173,7 @@ const NftInfo = (props: NftInfoProps) => {
       <Description>
         <DescriptionText>"{card.description}"</DescriptionText>
         <FooterIcon>
-          <Icon />
+          <Moon />
         </FooterIcon>
       </Description>
     </Container>
