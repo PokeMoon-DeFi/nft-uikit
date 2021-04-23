@@ -49,6 +49,7 @@ const StyledImage = styled.img`
   align-self: auto;
   margin-bottom: 0;
   margin-right: 36px;
+
   @media (max-width: 600px) {
     margin-bottom: 36px;
     margin-right: 0;
@@ -74,8 +75,10 @@ export const WrapperMQ = (nft: PokemoonNft | undefined) => {
       <Wrapper
         style={{
           backgroundImage: bi,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
-        maxWidth="lg"
+        maxWidth={false}
       >
         <StyledImage
           height={"380vh"}
