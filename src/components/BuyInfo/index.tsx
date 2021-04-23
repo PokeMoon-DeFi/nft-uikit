@@ -1,3 +1,4 @@
+import Button from "../Button";
 import styled from "styled-components";
 import Theme from "theme";
 import { PokemoonPack } from "../../constants/nfts/types";
@@ -7,6 +8,8 @@ import { Moon as Icon } from "../Icons";
 interface BuyInfoProps {
   pack: PokemoonPack;
   price: number;
+  lastPackId: number;
+  pbPrice: number;
 }
 
 const Container = styled.div`
@@ -36,14 +39,15 @@ const Pack = styled.span`
 const Description = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background-color: #ffffff;
-  padding: 12px;
+  padding: 6px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 const DescriptionText = styled.div`
   text-align: center;
   font-style: oblique;
-  padding: 12px;
+  padding: 6px;
 `;
 const FooterIcon = styled.div`
   text-align: center;
@@ -52,6 +56,9 @@ const FooterIcon = styled.div`
 const BuyInfo = (props: BuyInfoProps) => {
   const pack = props.pack;
   const price = props.price;
+  const lastPackId = props.lastPackId;
+  const pbPrice = props.pbPrice;
+  const totalPbValueBurned = lastPackId * 100 * pbPrice;
 
   return (
     <Container>
@@ -64,10 +71,15 @@ const BuyInfo = (props: BuyInfoProps) => {
         <Pack>{pack.name}</Pack>
       </PrimaryInfo>
       <Description>
-        <DescriptionText>"asdf"</DescriptionText>
-        <FooterIcon>
-          <Icon />
-        </FooterIcon>
+        <DescriptionText>
+          Packs Minted: {lastPackId} ({lastPackId * 5} Cards)
+        </DescriptionText>
+        <DescriptionText>Price: {price} PB</DescriptionText>
+        <Button
+          label="Buy"
+          icon="Buy"
+          style={{ margin: "6px auto", maxWidth: "210px" }}
+        />
       </Description>
     </Container>
   );
