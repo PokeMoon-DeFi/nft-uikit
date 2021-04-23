@@ -37,7 +37,7 @@ export const Cards: Story = () => (
 
 export const Packs: Story = () => {
   return (
-    <Grid container>
+    <Grid direction="row">
       <Pack />
       <Pack />
     </Grid>
