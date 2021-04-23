@@ -10,7 +10,6 @@ export const Basic: Story = () => (
   <>
     <Page>
       <NavHeader />
-      <Content />
     </Page>
   </>
 );

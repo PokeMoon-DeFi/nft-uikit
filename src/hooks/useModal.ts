@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect } from "react";
-import { Context } from "providers/ModalContext";
+import { ModalContext } from "providers";
 
 export type Handler = () => void;
 
@@ -7,7 +7,9 @@ const useModal = (
   modal: React.ReactNode,
   closeOnOverlayClick = true
 ): [Handler, Handler] => {
-  const { onPresent, onDismiss, setCloseOnOverlayClick } = useContext(Context);
+  const { onPresent, onDismiss, setCloseOnOverlayClick } = useContext(
+    ModalContext
+  );
   const onPresentCallback = useCallback(() => {
     onPresent(modal);
   }, [modal, onPresent]);

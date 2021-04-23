@@ -9,7 +9,7 @@ export interface HeaderProps {
   onCreateAccount: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({
+export const Header: React.FC<HeaderProps> = ({
   user,
   onLogin,
   onLogout,
@@ -33,5 +33,4 @@ const Header: React.FC<HeaderProps> = ({
   </div>
 );
 
-export default Header;
 export { default as NavHeader } from "./NavHeader";
