@@ -14,6 +14,7 @@ import NftInfo from "../NftInfo";
 import styled from "styled-components";
 import { render } from "react-dom";
 import Container from "@material-ui/core/Container";
+import { useTheme } from "@material-ui/core/styles";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -65,7 +66,8 @@ const StyledInfo = styled.div`
 `;
 
 export const WrapperMQ = (nft: PokemoonNft | undefined) => {
-  const matches = useMediaQuery("(max-width:600px)");
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const bi = `url("/images/types/${nft?.card?.type}${
     matches ? "wide 1" : "tall 1"
   }.png")`;
