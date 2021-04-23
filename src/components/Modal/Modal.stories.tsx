@@ -6,6 +6,7 @@ import InspectCard from "./InspectCard2";
 import { PM_RARITY, PM_TYPES, PokemoonNft } from "../../constants/nfts";
 import { Page, Content } from "../layout";
 import SendToAddress from "./SendToAddress";
+import { BLAST_OFF_CARDS, BLAST_OFF_COLLECTION } from "../../utils/StoryData";
 
 export default {
   title: "Modal",
@@ -31,19 +32,10 @@ export const Demo: Story = () => {
 };
 
 const n: PokemoonNft = {
-  tokenId: "11000000",
-  imageUrl: "001meownautC.png",
-  card: {
-    number: 1,
-    name: "Meownaut",
-    type: PM_TYPES.PSYCHIC,
-    description:
-      "Legend says that the bioluminescent coin in a Meownaut's chest is the source of its resilience and good fortune.",
-    artist: {
-      name: "Armilo Barrios",
-    },
-  },
-  rarity: PM_RARITY.C,
+  tokenId: "60",
+  imageUrl: "001meownautL.png",
+  card: BLAST_OFF_CARDS[1],
+  rarity: PM_RARITY.L,
 };
 
 export const Inspect: Story = () => {
@@ -52,7 +44,7 @@ export const Inspect: Story = () => {
     <Page>
       <Content>
         <Button label="Open Modal" onClick={() => setOpen(true)} />
-        <InspectCard nft={n} open={open} handleClose={() => setOpen(false)} />
+        <InspectCard nft={n} />
       </Content>
     </Page>
   );

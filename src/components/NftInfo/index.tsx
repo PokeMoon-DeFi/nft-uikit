@@ -13,6 +13,7 @@ import {
   Water,
 } from "../Icons";
 import { SvgProps } from "components/Svg";
+import Theme from "theme";
 
 interface NftInfoProps {
   nft: PokemoonNft;

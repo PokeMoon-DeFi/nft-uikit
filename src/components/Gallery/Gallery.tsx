@@ -73,6 +73,7 @@ const Gallery: React.FC<CarouselProps> = ({
             md={4}
           >
             <PokemoonCard
+              nft={nft}
               imageUrl={nft.imageUrl}
               key={index.toString()}
               onClick={() => {}}

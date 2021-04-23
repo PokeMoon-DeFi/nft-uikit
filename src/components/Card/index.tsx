@@ -15,10 +15,8 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import useModal from "hooks/useModal";
-interface StyledCardProps {
-  imageUrl?: string;
-  active?: boolean;
-}
+import { InspectCard } from "components/Modal";
+import { PokemoonNft } from "../../constants";
 
 interface CardHandle {
   setFocus: (active: boolean) => void;
@@ -29,6 +27,7 @@ interface CardWrapper {
   onSubMenuSelect?: (command: string) => void;
   imageUrl?: string;
   active?: boolean;
+  nft?: PokemoonNft;
 }
 
 const getImageUrl = (imageUrl: string | undefined) => {
@@ -42,10 +41,13 @@ const StyledCardContent = styled(CardContent)`
 `;
 
 const PokemoonCard = React.forwardRef<CardHandle, CardWrapper>(
-  ({ imageUrl, onSubMenuSelect, onClick }, ref) => {
+  ({ nft, imageUrl, onSubMenuSelect, onClick }, ref) => {
     const cardRef = useRef(null);
     const [onPresent, onDismiss] = useModal(
-      <div style={{ height: 200, width: 4000, background: "red" }}>TEST</div>
+      <div style={{}}>
+        {/* @ts-ignore */}
+        <InspectCard nft={nft} />
+      </div>
     );
     const [active, setActive] = useState(false);
     useImperativeHandle(ref, () => ({

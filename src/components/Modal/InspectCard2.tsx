@@ -2,11 +2,17 @@ import React from "react";
 import Dialog from "@material-ui/core/Dialog";
 import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
-import { Backdrop, DialogProps, DialogTitle } from "@material-ui/core";
+import {
+  Backdrop,
+  DialogProps,
+  DialogTitle,
+  useMediaQuery,
+} from "@material-ui/core";
 import { PokemoonNft } from "constants/nfts";
 import { Grid } from "@material-ui/core";
 import NftInfo from "../NftInfo";
 import styled from "styled-components";
+import { render } from "react-dom";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -15,11 +21,8 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-interface InspectorProps extends DialogProps {
-  handleClose: () => void;
-  nft?: PokemoonNft;
-  title?: string;
-  content?: string;
+interface InspectorProps {
+  nft: PokemoonNft;
 }
 
 const Wrapper = styled.div`
@@ -29,9 +32,10 @@ const Wrapper = styled.div`
   justify-content: center;
   align-content: flex-start;
   align-items: center;
-  background: none;
+  overflow-x: hidden;
   padding: 36px;
   @media (max-width: 600px) {
+    min-width: 300px;
     flex-direction: column;
     justify-content: center;
   }
@@ -54,36 +58,34 @@ const StyledInfo = styled.div`
   order: 0;
   flex: 0 1 auto;
   align-self: auto;
+  min-width: 300px;
 `;
 
-const InspectCard: React.FC<InspectorProps> = ({
-  open,
-  handleClose,
-  nft,
-  children,
-  ...props
-}) => {
+export const WrapperMQ = (nft: PokemoonNft | undefined) => {
+  const matches = useMediaQuery("(max-width:600px)");
+  const bi = `url("/images/types/${nft?.card?.type}${
+    matches ? "wide 1" : "tall 1"
+  }.png")`;
   return (
     <>
-      <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
+      <Wrapper
+        style={{
+          backgroundImage: bi,
+        }}
       >
-        <Wrapper>
-          <StyledImage
-            height={"270vh"}
-            src={`/images/cards/${nft?.imageUrl}`}
-            alt={nft?.imageUrl}
-          />
-          <StyledInfo>{nft && <NftInfo nft={nft} />}</StyledInfo>
-        </Wrapper>
-      </Dialog>
+        <StyledImage
+          height={"380vh"}
+          src={`/images/cards/${nft?.imageUrl}`}
+          alt={nft?.imageUrl}
+        />
+        <StyledInfo>{nft && <NftInfo nft={nft} />}</StyledInfo>
+      </Wrapper>
     </>
   );
+};
+
+const InspectCard: React.FC<InspectorProps> = ({ nft, children, ...props }) => {
+  return <>{WrapperMQ(nft)}</>;
 };
 
 export default InspectCard;
