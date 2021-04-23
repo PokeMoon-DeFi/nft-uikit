@@ -16,8 +16,11 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  max-width: 420px;
-  width: 100%;
+  /* max-width: 420px; */
+  flex-basis: 500px;
+
+  /* height: 100%; */
+  justify-self: center;
 `;
 
 const PrimaryInfo = styled.div`

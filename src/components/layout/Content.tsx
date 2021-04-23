@@ -6,6 +6,11 @@ const Content = styled(Container)`
   padding-top: 10%;
   margin-bottom: 0;
   overflow: "auto";
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default Content;
