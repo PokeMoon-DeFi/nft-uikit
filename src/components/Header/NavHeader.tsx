@@ -63,6 +63,7 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
               flexShrink: 5,
               minWidth: 150,
               marginRight: 10,
+              cursor: "pointer",
             }}
             onClick={() => (window.location.href = "https://pokemoon.app")}
           />
