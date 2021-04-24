@@ -25,6 +25,7 @@ const Container = styled.div`
 
   /* height: 100%; */
   justify-self: center;
+  box-shadow: 0px 4px 14px 7px rgb(149 74 137);
 `;
 
 const PrimaryInfo = styled.div`

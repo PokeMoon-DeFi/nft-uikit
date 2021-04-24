@@ -65,8 +65,6 @@ const StyledCardContent = styled(CardContent)<CardContentProps>`
   }}
 `;
 
-// PM_TYPES;
-
 export const NftCard = React.forwardRef<CardHandle, CardWrapper>(
   ({ nft, imageUrl, onSubMenuSelect, onClick }, ref) => {
     const cardRef = useRef(null);
@@ -104,9 +102,8 @@ export const NftCard = React.forwardRef<CardHandle, CardWrapper>(
           }}
         />
         <StyledCardContent>
-          <Typography variant="h5">
-            #{nft?.tokenId} {nft?.card?.name ?? ""}
-          </Typography>
+          <Typography variant="h5">#{nft?.uniqueId}</Typography>
+          <Typography variant="h5">{nft?.card?.name ?? ""}</Typography>
           <Typography>{nft?.card?.type}</Typography>
           <Typography>{nft?.rarity}</Typography>
 

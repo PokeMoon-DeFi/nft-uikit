@@ -27,6 +27,7 @@ export interface PokemoonNft {
   card?: PokemoonCard;
   set?: string;
   rarity?: string;
+  uniqueId?: string;
 }
 
 /**

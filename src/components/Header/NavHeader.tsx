@@ -19,7 +19,7 @@ const linkConfig = [
   },
   {
     target: "/gallery",
-    label: "Gallery",
+    label: "Collection",
     icon: <PhotoSizeSelectActualIcon />,
   },
 ];

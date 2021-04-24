@@ -7,7 +7,7 @@ import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 import { useTheme } from "@material-ui/core/styles";
 import DialogModal from "components/Modal/DialogModal";
-
+import Run from "components/Icons/Run";
 interface LinkConfigEntity {
   target: string;
   label: string;
@@ -24,7 +24,7 @@ const linkConfig: LinkConfigEntity[] = [
   },
   {
     target: "/gallery",
-    label: "Gallery",
+    label: "Collection",
     icon: <PhotoSizeSelectActualIcon />,
   },
 ];
@@ -46,7 +46,7 @@ const Fab: FC<FabProps> = ({ account, onConnect, onLogout }) => {
       config.push({
         target: "/logout",
         label: "Logout",
-        icon: <StoreOutlinedIcon />,
+        icon: <Run width={25} />,
         onClick: () => {
           setModalOpen(true);
         },
