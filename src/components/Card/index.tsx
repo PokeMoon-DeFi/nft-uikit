@@ -16,8 +16,8 @@ import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import useModal from "hooks/useModal";
 import { InspectCard } from "components/Modal";
-import { PokemoonNft } from "../../constants";
-
+import { PM_TYPES, PokemoonNft } from "../../constants";
+import SearchIcon from "@material-ui/icons/Search";
 interface CardHandle {
   setFocus: (active: boolean) => void;
 }
@@ -34,11 +34,38 @@ const getImageUrl = (imageUrl: string | undefined) => {
   return `/images/cards/${imageUrl}`;
 };
 
-const StyledCardContent = styled(CardContent)`
-  background: white;
+interface CardContentProps {
+  type?: string;
+}
+
+const FireGradient = `background: radial-gradient(102.02% 360.67% at 100% 13.81%, #9A1515 0%, #FF0000 27.74%, #FF6B00 71.88%);`;
+const ElectricGradient = `background: radial-gradient(102.02% 360.67% at 100% 13.81%, #FFD911 0%, #FFA408 13.02%, #FF7A00 25.25%, #FF7C00 47.4%, #FFC700 71.88%);`;
+const LeafGradient = `background: radial-gradient(102.02% 360.67% at 100% 13.81%, #258516 0%, #0B8E00 13.02%, #417D24 25.25%, #3FA011 47.4%, #77DE67 71.88%);`;
+const PsychicGradient = `background: radial-gradient(102.02% 360.67% at 100% 13.81%, #8447D2 0%, #481ACB 11.46%, #41247D 25.25%, #8C11A0 47.4%, #B867DE 71.88%);`;
+const WaterGradient = `background: radial-gradient(102.02% 360.67% at 100% 13.81%, #5BBAF0 0%, #55CCFF 11.46%, #70C9E6 25.25%, #2ABAE8 47.4%, #98E2EC 71.88%);`;
+
+const StyledCardContent = styled(CardContent)<CardContentProps>`
+  background: #232340;
+  border: hsl(298deg 100% 63%);
   border-radius: 10px 10px 0px 0px;
+  border-width: 2px;
+  border-style: solid;
   box-shadow: 0 -4px 15px 1px black;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  color: white;
+  ${({ type }) => {
+    switch (type) {
+      default:
+        return "";
+    }
+  }}
 `;
+
+// PM_TYPES;
 
 export const NftCard = React.forwardRef<CardHandle, CardWrapper>(
   ({ nft, imageUrl, onSubMenuSelect, onClick }, ref) => {
@@ -54,6 +81,8 @@ export const NftCard = React.forwardRef<CardHandle, CardWrapper>(
       onPresent();
     }, [onPresent]);
 
+    const type = nft?.card?.type;
+
     return (
       <Card
         elevation={10}
@@ -63,6 +92,7 @@ export const NftCard = React.forwardRef<CardHandle, CardWrapper>(
           flexDirection: "column",
           backgroundColor: "transparent",
           borderRadius: 10,
+          paddingBottom: 0,
         }}
       >
         {/* <CardHeader title="Pokemoon" /> */}
@@ -75,16 +105,20 @@ export const NftCard = React.forwardRef<CardHandle, CardWrapper>(
         />
         <StyledCardContent>
           <Typography variant="h5" gutterBottom>
-            Dis Mon
+            #{nft?.tokenId} {nft?.rarity} {nft?.card?.name ?? ""}
           </Typography>
-          <Typography>
-            This is a media card. You can use this section to describe the
-            content.
-          </Typography>
+          <Typography>{nft?.card?.type}</Typography>
+
+          <Button
+            style={{ borderColor: "grey" }}
+            label="Inspect"
+            icon="Inspect"
+            onClick={modalCallback}
+          />
         </StyledCardContent>
-        <CardActions style={{ background: "white" }}>
-          <Button label="Inspect" onClick={modalCallback} />
-        </CardActions>
+        {/* <CardActions
+          style={{ background: "white", justifyContent: "center" }}
+        ></CardActions> */}
       </Card>
     );
   }

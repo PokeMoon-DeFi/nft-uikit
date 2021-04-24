@@ -2,6 +2,7 @@ import React from "react";
 import { ButtonBase, ButtonBaseProps } from "@material-ui/core";
 import { Backpack, Buy } from "../Icons";
 import styled from "styled-components";
+import SearchIcon from "@material-ui/icons/Search";
 
 export interface ButtonProps extends ButtonBaseProps {
   /**
@@ -69,6 +70,8 @@ const getIcon = (name: string | undefined) => {
       return Backpack;
     case "Buy":
       return Buy;
+    case "Inspect":
+      return SearchIcon;
     default:
       return null;
   }
