@@ -34,7 +34,11 @@ export const Cards: Story = () => (
     ></div>
   </div>
 );
-const pack = { packId: "0", imgUrl: "/images/packs/Blastoff.png" };
+const pack = {
+  packId: "0",
+  imgUrl: "/images/packs/Blastoff.png",
+  cards: ["11000001", "12000001", "13000001", "14000001", "15000001"],
+};
 export const Packs: Story = () => {
   return (
     <Grid direction="row">
