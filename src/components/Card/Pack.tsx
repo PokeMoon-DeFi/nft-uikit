@@ -32,8 +32,7 @@ const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
         <CardMedia
           image={imgUrl}
           style={{
-            paddingTop: "75.25%",
-            backgroundPosition: "left 0px top 0px",
+            paddingTop: "100%",
           }}
         />
       )}

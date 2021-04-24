@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { Logo } from "components/Icons";
@@ -8,6 +8,7 @@ import PhotoSizeSelectActualIcon from "@material-ui/icons/PhotoSizeSelectActual"
 import Button from "components/Button";
 import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
+import DialogModal from "components/Modal/DialogModal";
 
 const linkConfig = [
   {
@@ -24,6 +25,8 @@ const linkConfig = [
 
 export interface NavHeaderProps {
   account: string;
+  onConnect?: () => void;
+  onLogout?: () => void;
 }
 
 const StyledLink = styled(Typography)`
@@ -33,7 +36,8 @@ const StyledLink = styled(Typography)`
   font-weight: bold;
 `;
 
-const NavHeader: FC<NavHeaderProps> = ({ account }) => {
+const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
+  const [logoutModalOpen, setLogoutModalOpen] = useState(false);
   return (
     <>
       <AppBar
@@ -42,13 +46,6 @@ const NavHeader: FC<NavHeaderProps> = ({ account }) => {
             "radial-gradient(58.94% 58.94% at 50% 50%, #014482 0%, #210035 100%)",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
-          // flexDirection: "row",
-          // paddingLeft: 10,
-          // marginLeft: 0,
-          // paddingRight: 20,
-          // fontSize: 12,
-          // textAlign: "center",
-          // alignItems: "center",
         }}
         position="fixed"
       >
@@ -92,11 +89,15 @@ const NavHeader: FC<NavHeaderProps> = ({ account }) => {
                 justifyContent: "space-around",
               }}
             >
-              <Button
-                disabled
-                label={[account.slice(0, 5), account.slice(-5)].join("...")}
-                style={{ width: "100%" }}
-              />
+              {account ? (
+                <Button
+                  label={[account.slice(0, 5), account.slice(-5)].join("...")}
+                  style={{ width: "100%" }}
+                  onClick={() => setLogoutModalOpen(true)}
+                />
+              ) : (
+                <Button label="Connect" icon="Backpack" onClick={onConnect} />
+              )}
 
               {/*  <BalanceCounter imgUrl={"/images/balls/MAXRBALL.png"} balance={0} /> */}
             </div>
@@ -104,6 +105,17 @@ const NavHeader: FC<NavHeaderProps> = ({ account }) => {
         </Toolbar>
       </AppBar>
       <Toolbar />
+      <DialogModal
+        open={logoutModalOpen}
+        title={"Log Out?"}
+        handleClose={() => setLogoutModalOpen(false)}
+        handleConfirm={() => {
+          setLogoutModalOpen(false);
+          if (onLogout) {
+            onLogout();
+          }
+        }}
+      ></DialogModal>
     </>
   );
 };

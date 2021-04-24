@@ -23,12 +23,14 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <Dialog {...props}>
       <DialogTitle>{title}</DialogTitle>
-      <DialogContent>
-        <DialogContentText>{content}</DialogContentText>
-      </DialogContent>
+      {content && (
+        <DialogContent>
+          <DialogContentText>{content}</DialogContentText>
+        </DialogContent>
+      )}
       <DialogActions>
         <Button onClick={handleClose} color="primary">
-          Disagree
+          Cancel
         </Button>
         <Button onClick={handleConfirm} color="primary" autoFocus>
           Agree
