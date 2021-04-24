@@ -46,7 +46,7 @@ const FullDemo: FC = () => {
   return (
     <>
       <NavHeader account={ACCOUNT} />
-      <Fab />
+      <Fab account={ACCOUNT} />
       <Content maxWidth="md">
         <Gallery nfts={BLAST_OFF_COLLECTION} />
       </Content>

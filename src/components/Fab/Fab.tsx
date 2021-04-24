@@ -6,9 +6,17 @@ import PhotoSizeSelectActualIcon from "@material-ui/icons/PhotoSizeSelectActual"
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 import { useTheme } from "@material-ui/core/styles";
+import DialogModal from "components/Modal/DialogModal";
+
+interface LinkConfigEntity {
+  target: string;
+  label: string;
+  icon: React.ReactNode;
+  onClick?: () => void;
+}
 
 //TODO: Swap icons for pokemoon stuff
-const linkConfig = [
+const linkConfig: LinkConfigEntity[] = [
   {
     target: "/buy",
     label: "Buy",
@@ -21,10 +29,38 @@ const linkConfig = [
   },
 ];
 
-const Fab: FC = () => {
+export interface FabProps {
+  account: string;
+  onConnect?: () => void;
+  onLogout?: () => void;
+}
+
+const Fab: FC<FabProps> = ({ account, onConnect, onLogout }) => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const reverseList = useMemo(() => linkConfig.reverse(), []);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const reverseList = useMemo(() => {
+    const config = linkConfig.slice(0);
+    if (account) {
+      config.push({
+        target: "/logout",
+        label: "Logout",
+        icon: <StoreOutlinedIcon />,
+        onClick: () => {
+          setModalOpen(true);
+        },
+      });
+    } else {
+      config.push({
+        target: "/logout",
+        label: "Connect",
+        icon: <StoreOutlinedIcon />,
+        onClick: onConnect,
+      });
+    }
+    return config.reverse();
+  }, [account, onConnect]);
 
   return (
     <Hidden smUp>
@@ -48,11 +84,30 @@ const Fab: FC = () => {
               icon={link.icon}
               tooltipTitle={link.label}
               tooltipOpen
-              onClick={() => (window.location.href = link.target)}
+              onClick={() => {
+                if (!!link.onClick) {
+                  link.onClick();
+                } else {
+                  window.location.href = link.target;
+                }
+              }}
             />
           );
         })}
       </SpeedDial>
+      <DialogModal
+        open={modalOpen}
+        title={"Log Out?"}
+        handleClose={() => {
+          setModalOpen(false);
+        }}
+        handleConfirm={() => {
+          setModalOpen(false);
+          if (!!onLogout) {
+            onLogout();
+          }
+        }}
+      ></DialogModal>
     </Hidden>
   );
 };
