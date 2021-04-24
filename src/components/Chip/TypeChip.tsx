@@ -7,7 +7,7 @@ interface TypeChipProps extends ChipProps {
 }
 
 const TypeChip: FC<TypeChipProps> = (props) => {
-  const { types } = props;
+  const { type } = props;
   const theme = useTheme();
   const bgColor = theme.types.fire;
   return (
