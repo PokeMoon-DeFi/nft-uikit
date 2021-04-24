@@ -1,6 +1,7 @@
 import Button from "../Button";
 import styled from "styled-components";
 import { PokemoonPack } from "../../constants/nfts/types";
+import { Typography } from "@material-ui/core";
 
 export interface BuyInfoProps {
   pack: PokemoonPack;
@@ -48,13 +49,14 @@ const Description = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
-  padding: 6px;
+  padding: 12px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 const DescriptionText = styled.div`
   text-align: center;
   font-style: oblique;
   padding: 6px;
+  justify-content: center;
 `;
 const FooterIcon = styled.div`
   text-align: center;
@@ -86,6 +88,16 @@ export const BuyInfo = (props: BuyInfoProps) => {
         <Pack>{pack.name}</Pack>
       </PrimaryInfo>
       <Description>
+        <Typography variant="h4">Get ready to Blast Off!</Typography>
+        <Typography style={{ paddingTop: 5 }}>
+          ...with our premier collection of NFTs!
+        </Typography>
+        <Typography style={{ padding: 20, textAlign: "center" }}>
+          Spend 100 PB and receive 5 random, incredibly special cards
+          meticulously designed by our most clever, creative community members.
+          Hang tight; these bad boys will have tons of utilities, abilities, and
+          tradability as our platform expands!
+        </Typography>
         <DescriptionText>
           Packs Minted: {lastPackId} ({lastPackId * 5} Cards)
         </DescriptionText>

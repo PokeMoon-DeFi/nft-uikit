@@ -42,11 +42,13 @@ export const Default: Story = () => {
         justify={matches ? "center" : "flex-end"}
         style={{ display: "flex", flex: 1 }}
       >
-        <img
-          src="/images/packs/Blastoff.png"
-          alt="pack"
-          style={{ maxWidth: "400px", maxHeight: "100%" }}
-        />
+        <div>
+          <img
+            src="/images/packs/Blastoff.png"
+            alt="pack"
+            style={{ maxWidth: 400 }}
+          />
+        </div>
       </Grid>
 
       <Grid
