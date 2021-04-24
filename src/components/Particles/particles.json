@@ -165,7 +165,7 @@
       }
     },
     "color": {
-      "value": "#fac000",
+      "value": "#cc5eff",
       "animation": {
         "h": {
           "count": 0,
@@ -289,11 +289,11 @@
     "number": {
       "density": {
         "enable": true,
-        "area": 1000,
+        "area": 3000,
         "factor": 3600
       },
       "limit": 0,
-      "value": 160
+      "value": 1600
     },
     "opacity": {
       "random": {
@@ -344,7 +344,7 @@
     "size": {
       "random": {
         "enable": true,
-        "minimumValue": 0.05
+        "minimumValue": 1
       },
       "value": 1,
       "animation": {
