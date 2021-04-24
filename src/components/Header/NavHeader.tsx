@@ -9,6 +9,7 @@ import Button from "components/Button";
 import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
 import DialogModal from "components/Modal/DialogModal";
+import Link from "@material-ui/core/Link";
 
 const linkConfig = [
   {
@@ -29,11 +30,16 @@ export interface NavHeaderProps {
   onLogout?: () => void;
 }
 
-const StyledLink = styled(Typography)`
+const StyledLink = styled(Link)`
   color: white;
-  font-size: 2em;
+  font-size: 1.3em;
   text-decoration: none;
   font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.3);
+    transition: 0.33s ease;
+  }
 `;
 
 const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
@@ -46,13 +52,14 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
             "radial-gradient(58.94% 58.94% at 50% 50%, #014482 0%, #210035 100%)",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
+          height: "10vh",
         }}
         position="fixed"
       >
         <Toolbar>
           <Logo
             style={{
-              height: "10vh",
+              height: "8vh",
               flexShrink: 5,
               minWidth: 150,
               marginRight: 10,
