@@ -31,7 +31,6 @@ export interface ButtonProps extends ButtonBaseProps {
 
 const StyledButton = styled.button`
   background: #ffffff;
-
   border-radius: 83px;
   padding: 10px;
   font-family: "Josefin Sans", sans-serif;

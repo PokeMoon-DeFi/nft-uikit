@@ -9,6 +9,7 @@ const Ball = styled.div<WiggleBallProps>`
   display: inline-block;
   animation: anti-wiggle 2s ease-in-out infinite;
   transform-origin: bottom center;
+  cursor: pointer;
   @keyframes wiggle {
     20% {
       box-shadow: inset -5px 0 5px 0 rgba(0, 0, 0, 0.4);

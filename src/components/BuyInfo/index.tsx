@@ -57,6 +57,9 @@ const DescriptionText = styled.div`
   font-style: oblique;
   padding: 6px;
   justify-content: center;
+  padding-bottom: 12px;
+  font-weight: bold;
+  font-size: 14pt;
 `;
 const FooterIcon = styled.div`
   text-align: center;
@@ -88,19 +91,23 @@ export const BuyInfo = (props: BuyInfoProps) => {
         <Pack>{pack.name}</Pack>
       </PrimaryInfo>
       <Description>
-        <Typography variant="h4">Get ready to Blast Off!</Typography>
+        <Typography variant="h4" style={{ paddingTop: 10 }}>
+          Get ready to Blast Off!
+        </Typography>
         <Typography style={{ paddingTop: 5 }}>
           ...with our premier collection of NFTs!
         </Typography>
         <Typography style={{ padding: 20, textAlign: "center" }}>
           Spend 100 PB and receive 5 random, incredibly special cards
           meticulously designed by our most clever, creative community members.
+        </Typography>
+        <Typography style={{ paddingTop: 0, padding: 20, textAlign: "center" }}>
           Hang tight; these bad boys will have tons of utilities, abilities, and
           tradability as our platform expands!
         </Typography>
-        <DescriptionText>
+        {/* <DescriptionText>
           Packs Minted: {lastPackId} ({lastPackId * 5} Cards)
-        </DescriptionText>
+        </DescriptionText> */}
         <DescriptionText>Price: {price} PB</DescriptionText>
         {!account ? (
           <Button label="Connect" icon="Backpack" onClick={onConnectClicked} />
