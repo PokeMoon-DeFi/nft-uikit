@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "components/Button";
 import { BlastoffLookup } from "utils/StoryData";
+import styled from "styled-components";
 
 export interface Pack {
   packId: string;
@@ -18,6 +19,29 @@ export interface PackProps {
   onPackSelected?: (packId: string) => void;
 }
 
+const StyledCard = styled(Card)`
+  background: rgb(18 18 34 / 85%);
+  border: #a637a9;
+  border-radius: 5px;
+  border-width: 6px;
+  border-style: solid;
+`;
+
+const StyledCardContent = styled(CardContent)`
+  background: #232340;
+  border: #f572fa;
+  border-radius: 0px 0px 0px 0px;
+  /* border-width: 6px; */
+  border-style: solid;
+  box-shadow: 0 -4px 15px 1px black;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
   const { packId, imgUrl, cards } = pack;
 
@@ -28,11 +52,12 @@ const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
   });
 
   return (
-    <Card
+    <StyledCard
       elevation={10}
       style={{
-        flex: 1,
         paddingTop: 20,
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       {/* <CardHeader title="Pokemoon" /> */}
@@ -40,12 +65,15 @@ const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
       {imgUrl && (
         <CardMedia
           image={imgUrl}
+          component={"img"}
           style={{
-            paddingTop: "100%",
+            // paddingTop: "100%",
+
+            paddingBottom: "10px",
           }}
         />
       )}
-      <CardContent>
+      <StyledCardContent>
         <Typography>{`Blastoff Pack #${packId}`}</Typography>
         {/* <Typography>2x rares 1x uncommon 3x common</Typography> */}
         <CardActions>
@@ -54,8 +82,8 @@ const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
             onClick={!!onPackSelected ? () => onPackSelected(packId) : () => {}}
           />
         </CardActions>
-      </CardContent>
-    </Card>
+      </StyledCardContent>
+    </StyledCard>
   );
 };
 

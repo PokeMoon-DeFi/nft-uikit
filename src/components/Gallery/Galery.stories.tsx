@@ -33,5 +33,9 @@ export const PackId: Story = () => (
 );
 
 export const ViewPackCollection: Story = () => {
-  return <PackCollection />;
+  return (
+    <Page>
+      <PackCollection />
+    </Page>
+  );
 };

@@ -46,9 +46,9 @@ const WaterGradient = `background: radial-gradient(102.02% 360.67% at 100% 13.81
 
 const StyledCardContent = styled(CardContent)<CardContentProps>`
   background: #232340;
-  border: hsl(298deg 100% 63%);
-  border-radius: 10px 10px 0px 0px;
-  border-width: 2px;
+  border: #a637a9;
+  border-radius: 0px 0px 0px 0px;
+  border-width: 6px;
   border-style: solid;
   box-shadow: 0 -4px 15px 1px black;
   text-align: center;
@@ -104,21 +104,19 @@ export const NftCard = React.forwardRef<CardHandle, CardWrapper>(
           }}
         />
         <StyledCardContent>
-          <Typography variant="h5" gutterBottom>
-            #{nft?.tokenId} {nft?.rarity} {nft?.card?.name ?? ""}
+          <Typography variant="h5">
+            #{nft?.tokenId} {nft?.card?.name ?? ""}
           </Typography>
           <Typography>{nft?.card?.type}</Typography>
+          <Typography>{nft?.rarity}</Typography>
 
           <Button
-            style={{ borderColor: "grey" }}
+            style={{ borderColor: "grey", marginTop: 30 }}
             label="Inspect"
             icon="Inspect"
             onClick={modalCallback}
           />
         </StyledCardContent>
-        {/* <CardActions
-          style={{ background: "white", justifyContent: "center" }}
-        ></CardActions> */}
       </Card>
     );
   }

@@ -8,17 +8,15 @@ const packs = new Array(13).fill(pack);
 
 const PackCollection: FC = () => {
   return (
-    <>
-      <Content>
-        <Grid container spacing={2} justify="center">
-          {packs.map((pack, index) => (
-            <Grid item key={index.toString()}>
-              <PackCard pack={pack} onPackSelected={(id) => {}} />
-            </Grid>
-          ))}
-        </Grid>
-      </Content>
-    </>
+    <Content>
+      <Grid container spacing={2} justify="center">
+        {packs.map((pack, index) => (
+          <Grid item key={index.toString()} sm={6} md={3}>
+            <PackCard pack={pack} onPackSelected={(id) => {}} />
+          </Grid>
+        ))}
+      </Grid>
+    </Content>
   );
 };
 
