@@ -64,6 +64,7 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
               minWidth: 150,
               marginRight: 10,
             }}
+            onClick={() => (window.location.href = "https://pokemoon.app")}
           />
           <Hidden xsDown>
             <div
