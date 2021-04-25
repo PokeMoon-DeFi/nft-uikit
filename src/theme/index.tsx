@@ -42,7 +42,6 @@ export const GlobalStyle = createGlobalStyle`
 body {
     color: #000000;
     background-color: #ffffff;
-    font-family: 'futura-pt';
 }
 `;
 

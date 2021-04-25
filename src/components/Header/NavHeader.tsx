@@ -10,6 +10,7 @@ import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
 import DialogModal from "components/Modal/DialogModal";
 import Link from "@material-ui/core/Link";
+import { useTheme } from "@material-ui/core";
 
 const linkConfig = [
   {
@@ -44,6 +45,7 @@ const StyledLink = styled(Link)`
 
 const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
+  const theme = useTheme();
   return (
     <>
       <AppBar

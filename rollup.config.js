@@ -23,7 +23,13 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ["styled-components", "react/jsx-runtime", "react"],
+  external: [
+    "styled-components",
+    "react/jsx-runtime",
+    "react",
+    "react-dom",
+    "@material-ui/core",
+  ],
   plugins: [
     peerDepsExternal(),
     resolve(),

@@ -114,7 +114,7 @@ export const BuyInfo = (props: BuyInfoProps) => {
           <Button label="Connect" icon="Backpack" onClick={onConnectClicked} />
         ) : allowance <= 0 ? (
           <Button label="Approve" icon="Buy" onClick={onApproveClicked} />
-        ) : balance > price ? (
+        ) : balance >= price ? (
           <Button label="Buy" icon="Buy" onClick={onBuyClicked} />
         ) : (
           <Button label="Not enough pokeballs 😕" icon="Buy" disabled />

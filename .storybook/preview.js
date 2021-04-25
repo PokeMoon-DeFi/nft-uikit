@@ -23,16 +23,14 @@ export const decorators = [
   (Story) => {
     return (
       <>
-        <MaterialThemeProvider theme={MaterialTheme}>
-          <StylesProvider injectFirst>
-            <ThemeProvider theme={Theme}>
-              <GlobalStyle />
-              <ModalProvider>
-                <Story />
-              </ModalProvider>
-            </ThemeProvider>
-          </StylesProvider>
-        </MaterialThemeProvider>
+        <StylesProvider injectFirst>
+          <MaterialThemeProvider theme={MaterialTheme}>
+            <GlobalStyle />
+            <ModalProvider>
+              <Story />
+            </ModalProvider>
+          </MaterialThemeProvider>
+        </StylesProvider>
       </>
     );
   },
