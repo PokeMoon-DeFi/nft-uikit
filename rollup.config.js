@@ -29,6 +29,7 @@ export default {
     "react",
     "react-dom",
     "@material-ui/core",
+    "@material-ui/styles",
   ],
   plugins: [
     peerDepsExternal(),

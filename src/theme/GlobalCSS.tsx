@@ -73,11 +73,10 @@ const ResetCSS = createGlobalStyle`
     width: 8px;
   }
   ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.textSubtle}; 
+    
     border-radius: 8px;
   }
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px ${({ theme }) => theme.input}; 
     border-radius: 10px;
   }
 `;

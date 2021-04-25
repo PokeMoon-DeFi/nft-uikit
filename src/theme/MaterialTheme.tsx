@@ -86,38 +86,7 @@ export const rawMaterialTheme: ThemeOptions = {
   },
 };
 
-export const MaterialTheme = createMuiTheme({
-  typography: {
-    fontFamily: ["Josefin Sans", "Roboto"].join(","),
-    allVariants: {
-      fontFamily: ["Josefin Sans", "Roboto"].join(","),
-    },
-  },
-  palette: {
-    rarity: {
-      common: "#C8C8C8",
-      uncommon: "#61D99D",
-      rare: "#05A5EE",
-      legendary: "#f1bf19",
-      moonlike: "#3515D5",
-    },
-    types: {
-      item: "",
-      supporter: "",
-      psychic: "#D166FF",
-      lightning: "#FFCA0D",
-      grass: "",
-      fire: "#EE4D4E",
-      water: "",
-      fighting: "",
-      colorless: "",
-      dark: "",
-      dragon: "",
-      metal: "",
-      fairy: "",
-    },
-  },
-});
+export const MaterialTheme = createMuiTheme(rawMaterialTheme);
 
 export function createPokemoonTheme(options: ThemeOptions) {
   return createMuiTheme({ ...MaterialTheme }, { ...options });

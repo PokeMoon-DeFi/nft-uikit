@@ -52,49 +52,49 @@ body {
 }
 `;
 
-export const PokemoonTheme: DefaultTheme = {
-  textSubtle: "#666666",
-  input: "#222222",
-  rarity: {
-    common: "#C8C8C8",
-    uncommon: "#61D99D",
-    rare: "#05A5EE",
-    legendary: {
-      primary: "#f1bf19",
-      light: "#FFCA1B",
-      dark: "#D0951F",
-    },
-    moonlike: {
-      primary: "",
-      light: "#3515D5",
-      dark: "#7000D2",
-    },
-  },
-  types: {
-    item: {
-      bgColor: "#C8C8C8",
-      textColor: "#ffffff",
-    },
-    supporter: {
-      bgColor: "#C8C8C8",
-      textColor: "#ffffff",
-    },
-    psychic: {
-      bgColor: "#D166FF",
-      textColor: "#ffffff",
-    },
-    lightning: {
-      bgColor: "#FFCA0D",
-      textColor: "#ffffff",
-    },
-    grass: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-    fire: { bgColor: "#EE4D4E", textColor: "#ffffff" },
-    water: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-    fighting: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-    colorless: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-    darkness: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-    dragon: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-    metal: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-    fairy: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-  },
-};
+// export const PokemoonTheme: DefaultTheme = {
+//   textSubtle: "#666666",
+//   input: "#222222",
+//   rarity: {
+//     common: "#C8C8C8",
+//     uncommon: "#61D99D",
+//     rare: "#05A5EE",
+//     legendary: {
+//       primary: "#f1bf19",
+//       light: "#FFCA1B",
+//       dark: "#D0951F",
+//     },
+//     moonlike: {
+//       primary: "",
+//       light: "#3515D5",
+//       dark: "#7000D2",
+//     },
+//   },
+//   types: {
+//     item: {
+//       bgColor: "#C8C8C8",
+//       textColor: "#ffffff",
+//     },
+//     supporter: {
+//       bgColor: "#C8C8C8",
+//       textColor: "#ffffff",
+//     },
+//     psychic: {
+//       bgColor: "#D166FF",
+//       textColor: "#ffffff",
+//     },
+//     lightning: {
+//       bgColor: "#FFCA0D",
+//       textColor: "#ffffff",
+//     },
+//     grass: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+//     fire: { bgColor: "#EE4D4E", textColor: "#ffffff" },
+//     water: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+//     fighting: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+//     colorless: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+//     darkness: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+//     dragon: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+//     metal: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+//     fairy: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+//   },
+// };
