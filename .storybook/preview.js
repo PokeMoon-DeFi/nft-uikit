@@ -4,6 +4,8 @@ import { StylesProvider } from "@material-ui/core/styles";
 import { ThemeProvider as MaterialThemeProvider } from "@material-ui/core/styles";
 import { MaterialTheme } from "../src/theme";
 import ModalProvider from "../src/providers/ModalContext";
+import { addDecorator } from "@storybook/react";
+import { withThemes } from "@react-theming/storybook-addon";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -19,19 +21,20 @@ export const parameters = {
   },
 };
 
+const providerFn = ({ theme, children }) => {
+  return (
+    <StylesProvider injectFirst>
+      <MaterialThemeProvider theme={MaterialTheme}>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      </MaterialThemeProvider>
+    </StylesProvider>
+  );
+};
 export const decorators = [
-  (Story) => {
-    return (
-      <>
-        <StylesProvider injectFirst>
-          <MaterialThemeProvider theme={MaterialTheme}>
-            <GlobalStyle />
-            <ModalProvider>
-              <Story />
-            </ModalProvider>
-          </MaterialThemeProvider>
-        </StylesProvider>
-      </>
-    );
-  },
+  (Story) => (
+    <ModalProvider>
+      <Story />
+    </ModalProvider>
+  ),
+  withThemes(null, [Theme], { providerFn }),
 ];

@@ -1,6 +1,11 @@
 import { createGlobalStyle, DefaultTheme } from "styled-components";
 
 declare module "styled-components" {
+  type Color = React.CSSProperties["color"];
+  type TypeTheme = {
+    bgColor: Color;
+    textColor: Color;
+  };
   /* eslint-disable @typescript-eslint/no-empty-interface */
   export interface DefaultTheme {
     textSubtle: string;
@@ -21,19 +26,20 @@ declare module "styled-components" {
       };
     };
     types: {
-      item: string;
-      supporter: string;
-      psychic: string;
-      lightning: string;
-      grass: string;
-      fire: string;
-      fighting: string;
-      water: string;
-      colorless: string;
-      darkness: string;
-      dragon: string;
-      metal: string;
-      fairy: string;
+      [key: string]: TypeTheme;
+      item: TypeTheme;
+      supporter: TypeTheme;
+      psychic: TypeTheme;
+      lightning: TypeTheme;
+      grass: TypeTheme;
+      fire: TypeTheme;
+      fighting: TypeTheme;
+      water: TypeTheme;
+      colorless: TypeTheme;
+      darkness: TypeTheme;
+      dragon: TypeTheme;
+      metal: TypeTheme;
+      fairy: TypeTheme;
     };
   }
 }
@@ -64,19 +70,31 @@ const Theme: DefaultTheme = {
     },
   },
   types: {
-    item: "",
-    supporter: "",
-    psychic: "#D166FF",
-    lightning: "#FFCA0D",
-    grass: "",
-    fire: "#EE4D4E",
-    water: "",
-    fighting: "",
-    colorless: "",
-    darkness: "",
-    dragon: "",
-    metal: "",
-    fairy: "",
+    item: {
+      bgColor: "#C8C8C8",
+      textColor: "#ffffff",
+    },
+    supporter: {
+      bgColor: "#C8C8C8",
+      textColor: "#ffffff",
+    },
+    psychic: {
+      bgColor: "#D166FF",
+      textColor: "#ffffff",
+    },
+    lightning: {
+      bgColor: "#FFCA0D",
+      textColor: "#ffffff",
+    },
+    grass: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+    fire: { bgColor: "#EE4D4E", textColor: "#ffffff" },
+    water: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+    fighting: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+    colorless: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+    darkness: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+    dragon: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+    metal: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+    fairy: { bgColor: "#C8C8C8", textColor: "#ffffff" },
   },
 };
 

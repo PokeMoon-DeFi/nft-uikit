@@ -67,6 +67,7 @@ const StyledInfo = styled.div`
 
 export const WrapperMQ = (nft: PokemoonNft | undefined) => {
   const theme = useTheme();
+  console.log(theme);
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const bi = `url("/images/types/${nft?.card?.type}${
     matches ? "wide 1" : "tall 1"

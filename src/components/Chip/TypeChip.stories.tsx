@@ -1,15 +1,14 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import TypeChip from "./TypeChip";
-import { useTheme } from "@material-ui/core/styles";
-
+import theme from "../../theme";
 export default {
   title: "Type Chips",
 } as Meta;
 
 export const TypeTag: Story = () => {
-  const theme = useTheme();
-  const supportedTypes = Object.keys(theme.palette.types);
+  const supportedTypes = Object.keys(theme.types);
+
   return (
     <>
       {supportedTypes.map((type, index) => {
