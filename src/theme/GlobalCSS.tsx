@@ -64,7 +64,7 @@ const ResetCSS = createGlobalStyle`
     box-sizing: border-box;
   }
   * {
-    font-family: 'futura-pt', 'Josefin-Sans', 'sans-serif';
+    font-family: 'Josefin-Sans', 'sans-serif', 'futura-pt', ;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

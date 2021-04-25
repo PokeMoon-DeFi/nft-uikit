@@ -41,6 +41,7 @@ const StyledLink = styled(Link)`
     transform: scale(1.3);
     transition: 0.33s ease;
   }
+  font-family: "Josefin Sans";
 `;
 
 const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
@@ -69,6 +70,9 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
             }}
             onClick={() => (window.location.href = "https://pokemoon.app")}
           />
+          <Typography variant="h3" style={{ color: theme.palette.types.fire }}>
+            TEST
+          </Typography>
           <Hidden xsDown>
             <div
               style={{

@@ -3,11 +3,11 @@ export const hexToHSL = (H: any) => {
   let r: any = 0,
     g: any = 0,
     b: any = 0;
-  if (H.length == 4) {
+  if (H.length === 4) {
     r = "0x" + H[1] + H[1];
     g = "0x" + H[2] + H[2];
     b = "0x" + H[3] + H[3];
-  } else if (H.length == 7) {
+  } else if (H.length === 7) {
     r = "0x" + H[1] + H[2];
     g = "0x" + H[3] + H[4];
     b = "0x" + H[5] + H[6];

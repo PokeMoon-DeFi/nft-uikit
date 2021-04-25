@@ -1,29 +1,30 @@
+import React from "react";
 import { PM_RARITY, PM_TYPES } from "../constants/nfts";
-import Theme from "../theme";
+import { PokemoonTheme } from "../theme";
 
 export const getRarityGradient = (rarity: string) => {
   let startColor: string;
   let endColor: string;
   switch (rarity) {
     case PM_RARITY.C:
-      startColor = Theme.rarity.common;
-      endColor = Theme.rarity.common;
+      startColor = PokemoonTheme.rarity.common;
+      endColor = PokemoonTheme.rarity.common;
       break;
     case PM_RARITY.U:
-      startColor = Theme.rarity.uncommon;
-      endColor = Theme.rarity.uncommon;
+      startColor = PokemoonTheme.rarity.uncommon;
+      endColor = PokemoonTheme.rarity.uncommon;
       break;
     case PM_RARITY.R:
-      startColor = Theme.rarity.rare;
-      endColor = Theme.rarity.rare;
+      startColor = PokemoonTheme.rarity.rare;
+      endColor = PokemoonTheme.rarity.rare;
       break;
     case PM_RARITY.L:
-      startColor = Theme.rarity.legendary.light;
-      endColor = Theme.rarity.legendary.dark;
+      startColor = PokemoonTheme.rarity.legendary.light;
+      endColor = PokemoonTheme.rarity.legendary.dark;
       break;
     case PM_RARITY.M:
-      startColor = Theme.rarity.moonlike.light;
-      endColor = Theme.rarity.moonlike.dark;
+      startColor = PokemoonTheme.rarity.moonlike.light;
+      endColor = PokemoonTheme.rarity.moonlike.dark;
       break;
     default:
       throw new Error("Invalid Rarity");
@@ -33,46 +34,46 @@ export const getRarityGradient = (rarity: string) => {
 };
 
 export const getTypeColor = (type: string) => {
-  let color: string;
+  let color: React.CSSProperties["color"];
   switch (type) {
     case PM_TYPES.ITEM:
-      color = Theme.types.item;
+      color = PokemoonTheme.types.item.bgColor;
       break;
     case PM_TYPES.SUPPORTER:
-      color = Theme.types.supporter;
+      color = PokemoonTheme.types.supporter.bgColor;
       break;
     case PM_TYPES.PSYCHIC:
-      color = Theme.types.psychic;
+      color = PokemoonTheme.types.psychic.bgColor;
       break;
     case PM_TYPES.LIGHTNING:
-      color = Theme.types.lightning;
+      color = PokemoonTheme.types.lightning.bgColor;
       break;
     case PM_TYPES.FIRE:
-      color = Theme.types.fire;
+      color = PokemoonTheme.types.fire.bgColor;
       break;
     case PM_TYPES.GRASS:
-      color = Theme.types.grass;
+      color = PokemoonTheme.types.grass.bgColor;
       break;
     case PM_TYPES.WATER:
-      color = Theme.types.water;
+      color = PokemoonTheme.types.water.bgColor;
       break;
     case PM_TYPES.FIGHTING:
-      color = Theme.types.fighting;
+      color = PokemoonTheme.types.fighting.bgColor;
       break;
     case PM_TYPES.COLORLESS:
-      color = Theme.types.colorless;
+      color = PokemoonTheme.types.colorless.bgColor;
       break;
     case PM_TYPES.DARKNESS:
-      color = Theme.types.darkness;
+      color = PokemoonTheme.types.darkness.bgColor;
       break;
     case PM_TYPES.DRAGON:
-      color = Theme.types.dragon;
+      color = PokemoonTheme.types.dragon.bgColor;
       break;
     case PM_TYPES.FAIRY:
-      color = Theme.types.fairy;
+      color = PokemoonTheme.types.fairy.bgColor;
       break;
     case PM_TYPES.METAL:
-      color = Theme.types.metal;
+      color = PokemoonTheme.types.metal.bgColor;
       break;
     default:
       color = "#ffffff";

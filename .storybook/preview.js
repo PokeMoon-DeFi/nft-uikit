@@ -1,11 +1,15 @@
 import { ThemeProvider } from "styled-components";
-import Theme, { GlobalStyle } from "../src/theme";
-import { StylesProvider } from "@material-ui/core/styles";
+import {
+  createPokemoonTheme,
+  MaterialTheme,
+  PokemoonTheme,
+  rawMaterialTheme,
+} from "../src/theme";
+import { createMuiTheme, StylesProvider } from "@material-ui/core/styles";
 import { ThemeProvider as MaterialThemeProvider } from "@material-ui/core/styles";
-import { MaterialTheme } from "../src/theme";
 import ModalProvider from "../src/providers/ModalContext";
-import { addDecorator } from "@storybook/react";
 import { withThemes } from "@react-theming/storybook-addon";
+import * as _ from "lodash";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -22,19 +26,17 @@ export const parameters = {
 };
 
 const providerFn = ({ theme, children }) => {
+  const mutheme = createPokemoonTheme(theme);
   return (
     <StylesProvider injectFirst>
-      <MaterialThemeProvider theme={MaterialTheme}>
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <MaterialThemeProvider theme={mutheme}>
+        <ThemeProvider theme={mutheme}>{children}</ThemeProvider>
       </MaterialThemeProvider>
     </StylesProvider>
   );
 };
 export const decorators = [
-  (Story) => (
-    <ModalProvider>
-      <Story />
-    </ModalProvider>
-  ),
-  withThemes(null, [Theme], { providerFn }),
+  withThemes(null, [rawMaterialTheme], {
+    providerFn,
+  }),
 ];
