@@ -9,6 +9,8 @@ import SendToAddress from "./SendToAddress";
 import { BLAST_OFF_CARDS, BLAST_OFF_COLLECTION } from "../../utils/StoryData";
 import useModal from "../../hooks/useModal";
 import Dialog from "@material-ui/core/Dialog";
+import { InspectorDialog } from "./InspectorModal";
+
 export default {
   title: "Modal",
 } as Meta;
@@ -55,7 +57,7 @@ const ModalDialog = (props: any) => {
 
 export const Inspect: Story = () => {
   const [open, setOpen] = React.useState(true);
-  const [onPresent, onDismiss] = useModal(<ModalDialog nft={n} />);
+  const [onPresent, onDismiss] = useModal(<InspectorDialog nft={n} />);
   return (
     <Page>
       <Content>

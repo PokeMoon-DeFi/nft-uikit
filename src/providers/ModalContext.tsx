@@ -14,7 +14,7 @@ export const ModalContext = createContext<ModalContextProps>({
   onDismiss: () => null,
 });
 
-interface PortalHandler {
+export interface PortalHandler {
   handleClose: () => void;
 }
 
