@@ -8,7 +8,10 @@ import CardActions from "@material-ui/core/CardActions";
 import Button from "components/Button";
 import { BlastoffLookup } from "utils/StoryData";
 import styled from "styled-components";
-
+import Paper from "@material-ui/core/Paper";
+import Skeleton from "@material-ui/lab/Skeleton";
+import Box from "@material-ui/core/Box";
+import { PackSleeve } from "./PackSleeve";
 export interface Pack {
   packId: string;
   imgUrl: string;
@@ -44,6 +47,7 @@ const StyledCardContent = styled(CardContent)`
 
 const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
   const { packId, imgUrl, cards } = pack;
+  const isLoaded = useState(false);
 
   const cardData = cards?.map((id: string) => {
     const uniqueId = id.slice(0, 2);
@@ -52,39 +56,29 @@ const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
   });
 
   return (
-    <StyledCard
-      elevation={10}
+    <Paper
+      elevation={0}
       style={{
-        paddingTop: 20,
+        display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        maxWidth: 250,
+        background: "transparent",
       }}
     >
-      {/* <CardHeader title="Pokemoon" /> */}
-
-      {imgUrl && (
-        <CardMedia
-          image={imgUrl}
-          component={"img"}
-          style={{
-            // paddingTop: "100%",
-
-            paddingBottom: "10px",
-          }}
-        />
+      {!isLoaded && (
+        <Skeleton variant="rect" height={"100%"} style={{ flex: 1 }} />
       )}
-      <StyledCardContent>
-        <Typography>{`Blastoff Pack #${packId}`}</Typography>
-        {/* <Typography>2x rares 1x uncommon 3x common</Typography> */}
-        <CardActions>
-          <Button
-            onClick={!!onPackSelected ? () => onPackSelected(packId) : () => {}}
-          >
-            View Pack
-          </Button>
-        </CardActions>
-      </StyledCardContent>
-    </StyledCard>
+      <img
+        alt="asd"
+        width={250}
+        onLoad={() => null}
+        src={imgUrl}
+        style={{ margin: 20 }}
+      />
+      <PackSleeve pack={pack} />
+    </Paper>
   );
 };
 
