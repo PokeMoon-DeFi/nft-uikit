@@ -78,9 +78,10 @@ const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
         {/* <Typography>2x rares 1x uncommon 3x common</Typography> */}
         <CardActions>
           <Button
-            label="View Pack"
             onClick={!!onPackSelected ? () => onPackSelected(packId) : () => {}}
-          />
+          >
+            View Pack
+          </Button>
         </CardActions>
       </StyledCardContent>
     </StyledCard>

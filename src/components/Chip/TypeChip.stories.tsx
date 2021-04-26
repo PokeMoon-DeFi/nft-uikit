@@ -15,7 +15,14 @@ export const TypeTag: Story = () => {
   return (
     <>
       {supportedTypes.map((type, index) => {
-        return <TypeChip key={index} label={type} type={type}></TypeChip>;
+        return (
+          <TypeChip
+            key={index}
+            label={type}
+            type={type}
+            style={{ margin: 4 }}
+          ></TypeChip>
+        );
       })}
     </>
   );
@@ -23,10 +30,11 @@ export const TypeTag: Story = () => {
 
 export const ChipTag: Story = () => {
   const supportedRanks = Object.keys(MaterialTheme.palette.rarity);
+
   return (
     <>
       {supportedRanks.map((rarity) => (
-        <RarityChip rarity={rarity} label={rarity} />
+        <RarityChip rarity={rarity} label={rarity} style={{ margin: 4 }} />
       ))}
     </>
   );

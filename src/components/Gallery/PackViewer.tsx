@@ -10,9 +10,7 @@ interface Params {
 const PackViewer: React.FC = () => {
   const { id } = useParams<Params>();
 
-  return (
-    <Gallery nfts={BLAST_OFF_COLLECTION} handleSubMenuCommand={() => null} />
-  );
+  return <Gallery nfts={BLAST_OFF_COLLECTION} />;
 };
 
 export default PackViewer;

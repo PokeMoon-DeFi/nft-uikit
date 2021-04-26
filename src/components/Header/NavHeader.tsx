@@ -103,12 +103,13 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
             >
               {account ? (
                 <Button
-                  label={[account.slice(0, 5), account.slice(-5)].join("...")}
                   style={{ width: "100%" }}
                   onClick={() => setLogoutModalOpen(true)}
-                />
+                >
+                  {[account.slice(0, 5), account.slice(-5)].join("...")}
+                </Button>
               ) : (
-                <Button label="Connect" icon="Backpack" onClick={onConnect} />
+                <Button onClick={onConnect}>Connect</Button>
               )}
 
               {/*  <BalanceCounter imgUrl={"/images/balls/MAXRBALL.png"} balance={0} /> */}

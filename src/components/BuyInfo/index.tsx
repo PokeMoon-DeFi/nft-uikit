@@ -2,6 +2,7 @@ import Button from "../Button";
 import styled from "styled-components";
 import { PokemoonPack } from "../../constants/nfts/types";
 import { Typography } from "@material-ui/core";
+import { Backpack, Buy } from "../Icons";
 
 export interface BuyInfoProps {
   pack: PokemoonPack;
@@ -111,13 +112,24 @@ export const BuyInfo = (props: BuyInfoProps) => {
         </DescriptionText> */}
         <DescriptionText>Price: {price} PB</DescriptionText>
         {!account ? (
-          <Button label="Connect" icon="Backpack" onClick={onConnectClicked} />
+          <Button
+            endIcon={<Backpack fontSize="large" />}
+            onClick={onConnectClicked}
+          >
+            Connect
+          </Button>
         ) : allowance <= 0 ? (
-          <Button label="Approve" icon="Buy" onClick={onApproveClicked} />
+          <Button endIcon={<Buy />} onClick={onApproveClicked}>
+            Approve
+          </Button>
         ) : balance >= price ? (
-          <Button label="Buy" icon="Buy" onClick={onBuyClicked} />
+          <Button endIcon={<Buy />} onClick={onBuyClicked}>
+            Buy
+          </Button>
         ) : (
-          <Button label="Not enough pokeballs 😕" icon="Buy" disabled />
+          <Button endIcon={<Buy />} disabled>
+            Not enough pokeballs 😕
+          </Button>
         )}
       </Description>
     </Container>

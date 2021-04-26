@@ -73,15 +73,15 @@ export const rawMaterialTheme: ThemeOptions = {
         bgColor: "#C8C8C8",
         textColor: "#0f0f0f",
       },
-      uncommon: { bgColor: "#61D99D", textColor: "#ffffff" },
+      uncommon: { bgColor: "#61D99D", textColor: "#0f0e0e" },
       rare: { bgColor: "#05A5EE", textColor: "#ffffff" },
       legendary: { bgColor: "#f1bf19", textColor: "#ffffff" },
       moonlike: { bgColor: "#3515D5", textColor: "#ffffff" },
     },
     types: {
       item: {
-        bgColor: "#C8C8C8",
-        textColor: "#ffffff",
+        bgColor: "#a3dffa",
+        textColor: "#2a2e30",
       },
       supporter: {
         bgColor: "#C8C8C8",

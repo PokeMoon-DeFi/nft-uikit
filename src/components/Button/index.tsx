@@ -11,28 +11,30 @@ const StyledButton = styled(MaterialButton)`
   background: #321133;
   color: white;
   border-radius: 83px;
-  padding: 5px 12px;
+  padding: 14px 18px;
   font-family: "Josefin Sans", sans-serif;
   text-align: center;
   border: 1px solid #c139c5;
   border-width: 2px;
   border-style: solid;
 
-  .MuiButton-label {
-    text-transform: none;
+  &:disabled {
+    color: white;
   }
 
   @media (hover: hover) {
     &:hover {
       background-color: white;
-      fill: #c139c5;
       color: black;
       transition: 0.14s ease;
     }
-    &:active {
-      transform: scale(1.1, 1.1);
-      transition: 0.1s ease;
-    }
+  }
+  &:active {
+    background-color: white;
+    color: black;
+    transition: 0.5s ease;
+    transform: scale(1.1, 1.1);
+    transition: 0.1s ease;
   }
 `;
 

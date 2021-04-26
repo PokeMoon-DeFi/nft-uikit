@@ -59,7 +59,7 @@ export const Page: React.FC<PageProps> = ({
       }}
     >
       <StyledBoosterPack src="images/packs/Blastoff.png" />
-      <Button label="Buy" icon="Buy" />
+      <Button>Buy</Button>
     </div>
   </Container>
 );

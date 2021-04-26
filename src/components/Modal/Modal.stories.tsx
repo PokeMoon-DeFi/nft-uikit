@@ -21,7 +21,7 @@ export const Demo: Story = () => {
 
   return (
     <>
-      <Button label="Open Modal" onClick={() => setOpen(true)} />
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
       <Modal
         title={title}
         content={content}
@@ -44,7 +44,7 @@ export const Inspect: Story = () => {
   return (
     <Page>
       <Content>
-        <Button label="Open Modal" onClick={onPresent} />
+        <Button onClick={onPresent}>Open Modal</Button>
       </Content>
     </Page>
   );
@@ -56,7 +56,7 @@ export const TransferToAddress: Story = () => {
   return (
     <Page>
       <Content>
-        <Button label="Transfer Pack" onClick={() => setOpen(true)} />
+        <Button onClick={() => setOpen(true)}>Transfer Pack</Button>
         <SendToAddress
           handleClose={() => setOpen(false)}
           handleConfirm={(address) => {

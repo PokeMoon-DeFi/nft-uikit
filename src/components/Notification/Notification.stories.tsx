@@ -12,7 +12,7 @@ export const Demo: Story = () => {
 
   return (
     <>
-      <Button label="Pop notty" onClick={() => setOpen(true)} />
+      <Button onClick={() => setOpen(true)}>Pop notty</Button>
       <Notification
         open={open}
         message={"Chaining blocks...."}

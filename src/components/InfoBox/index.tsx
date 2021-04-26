@@ -31,10 +31,10 @@ const InfoBox = () => {
     <Container>
       <InfoContainer>Welcome to the world of Pokemoon!</InfoContainer>
       <ButtonContainer>
-        <Button label="CATCH" icon="Backpack" />
-        <Button label="BAG" />
-        <Button label="LOG OUT" />
-        <Button label="BACK" />
+        <Button>CATCH</Button>
+        <Button>BAG</Button>
+        <Button>LOG OUT</Button>
+        <Button>BACK</Button>
       </ButtonContainer>
     </Container>
   );

@@ -1,45 +1,6 @@
-import React, {
-  useCallback,
-  useContext,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
-import styled from "styled-components";
-import Button from "components/Button";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Paper from "@material-ui/core/Paper";
-import CardHeader from "@material-ui/core/CardHeader";
-import Typography from "@material-ui/core/Typography";
-import CardActions from "@material-ui/core/CardActions";
-import useModal from "hooks/useModal";
-import { InspectCard, InspectorDialog } from "components/Modal";
-import { PM_TYPES, PokemoonNft } from "../../constants";
-import { Dialog, DialogActions, DialogTitle } from "@material-ui/core";
+import { PokemoonNft } from "../../constants";
 
-import SearchIcon from "@material-ui/icons/Search";
-interface CardHandle {
-  setFocus: (active: boolean) => void;
-}
-
-interface CardWrapper {
-  onClick?: () => void;
-  onSubMenuSelect?: (command: string) => void;
-  imageUrl?: string;
-  active?: boolean;
-  nft: PokemoonNft;
-}
-
-const getImageUrl = (imageUrl: string | undefined) => {
-  return `/images/cards/${imageUrl}`;
-};
-
-interface CardContentProps {
-  type?: string;
-}
-
+//TODO: Move this to under theme palette
 const FireGradient = `background: radial-gradient(102.02% 360.67% at 100% 13.81%, #9A1515 0%, #FF0000 27.74%, #FF6B00 71.88%);`;
 const ElectricGradient = `background: radial-gradient(102.02% 360.67% at 100% 13.81%, #FFD911 0%, #FFA408 13.02%, #FF7A00 25.25%, #FF7C00 47.4%, #FFC700 71.88%);`;
 const LeafGradient = `background: radial-gradient(102.02% 360.67% at 100% 13.81%, #258516 0%, #0B8E00 13.02%, #417D24 25.25%, #3FA011 47.4%, #77DE67 71.88%);`;

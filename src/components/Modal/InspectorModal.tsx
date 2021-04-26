@@ -27,6 +27,11 @@ export const InspectorDialog: FC<InspectorDialogProps> = ({
       onClick={() => {
         setOpen(false);
       }}
+      PaperProps={{
+        style: {
+          overflow: "hidden",
+        },
+      }}
     >
       <InspectorCard nft={nft} />
     </Dialog>

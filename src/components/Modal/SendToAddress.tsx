@@ -56,9 +56,8 @@ const SendToAddress: FC<SendToAddressProps> = ({
           onChange={(e) => setInputVal(e.target.value)}
         />
         <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <Button label={"Cancel"} onClick={handleClose} />
+          <Button onClick={handleClose}>Cancel</Button>
           <Button
-            label={"Confirm"}
             onClick={() => {
               if (!inputVal || !isValidAddress(inputVal)) {
                 return;
@@ -66,7 +65,9 @@ const SendToAddress: FC<SendToAddressProps> = ({
                 handleConfirm(inputVal);
               }
             }}
-          />
+          >
+            Confirm
+          </Button>
         </div>
       </Container>
     </Dialog>

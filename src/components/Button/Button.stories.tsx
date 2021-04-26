@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import Button, { ButtonProps } from ".";
+import Button from ".";
 import { withDesign } from "storybook-addon-designs";
 import Content from "../layout/Content";
 import Page from "../layout/Page";
@@ -15,7 +15,7 @@ export default {
   decorators: [withDesign],
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => (
+const Template: Story = (args) => (
   <Page>
     <Content>
       <Button {...args} />
