@@ -11,7 +11,7 @@ const StyledButton = styled(MaterialButton)`
   background: #321133;
   color: white;
   border-radius: 83px;
-  padding: 14px 18px;
+  /* padding: 1% 5%; */
   font-family: "Josefin Sans", sans-serif;
   text-align: center;
   border: 1px solid #c139c5;
@@ -20,6 +20,11 @@ const StyledButton = styled(MaterialButton)`
 
   &:disabled {
     color: white;
+  }
+
+  span {
+    text-transform: none;
+    white-space: nowrap;
   }
 
   @media (hover: hover) {

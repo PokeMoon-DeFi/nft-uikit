@@ -81,7 +81,11 @@ export const Sleeve: FC<SleeveProps> = ({ nft }) => {
           <TypeChip type={type} label={type} size="small" />
           <RarityChip rarity={rarity ?? "common"} label={rarity} size="small" />
         </div>
-        <Button onClick={showModal} endIcon={<SearchIcon />}>
+        <Button
+          style={{ fontSize: 12, textTransform: "none" }}
+          onClick={showModal}
+          endIcon={<SearchIcon />}
+        >
           Inspect
         </Button>
       </StyledBox>

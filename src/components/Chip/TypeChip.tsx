@@ -1,6 +1,6 @@
 import Chip, { ChipProps } from "@material-ui/core/Chip";
 import { FC } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { withTheme } from "@material-ui/core";
 
 interface TypeChipProps extends ChipProps {
