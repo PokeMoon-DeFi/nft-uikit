@@ -41,22 +41,7 @@ const n: PokemoonNft = {
   rarity: PM_RARITY.L,
 };
 
-const ModalDialog = (props: any) => {
-  const [open, setOpen] = useState(true);
-  useEffect(() => {
-    if (!open) {
-      props.handleClose();
-    }
-  }, [open, props]);
-  return (
-    <Dialog open={open} onClick={() => setOpen(false)} fullScreen>
-      <InspectCard nft={props.nft} />
-    </Dialog>
-  );
-};
-
 export const Inspect: Story = () => {
-  const [open, setOpen] = React.useState(true);
   const [onPresent, onDismiss] = useModal(<InspectorDialog nft={n} />);
   return (
     <Page>
