@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Story, Meta } from "@storybook/react";
 import Button from "../Button";
 import Modal from "./DialogModal";
-import InspectCard from "./InspectCard2";
-import { PM_RARITY, PM_TYPES, PokemoonNft } from "../../constants/nfts";
+import { PM_RARITY, PokemoonNft } from "../../constants/nfts";
 import { Page, Content } from "../layout";
 import SendToAddress from "./SendToAddress";
-import { BLAST_OFF_CARDS, BLAST_OFF_COLLECTION } from "../../utils/StoryData";
+import { BLAST_OFF_CARDS } from "../../utils/StoryData";
 import useModal from "../../hooks/useModal";
-import Dialog from "@material-ui/core/Dialog";
 import { InspectorDialog } from "./InspectorModal";
 
 export default {
@@ -42,7 +40,7 @@ const n: PokemoonNft = {
 };
 
 export const Inspect: Story = () => {
-  const [onPresent, onDismiss] = useModal(<InspectorDialog nft={n} />);
+  const [onPresent] = useModal(<InspectorDialog nft={n} />);
   return (
     <Page>
       <Content>

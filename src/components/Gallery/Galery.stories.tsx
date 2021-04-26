@@ -11,13 +11,7 @@ export default {
   component: Gallery,
 } as Meta;
 
-export const Basic: Story = () => (
-  <Page>
-    <Content>
-      <Gallery nfts={BLAST_OFF_COLLECTION} handleSubMenuCommand={() => null} />
-    </Content>
-  </Page>
-);
+export const Basic: Story = () => <Gallery nfts={BLAST_OFF_COLLECTION} />;
 
 export const PackId: Story = () => (
   <Page>

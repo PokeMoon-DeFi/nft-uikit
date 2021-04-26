@@ -14,47 +14,25 @@ import { useTheme } from "@material-ui/core";
 
 export interface CarouselProps extends GridProps {
   nfts?: Array<PokemoonNft>;
-  handleSubMenuCommand?: (command: string, cardIdx: number) => void;
 }
 
-const Gallery: React.FC<CarouselProps> = ({
-  nfts,
-  handleSubMenuCommand,
-  ...props
-}) => {
-  const ref = useRef();
-
+const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
   return (
-    <RootRef rootRef={ref}>
-      <Grid container spacing={5} {...props}>
-        {nfts?.map((nft, index) => (
-          <Grid
-            item
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: 20,
-            }}
-            key={index}
-            xs={12}
-            sm={6}
-            md={4}
-          >
-            <NftCard
-              nft={nft}
-              imageUrl={nft.imageUrl}
-              key={index.toString()}
-              onClick={() => {}}
-              onSubMenuSelect={
-                handleSubMenuCommand
-                  ? (command) => handleSubMenuCommand(command, index)
-                  : () => {}
-              }
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </RootRef>
+    <Grid container spacing={4} justify="center" {...props}>
+      {nfts?.map((nft, index) => (
+        <Grid
+          item
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+          lg={"auto"}
+          key={index}
+        >
+          <NftCard nft={nft} imageUrl={nft.imageUrl} key={index.toString()} />
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 

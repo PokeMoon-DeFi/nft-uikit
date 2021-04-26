@@ -161,18 +161,21 @@ export const BLAST_OFF_COLLECTION: PokemoonNft[] = [
     imageUrl: "001meownautC.png",
     card: BLAST_OFF_CARDS[1],
     rarity: PM_RARITY.C,
+    uniqueId: "34000006",
   },
   {
     tokenId: "31",
     imageUrl: "001meownautUC.png",
     card: BLAST_OFF_CARDS[1],
     rarity: PM_RARITY.U,
+    uniqueId: "34000001",
   },
   {
     tokenId: "54",
     imageUrl: "001meownautR.png",
     card: BLAST_OFF_CARDS[1],
     rarity: PM_RARITY.R,
+    uniqueId: "340002341",
   },
   {
     tokenId: "60",

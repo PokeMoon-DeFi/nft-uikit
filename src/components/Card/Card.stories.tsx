@@ -17,34 +17,13 @@ export default {
 const n: PokemoonNft = {
   tokenId: "60",
   imageUrl: "001meownautL.png",
+  uniqueId: "11000001",
   card: BLAST_OFF_CARDS[1],
   rarity: PM_RARITY.L,
 };
 
-export const Cards: Story = () => (
-  <div style={{ display: "flex", padding: 0 }}>
-    <NftCard
-      nft={n}
-      imageUrl="002pikapuffUC.png"
-      onClick={() => {
-        console.log("clicked");
-      }}
-    />
-    <NftCard nft={n} imageUrl="015rashscratchumL.png" />
-    <NftCard nft={n} imageUrl="016babymeownautML.png" />
-    <NftCard nft={n} imageUrl="016babymeownautML.png" />
-    <div
-      style={{
-        backgroundColor: "black",
-        flex: 1,
-        position: "absolute",
-        width: "100%",
-        height: "100%",
-        zIndex: -1,
-      }}
-    ></div>
-  </div>
-);
+export const Cards: Story = () => <NftCard nft={n} />;
+
 const pack = {
   packId: "0",
   imgUrl: "/images/packs/Blastoff.png",
