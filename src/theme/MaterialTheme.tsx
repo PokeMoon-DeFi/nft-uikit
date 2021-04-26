@@ -71,7 +71,7 @@ export const rawMaterialTheme: ThemeOptions = {
     rarity: {
       common: {
         bgColor: "#C8C8C8",
-        textColor: "#ffffff",
+        textColor: "#0f0f0f",
       },
       uncommon: { bgColor: "#61D99D", textColor: "#ffffff" },
       rare: { bgColor: "#05A5EE", textColor: "#ffffff" },

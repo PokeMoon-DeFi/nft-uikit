@@ -53,7 +53,8 @@ export const NftCard: FC<CardWrapper> = ({ nft }) => {
   const [isLoaded, setLoaded] = useState(false);
   const [showModal, hideModal] = useModal(<InspectorDialog nft={nft} />);
   return (
-    <Box
+    <Paper
+      elevation={6}
       style={{
         display: "flex",
         position: "relative",
@@ -75,6 +76,6 @@ export const NftCard: FC<CardWrapper> = ({ nft }) => {
         style={{ width: "100%" }}
       />
       {!!isLoaded && <Sleeve nft={nft} />}
-    </Box>
+    </Paper>
   );
 };

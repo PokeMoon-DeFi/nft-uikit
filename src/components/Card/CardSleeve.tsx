@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { PokemoonNft } from "constants/nfts/types";
 import { Typography } from "@material-ui/core";
 import Button from "components/Button";
+import { TypeChip, RarityChip } from "components/Chip";
+import SearchIcon from "@material-ui/icons/Search";
+import { InspectorDialog } from "components/Modal";
+import useModal from "hooks/useModal";
 
 interface SleeveProps {
   nft: PokemoonNft;
@@ -19,8 +23,9 @@ const StyledBox = styled(Box)`
     rgba(100, 60, 163, 1) 100%
   );
   border-color: #da52de;
-  border-style: solid;
+  border-style: outset;
   border-width: 8px;
+  box-shadow: 0px -3px 8px 0 #303030;
   position: absolute;
   bottom: 0;
   z-index: 1;
@@ -33,22 +38,12 @@ const StyledBox = styled(Box)`
 
 export const Sleeve: FC<SleeveProps> = ({ nft }) => {
   const { uniqueId, rarity, card } = nft;
+  const { name, type } = card ?? { name: "", type: "fire" };
+  const [showModal] = useModal(<InspectorDialog nft={nft} />);
 
-  const { name } = card ?? { name: "" };
   return (
     <>
       <StyledBox>
-        {uniqueId && (
-          <Typography
-            style={{
-              fontFamily: `'Press Start 2P', cursive`,
-              fontSize: "16px",
-              color: "white",
-            }}
-          >
-            #{uniqueId}
-          </Typography>
-        )}
         <Typography
           style={{
             fontFamily: `'Press Start 2P', cursive`,
@@ -56,9 +51,39 @@ export const Sleeve: FC<SleeveProps> = ({ nft }) => {
             color: "white",
           }}
         >
+          #{uniqueId ?? 340002341}
+        </Typography>
+
+        <Typography
+          style={{
+            fontFamily: `'Press Start 2P', cursive`,
+            fontSize: "16px",
+            color: "rgb(246 210 255)",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            width: "100%",
+          }}
+          component={"span"}
+          align="center"
+        >
           {name}
         </Typography>
-        <Button label={"inspect"} />
+        <div
+          style={{
+            flex: 1,
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "space-around",
+            width: "90%",
+          }}
+        >
+          <TypeChip type={type} label={type} size="small" />
+          <RarityChip rarity={rarity ?? "common"} label={rarity} size="small" />
+        </div>
+        <Button onClick={showModal} endIcon={<SearchIcon />}>
+          Inspect
+        </Button>
       </StyledBox>
     </>
   );

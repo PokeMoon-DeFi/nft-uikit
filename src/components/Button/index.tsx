@@ -1,65 +1,38 @@
 import React from "react";
-import { ButtonBase, ButtonBaseProps } from "@material-ui/core";
+import {
+  default as MaterialButton,
+  ButtonProps,
+} from "@material-ui/core/Button";
 import { Backpack, Buy } from "../Icons";
 import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 
-export interface ButtonProps extends ButtonBaseProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: "small" | "medium" | "large";
-  /**
-   * Button contents
-   */
-  label?: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
-
-  icon?: string;
-}
-
-const StyledButton = styled.button`
-  background: #ffffff;
+const StyledButton = styled(MaterialButton)`
+  background: #321133;
+  color: white;
   border-radius: 83px;
-  padding: 10px;
+  padding: 5px 12px;
   font-family: "Josefin Sans", sans-serif;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  max-width: 400px;
+  text-align: center;
+  border: 1px solid #c139c5;
+  border-width: 2px;
+  border-style: solid;
+
+  .MuiButton-label {
+    text-transform: none;
+  }
 
   @media (hover: hover) {
     &:hover {
-      background-color: black;
-      color: white;
-      transition: 0.33s ease;
-      fill: white;
+      background-color: white;
+      fill: #c139c5;
+      color: black;
+      transition: 0.14s ease;
     }
-  }
-
-  &:active {
-    background-color: black;
-    color: white;
-    transform: scale(1.1, 1.1);
-    transition: 0.01s ease;
-    fill: white;
-  }
-
-  &:focus {
-    outline: none;
+    &:active {
+      transform: scale(1.1, 1.1);
+      transition: 0.1s ease;
+    }
   }
 `;
 
@@ -79,26 +52,14 @@ const getIcon = (name: string | undefined) => {
 /**
  * Primary UI component for user interaction
  */
-const Button: React.FC<ButtonProps> = ({
-  primary = false,
-  size = "medium",
-  label,
-  icon,
-  children,
-  ...props
-}) => {
-  const ButtonIcon = getIcon(icon);
-
+const Button: React.FC<ButtonProps> = ({ ...props }) => {
   return (
-    <StyledButton {...props}>
-      <span style={{ marginLeft: 10, textAlign: "center", fontSize: 16 }}>
-        {label}
-      </span>
-      {children}
-      {ButtonIcon ? (
-        <ButtonIcon height={"5vh"} style={{ paddingLeft: 20 }} />
-      ) : null}
-    </StyledButton>
+    <StyledButton
+      variant="outlined"
+      {...props}
+      disableRipple
+      disableTouchRipple
+    />
   );
 };
 
