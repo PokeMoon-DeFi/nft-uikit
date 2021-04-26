@@ -1,7 +1,7 @@
 import { PM_TYPES } from "../../constants";
 import styled from "styled-components";
 import { PokemoonCard, PokemoonNft } from "../../constants/nfts/types";
-import { getRarityGradient, getTypeColor } from "../../utils";
+import { getRarityGradient } from "../../utils";
 import {
   Colorless,
   Dragon,
@@ -12,6 +12,7 @@ import {
   Psychic,
   Water,
 } from "../Icons";
+import { useTheme } from "@material-ui/core";
 
 interface NftInfoProps {
   nft: PokemoonNft;
@@ -136,9 +137,11 @@ const NftInfo = (props: NftInfoProps) => {
         type: "0",
         description: "0",
       };
+  const theme = useTheme();
   const rarity: string = props.nft.rarity ? props.nft.rarity : "0";
   const rarityGradient = getRarityGradient(rarity);
-  const typeColor = getTypeColor(card.type);
+
+  const typeColor = theme.palette.types[card.type.toLowerCase()].bgColor;
   const TypeIcon = getIcon(card.type);
 
   return (

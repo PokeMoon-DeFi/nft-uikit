@@ -9,7 +9,8 @@ import { createMuiTheme, StylesProvider } from "@material-ui/core/styles";
 import { ThemeProvider as MaterialThemeProvider } from "@material-ui/core/styles";
 import ModalProvider from "../src/providers/ModalContext";
 import { withThemes } from "@react-theming/storybook-addon";
-import * as _ from "lodash";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { Modal } from "@material-ui/core";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -36,6 +37,14 @@ const providerFn = ({ theme, children }) => {
   );
 };
 export const decorators = [
+  (Story) => {
+    return (
+      <ModalProvider>
+        <CssBaseline />
+        <Story />
+      </ModalProvider>
+    );
+  },
   withThemes(null, [rawMaterialTheme], {
     providerFn,
   }),

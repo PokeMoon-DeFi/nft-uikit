@@ -70,9 +70,6 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
             }}
             onClick={() => (window.location.href = "https://pokemoon.app")}
           />
-          <Typography variant="h3" style={{ color: theme.palette.types.fire }}>
-            TEST
-          </Typography>
           <Hidden xsDown>
             <div
               style={{

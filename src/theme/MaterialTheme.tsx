@@ -2,53 +2,60 @@ import { createMuiTheme, ThemeOptions } from "@material-ui/core";
 
 declare module "@material-ui/core/styles/createPalette" {
   type Color = React.CSSProperties["color"];
+  type TypeTheme = {
+    bgColor: Color;
+    textColor: Color;
+  };
   interface Palette {
     rarity: {
-      common: React.CSSProperties["color"];
-      uncommon: React.CSSProperties["color"];
-      rare: React.CSSProperties["color"];
-      legendary: Color;
-      moonlike: Color;
+      [key: string]: TypeTheme;
+      common: TypeTheme;
+      uncommon: TypeTheme;
+      rare: TypeTheme;
+      legendary: TypeTheme;
+      moonlike: TypeTheme;
     };
     types: {
-      [key: string]: Color;
-      item: Color;
-      supporter: Color;
-      psychic: Color;
-      lightning: Color;
-      grass: Color;
-      fire: Color;
-      water: Color;
-      fighting: Color;
-      colorless: Color;
-      dark: Color;
-      dragon: Color;
-      metal: Color;
-      fairy: Color;
+      [key: string]: TypeTheme;
+      item: TypeTheme;
+      supporter: TypeTheme;
+      psychic: TypeTheme;
+      lightning: TypeTheme;
+      grass: TypeTheme;
+      fire: TypeTheme;
+      water: TypeTheme;
+      fighting: TypeTheme;
+      colorless: TypeTheme;
+      dark: TypeTheme;
+      dragon: TypeTheme;
+      metal: TypeTheme;
+      fairy: TypeTheme;
     };
   }
   interface PaletteOptions {
     rarity: {
-      common: React.CSSProperties["color"];
-      uncommon: React.CSSProperties["color"];
-      rare: React.CSSProperties["color"];
-      legendary: Color;
-      moonlike: Color;
+      [key: string]: TypeTheme;
+      common: TypeTheme;
+      uncommon: TypeTheme;
+      rare: TypeTheme;
+      legendary: TypeTheme;
+      moonlike: TypeTheme;
     };
     types: {
-      item: Color;
-      supporter: Color;
-      psychic: Color;
-      lightning: Color;
-      grass: Color;
-      fire: Color;
-      water: Color;
-      fighting: Color;
-      colorless: Color;
-      dark: Color;
-      dragon: Color;
-      metal: Color;
-      fairy: Color;
+      [key: string]: TypeTheme;
+      item: TypeTheme;
+      supporter: TypeTheme;
+      psychic: TypeTheme;
+      lightning: TypeTheme;
+      grass: TypeTheme;
+      fire: TypeTheme;
+      water: TypeTheme;
+      fighting: TypeTheme;
+      colorless: TypeTheme;
+      dark: TypeTheme;
+      dragon: TypeTheme;
+      metal: TypeTheme;
+      fairy: TypeTheme;
     };
   }
 }
@@ -62,26 +69,41 @@ export const rawMaterialTheme: ThemeOptions = {
   },
   palette: {
     rarity: {
-      common: "#C8C8C8",
-      uncommon: "#61D99D",
-      rare: "#05A5EE",
-      legendary: "#f1bf19",
-      moonlike: "#3515D5",
+      common: {
+        bgColor: "#C8C8C8",
+        textColor: "#ffffff",
+      },
+      uncommon: { bgColor: "#61D99D", textColor: "#ffffff" },
+      rare: { bgColor: "#05A5EE", textColor: "#ffffff" },
+      legendary: { bgColor: "#f1bf19", textColor: "#ffffff" },
+      moonlike: { bgColor: "#3515D5", textColor: "#ffffff" },
     },
     types: {
-      item: "",
-      supporter: "",
-      psychic: "#D166FF",
-      lightning: "#FFCA0D",
-      grass: "",
-      fire: "#EE4D4E",
-      water: "",
-      fighting: "",
-      colorless: "",
-      dark: "",
-      dragon: "",
-      metal: "",
-      fairy: "",
+      item: {
+        bgColor: "#C8C8C8",
+        textColor: "#ffffff",
+      },
+      supporter: {
+        bgColor: "#C8C8C8",
+        textColor: "#ffffff",
+      },
+      psychic: {
+        bgColor: "#D166FF",
+        textColor: "#ffffff",
+      },
+      lightning: {
+        bgColor: "#FFCA0D",
+        textColor: "#ffffff",
+      },
+      grass: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+      fire: { bgColor: "#EE4D4E", textColor: "#ffffff" },
+      water: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+      fighting: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+      colorless: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+      dark: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+      dragon: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+      metal: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+      fairy: { bgColor: "#C8C8C8", textColor: "#ffffff" },
     },
   },
 };
@@ -89,5 +111,5 @@ export const rawMaterialTheme: ThemeOptions = {
 export const MaterialTheme = createMuiTheme(rawMaterialTheme);
 
 export function createPokemoonTheme(options: ThemeOptions) {
-  return createMuiTheme({ ...MaterialTheme }, { ...options });
+  return createMuiTheme({ ...MaterialTheme, ...options });
 }

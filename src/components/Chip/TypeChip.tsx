@@ -8,7 +8,10 @@ interface TypeChipProps extends ChipProps {
 }
 
 const StyledChip = styled(Chip)<TypeChipProps>`
-  background-color: ${({ theme, type }) => theme.palette.types[type]};
+  background-color: ${({ theme, type }) => theme.palette.types[type].bgColor};
+  .MuiChip-label {
+    color: white;
+  }
 `;
 
 export default StyledChip;
