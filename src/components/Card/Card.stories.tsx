@@ -3,6 +3,9 @@ import { NftCard } from "./index";
 import { Story, Meta } from "@storybook/react";
 import PackCard from "./Pack";
 import { Grid } from "@material-ui/core";
+import { BLAST_OFF_CARDS, BLAST_OFF_COLLECTION } from "../../utils/StoryData";
+import { PM_RARITY, PM_TYPES, PokemoonNft } from "../../constants/nfts";
+
 export default {
   title: "Cards",
   component: NftCard,
@@ -11,17 +14,25 @@ export default {
   },
 } as Meta;
 
+const n: PokemoonNft = {
+  tokenId: "60",
+  imageUrl: "001meownautL.png",
+  card: BLAST_OFF_CARDS[1],
+  rarity: PM_RARITY.L,
+};
+
 export const Cards: Story = () => (
   <div style={{ display: "flex", padding: 0 }}>
     <NftCard
+      nft={n}
       imageUrl="002pikapuffUC.png"
       onClick={() => {
         console.log("clicked");
       }}
     />
-    <NftCard imageUrl="015rashscratchumL.png" />
-    <NftCard imageUrl="016babymeownautML.png" />
-    <NftCard />
+    <NftCard nft={n} imageUrl="015rashscratchumL.png" />
+    <NftCard nft={n} imageUrl="016babymeownautML.png" />
+    <NftCard nft={n} imageUrl="016babymeownautML.png" />
     <div
       style={{
         backgroundColor: "black",

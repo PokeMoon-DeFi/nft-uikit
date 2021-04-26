@@ -15,7 +15,7 @@ export const ModalContext = createContext<ModalContextProps>({
 });
 
 export interface PortalHandler {
-  handleClose: () => void;
+  handleClose?: () => void;
 }
 
 const ModalProvider: React.FC = ({ children }) => {
