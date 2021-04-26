@@ -14,9 +14,11 @@ import Paper from "@material-ui/core/Paper";
 import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
-import useModal from "hooks/useModal";
+import { useModal } from "react-modal-hook";
 import { InspectCard } from "components/Modal";
 import { PM_TYPES, PokemoonNft } from "../../constants";
+import { Dialog, DialogActions, DialogTitle } from "@material-ui/core";
+
 import SearchIcon from "@material-ui/icons/Search";
 interface CardHandle {
   setFocus: (active: boolean) => void;
@@ -68,16 +70,16 @@ const StyledCardContent = styled(CardContent)<CardContentProps>`
 export const NftCard = React.forwardRef<CardHandle, CardWrapper>(
   ({ nft, imageUrl, onSubMenuSelect, onClick }, ref) => {
     const cardRef = useRef(null);
-    const [onPresent, onDismiss] = useModal(<InspectCard nft={nft} />);
+    // const [showModal, hideModal] = useModal((props) => {
+    //   console.log(props);
+    //   return <Dialog open={false}>props</Dialog>;
+    // });
     const [active, setActive] = useState(false);
     useImperativeHandle(ref, () => ({
       setFocus: (active) => {
         setActive(active);
       },
     }));
-    const modalCallback = useCallback(() => {
-      onPresent();
-    }, [onPresent]);
 
     const type = nft?.card?.type;
 
@@ -111,7 +113,7 @@ export const NftCard = React.forwardRef<CardHandle, CardWrapper>(
             style={{ borderColor: "grey", marginTop: 30 }}
             label="Inspect"
             icon="Inspect"
-            onClick={modalCallback}
+            onClick={() => {}}
           />
         </StyledCardContent>
       </Card>
