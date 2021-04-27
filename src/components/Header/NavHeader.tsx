@@ -81,8 +81,9 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
                 flexDirection: "row",
               }}
             >
-              {linkConfig.map((link) => (
+              {linkConfig.map((link, index) => (
                 <StyledLink
+                  key={index.toString()}
                   style={{ margin: 20 }}
                   onClick={() => {
                     window.location.href = link.target;

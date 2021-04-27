@@ -25,7 +25,7 @@ export const InspectorDialog: FC<InspectorDialogProps> = ({
       fullScreen
       open={open}
       onClick={() => {
-        setOpen(false);
+        handleClose();
       }}
       PaperProps={{
         style: {

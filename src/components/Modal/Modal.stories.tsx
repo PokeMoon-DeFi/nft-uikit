@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Story, Meta } from "@storybook/react";
 import Button from "../Button";
 import Modal from "./DialogModal";
@@ -41,6 +41,7 @@ const n: PokemoonNft = {
 
 export const Inspect: Story = () => {
   const [onPresent] = useModal(<InspectorDialog nft={n} />);
+  useEffect(() => onPresent, []);
   return (
     <Page>
       <Content>
