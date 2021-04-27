@@ -2,7 +2,15 @@ import Chip, { ChipProps } from "@material-ui/core/Chip";
 import { FC } from "react";
 import styled from "styled-components";
 import { withTheme } from "@material-ui/core";
-
+import {
+  Lightning,
+  Water,
+  Fire,
+  Psychic,
+  Grass,
+  Colorless,
+  Dragon,
+} from "components/Icons/types";
 interface TypeChipProps extends ChipProps {
   type: string;
 }
@@ -17,4 +25,42 @@ const StyledChip = styled(Chip)<TypeChipProps>`
   border-radius: 5px;
 `;
 
-export default StyledChip;
+const getTypeIcon = (type: string) => {
+  const props = { style: { fill: "white" } };
+  switch (type.toLowerCase()) {
+    case "lightning": {
+      return <Lightning {...props} />;
+    }
+    case "water": {
+      return <Water {...props} />;
+    }
+    case "grass": {
+      return <Grass {...props} />;
+    }
+    case "fire": {
+      return <Fire {...props} />;
+    }
+    case "psychic": {
+      return <Psychic {...props} />;
+    }
+    case "colorless": {
+      return <Colorless {...props} />;
+    }
+    case "dragon": {
+      return <Dragon {...props} />;
+    }
+    default: {
+      return undefined;
+    }
+  }
+};
+
+const TypedChip: FC<TypeChipProps> = (props) => {
+  const { type } = props;
+
+  const icon = getTypeIcon(type);
+
+  return <StyledChip icon={getTypeIcon(type)} {...props} />;
+};
+
+export default TypedChip;
