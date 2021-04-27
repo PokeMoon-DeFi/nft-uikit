@@ -35,6 +35,8 @@ export interface PokemoonNft {
  */
 export interface PokemoonPack {
   name: string;
-  pokeball: string;
-  cards?: PokemoonNft[];
+  pokeball?: string;
+  nfts?: PokemoonNft[];
+  packId: string;
+  imageUrl: string;
 }

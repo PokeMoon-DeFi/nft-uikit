@@ -64,6 +64,8 @@ export const NftCard: FC<CardWrapper> = ({ nft }) => {
         justifyContent: "center",
         alignItems: "center",
         flex: 1,
+        background: "transparent",
+        borderRadius: 18,
       }}
     >
       {!isLoaded && (

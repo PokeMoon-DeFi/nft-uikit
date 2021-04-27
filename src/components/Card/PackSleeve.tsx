@@ -1,17 +1,16 @@
 import { FC } from "react";
-import Box from "@material-ui/core/Box";
+import Box, { BoxProps } from "@material-ui/core/Box";
 import styled from "styled-components";
-import { PokemoonNft } from "constants/nfts/types";
+import { PokemoonNft, PokemoonPack } from "constants/nfts/types";
 import { Typography } from "@material-ui/core";
 import Button from "components/Button";
 import { TypeChip, RarityChip } from "components/Chip";
 import SearchIcon from "@material-ui/icons/Search";
 import { InspectorDialog } from "components/Modal";
 import useModal from "hooks/useModal";
-import { Pack } from "./Pack";
 
-interface PackSleeveProps {
-  pack: Pack;
+interface PackSleeveProps extends BoxProps {
+  pack: PokemoonPack;
   onPackSelected: (id: string) => void;
 }
 
@@ -37,46 +36,48 @@ const StyledBox = styled(Box)`
   padding: 10px;
 `;
 
-export const PackSleeve: FC<PackSleeveProps> = ({ pack, onPackSelected }) => {
+export const PackSleeve: FC<PackSleeveProps> = ({
+  pack,
+  onPackSelected,
+  ...props
+}) => {
   const { packId } = pack;
 
   return (
-    <>
-      <StyledBox>
-        <Typography
-          style={{
-            fontFamily: `'Press Start 2P', cursive`,
-            fontSize: "16px",
-            color: "white",
-          }}
-        >
-          #{340002341}
-        </Typography>
+    <StyledBox {...props}>
+      <Typography
+        style={{
+          fontFamily: `'Press Start 2P', cursive`,
+          fontSize: "16px",
+          color: "white",
+        }}
+      >
+        #{pack.packId}
+      </Typography>
 
-        <Typography
-          style={{
-            fontFamily: `'Press Start 2P', cursive`,
-            fontSize: "16px",
-            color: "rgb(246 210 255)",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            width: "100%",
-          }}
-          component={"span"}
-          align="center"
-        >
-          {"Blastoff"}
-        </Typography>
+      <Typography
+        style={{
+          fontFamily: `'Press Start 2P', cursive`,
+          fontSize: "16px",
+          color: "rgb(246 210 255)",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          width: "100%",
+        }}
+        component={"span"}
+        align="center"
+      >
+        {pack.name}
+      </Typography>
 
-        <Button
-          style={{ fontSize: 12, textTransform: "none" }}
-          onClick={() => (!!onPackSelected ? onPackSelected(packId) : null)}
-          endIcon={<SearchIcon />}
-        >
-          View Pack
-        </Button>
-      </StyledBox>
-    </>
+      <Button
+        style={{ fontSize: 12, textTransform: "none", marginTop: 12 }}
+        onClick={() => (!!onPackSelected ? onPackSelected(packId) : null)}
+        endIcon={<SearchIcon />}
+      >
+        View Pack
+      </Button>
+    </StyledBox>
   );
 };

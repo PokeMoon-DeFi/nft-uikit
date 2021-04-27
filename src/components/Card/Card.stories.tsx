@@ -2,9 +2,8 @@ import React from "react";
 import { NftCard } from "./index";
 import { Story, Meta } from "@storybook/react";
 import PackCard from "./Pack";
-import { Grid } from "@material-ui/core";
-import { BLAST_OFF_CARDS, BLAST_OFF_COLLECTION } from "../../utils/StoryData";
-import { PM_RARITY, PM_TYPES, PokemoonNft } from "../../constants/nfts";
+import { BLAST_OFF_CARDS } from "../../utils/StoryData";
+import { PM_RARITY, PokemoonNft, PokemoonPack } from "../../constants/nfts";
 
 export default {
   title: "Cards",
@@ -24,11 +23,29 @@ const n: PokemoonNft = {
 
 export const Cards: Story = () => <NftCard nft={n} />;
 
-const pack = {
-  packId: "0",
-  imgUrl: "/images/packs/Blastoff.png",
-  cards: ["11000001", "12000001", "13000001", "14000001", "15000001"],
+const nftData: PokemoonNft = {
+  tokenId: "22",
+  imageUrl: "005squirderC.png",
+  card: {
+    number: 5,
+    name: "Squirder",
+    type: "Fire",
+    description: "Favorite start Pokemoon of the nicotine addicted trainer.",
+    artist: {
+      name: "Armilo Barrios",
+    },
+  },
+  rarity: "Legendary",
+  uniqueId: "22000001",
 };
+const pack: PokemoonPack = {
+  packId: "0",
+  imageUrl: "/images/packs/Blastoff.png",
+  nfts: [nftData, nftData, nftData, nftData, nftData],
+  pokeball: "PB-2114",
+  name: "Blastoff",
+};
+
 export const Packs: Story = () => {
   return <PackCard pack={pack} />;
 };

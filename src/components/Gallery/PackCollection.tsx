@@ -3,7 +3,28 @@ import Grid from "@material-ui/core/Grid";
 import PackCard from "components/Card/Pack";
 import Content from "components/layout/Content";
 
-const pack = { packId: "0", imgUrl: "/images/packs/Blastoff.png" };
+const nftData = {
+  tokenId: "22",
+  imageUrl: "005squirderC.png",
+  card: {
+    number: 5,
+    name: "Squirder",
+    type: "Fire",
+    description: "Favorite start Pokemoon of the nicotine addicted trainer.",
+    artist: {
+      name: "Armilo Barrios",
+    },
+  },
+  rarity: "Legendary",
+  uniqueId: "22000001",
+};
+const pack = {
+  packId: "0",
+  imageUrl: "/images/packs/Blastoff.png",
+  nfts: [nftData, nftData, nftData, nftData, nftData],
+  pokeball: "PB-2114",
+  name: "Blastoff",
+};
 const packs = new Array(13).fill(pack);
 
 const PackCollection: FC = () => {

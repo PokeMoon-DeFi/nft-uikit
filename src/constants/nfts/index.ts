@@ -16,10 +16,17 @@ export const PM_TYPES = {
   COLORLESS: "Colorless",
 };
 
+export enum RARITIES {
+  COMMON = "Common",
+  UNCOMMON = "Uncommon",
+  RARE = "Rare",
+  LEGENDARY = "Legendary",
+  MOONLIKE = "Moonlike",
+}
 export const PM_RARITY = {
-  C: "Common",
-  U: "Uncommon",
-  R: "Rare",
-  L: "Legendary",
-  M: "Moonlike",
+  C: RARITIES.COMMON,
+  U: RARITIES.UNCOMMON,
+  R: RARITIES.RARE,
+  L: RARITIES.LEGENDARY,
+  M: RARITIES.MOONLIKE,
 };

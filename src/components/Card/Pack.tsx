@@ -12,13 +12,11 @@ import Paper from "@material-ui/core/Paper";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Box from "@material-ui/core/Box";
 import { PackSleeve } from "./PackSleeve";
-export interface Pack {
-  packId: string;
-  imgUrl: string;
-  cards: string[];
-}
+import { PokemoonNft, PokemoonCard, PokemoonPack } from "constants/nfts/types";
+import { PM_RARITY } from "constants/nfts";
+import { getRarities } from "utils/nftStats";
 export interface PackProps {
-  pack: Pack;
+  pack: PokemoonPack;
   onPackSelected?: (packId: string) => void;
 }
 
@@ -46,14 +44,11 @@ const StyledCardContent = styled(CardContent)`
 `;
 
 const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
-  const { packId, imgUrl, cards } = pack;
+  const { packId, imageUrl, nfts } = pack;
   const isLoaded = useState(false);
 
-  const cardData = cards?.map((id: string) => {
-    const uniqueId = id.slice(0, 2);
-    const data = BlastoffLookup[Number(uniqueId)];
-    return data;
-  });
+  //TODO: Render this data
+  const rarityCount = getRarities(nfts);
 
   return (
     <Paper
@@ -70,14 +65,12 @@ const PackCard: FC<PackProps> = ({ onPackSelected, pack }) => {
       {!isLoaded && (
         <Skeleton variant="rect" height={"100%"} style={{ flex: 1 }} />
       )}
-      <img
-        alt="asd"
-        width={250}
-        onLoad={() => null}
-        src={imgUrl}
-        style={{ margin: 20 }}
+      <img alt="asd" width={250} onLoad={() => null} src={imageUrl} />
+      <PackSleeve
+        style={{ marginTop: 6 }}
+        pack={pack}
+        onPackSelected={(id) => (!!onPackSelected ? onPackSelected(id) : null)}
       />
-      <PackSleeve pack={pack} />
     </Paper>
   );
 };
