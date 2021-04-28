@@ -19,7 +19,7 @@ import {
 } from "@react-three/drei";
 
 interface InspectorProps {
-  nft?: PokemoonNft;
+  nft: PokemoonNft;
 }
 
 const StyledInfo = styled.div`
@@ -35,7 +35,9 @@ const CardModel: FC = () => {
   const { ref, mixer, names, actions } = useAnimations(gltf.animations);
 
   useEffect(() => {
-    actions[names[0]].play();
+    if (Object.keys(actions).length > 0 && names.length > 0) {
+      actions[names[0]].play();
+    }
   }, [ref, mixer, names, actions]);
 
   return (
@@ -73,11 +75,14 @@ export const InspectCard: React.FC<InspectorProps> = ({ nft }) => {
         item
         style={{
           flex: 1,
-          height: !matches ? "50%" : "100%",
+          height: !matches ? "50%" : "75vh",
           backgroundColor: "black",
           border: "8px outset #da52de",
+          padding: 0,
         }}
-        lg={6}
+        md={6}
+        lg={4}
+        sm={6}
         xs={12}
       >
         {tier > 0 ? (
@@ -109,8 +114,8 @@ export const InspectCard: React.FC<InspectorProps> = ({ nft }) => {
           />
         )}
       </Grid>
-      <Grid item>
-        <StyledInfo>{nft && <NftInfo nft={nft} />}</StyledInfo>
+      <Grid item xs={12} sm={6} md={6} lg={3}>
+        <NftInfo nft={nft} />
       </Grid>
     </Grid>
   );
