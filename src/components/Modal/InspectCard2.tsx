@@ -14,6 +14,8 @@ import {
   OrbitControls,
   Stage,
   useAnimations,
+  useDetectGPU,
+  Stars,
 } from "@react-three/drei";
 
 interface InspectorProps {
@@ -30,14 +32,15 @@ const StyledInfo = styled.div`
 const CardModel: FC = () => {
   const gltf = useGLTF("/models/016babymeownautML.glb");
 
-  const ref = useRef<THREE.Group>(null);
-  const animations = useAnimations(gltf.animations);
+  const { ref, mixer, names, actions } = useAnimations(gltf.animations);
+
   useEffect(() => {
-    console.log(animations);
-  }, [animations]);
+    actions[names[0]].play();
+  }, [ref, mixer, names, actions]);
+
   return (
     <>
-      <primitive object={gltf.scene} />
+      <primitive object={gltf.scene} ref={ref} />
     </>
   );
 };
@@ -48,6 +51,8 @@ export const InspectCard: React.FC<InspectorProps> = ({ nft }) => {
   const bi = `url("/images/types/${nft?.card?.type}${
     matches ? "wide 1" : "tall 1"
   }.png")`;
+
+  const { tier } = useDetectGPU() ?? { tier: 0 };
 
   return (
     <Grid
@@ -60,34 +65,49 @@ export const InspectCard: React.FC<InspectorProps> = ({ nft }) => {
         padding: 40,
         alignItems: "center",
         flex: 1,
+        display: "flex",
         overflow: "hidden",
       }}
     >
-      <Grid item>
-        {/* <img
-          width={250}
-          src={`/images/cards/${nft?.imageUrl}`}
-          alt={nft?.imageUrl}
-        /> */}
-        <Canvas style={{ height: 380 }}>
-          <PerspectiveCamera position={[0, 1.2, 4]} makeDefault />
-          <OrbitControls target={new THREE.Vector3(0, 1.2, 0)} />
-          <directionalLight
-            intensity={0.7}
-            position={new THREE.Vector3(-1, 0.5, 3)}
+      <Grid
+        item
+        style={{
+          flex: 1,
+          height: !matches ? "50%" : "100%",
+          backgroundColor: "black",
+          border: "8px outset #da52de",
+        }}
+        lg={6}
+        xs={12}
+      >
+        {tier > 0 ? (
+          <Canvas style={{ flex: 1 }}>
+            <PerspectiveCamera position={[0, 1.3, 4]} makeDefault />
+            <OrbitControls target={new THREE.Vector3(0, 1.3, 0)} />
+            <directionalLight
+              intensity={0.7}
+              position={new THREE.Vector3(-1, 0.5, 3)}
+            />
+            <directionalLight
+              intensity={0.6}
+              position={new THREE.Vector3(0, 0, -1)}
+            />
+            <directionalLight
+              intensity={0.4}
+              position={new THREE.Vector3(1, 0.5, 3)}
+            />
+            <Stars />
+            <Suspense fallback={null}>
+              <CardModel />
+            </Suspense>
+          </Canvas>
+        ) : (
+          <img
+            width={250}
+            src={`/images/cards/${nft?.imageUrl}`}
+            alt={nft?.imageUrl}
           />
-          <directionalLight
-            intensity={0.6}
-            position={new THREE.Vector3(0, 0, -1)}
-          />
-          <directionalLight
-            intensity={0.4}
-            position={new THREE.Vector3(1, 0.5, 3)}
-          />
-          <Suspense fallback={null}>
-            <CardModel />
-          </Suspense>
-        </Canvas>
+        )}
       </Grid>
       <Grid item>
         <StyledInfo>{nft && <NftInfo nft={nft} />}</StyledInfo>

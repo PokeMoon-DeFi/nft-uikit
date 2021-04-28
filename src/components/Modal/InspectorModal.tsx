@@ -24,9 +24,7 @@ export const InspectorDialog: FC<InspectorDialogProps> = ({
     <Dialog
       fullScreen
       open={open}
-      onClick={() => {
-        handleClose();
-      }}
+      onClick={() => {}}
       PaperProps={{
         style: {
           overflow: "hidden",
