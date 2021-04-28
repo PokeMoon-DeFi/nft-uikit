@@ -8,7 +8,9 @@ import { TypeChip, RarityChip } from "components/Chip";
 import SearchIcon from "@material-ui/icons/Search";
 import { InspectorDialog } from "components/Modal";
 import useModal from "hooks/useModal";
-
+import StarRateIcon from "@material-ui/icons/StarRate";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
+import { useTheme } from "styled-components";
 interface PackSleeveProps extends BoxProps {
   pack: PokemoonPack;
   onPackSelected: (id: string) => void;
@@ -41,7 +43,8 @@ export const PackSleeve: FC<PackSleeveProps> = ({
   onPackSelected,
   ...props
 }) => {
-  const { packId } = pack;
+  const { packId, nfts } = pack;
+  const theme = useTheme();
 
   return (
     <StyledBox {...props}>
@@ -71,8 +74,20 @@ export const PackSleeve: FC<PackSleeveProps> = ({
         {pack.name}
       </Typography>
 
+      <div style={{ flex: 1, display: "flex", margin: 10, marginBottom: 6 }}>
+        {nfts?.map((nft, index) => {
+          const rarity = nft?.rarity?.toLowerCase() ?? "common";
+          return (
+            <StarRateIcon
+              style={{ color: theme.palette.rarity[rarity].bgColor }}
+              key={index}
+            />
+          );
+        })}
+      </div>
+
       <Button
-        style={{ fontSize: 12, textTransform: "none", marginTop: 12 }}
+        style={{ fontSize: 12, textTransform: "none", margin: 6 }}
         onClick={() => (!!onPackSelected ? onPackSelected(packId) : null)}
         endIcon={<SearchIcon />}
       >

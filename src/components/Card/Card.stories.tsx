@@ -35,7 +35,7 @@ const nftData: PokemoonNft = {
       name: "Armilo Barrios",
     },
   },
-  rarity: "Legendary",
+  rarity: "Moonlike",
   uniqueId: "22000001",
 };
 const pack: PokemoonPack = {

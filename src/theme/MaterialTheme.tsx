@@ -76,7 +76,7 @@ export const rawMaterialTheme: ThemeOptions = {
       uncommon: { bgColor: "#61D99D", textColor: "#0f0e0e" },
       rare: { bgColor: "#05A5EE", textColor: "#ffffff" },
       legendary: { bgColor: "#f1bf19", textColor: "#ffffff" },
-      moonlike: { bgColor: "#3515D5", textColor: "#ffffff" },
+      moonlike: { bgColor: "#ef61e3", textColor: "#ffffff" },
     },
     types: {
       item: {
