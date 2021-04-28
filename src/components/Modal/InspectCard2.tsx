@@ -17,6 +17,7 @@ import {
   useDetectGPU,
   Stars,
 } from "@react-three/drei";
+import { InspectorDialogProps } from "components/Modal/InspectorModal";
 
 interface InspectorProps {
   nft: PokemoonNft;
@@ -47,7 +48,10 @@ const CardModel: FC = () => {
   );
 };
 
-export const InspectCard: React.FC<InspectorProps> = ({ nft }) => {
+export const InspectCard: React.FC<InspectorDialogProps> = ({
+  nft,
+  handleClose,
+}) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const bi = `url("/images/types/${nft?.card?.type}${
@@ -115,7 +119,7 @@ export const InspectCard: React.FC<InspectorProps> = ({ nft }) => {
         )}
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={3}>
-        <NftInfo nft={nft} />
+        <NftInfo handleClose={handleClose} nft={nft} />
       </Grid>
     </Grid>
   );

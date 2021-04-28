@@ -13,10 +13,9 @@ import {
   Water,
 } from "../Icons";
 import { useTheme } from "@material-ui/core";
-
-interface NftInfoProps {
-  nft: PokemoonNft;
-}
+import Button from "components/Button";
+import CloseIcon from "@material-ui/icons/Close";
+import { InspectorDialogProps } from "components/Modal/InspectorModal";
 
 const Container = styled.div`
   display: flex;
@@ -101,6 +100,7 @@ const DescriptionText = styled.div`
   text-align: center;
   font-style: oblique;
   padding: 12px;
+  margin-bottom: 12px;
 `;
 const FooterIcon = styled.div`
   text-align: center;
@@ -128,30 +128,23 @@ const getIcon = (type: string | undefined) => {
   }
 };
 
-const NftInfo = (props: NftInfoProps) => {
-  const card: PokemoonCard = props.nft.card
-    ? props.nft.card
-    : {
-        number: 0,
-        name: "0",
-        type: "0",
-        description: "0",
-      };
+const NftInfo = ({ nft, handleClose }: InspectorDialogProps) => {
+  const card = nft.card;
   const theme = useTheme();
-  const rarity: string = props.nft.rarity ? props.nft.rarity : "0";
+  const rarity: string = nft.rarity ? nft.rarity : "0";
   const rarityGradient = getRarityGradient(rarity);
-
-  const typeColor = theme.palette.types[card.type.toLowerCase()].bgColor;
-  const TypeIcon = getIcon(card.type);
+  const type = card?.type ?? "Supporter";
+  const typeColor = theme.palette.types[type.toLowerCase()].bgColor;
+  const TypeIcon = getIcon(type);
 
   return (
     <Container>
       <PrimaryInfo style={{ background: rarityGradient }}>
         <NR>
-          <Number>No.{card.number}</Number>
+          <Number>No.{card?.number}</Number>
           <Rarity>{rarity}</Rarity>
         </NR>
-        <Name>{card.name}</Name>
+        <Name>{card?.name}</Name>
       </PrimaryInfo>
       <SecondaryInfo style={{ background: typeColor, fill: "white" }}>
         <PokemoonType>
@@ -161,22 +154,24 @@ const NftInfo = (props: NftInfoProps) => {
               style={{ marginLeft: "6px", marginRight: "6px" }}
             />
           ) : null}
-          {card.type}
+          {card?.type}
         </PokemoonType>
       </SecondaryInfo>
       <ArtistInfo>
         Artist
-        <ArtistName>{card.artist?.name}</ArtistName>
-        {card.artist?.instagram ? (
-          <ArtistInsta>({card.artist?.instagram})</ArtistInsta>
+        <ArtistName>{card?.artist?.name}</ArtistName>
+        {card?.artist?.instagram ? (
+          <ArtistInsta>({card?.artist?.instagram})</ArtistInsta>
         ) : (
           <></>
         )}
       </ArtistInfo>
       <Description>
-        <DescriptionText>"{card.description}"</DescriptionText>
+        <DescriptionText>"{card?.description}"</DescriptionText>
         <FooterIcon>
-          <Moon />
+          <Button endIcon={<CloseIcon />} onClick={handleClose}>
+            Close
+          </Button>
         </FooterIcon>
       </Description>
     </Container>

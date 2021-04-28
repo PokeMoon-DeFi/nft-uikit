@@ -29,7 +29,10 @@ export default {
     "react",
     "react-dom",
     "@material-ui/core",
+    "@material-ui/icons",
     "@material-ui/styles",
+    "@react-three/drei",
+    "@react-three/fiber",
   ],
   plugins: [
     peerDepsExternal(),

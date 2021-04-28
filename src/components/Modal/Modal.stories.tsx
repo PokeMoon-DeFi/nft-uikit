@@ -41,7 +41,7 @@ const n: PokemoonNft = {
 
 export const Inspect: Story = () => {
   const [onPresent] = useModal(<InspectorDialog nft={n} />);
-  useEffect(() => onPresent, []);
+  // useEffect(() => onPresent, []);
   return (
     <Page>
       <Content>

@@ -4,7 +4,7 @@ import { PortalHandler } from "providers/ModalContext";
 import { PokemoonNft } from "constants/nfts";
 import { FC, useEffect, useState } from "react";
 
-interface InspectorDialogProps
+export interface InspectorDialogProps
   extends Omit<DialogProps, "open">,
     PortalHandler {
   nft: PokemoonNft;
@@ -31,7 +31,7 @@ export const InspectorDialog: FC<InspectorDialogProps> = ({
         },
       }}
     >
-      <InspectorCard nft={nft} />
+      <InspectorCard nft={nft} handleClose={() => setOpen(false)} />
     </Dialog>
   );
 };
