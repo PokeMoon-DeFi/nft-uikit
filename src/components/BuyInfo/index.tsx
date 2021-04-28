@@ -22,7 +22,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   /* max-width: 420px; */
-  flex-basis: 500px;
+  /* flex-basis: 500px; */
 
   /* height: 100%; */
   justify-self: center;
@@ -53,6 +53,11 @@ const Description = styled.div`
   background-color: #ffffff;
   padding: 12px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  h4,
+  p {
+    text-align: center;
+  }
 `;
 const DescriptionText = styled.div`
   text-align: center;
