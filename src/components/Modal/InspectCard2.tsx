@@ -1,4 +1,11 @@
-import React, { Suspense, FC, useEffect, useRef } from "react";
+import React, {
+  Suspense,
+  FC,
+  useEffect,
+  useRef,
+  useMemo,
+  useState,
+} from "react";
 import { useMediaQuery } from "@material-ui/core";
 import { PokemoonNft } from "constants/nfts";
 import NftInfo from "../NftInfo";
@@ -19,8 +26,8 @@ import {
 } from "@react-three/drei";
 import { InspectorDialogProps } from "components/Modal/InspectorModal";
 
-interface InspectorProps {
-  nft: PokemoonNft;
+interface CardModelProps {
+  glbUrl: string;
 }
 
 const StyledInfo = styled.div`
@@ -30,8 +37,8 @@ const StyledInfo = styled.div`
   min-width: 300px;
 `;
 
-const CardModel: FC = () => {
-  const gltf = useGLTF("/models/016babymeownautML.glb");
+const CardModel: FC<CardModelProps> = ({ glbUrl }) => {
+  const gltf = useGLTF(glbUrl);
 
   const { ref, mixer, names, actions } = useAnimations(gltf.animations);
 
@@ -41,24 +48,34 @@ const CardModel: FC = () => {
     }
   }, [ref, mixer, names, actions]);
 
-  return (
-    <>
-      <primitive object={gltf.scene} ref={ref} />
-    </>
-  );
+  return <>{gltf && <primitive object={gltf.scene} ref={ref} />}</>;
 };
 
 export const InspectCard: React.FC<InspectorDialogProps> = ({
   nft,
   handleClose,
 }) => {
+  const { glbUrl } = nft;
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const bi = `url("/images/types/${nft?.card?.type}${
     matches ? "wide 1" : "tall 1"
   }.png")`;
 
-  const { tier } = useDetectGPU() ?? { tier: 0 };
+  const { tier } = useDetectGPU() ?? { tier: undefined };
+  const [gpuPending, setGpuPending] = useState(true);
+  const renderGPU = useMemo(() => {
+    if (gpuPending) return true;
+    else {
+      return !!tier && tier > 0;
+    }
+  }, [gpuPending, tier]);
+
+  useEffect(() => {
+    if (!!tier) {
+      setGpuPending(false);
+    }
+  }, [tier, setGpuPending]);
 
   return (
     <Grid
@@ -79,17 +96,19 @@ export const InspectCard: React.FC<InspectorDialogProps> = ({
         item
         style={{
           flex: 1,
-          height: !matches ? "50%" : "75vh",
-          backgroundColor: "black",
-          border: "8px outset #da52de",
+          height: renderGPU ? (!matches ? "50%" : "75vh") : "auto",
+          backgroundColor: renderGPU ? "black" : "transparent",
+          border: renderGPU ? "8px outset #da52de" : "none",
           padding: 0,
+          display: "flex",
+          justifyContent: "center",
         }}
         md={6}
         lg={4}
         sm={6}
         xs={12}
       >
-        {tier > 0 ? (
+        {renderGPU && !!glbUrl ? (
           <Canvas style={{ flex: 1 }}>
             <PerspectiveCamera position={[0, 1.3, 4]} makeDefault />
             <OrbitControls target={new THREE.Vector3(0, 1.3, 0)} />
@@ -107,15 +126,19 @@ export const InspectCard: React.FC<InspectorDialogProps> = ({
             />
             <Stars />
             <Suspense fallback={null}>
-              <CardModel />
+              {/* @ts-ignore */}
+              <CardModel glbUrl={nft.glbUrl} />
             </Suspense>
           </Canvas>
         ) : (
-          <img
-            width={250}
-            src={`/images/cards/${nft?.imageUrl}`}
-            alt={nft?.imageUrl}
-          />
+          !gpuPending &&
+          !renderGPU && (
+            <img
+              width={250}
+              src={`/images/cards/${nft?.imageUrl}`}
+              alt={nft?.imageUrl}
+            />
+          )
         )}
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={3}>
