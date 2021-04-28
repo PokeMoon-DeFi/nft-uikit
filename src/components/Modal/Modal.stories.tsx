@@ -37,6 +37,7 @@ const n: PokemoonNft = {
   imageUrl: "001meownautL.png",
   card: BLAST_OFF_CARDS[1],
   rarity: PM_RARITY.L,
+  glbUrl: 
 };
 
 export const Inspect: Story = () => {

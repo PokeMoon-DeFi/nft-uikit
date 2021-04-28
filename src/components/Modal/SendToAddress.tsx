@@ -62,7 +62,7 @@ const SendToAddress: FC<SendToAddressProps> = ({
               if (!inputVal || !isValidAddress(inputVal)) {
                 return;
               } else if (handleConfirm) {
-                handleConfirm(inputVal);
+                handleConfirm(inputVal.trim());
               }
             }}
           >

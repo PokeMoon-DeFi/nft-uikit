@@ -28,6 +28,7 @@ export interface PokemoonNft {
   set?: string;
   rarity?: string;
   uniqueId?: string;
+  glbUrl?: string;
 }
 
 /**

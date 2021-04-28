@@ -33,6 +33,5 @@ export const getRarityGradient = (rarity: string) => {
       break;
   }
   const gradientString = `linear-gradient(120deg, ${startColor} 0%, ${endColor} 47%, #111111 47.3%, #111111 100%)`;
-  console.log(gradientString);
   return gradientString;
 };
