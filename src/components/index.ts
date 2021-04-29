@@ -16,3 +16,4 @@ export * from "./Modal";
 export * from "./Header";
 export * from "./BuyInfo";
 export * from "./Chip";
+export * from "./ConnectScreen";
