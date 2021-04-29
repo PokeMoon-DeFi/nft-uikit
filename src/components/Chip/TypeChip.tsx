@@ -22,11 +22,15 @@ const StyledChip = styled(Chip)<TypeChipProps>`
     color: ${({ theme, type }) =>
       theme.palette.types[type.toLowerCase()].textColor};
   }
+  .MuiChip-icon {
+    fill: ${({ theme, type }) =>
+      theme.palette.types[type.toLowerCase()].textColor};
+  }
   border-radius: 5px;
 `;
 
 const getTypeIcon = (type: string) => {
-  const props = { style: { fill: "white" } };
+  const props = {};
   switch (type.toLowerCase()) {
     case "lightning": {
       return <Lightning {...props} />;

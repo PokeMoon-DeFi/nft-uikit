@@ -75,7 +75,7 @@ export const rawMaterialTheme: ThemeOptions = {
       },
       uncommon: { bgColor: "#61D99D", textColor: "#0f0e0e" },
       rare: { bgColor: "#05A5EE", textColor: "#ffffff" },
-      legendary: { bgColor: "#f1bf19", textColor: "#ffffff" },
+      legendary: { bgColor: "#f1bf19", textColor: "#161515" },
       moonlike: { bgColor: "#ef61e3", textColor: "#ffffff" },
     },
     types: {
@@ -85,7 +85,7 @@ export const rawMaterialTheme: ThemeOptions = {
       },
       supporter: {
         bgColor: "#C8C8C8",
-        textColor: "#ffffff",
+        textColor: "#29251d",
       },
       psychic: {
         bgColor: "#D166FF",
@@ -93,17 +93,17 @@ export const rawMaterialTheme: ThemeOptions = {
       },
       lightning: {
         bgColor: "#FFCA0D",
-        textColor: "#ffffff",
+        textColor: "#1d1919",
       },
-      grass: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+      grass: { bgColor: "#40da39", textColor: "#ffffff" },
       fire: { bgColor: "#EE4D4E", textColor: "#ffffff" },
-      water: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-      fighting: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+      water: { bgColor: "#4f96f1", textColor: "#ffffff" },
+      fighting: { bgColor: "#ffdd91", textColor: "#29251d" },
       colorless: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-      dark: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-      dragon: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-      metal: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-      fairy: { bgColor: "#C8C8C8", textColor: "#ffffff" },
+      dark: { bgColor: "#482663", textColor: "#ffffff" },
+      dragon: { bgColor: "#11af9d", textColor: "#ffffff" },
+      metal: { bgColor: "#18151d", textColor: "#ffffff" },
+      fairy: { bgColor: "#f752d6", textColor: "#ffffff" },
     },
   },
 };
