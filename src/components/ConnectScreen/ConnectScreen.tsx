@@ -23,11 +23,11 @@ const ConnectScreen: FC<ConnectScreenProps> = ({
 }) => {
   // const [showButton]
   const translateSpring = useSpring({
-    from: { translateY: open ? -1000 : -750 },
+    from: { translateY: open ? -1000 : -1000 },
     to: { translateY: 0 },
     config: {
       ...config.molasses,
-      duration: open ? 1000 : 700,
+      duration: open ? 900 : 700,
       easing: (t) => -(Math.cos(Math.PI * t) - 1) / 2,
     },
     reverse: !open,
@@ -59,7 +59,8 @@ const ConnectScreen: FC<ConnectScreenProps> = ({
     to: { opacity: 1, pointerEvents: "auto" },
     delay: open ? 750 : 0,
     config: {
-      duration: 600,
+      duration: 200,
+      easing: (t) => -(Math.cos(Math.PI * t) - 1) / 2,
     },
     reverse: !open,
     reset: !open,
@@ -72,7 +73,12 @@ const ConnectScreen: FC<ConnectScreenProps> = ({
       <animated.img
         src={imgUrl}
         alt="moonLogo"
-        style={{ height: "90vh", ...translateSpring, ...rotateSpring }}
+        style={{
+          height: "90vh",
+          ...translateSpring,
+          ...rotateSpring,
+          scale: 0.8,
+        }}
       />
       <animated.h1
         onClick={onConnect}
