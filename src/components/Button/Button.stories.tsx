@@ -1,8 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Button, ButtonProps } from "./Button";
+import Button from ".";
 import { withDesign } from "storybook-addon-designs";
+import Content from "../layout/Content";
+import Page from "../layout/Page";
 
 export default {
   title: "Example/Button",
@@ -13,7 +15,13 @@ export default {
   decorators: [withDesign],
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story = (args) => (
+  <Page>
+    <Content>
+      <Button {...args} />
+    </Content>
+  </Page>
+);
 
 Template.parameters = {
   design: {
@@ -24,12 +32,14 @@ Template.parameters = {
 export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
-  label: "Button",
+  label: "Backpack",
+  icon: "Backpack",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: "Button",
+  label: "Buy",
+  icon: "Buy",
 };
 
 export const Large = Template.bind({});
