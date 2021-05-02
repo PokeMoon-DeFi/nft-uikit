@@ -83,7 +83,12 @@ const ConnectScreen: FC<ConnectScreenProps> = ({
       <animated.h1
         onClick={onConnect}
         //@ts-ignore
-        style={{ position: "absolute", ...buttonSpring, cursor: "pointer" }}
+        style={{
+          position: "absolute",
+          ...buttonSpring,
+          cursor: "pointer",
+          color: "white",
+        }}
       >
         Connect
       </animated.h1>
