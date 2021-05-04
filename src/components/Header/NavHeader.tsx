@@ -74,7 +74,9 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
             }}
             onClick={() => (window.location.href = "https://pokemoon.app")}
           />
-          <Hidden smUp>
+
+          {/* SIDEBAR */}
+          {/* <Hidden smUp>
             <IconButton onClick={() => setOpenSidebar(true)}>
               <MenuIcon style={{ fill: "white" }} />
             </IconButton>
@@ -87,7 +89,7 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
             onClose={() => {
               setOpenSidebar(false);
             }}
-          />
+          /> */}
           <Hidden xsDown>
             <div
               style={{

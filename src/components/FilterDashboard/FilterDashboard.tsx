@@ -18,6 +18,10 @@ import { RarityChip } from "components/Chip/RarityChip";
 import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
 import TextField from "@material-ui/core/TextField";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Button from "@material-ui/core/Button";
+import TableChartIcon from "@material-ui/icons/TableChart";
+import ViewColumnIcon from "@material-ui/icons/ViewColumn";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -37,7 +41,6 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1),
       minWidth: 120,
       maxWidth: 300,
-      verticalAlign: "baseline",
     },
     chips: {
       display: "flex",
@@ -82,7 +85,7 @@ const Dashboard: FC = () => {
       style={{
         marginTop: 20,
         marginBottom: 20,
-        alignItems: "baseline",
+        alignItems: "center",
         verticalAlign: "baseline",
         display: "flex",
         justifyContent: "space-around",
@@ -199,6 +202,14 @@ const Dashboard: FC = () => {
           })}
         </Select>
       </FormControl>
+      <ButtonGroup>
+        <Button>
+          <TableChartIcon />
+        </Button>
+        <Button>
+          <ViewColumnIcon />
+        </Button>
+      </ButtonGroup>
     </Box>
   );
 };
