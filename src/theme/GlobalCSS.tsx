@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const ResetCSS = createGlobalStyle`
   /* prettier-ignore */
-  html, body, div, span, applet, object, iframe,
+  /* html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
   del, dfn, em, img, ins, kbd, q, s, samp,
@@ -20,10 +20,10 @@ const ResetCSS = createGlobalStyle`
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
-  }
+  } */
   /* HTML5 display-role reset for older browsers */
   /* prettier-ignore */
-  article, aside, details, figcaption, figure, 
+  /* article, aside, details, figcaption, figure, 
   footer, header, hgroup, menu, nav, section {
     display: block;
   }
@@ -67,7 +67,7 @@ const ResetCSS = createGlobalStyle`
     font-family: 'Josefin-Sans', 'sans-serif', 'futura-pt', ;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
+  } */
   /* Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;

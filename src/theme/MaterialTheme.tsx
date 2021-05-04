@@ -61,6 +61,25 @@ declare module "@material-ui/core/styles/createPalette" {
 }
 
 export const rawMaterialTheme: ThemeOptions = {
+  overrides: {
+    MuiCssBaseline: {
+      "@global": {
+        "*::-webkit-scrollbar": {
+          width: "5px",
+          height: "5px",
+          backgroundColor: "#000000",
+        },
+        "*::-webkit-scrollbar-track": {
+          "-webkit-box-shadow": "inset 0 0 6px rgba(0,0,0,0.3)",
+          backgroundColor: "transparent",
+        },
+        "*::-webkit-scrollbar-thumb": {
+          backgroundColor: "#bd0df3",
+          outline: "1px solid #197ee4",
+        },
+      },
+    },
+  },
   typography: {
     fontFamily: ["Josefin Sans", "Roboto"].join(","),
     allVariants: {

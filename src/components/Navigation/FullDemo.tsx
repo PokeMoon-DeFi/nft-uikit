@@ -11,9 +11,11 @@ import PhotoSizeSelectActualIcon from "@material-ui/icons/PhotoSizeSelectActual"
 import { Gallery } from "../Gallery";
 import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
 import Toolbar from "@material-ui/core/Toolbar";
+import Box from "@material-ui/core/Box";
 import { Fab } from "components/Fab";
 import { NavHeader } from "components/Header";
 import { Content } from "components/layout";
+import { FilterDashboard } from "components/FilterDashboard";
 
 //TODO: Swap icons for pokemoon stuff
 const linkConfig = [
@@ -47,6 +49,7 @@ const FullDemo: FC = () => {
     <>
       <NavHeader account={ACCOUNT} />
       <Fab account={ACCOUNT} />
+      <FilterDashboard />
       <Content maxWidth="md">
         <Gallery nfts={BLAST_OFF_COLLECTION} />
       </Content>

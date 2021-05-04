@@ -11,6 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import DialogModal from "components/Modal/DialogModal";
 import Link from "@material-ui/core/Link";
 import { useTheme } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import Sidebar from "components/Navigation/Sidebar";
 
 const linkConfig = [
   {
@@ -46,6 +49,7 @@ const StyledLink = styled(Link)`
 
 const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
+  const [openSidebar, setOpenSidebar] = useState(false);
   const theme = useTheme();
   return (
     <>
@@ -55,11 +59,11 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
             "radial-gradient(58.94% 58.94% at 50% 50%, #014482 0%, #210035 100%)",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
-          height: "10vh",
+          flexBasis: "10vh",
         }}
         position="fixed"
       >
-        <Toolbar>
+        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Logo
             style={{
               height: "8vh",
@@ -69,6 +73,20 @@ const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
               cursor: "pointer",
             }}
             onClick={() => (window.location.href = "https://pokemoon.app")}
+          />
+          <Hidden smUp>
+            <IconButton onClick={() => setOpenSidebar(true)}>
+              <MenuIcon style={{ fill: "white" }} />
+            </IconButton>
+          </Hidden>
+          <Sidebar
+            open={openSidebar}
+            onOpen={() => {
+              setOpenSidebar(true);
+            }}
+            onClose={() => {
+              setOpenSidebar(false);
+            }}
           />
           <Hidden xsDown>
             <div
