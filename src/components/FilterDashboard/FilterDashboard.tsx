@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1),
       minWidth: 120,
       maxWidth: 300,
-      verticalAlign: "bottom",
+      verticalAlign: "baseline",
     },
     chips: {
       display: "flex",
@@ -83,17 +83,22 @@ const Dashboard: FC = () => {
         marginTop: 20,
         marginBottom: 20,
         alignItems: "baseline",
-        textAlign: "center",
-        // verticalAlign: "baseline",
+        verticalAlign: "baseline",
         display: "flex",
         justifyContent: "space-around",
-        padding: "0px 5vh",
+        backgroundColor: "white",
+        border: "purple",
+        borderStyle: "solid",
+        borderRadius: 25,
+        borderWidth: 5,
+        paddingBottom: 10,
       }}
     >
       {/* Search Bar */}
       <TextField
         style={{ verticalAlign: "baseline" }}
-        placeholder="Search 🔍"
+        label="Search 🔍"
+        placeholder=""
       />
 
       {/* Type Chip */}
