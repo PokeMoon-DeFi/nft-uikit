@@ -1,11 +1,6 @@
 import React, { FC } from "react";
 import Box from "@material-ui/core/Box";
-import { TypeChip } from "components/Chip";
 import { MaterialTheme } from "../../theme";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Typography, Grid, ListItemText } from "@material-ui/core";
 import Select from "@material-ui/core/Select";
 import Input from "@material-ui/core/Input";
@@ -21,6 +16,8 @@ import {
 import TypedChip from "components/Chip/TypeChip";
 import { RarityChip } from "components/Chip/RarityChip";
 import Checkbox from "@material-ui/core/Checkbox";
+import Chip from "@material-ui/core/Chip";
+import TextField from "@material-ui/core/TextField";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -40,6 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1),
       minWidth: 120,
       maxWidth: 300,
+      verticalAlign: "bottom",
     },
     chips: {
       display: "flex",
@@ -58,9 +56,11 @@ const Dashboard: FC = () => {
 
   const supportedTypes: string[] = Object.keys(MaterialTheme.palette.types);
   const supportedRanks = Object.keys(MaterialTheme.palette.rarity);
+  const supportedPacks = ["Blast-Off!"];
 
   const [activeTypes, setActiveTypes] = React.useState<string[]>([]);
   const [activeRanks, setActiveRanks] = React.useState<string[]>([]);
+  const [activePacks, setActivePacks] = React.useState<string[]>([]);
 
   const handleTypeChange = (event: any) => {
     const val = event.target.value;
@@ -72,8 +72,30 @@ const Dashboard: FC = () => {
     setActiveRanks(val);
   };
 
+  const handlePackChange = (event: any) => {
+    const val = event?.target.value;
+    setActivePacks(val);
+  };
+
   return (
-    <Box>
+    <Box
+      style={{
+        marginTop: 20,
+        marginBottom: 20,
+        alignItems: "baseline",
+        textAlign: "center",
+        // verticalAlign: "baseline",
+        display: "flex",
+        justifyContent: "space-around",
+        padding: "0px 5vh",
+      }}
+    >
+      {/* Search Bar */}
+      <TextField
+        style={{ verticalAlign: "baseline" }}
+        placeholder="Search 🔍"
+      />
+
       {/* Type Chip */}
       <FormControl className={classes.formControl}>
         <InputLabel>Types</InputLabel>
@@ -137,6 +159,36 @@ const Dashboard: FC = () => {
               <MenuItem key={index} value={type}>
                 <Checkbox checked={activeRanks.indexOf(type) > -1} />
                 <ListItemText primary={type} />
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
+
+      {/* Packs Filter */}
+      <FormControl className={classes.formControl}>
+        <InputLabel>Packs</InputLabel>
+        <Select
+          labelId="packs-checkbox"
+          id="packs-checkbox"
+          multiple
+          value={activePacks}
+          onChange={handlePackChange}
+          input={<Input id="select-pack" />}
+          renderValue={(selected) => (
+            <div className={classes.chips}>
+              {(selected as string[]).map((value) => (
+                <Chip key={value} label={value} className={classes.chip} />
+              ))}
+            </div>
+          )}
+          MenuProps={MenuProps}
+        >
+          {supportedPacks.map((pack, index) => {
+            return (
+              <MenuItem key={index} value={pack}>
+                <Checkbox checked={activePacks.indexOf(pack) > -1} />
+                <ListItemText primary={pack} />
               </MenuItem>
             );
           })}
