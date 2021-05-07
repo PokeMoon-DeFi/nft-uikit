@@ -1,38 +1,52 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useSpring, animated } from "react-spring";
 import { NftCard } from "../Card";
-import styled from "styled-components";
 import { PokemoonNft } from "../../constants/nfts/types";
-import { useGesture } from "react-use-gesture";
-import { useLocation, useParams } from "react-router-dom";
-import useWindowSize from "hooks/useWindowSize";
-import GridList from "@material-ui/core/GridList";
-import Container from "@material-ui/core/Container";
-import RootRef from "@material-ui/core/RootRef";
 import Grid, { GridProps } from "@material-ui/core/Grid";
-import { useTheme } from "@material-ui/core";
+import Pagination from "@material-ui/lab/Pagination";
 
 export interface CarouselProps extends GridProps {
   nfts?: Array<PokemoonNft>;
 }
 
+const pageSize = 6;
 const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
   return (
-    <Grid container spacing={4} justify="center" {...props}>
-      {nfts?.map((nft, index) => (
-        <Grid
-          item
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-          lg={"auto"}
-          key={index}
-        >
-          <NftCard nft={nft} imageUrl={nft.imageUrl} key={index.toString()} />
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <Pagination
+        count={pageSize}
+        page={page}
+        onChange={handleChange}
+        style={{ marginBottom: 10 }}
+      />
+      <Grid container spacing={4} justify="center" {...props}>
+        {nfts
+          ?.filter(
+            (nft, index) =>
+              index > (page - 1) * pageSize && index <= page * pageSize
+          )
+          .map((nft, index) => (
+            <Grid
+              item
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+              lg={"auto"}
+              key={index}
+            >
+              <NftCard
+                nft={nft}
+                imageUrl={nft.imageUrl}
+                key={index.toString()}
+              />
+            </Grid>
+          ))}
+      </Grid>
+    </>
   );
 };
 
