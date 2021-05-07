@@ -10,6 +10,7 @@ import { NavHeader } from "components/Header";
 import { Content } from "components/layout";
 import { FilterDashboard } from "components/FilterDashboard";
 import { PokemoonNft } from "constants/index";
+import { TableGrid } from "components/TableGrid";
 
 //TODO: Swap icons for pokemoon stuff
 const linkConfig = [
@@ -70,6 +71,7 @@ const FullDemo: FC = () => {
       return true;
     });
     setFilterNfts(filteredNfts);
+    console.log(userNfts);
   }, [filterState, userNfts]);
 
   return (
@@ -89,7 +91,11 @@ const FullDemo: FC = () => {
         }
       />
       <Content maxWidth="md">
-        {viewState === "grid" ? <Gallery nfts={filterNfts} /> : <></>}
+        {viewState === "grid" ? (
+          <Gallery nfts={filterNfts} />
+        ) : (
+          <TableGrid nfts={filterNfts} />
+        )}
       </Content>
     </>
   );

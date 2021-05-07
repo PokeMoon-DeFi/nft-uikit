@@ -1,5 +1,10 @@
 import { PM_RARITY, RARITIES } from "constants/nfts";
-import { PokemoonNft, PokemoonCard, PokemoonPack } from "constants/nfts/types";
+import {
+  PokemoonNft,
+  PokemoonCard,
+  PokemoonPack,
+  UserNft,
+} from "constants/nfts/types";
 
 export interface Rarities {
   [key: string]: number;
@@ -30,4 +35,11 @@ export const getRarities = (nfts: PokemoonNft[] | undefined) => {
     }
   );
   return rarityCount;
+};
+
+export const flattenUserNfts = (nfts: PokemoonNft[]) => {
+  return nfts.map((nft) => {
+    const { card } = nft;
+    return { ...nft, ...card };
+  });
 };

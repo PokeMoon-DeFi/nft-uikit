@@ -41,3 +41,5 @@ export interface PokemoonPack {
   packId: string;
   imageUrl: string;
 }
+
+export interface UserNft extends PokemoonCard, PokemoonNft {}
