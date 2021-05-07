@@ -60,9 +60,7 @@ const getTypeIcon = (type: string) => {
 };
 
 const TypedChip: FC<TypeChipProps> = (props) => {
-  const { type } = props;
-
-  const icon = getTypeIcon(type);
+  const { type, children } = props;
 
   return <StyledChip icon={getTypeIcon(type)} {...props} />;
 };

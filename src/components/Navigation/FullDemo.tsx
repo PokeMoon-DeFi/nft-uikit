@@ -1,21 +1,15 @@
 import styled from "styled-components";
-import { useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import { FC } from "react";
-import SpeedDial from "@material-ui/lab/SpeedDial";
-import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
-import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
+import { FC, useState, useEffect } from "react";
 import StoreOutlinedIcon from "@material-ui/icons/StoreOutlined";
 import PhotoSizeSelectActualIcon from "@material-ui/icons/PhotoSizeSelectActual";
 import { Gallery } from "../Gallery";
 import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
-import Toolbar from "@material-ui/core/Toolbar";
-import Box from "@material-ui/core/Box";
 import { Fab } from "components/Fab";
 import { NavHeader } from "components/Header";
 import { Content } from "components/layout";
 import { FilterDashboard } from "components/FilterDashboard";
+import { PokemoonNft } from "constants/index";
 
 //TODO: Swap icons for pokemoon stuff
 const linkConfig = [
@@ -44,14 +38,58 @@ const StyledLinkContainer = styled(Typography)`
 
 const ACCOUNT = "0xce753a7d4C36339B1e427684402bE0D53064FeA6";
 
+interface FilterState {
+  rarities: string[];
+  types: string[];
+  packs: string[];
+}
+
 const FullDemo: FC = () => {
+  const [viewState, setViewState] = useState("table");
+  const [filterState, setFilterState] = useState<FilterState>({
+    rarities: [],
+    types: [],
+    packs: [],
+  });
+
+  const [userNfts, setUserNfts] = useState<PokemoonNft[]>(BLAST_OFF_COLLECTION);
+  const [filterNfts, setFilterNfts] = useState<PokemoonNft[]>(
+    BLAST_OFF_COLLECTION
+  );
+
+  useEffect(() => {
+    const { rarities, types, packs } = filterState;
+    const filteredNfts = userNfts.filter((nft) => {
+      if (types && types.length > 0) {
+        const type = nft.card?.type;
+        if (!type || !types.includes(type)) {
+          return false;
+        }
+      }
+
+      return true;
+    });
+    setFilterNfts(filteredNfts);
+  }, [filterState, userNfts]);
+
   return (
     <>
       <NavHeader account={ACCOUNT} />
       <Fab account={ACCOUNT} />
-      <FilterDashboard />
+      <FilterDashboard
+        onViewStateChange={(state) => setViewState(state)}
+        onTypeFilterChange={(filter) =>
+          setFilterState((state) => ({ ...state, types: filter }))
+        }
+        onRarityFilterChange={(filter) =>
+          setFilterState((state) => ({ ...state, rarities: filter }))
+        }
+        onPackFilterChange={(filter) =>
+          setFilterState((state) => ({ ...state, packs: filter }))
+        }
+      />
       <Content maxWidth="md">
-        <Gallery nfts={BLAST_OFF_COLLECTION} />
+        {viewState === "grid" ? <Gallery nfts={filterNfts} /> : <></>}
       </Content>
     </>
   );

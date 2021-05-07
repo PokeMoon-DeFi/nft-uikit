@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import { MaterialTheme } from "../../theme";
-import { Typography, Grid, ListItemText } from "@material-ui/core";
+import { Typography, Grid, ListItemText, IconButton } from "@material-ui/core";
 import Select from "@material-ui/core/Select";
 import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -21,7 +21,7 @@ import TextField from "@material-ui/core/TextField";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import TableChartIcon from "@material-ui/icons/TableChart";
-import ViewColumnIcon from "@material-ui/icons/ViewColumn";
+import AppsSharpIcon from "@material-ui/icons/AppsSharp";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -54,7 +54,26 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
-const Dashboard: FC = () => {
+
+const capitalize = (s: string) => {
+  if (typeof s !== "string") return "";
+  return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
+interface DashboardProps {
+  onViewStateChange: (state: string) => void;
+  onTypeFilterChange: (filter: string[]) => void;
+  onRarityFilterChange: (filter: string[]) => void;
+  onPackFilterChange: (filter: string[]) => void;
+}
+
+const Dashboard: FC<DashboardProps> = (props) => {
+  const {
+    onViewStateChange,
+    onTypeFilterChange,
+    onRarityFilterChange,
+    onPackFilterChange,
+  } = props;
   const classes = useStyles();
 
   const supportedTypes: string[] = Object.keys(MaterialTheme.palette.types);
@@ -64,24 +83,35 @@ const Dashboard: FC = () => {
   const [activeTypes, setActiveTypes] = React.useState<string[]>([]);
   const [activeRanks, setActiveRanks] = React.useState<string[]>([]);
   const [activePacks, setActivePacks] = React.useState<string[]>([]);
+  const [viewState, setViewState] = React.useState<string>("table");
+
+  const isGrid = viewState === "grid";
 
   const handleTypeChange = (event: any) => {
     const val = event.target.value;
+    onTypeFilterChange(val?.map((v: string) => capitalize(v)));
     setActiveTypes(val);
   };
 
   const handleRankChange = (event: any) => {
     const val = event.target.value;
+    onRarityFilterChange(val);
     setActiveRanks(val);
   };
 
   const handlePackChange = (event: any) => {
     const val = event?.target.value;
+    onPackFilterChange(val);
     setActivePacks(val);
   };
 
+  useEffect(() => {
+    onViewStateChange(viewState);
+  }, [viewState, onViewStateChange]);
+
   return (
-    <Box
+    <Grid
+      container
       style={{
         marginTop: 20,
         marginBottom: 20,
@@ -203,14 +233,28 @@ const Dashboard: FC = () => {
         </Select>
       </FormControl>
       <ButtonGroup>
-        <Button>
-          <TableChartIcon />
+        <Button
+          style={{
+            background:
+              "linear-gradient(0deg, rgba(34,15,46,1) 0%, rgba(100,60,163,1) 100%)",
+            border: "1px solid #ffffff",
+          }}
+          onClick={() => setViewState("table")}
+        >
+          <TableChartIcon style={{ fill: isGrid ? "black" : "white" }} />
         </Button>
-        <Button>
-          <ViewColumnIcon />
+        <Button
+          style={{
+            background:
+              "linear-gradient(0deg, rgba(34,15,46,1) 0%, rgba(100,60,163,1) 100%)",
+            border: "1px solid #ffffff",
+          }}
+          onClick={() => setViewState("grid")}
+        >
+          <AppsSharpIcon style={{ fill: !isGrid ? "black" : "white" }} />
         </Button>
       </ButtonGroup>
-    </Box>
+    </Grid>
   );
 };
 
