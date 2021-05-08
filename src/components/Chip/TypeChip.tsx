@@ -16,21 +16,30 @@ interface TypeChipProps extends ChipProps {
 }
 
 const StyledChip = styled(Chip)<TypeChipProps>`
-  background-color: ${({ theme, type }) =>
-    theme.palette.types[type.toLowerCase()].bgColor};
+  background-color: ${({ theme, type }) => {
+    if (!type) return "";
+    return theme.palette.types[type.toLowerCase()].bgColor;
+  }};
   .MuiChip-label {
-    color: ${({ theme, type }) =>
-      theme.palette.types[type.toLowerCase()].textColor};
+    color: ${({ theme, type }) => {
+      if (!type) return "";
+      return theme.palette.types[type.toLowerCase()].textColor;
+    }};
   }
   .MuiChip-icon {
-    fill: ${({ theme, type }) =>
-      theme.palette.types[type.toLowerCase()].textColor};
+    fill: ${({ theme, type }) => {
+      if (!type) return "";
+      return theme.palette.types[type.toLowerCase()].textColor;
+    }};
   }
   border-radius: 5px;
 `;
 
 const getTypeIcon = (type: string) => {
   const props = {};
+  if (!type) {
+    return undefined;
+  }
   switch (type.toLowerCase()) {
     case "lightning": {
       return <Lightning {...props} />;

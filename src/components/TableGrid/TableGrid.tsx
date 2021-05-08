@@ -5,33 +5,76 @@ import {
   GridValueGetterParams,
   GridCellParams,
 } from "@material-ui/data-grid";
-import { PokemoonNft, UserNft } from "constants/index";
+import { PokemoonNft } from "constants/index";
 import { flattenUserNfts } from "utils/nftStats";
+import { makeStyles } from "@material-ui/core/styles";
+import { TypeChip, RarityChip } from "components/Chip";
+
 export interface TableGridProps {
   nfts: Array<PokemoonNft>;
 }
 
-const ProgressBarFormatter = ({ value }: GridCellParams) => {
-  return <div>{value}</div>;
+const TypeCellFormatter = ({ value }: GridCellParams) => {
+  return <TypeChip type={value as string} label={value} />;
 };
 
+const RarityCellFormatter = ({ value }: GridCellParams) => {
+  return <RarityChip rarity={value as string} label={value} />;
+};
+
+const useStyles = makeStyles({
+  root: {},
+});
+
 const columns: GridColDef[] = [
-  { field: "tokenId", headerName: "ID", width: 70 },
+  {
+    field: "tokenId",
+    headerName: "ID",
+    headerAlign: "center",
+    align: "center",
+    // width: 70,
+    flex: 1,
+    valueFormatter: ({ value }) => `#${value}`,
+  },
+  {
+    field: "number",
+    headerAlign: "center",
+    align: "center",
+    headerName: "Number",
+    // width: 120,
+    flex: 1,
+  },
   {
     field: "name",
+    headerAlign: "center",
+    align: "center",
     headerName: "Name",
-    width: 140,
+    // width: 140,
+    flex: 1,
   },
   {
     field: "type",
+    headerAlign: "center",
+    align: "center",
     headerName: "Type",
-    width: 140,
-    renderCell: ProgressBarFormatter,
+    // width: 140,
+    flex: 1,
+    renderCell: TypeCellFormatter,
+  },
+  {
+    field: "rarity",
+    headerName: "Rarity",
+    // width: 140,
+    flex: 1,
+    headerAlign: "center",
+    align: "center",
+    renderCell: RarityCellFormatter,
   },
 ];
 
 const TableGrid: FC<TableGridProps> = ({ nfts }) => {
   const userNfts = flattenUserNfts(nfts);
+  const classes = useStyles();
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
@@ -41,6 +84,7 @@ const TableGrid: FC<TableGridProps> = ({ nfts }) => {
         getRowId={(row) => row.tokenId}
         hideFooterSelectedRowCount={false}
         autoHeight
+        className={classes.root}
       />
     </div>
   );
