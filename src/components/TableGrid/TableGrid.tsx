@@ -22,6 +22,10 @@ const RarityCellFormatter = ({ value }: GridCellParams) => {
   return <RarityChip rarity={value as string} label={value} />;
 };
 
+const PackIdFormatter = ({ value }: GridCellParams) => {
+  return <div>#{value}</div>;
+};
+
 const useStyles = makeStyles({
   root: {},
 });
@@ -35,6 +39,14 @@ const columns: GridColDef[] = [
     // width: 70,
     flex: 1,
     valueFormatter: ({ value }) => `#${value}`,
+  },
+  {
+    field: "packId",
+    headerName: "Pack ID",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    renderCell: PackIdFormatter,
   },
   {
     field: "number",

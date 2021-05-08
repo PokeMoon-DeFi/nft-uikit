@@ -1,10 +1,7 @@
-import { PM_RARITY, RARITIES } from "constants/nfts";
-import {
-  PokemoonNft,
-  PokemoonCard,
-  PokemoonPack,
-  UserNft,
-} from "constants/nfts/types";
+import { RARITIES } from "constants/nfts";
+import { PokemoonNft } from "constants/nfts/types";
+import tokenIdToPack from "constants/tokenIdToPack.json";
+import blastoffPacks from "constants/blastOffPacks.json";
 
 export interface Rarities {
   [key: string]: number;
@@ -39,7 +36,16 @@ export const getRarities = (nfts: PokemoonNft[] | undefined) => {
 
 export const flattenUserNfts = (nfts: PokemoonNft[]) => {
   return nfts.map((nft) => {
-    const { card } = nft;
-    return { ...nft, ...card };
+    const { card, uniqueId } = nft;
+    const packId = getPackFromTokenId(uniqueId ?? "11000002");
+    return { ...nft, ...card, packId };
   });
+};
+
+export const getPackFromTokenId = (tokenId: string) => {
+  return (tokenIdToPack as any)[tokenId];
+};
+
+export const getCachedPackInfo = (packId: string) => {
+  return (blastoffPacks as any)[packId];
 };
