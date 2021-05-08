@@ -25,6 +25,16 @@ import {
   Stars,
 } from "@react-three/drei";
 import { InspectorDialogProps } from "components/Modal/InspectorModal";
+import {
+  EffectComposer,
+  DepthOfField,
+  Bloom,
+  Noise,
+  Vignette,
+  Glitch,
+  BrightnessContrast,
+  HueSaturation,
+} from "@react-three/postprocessing";
 
 interface CardModelProps {
   glbUrl: string;
@@ -43,8 +53,8 @@ const CardModel: FC<CardModelProps> = ({ glbUrl }) => {
   const { ref, mixer, names, actions } = useAnimations(gltf.animations);
 
   useEffect(() => {
-    if (Object.keys(actions).length > 0 && names.length > 0) {
-      actions[names[0]].play();
+    for (const name of names) {
+      actions[name].play();
     }
   }, [ref, mixer, names, actions]);
 
@@ -113,22 +123,32 @@ export const InspectCard: React.FC<InspectorDialogProps> = ({
             <PerspectiveCamera position={[0, 1.3, 4]} makeDefault />
             <OrbitControls target={new THREE.Vector3(0, 1.3, 0)} />
             <directionalLight
-              intensity={0.7}
-              position={new THREE.Vector3(-1, 0.5, 3)}
+              intensity={0.3}
+              position={new THREE.Vector3(-1, -1, 3)}
             />
             <directionalLight
-              intensity={0.6}
+              intensity={0.3}
+              position={new THREE.Vector3(1, 1, 3)}
+            />
+            <directionalLight
+              intensity={0.3}
               position={new THREE.Vector3(0, 0, -1)}
-            />
-            <directionalLight
-              intensity={0.4}
-              position={new THREE.Vector3(1, 0.5, 3)}
             />
             <Stars />
             <Suspense fallback={null}>
               {/* @ts-ignore */}
               <CardModel glbUrl={nft.glbUrl} />
             </Suspense>
+
+            <EffectComposer>
+              <BrightnessContrast brightness={0.2} contrast={0.4} />
+              <Bloom
+                luminanceThreshold={0.2}
+                luminanceSmoothing={0.9}
+                height={300}
+                intensity={0.4}
+              />
+            </EffectComposer>
           </Canvas>
         ) : (
           !gpuPending &&

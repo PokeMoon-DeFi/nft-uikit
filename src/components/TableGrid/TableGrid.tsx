@@ -21,6 +21,11 @@ const columns: GridColDef[] = [
     field: "name",
     headerName: "Name",
     width: 140,
+  },
+  {
+    field: "type",
+    headerName: "Type",
+    width: 140,
     renderCell: ProgressBarFormatter,
   },
 ];
