@@ -9,6 +9,11 @@ import { PokemoonNft } from "constants/index";
 import { flattenUserNfts } from "utils/nftStats";
 import { makeStyles } from "@material-ui/core/styles";
 import { TypeChip, RarityChip } from "components/Chip";
+import Box from "@material-ui/core/Box";
+//@ts-ignore
+import Jdenticon from "react-jdenticon";
+import Button from "components/Button";
+import SearchIcon from "@material-ui/icons/Search";
 
 export interface TableGridProps {
   nfts: Array<PokemoonNft>;
@@ -23,7 +28,31 @@ const RarityCellFormatter = ({ value }: GridCellParams) => {
 };
 
 const PackIdFormatter = ({ value }: GridCellParams) => {
-  return <div>#{value}</div>;
+  console.log(value);
+  //@ts-ignore
+  const { set, packId } = value;
+  return (
+    <Box
+      style={{
+        flex: 1,
+        display: "flex",
+        justifyContent: "space-around",
+        alignContent: "center",
+        textAlign: "center",
+        alignItems: "center",
+      }}
+    >
+      {set}#{packId}
+      <div
+        style={{ paddingTop: 15, cursor: "pointer" }}
+        onClick={() => {
+          window.location.href = `/pack/${packId}`;
+        }}
+      >
+        <Jdenticon size="24" value={packId} style={{ margin: "auto" }} />
+      </div>
+    </Box>
+  );
 };
 
 const useStyles = makeStyles({
@@ -36,16 +65,17 @@ const columns: GridColDef[] = [
     headerName: "ID",
     headerAlign: "center",
     align: "center",
-    // width: 70,
-    flex: 1,
+    width: 70,
+    // flex: 1,
     valueFormatter: ({ value }) => `#${value}`,
   },
   {
-    field: "packId",
+    field: "pack",
     headerName: "Pack ID",
     headerAlign: "center",
     align: "center",
-    flex: 1,
+    // flex: 1,
+    width: 180,
     renderCell: PackIdFormatter,
   },
   {
@@ -54,7 +84,7 @@ const columns: GridColDef[] = [
     align: "center",
     headerName: "Number",
     // width: 120,
-    flex: 1,
+    // flex: 1,
   },
   {
     field: "name",
@@ -62,7 +92,7 @@ const columns: GridColDef[] = [
     align: "center",
     headerName: "Name",
     // width: 140,
-    flex: 1,
+    // flex: 1,
   },
   {
     field: "type",
@@ -70,30 +100,40 @@ const columns: GridColDef[] = [
     align: "center",
     headerName: "Type",
     // width: 140,
-    flex: 1,
+    // flex: 1,
     renderCell: TypeCellFormatter,
   },
   {
     field: "rarity",
     headerName: "Rarity",
     // width: 140,
-    flex: 1,
+    // flex: 1,
     headerAlign: "center",
     align: "center",
     renderCell: RarityCellFormatter,
+  },
+  {
+    field: "uniqueId",
+    align: "center",
+    headerName: "Actions",
+    width: 120,
+    renderCell: () => {
+      return <Button endIcon={<SearchIcon />}>Inspect</Button>;
+    },
   },
 ];
 
 const TableGrid: FC<TableGridProps> = ({ nfts }) => {
   const userNfts = flattenUserNfts(nfts);
   const classes = useStyles();
+  console.log(userNfts);
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
         rows={userNfts ?? []}
         columns={columns}
         pageSize={10}
-        getRowId={(row) => row.tokenId}
+        getRowId={(row) => row.uniqueId}
         hideFooterSelectedRowCount={false}
         autoHeight
         className={classes.root}

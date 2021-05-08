@@ -4,13 +4,8 @@ import { PokemoonNft } from "../../constants";
 import CardContent from "@material-ui/core/CardContent";
 import useModal from "hooks/useModal";
 import { InspectorDialog } from "components/Modal";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import Button from "components/Button";
 import Paper from "@material-ui/core/Paper";
 import Skeleton from "@material-ui/lab/Skeleton";
-import Box from "@material-ui/core/Box";
 import { Sleeve } from "./CardSleeve";
 
 interface CardWrapper {
