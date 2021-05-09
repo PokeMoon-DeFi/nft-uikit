@@ -29,6 +29,7 @@
     "react-dom": "^17.0.2",
     "react-jdenticon": "^0.0.9",
     "react-modal-hook": "^3.0.0",
+    "react-player": "^2.9.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-spring": "^9.1.2",
@@ -40,7 +41,7 @@
   },
   "scripts": {
     "start": "yarn storybook",
-    "build": "rm -rf build && yarn rollup && yalc push --private",
+    "build": "rm -rf build && yarn rollup && yalc publish --private",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
