@@ -28,7 +28,6 @@ const RarityCellFormatter = ({ value }: GridCellParams) => {
 };
 
 const PackIdFormatter = ({ value }: GridCellParams) => {
-  console.log(value);
   //@ts-ignore
   const { set, packId } = value;
   return (
@@ -42,7 +41,7 @@ const PackIdFormatter = ({ value }: GridCellParams) => {
         alignItems: "center",
       }}
     >
-      {set}#{packId}
+      {set} #{packId}
       <div
         style={{ paddingTop: 15, cursor: "pointer" }}
         onClick={() => {
@@ -126,7 +125,6 @@ const columns: GridColDef[] = [
 const TableGrid: FC<TableGridProps> = ({ nfts }) => {
   const userNfts = flattenUserNfts(nfts);
   const classes = useStyles();
-  console.log(userNfts);
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid

@@ -11,6 +11,7 @@ import { Content } from "components/layout";
 import { FilterDashboard } from "components/FilterDashboard";
 import { PokemoonNft } from "constants/index";
 import { TableGrid } from "components/TableGrid";
+import { flattenUserNfts } from "utils/nftStats";
 
 //TODO: Swap icons for pokemoon stuff
 const linkConfig = [
@@ -60,7 +61,7 @@ const FullDemo: FC = () => {
 
   useEffect(() => {
     const { rarities, types, packs } = filterState;
-    const filteredNfts = userNfts.filter((nft) => {
+    const filteredNfts = flattenUserNfts(userNfts).filter((nft) => {
       if (types && types.length > 0) {
         const type = nft.card?.type;
         if (!type || !types.includes(type)) {
@@ -71,7 +72,6 @@ const FullDemo: FC = () => {
       return true;
     });
     setFilterNfts(filteredNfts);
-    console.log(userNfts);
   }, [filterState, userNfts]);
 
   return (

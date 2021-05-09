@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Story, Meta } from "@storybook/react";
 import Button from "../Button";
 import Modal from "./DialogModal";

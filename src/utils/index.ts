@@ -35,3 +35,5 @@ export const getRarityGradient = (rarity: string) => {
   const gradientString = `linear-gradient(120deg, ${startColor} 0%, ${endColor} 47%, #111111 47.3%, #111111 100%)`;
   return gradientString;
 };
+
+export * from "./nftStats";

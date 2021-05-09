@@ -40,13 +40,14 @@
   },
   "scripts": {
     "start": "yarn storybook",
-    "build": "rm -rf build && yarn rollup && yalc publish --private",
+    "build": "rm -rf build && yarn rollup && yalc push --private",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "rollup": "rollup -c",
-    "sb:build": "yarn build-storybook"
+    "sb:build": "yarn build-storybook",
+    "prepare": "yarn build"
   },
   "eslintConfig": {
     "extends": [

@@ -18,3 +18,4 @@ export * from "./BuyInfo";
 export * from "./Chip";
 export * from "./ConnectScreen";
 export * from "./FilterDashboard";
+export * from "./TableGrid";
