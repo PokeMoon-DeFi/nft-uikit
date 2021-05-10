@@ -19,3 +19,4 @@ export * from "./Chip";
 export * from "./ConnectScreen";
 export * from "./FilterDashboard";
 export * from "./TableGrid";
+export * from "./VideoPlayer";

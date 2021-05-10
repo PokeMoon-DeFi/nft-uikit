@@ -1,5 +1,5 @@
 import { Story, Meta } from "@storybook/react";
-import { VideoPlayer } from "./ReactPlayer";
+import { VideoPlayer } from "./VideoPlayer";
 
 export default {
   title: "Video Player",
