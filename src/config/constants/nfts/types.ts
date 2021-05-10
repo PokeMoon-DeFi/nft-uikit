@@ -7,20 +7,12 @@ export interface ArtistInfo {
   address?: string;
 }
 
-
-export interface PokemoonCard {
-  number: number;
-  name: string;
-  type: string;
-  description: string;
-  artist?: ArtistInfo;
-}
-
 /**
  * PokeMoon NFT with unique tokenId and asset for each card number + rarity. PokeMoon card info is shared across multiple tokenIds
  */
 export interface PokemoonNft {
   tokenId: string;
+  isPack: boolean;
   set: string;
   imageUrl: string;
   rarity?: string;

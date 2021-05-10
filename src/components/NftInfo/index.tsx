@@ -129,7 +129,7 @@ const getIcon = (type: string | undefined) => {
 };
 
 const NftInfo = ({ nft, handleClose }: InspectorDialogProps) => {
-  const card = nft.card;
+  const card = nft;
   const theme = useTheme();
   const rarity: string = nft.rarity ? nft.rarity : "0";
   const rarityGradient = getRarityGradient(rarity);

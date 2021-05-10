@@ -6,7 +6,6 @@ import {
   GridCellParams,
 } from "@material-ui/data-grid";
 import { PokemoonNft } from "constants/index";
-import { flattenUserNfts } from "utils/nftStats";
 import { makeStyles } from "@material-ui/core/styles";
 import { TypeChip, RarityChip } from "components/Chip";
 import Box from "@material-ui/core/Box";
@@ -28,8 +27,6 @@ const RarityCellFormatter = ({ value }: GridCellParams) => {
 };
 
 const PackIdFormatter = ({ value }: GridCellParams) => {
-  //@ts-ignore
-  const { set, packId } = value;
   return (
     <Box
       style={{
@@ -41,14 +38,14 @@ const PackIdFormatter = ({ value }: GridCellParams) => {
         alignItems: "center",
       }}
     >
-      {set} #{packId}
+      #{value}
       <div
         style={{ paddingTop: 15, cursor: "pointer" }}
         onClick={() => {
-          window.location.href = `/pack/${packId}`;
+          window.location.href = `/pack/${value}`;
         }}
       >
-        <Jdenticon size="24" value={packId} style={{ margin: "auto" }} />
+        <Jdenticon size="24" value={value} style={{ margin: "auto" }} />
       </div>
     </Box>
   );
@@ -69,21 +66,12 @@ const columns: GridColDef[] = [
     valueFormatter: ({ value }) => `#${value}`,
   },
   {
-    field: "pack",
+    field: "packId",
     headerName: "Pack ID",
     headerAlign: "center",
     align: "center",
     // flex: 1,
-    width: 180,
     renderCell: PackIdFormatter,
-  },
-  {
-    field: "number",
-    headerAlign: "center",
-    align: "center",
-    headerName: "Number",
-    // width: 120,
-    // flex: 1,
   },
   {
     field: "name",
@@ -112,6 +100,12 @@ const columns: GridColDef[] = [
     renderCell: RarityCellFormatter,
   },
   {
+    field: "set",
+    headerName: "Set",
+    headerAlign: "center",
+    align: "center",
+  },
+  {
     field: "uniqueId",
     align: "center",
     headerName: "Actions",
@@ -123,15 +117,15 @@ const columns: GridColDef[] = [
 ];
 
 const TableGrid: FC<TableGridProps> = ({ nfts }) => {
-  const userNfts = flattenUserNfts(nfts);
   const classes = useStyles();
+  console.log(nfts);
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={userNfts ?? []}
+        rows={nfts ?? []}
         columns={columns}
         pageSize={10}
-        getRowId={(row) => row.uniqueId}
+        getRowId={(row) => row.tokenId}
         hideFooterSelectedRowCount={false}
         autoHeight
         className={classes.root}

@@ -34,15 +34,6 @@ export const getRarities = (nfts: PokemoonNft[] | undefined) => {
   return rarityCount;
 };
 
-export const flattenUserNfts = (nfts: PokemoonNft[]) => {
-  return nfts.map((nft, index) => {
-    let { card, uniqueId, set } = nft;
-    uniqueId = uniqueId ?? `110000${index}`;
-    const packId = getPackFromTokenId(uniqueId);
-    return { ...nft, ...card, uniqueId, pack: { packId, set } };
-  });
-};
-
 export const getPackFromTokenId = (tokenId: string) => {
   return (tokenIdToPack as any)[tokenId];
 };

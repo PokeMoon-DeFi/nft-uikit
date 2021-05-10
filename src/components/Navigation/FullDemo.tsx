@@ -11,7 +11,7 @@ import { Content } from "components/layout";
 import { FilterDashboard } from "components/FilterDashboard";
 import { PokemoonNft } from "constants/index";
 import { TableGrid } from "components/TableGrid";
-import { flattenUserNfts } from "utils/nftStats";
+import { nftBalance } from "utils/nftBalance";
 
 //TODO: Swap icons for pokemoon stuff
 const linkConfig = [
@@ -54,16 +54,17 @@ const FullDemo: FC = () => {
     packs: [],
   });
 
-  const [userNfts, setUserNfts] = useState<PokemoonNft[]>(BLAST_OFF_COLLECTION);
-  const [filterNfts, setFilterNfts] = useState<PokemoonNft[]>(
-    BLAST_OFF_COLLECTION
+  const [userNfts, setUserNfts] = useState<PokemoonNft[]>(
+    nftBalance.blastOff.cards
   );
+  const [filterNfts, setFilterNfts] = useState<PokemoonNft[]>(userNfts);
 
   useEffect(() => {
     const { rarities, types, packs } = filterState;
-    const filteredNfts = flattenUserNfts(userNfts).filter((nft) => {
+
+    const filteredNfts = userNfts.filter((nft) => {
       if (types && types.length > 0) {
-        const type = nft.card?.type;
+        const type = nft.type;
         if (!type || !types.includes(type)) {
           return false;
         }
@@ -71,6 +72,7 @@ const FullDemo: FC = () => {
 
       return true;
     });
+
     setFilterNfts(filteredNfts);
   }, [filterState, userNfts]);
 
