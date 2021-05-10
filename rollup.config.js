@@ -33,6 +33,7 @@ export default {
     "@material-ui/styles",
     "@react-three/drei",
     "@react-three/fiber",
+    "react-jdenticon",
   ],
   plugins: [
     peerDepsExternal(),

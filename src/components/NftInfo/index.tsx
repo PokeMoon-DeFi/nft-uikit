@@ -135,6 +135,7 @@ const NftInfo = ({ nft, handleClose }: InspectorDialogProps) => {
   const rarityGradient = getRarityGradient(rarity);
   const type = card?.type ?? "Supporter";
   const typeColor = theme.palette.types[type.toLowerCase()].bgColor;
+  const fillColor = theme.palette.types[type.toLowerCase()].textColor;
   const TypeIcon = getIcon(type);
 
   return (
@@ -146,7 +147,9 @@ const NftInfo = ({ nft, handleClose }: InspectorDialogProps) => {
         </NR>
         <Name>{card?.name}</Name>
       </PrimaryInfo>
-      <SecondaryInfo style={{ background: typeColor, fill: "white" }}>
+      <SecondaryInfo
+        style={{ background: typeColor, fill: fillColor, color: fillColor }}
+      >
         <PokemoonType>
           {TypeIcon ? (
             <TypeIcon

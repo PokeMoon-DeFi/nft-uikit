@@ -24,10 +24,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/11000002.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/11000002.glb",
+        glbUrl: "/models/001meownautC.glb",
         set: "blastOff",
         packId: "5",
       },
@@ -42,10 +39,7 @@ export const nftBalance = {
           name: "NinjaGuy",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/29000001.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/29000001.glb",
+        glbUrl: "/models/014changeteamsUC.glb",
         set: "blastOff",
         packId: "5",
       },
@@ -62,10 +56,7 @@ export const nftBalance = {
           instagram: "@ilyaspb2019",
         },
         rarity: "Rare",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/48000001.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/48000001.glb",
+        glbUrl: "/models/009kadalaxR.glb",
         set: "blastOff",
         packId: "5",
       },
@@ -82,10 +73,7 @@ export const nftBalance = {
           instagram: "@ilyaspb2019",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/37000002.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/37000002.glb",
+        glbUrl: "/models/010kadalaxslimUC.glb",
         set: "blastOff",
         packId: "5",
       },
@@ -100,10 +88,7 @@ export const nftBalance = {
           name: "NinjaGuy",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/19000001.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/19000001.glb",
+        glbUrl: "/models/014changeteamsC.glb",
         set: "blastOff",
         packId: "5",
       },
@@ -120,10 +105,7 @@ export const nftBalance = {
           instagram: "@ilyaspb2019",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/34000006.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/34000006.glb",
+        glbUrl: "/models/009kadalaxUC.glb",
         set: "blastOff",
         packId: "66",
       },
@@ -139,10 +121,7 @@ export const nftBalance = {
           instagram: "@morlux_artista",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/18000013.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/18000013.glb",
+        glbUrl: "/models/011zapduckC.glb",
         set: "blastOff",
         packId: "66",
       },
@@ -158,10 +137,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/17000009.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/17000009.glb",
+        glbUrl: "/models/012goldenkobanC.glb",
         set: "blastOff",
         packId: "66",
       },
@@ -176,10 +152,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/14000012.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/14000012.glb",
+        glbUrl: "/models/007blastardC.glb",
         set: "blastOff",
         packId: "66",
       },
@@ -196,10 +169,7 @@ export const nftBalance = {
           instagram: "@ilyaspb2019",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/16000020.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/16000020.glb",
+        glbUrl: "/models/004rattishC.glb",
         set: "blastOff",
         packId: "66",
       },
@@ -216,10 +186,7 @@ export const nftBalance = {
           instagram: "@ilyaspb2019",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/16002524.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/16002524.glb",
+        glbUrl: "/models/004rattishC.glb",
         set: "blastOff",
         packId: "11231",
       },
@@ -234,10 +201,7 @@ export const nftBalance = {
           name: "NinjaGuy",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/19001237.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/19001237.glb",
+        glbUrl: "/models/014changeteamsC.glb",
         set: "blastOff",
         packId: "11231",
       },
@@ -254,10 +218,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/25002503.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/25002503.glb",
+        glbUrl: "/models/003pikapuffC.glb",
         set: "blastOff",
         packId: "11231",
       },
@@ -273,10 +234,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/31001240.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/31001240.glb",
+        glbUrl: "/models/001meownautUC.glb",
         set: "blastOff",
         packId: "11231",
       },
@@ -292,10 +250,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/17001187.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/17001187.glb",
+        glbUrl: "/models/012goldenkobanC.glb",
         set: "blastOff",
         packId: "11231",
       },
@@ -311,10 +266,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/38001212.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/38001212.glb",
+        glbUrl: "/models/005squirderUC.glb",
         set: "blastOff",
         packId: "11232",
       },
@@ -331,10 +283,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/39001257.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/39001257.glb",
+        glbUrl: "/models/003pikapuffUC.glb",
         set: "blastOff",
         packId: "11232",
       },
@@ -350,10 +299,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/32001268.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/32001268.glb",
+        glbUrl: "/models/013goldenkobanUC.glb",
         set: "blastOff",
         packId: "11232",
       },
@@ -369,10 +315,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/22002427.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/22002427.glb",
+        glbUrl: "/models/005squirderC.glb",
         set: "blastOff",
         packId: "11232",
       },
@@ -388,10 +331,7 @@ export const nftBalance = {
           instagram: "@morlux_artista",
         },
         rarity: "Rare",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/44000386.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/44000386.glb",
+        glbUrl: "/models/011zapduckR.glb",
         set: "blastOff",
         packId: "11232",
       },
@@ -408,10 +348,7 @@ export const nftBalance = {
           instagram: "@ilyaspb2019",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/15002704.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/15002704.glb",
+        glbUrl: "/models/009kadalaxC.glb",
         set: "blastOff",
         packId: "12418",
       },
@@ -427,10 +364,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/11001345.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/11001345.glb",
+        glbUrl: "/models/001meownautC.glb",
         set: "blastOff",
         packId: "12418",
       },
@@ -445,10 +379,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/33001284.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/33001284.glb",
+        glbUrl: "/models/002pikapuffUC.glb",
         set: "blastOff",
         packId: "12418",
       },
@@ -465,10 +396,7 @@ export const nftBalance = {
           instagram: "@ilyaspb2019",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/16002802.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/16002802.glb",
+        glbUrl: "/models/004rattishC.glb",
         set: "blastOff",
         packId: "12418",
       },
@@ -484,10 +412,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/31001374.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/31001374.glb",
+        glbUrl: "/models/001meownautUC.glb",
         set: "blastOff",
         packId: "12418",
       },
@@ -504,10 +429,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/39001389.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/39001389.glb",
+        glbUrl: "/models/003pikapuffUC.glb",
         set: "blastOff",
         packId: "12419",
       },
@@ -522,10 +444,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/33001285.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/33001285.glb",
+        glbUrl: "/models/002pikapuffUC.glb",
         set: "blastOff",
         packId: "12419",
       },
@@ -541,10 +460,7 @@ export const nftBalance = {
           instagram: "@morlux_artista",
         },
         rarity: "Rare",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/44000436.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/44000436.glb",
+        glbUrl: "/models/011zapduckR.glb",
         set: "blastOff",
         packId: "12419",
       },
@@ -560,10 +476,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/24001384.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/24001384.glb",
+        glbUrl: "/models/006chartortleC.glb",
         set: "blastOff",
         packId: "12419",
       },
@@ -580,10 +493,7 @@ export const nftBalance = {
           instagram: "@ilyaspb2019",
         },
         rarity: "Rare",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/47000412.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/47000412.glb",
+        glbUrl: "/models/004rattishR.glb",
         set: "blastOff",
         packId: "12419",
       },
@@ -599,10 +509,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/32001406.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/32001406.glb",
+        glbUrl: "/models/013goldenkobanUC.glb",
         set: "blastOff",
         packId: "12420",
       },
@@ -617,10 +524,7 @@ export const nftBalance = {
           name: "NinjaGuy",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/13002661.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/13002661.glb",
+        glbUrl: "/models/015rashscratchumC.glb",
         set: "blastOff",
         packId: "12420",
       },
@@ -636,10 +540,7 @@ export const nftBalance = {
           instagram: "@morlux_artista",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/18002781.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/18002781.glb",
+        glbUrl: "/models/011zapduckC.glb",
         set: "blastOff",
         packId: "12420",
       },
@@ -656,10 +557,7 @@ export const nftBalance = {
           instagram: "@ilyaspb2019",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/34001354.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/34001354.glb",
+        glbUrl: "/models/009kadalaxUC.glb",
         set: "blastOff",
         packId: "12420",
       },
@@ -675,10 +573,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Rare",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/55000440.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/55000440.glb",
+        glbUrl: "/models/008blastardR.glb",
         set: "blastOff",
         packId: "12420",
       },
@@ -694,10 +589,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/17001311.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/17001311.glb",
+        glbUrl: "/models/012goldenkobanC.glb",
         set: "blastOff",
         packId: "12421",
       },
@@ -713,10 +605,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/36001275.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/36001275.glb",
+        glbUrl: "/models/012goldenkobanUC.glb",
         set: "blastOff",
         packId: "12421",
       },
@@ -732,10 +621,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/23001399.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/23001399.glb",
+        glbUrl: "/models/008blastardC.glb",
         set: "blastOff",
         packId: "12421",
       },
@@ -751,10 +637,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/32001407.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/32001407.glb",
+        glbUrl: "/models/013goldenkobanUC.glb",
         set: "blastOff",
         packId: "12421",
       },
@@ -771,10 +654,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Legendary",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/61000423.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/61000423.glb",
+        glbUrl: "/models/003pikapuffL.glb",
         set: "blastOff",
         packId: "12421",
       },
@@ -790,10 +670,7 @@ export const nftBalance = {
           name: "Armilo Barrios",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/38001330.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/38001330.glb",
+        glbUrl: "/models/005squirderUC.glb",
         set: "blastOff",
         packId: "12422",
       },
@@ -809,10 +686,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Common",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/20002736.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/20002736.glb",
+        glbUrl: "/models/013goldenkobanC.glb",
         set: "blastOff",
         packId: "12422",
       },
@@ -827,10 +701,7 @@ export const nftBalance = {
           name: "NinjaGuy",
         },
         rarity: "Rare",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/52000418.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/52000418.glb",
+        glbUrl: "/models/014changeteamsR.glb",
         set: "blastOff",
         packId: "12422",
       },
@@ -847,10 +718,7 @@ export const nftBalance = {
           instagram: "@lilloworks",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/39001390.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/39001390.glb",
+        glbUrl: "/models/003pikapuffUC.glb",
         set: "blastOff",
         packId: "12422",
       },
@@ -865,10 +733,7 @@ export const nftBalance = {
           name: "NinjaGuy",
         },
         rarity: "Uncommon",
-        gifUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/29001427.gif",
-        glbUrl:
-          "https://storage.pokemoonapis.com/context/token/fde4/identifier/29001427.glb",
+        glbUrl: "/models/014changeteamsUC.glb",
         set: "blastOff",
         packId: "12422",
       },

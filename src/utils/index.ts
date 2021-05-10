@@ -17,7 +17,7 @@ export const getRarityGradient = (rarity: string) => {
       break;
     case PM_RARITY.R:
       startColor = MaterialTheme.palette.rarity.rare.bgColor;
-      endColor = MaterialTheme.palette.rarity.bgColor;
+      endColor = MaterialTheme.palette.rarity.rare.bgColor;
       break;
     case PM_RARITY.L:
       startColor = MaterialTheme.palette.rarity.legendary.bgColor;

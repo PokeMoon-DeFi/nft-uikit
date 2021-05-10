@@ -46,7 +46,7 @@ const PackIdFormatter = ({ value }: GridCellParams) => {
             window.location.href = `/pack/${value}`;
           }}
         >
-          {/* <Jdenticon size="24" value={value} style={{ margin: "auto" }} /> */}
+          <Jdenticon size="24" value={value} style={{ margin: "auto" }} />
         </div>
       )}
     </Box>

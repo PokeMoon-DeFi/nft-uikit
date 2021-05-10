@@ -3,10 +3,19 @@ import { NftCard } from "../Card";
 import { PokemoonNft } from "../../constants/nfts/types";
 import Grid, { GridProps } from "@material-ui/core/Grid";
 import Pagination from "@material-ui/lab/Pagination";
-
+import styled from "styled-components";
 export interface CarouselProps extends GridProps {
   nfts?: Array<PokemoonNft>;
 }
+
+const StyledPagination = styled(Pagination)`
+  .MuiPaginationItem-root {
+    color: white;
+  }
+  .MuiPaginationItem-page.Mui-selected {
+    background-color: #5d3797;
+  }
+`;
 
 const pageSize = 6;
 const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
@@ -16,11 +25,12 @@ const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
   };
   return (
     <>
-      <Pagination
+      <StyledPagination
         count={pageSize}
         page={page}
         onChange={handleChange}
         style={{ marginBottom: 10 }}
+        variant={"outlined"}
       />
       <Grid container spacing={4} justify="center" {...props}>
         {nfts
