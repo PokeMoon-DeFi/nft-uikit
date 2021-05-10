@@ -1,25 +1,15 @@
-import React, {
-  Suspense,
-  FC,
-  useEffect,
-  useRef,
-  useMemo,
-  useState,
-} from "react";
+import React, { Suspense, FC, useEffect, useMemo, useState } from "react";
 import { useMediaQuery } from "@material-ui/core";
-import { PokemoonNft } from "constants/nfts";
 import NftInfo from "../NftInfo";
 import styled from "styled-components";
 import { useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 import {
   useGLTF,
-  Loader,
   PerspectiveCamera,
   OrbitControls,
-  Stage,
   useAnimations,
   useDetectGPU,
   Stars,
@@ -68,7 +58,7 @@ export const InspectCard: React.FC<InspectorDialogProps> = ({
   const { glbUrl } = nft;
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
-  const bi = `url("/images/types/${nft?.card?.type}${
+  const bi = `url("/images/types/${nft?.type}${
     matches ? "wide 1" : "tall 1"
   }.png")`;
 

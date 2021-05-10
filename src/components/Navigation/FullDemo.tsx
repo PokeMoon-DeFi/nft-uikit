@@ -4,7 +4,6 @@ import { FC, useState, useEffect } from "react";
 import StoreOutlinedIcon from "@material-ui/icons/StoreOutlined";
 import PhotoSizeSelectActualIcon from "@material-ui/icons/PhotoSizeSelectActual";
 import { Gallery } from "../Gallery";
-import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
 import { Fab } from "components/Fab";
 import { NavHeader } from "components/Header";
 import { Content } from "components/layout";

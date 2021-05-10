@@ -1,7 +1,7 @@
 import React from "react";
 import Gallery from "./Gallery";
 import { useParams } from "react-router-dom";
-import { BLAST_OFF_COLLECTION } from "utils/StoryData";
+import { nftBalance } from "utils/nftBalance";
 
 interface Params {
   id: string;
@@ -10,7 +10,7 @@ interface Params {
 const PackViewer: React.FC = () => {
   const { id } = useParams<Params>();
 
-  return <Gallery nfts={BLAST_OFF_COLLECTION} />;
+  return <Gallery nfts={nftBalance.blastOff.cards} />;
 };
 
 export default PackViewer;

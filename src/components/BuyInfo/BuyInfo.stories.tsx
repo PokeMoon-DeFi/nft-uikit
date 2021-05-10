@@ -1,5 +1,4 @@
 import { Story, Meta } from "@storybook/react";
-import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
 import { BuyInfo, BuyInfoProps } from "./index";
 import Grid, { GridSpacing } from "@material-ui/core/Grid";
 import useMediaQuery from "@material-ui/core/useMediaQuery";

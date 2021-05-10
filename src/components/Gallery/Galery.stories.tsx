@@ -1,17 +1,17 @@
 import Gallery from "./Gallery";
 import { Story, Meta } from "@storybook/react";
 import { Page, Content } from "../layout";
-import { BLAST_OFF_COLLECTION } from "../../utils/StoryData";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PackViewer from "./PackViewer";
 import PackCollection from "./PackCollection";
+import { nftBalance } from "../../utils/nftBalance";
 
 export default {
   title: "Gallery",
   component: Gallery,
 } as Meta;
 
-export const Basic: Story = () => <Gallery nfts={BLAST_OFF_COLLECTION} />;
+export const Basic: Story = () => <Gallery nfts={nftBalance.blastOff.cards} />;
 
 export const PackId: Story = () => (
   <Page>

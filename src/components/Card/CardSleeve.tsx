@@ -37,8 +37,8 @@ const StyledBox = styled(Box)`
 `;
 
 export const Sleeve: FC<SleeveProps> = ({ nft }) => {
-  const { uniqueId, rarity, card } = nft;
-  const { name, type } = card ?? { name: "", type: "fire" };
+  const { tokenId, rarity } = nft;
+  const { name, type } = nft ?? { name: "", type: "fire" };
   const [showModal] = useModal(<InspectorDialog nft={nft} />);
 
   return (
@@ -51,7 +51,7 @@ export const Sleeve: FC<SleeveProps> = ({ nft }) => {
             color: "white",
           }}
         >
-          #{uniqueId ?? 340002341}
+          #{tokenId ?? 340002341}
         </Typography>
 
         <Typography
@@ -78,7 +78,7 @@ export const Sleeve: FC<SleeveProps> = ({ nft }) => {
             width: "90%",
           }}
         >
-          <TypeChip type={type} label={type} size="small" />
+          <TypeChip type={type ?? "fire"} label={type} size="small" />
           <RarityChip rarity={rarity ?? "common"} label={rarity} size="small" />
         </div>
         <Button
