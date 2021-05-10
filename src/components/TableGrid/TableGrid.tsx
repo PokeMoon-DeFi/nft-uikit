@@ -39,20 +39,24 @@ const PackIdFormatter = ({ value }: GridCellParams) => {
       }}
     >
       #{value}
-      <div
-        style={{ paddingTop: 15, cursor: "pointer" }}
-        onClick={() => {
-          window.location.href = `/pack/${value}`;
-        }}
-      >
-        <Jdenticon size="24" value={value} style={{ margin: "auto" }} />
-      </div>
+      {value && (
+        <div
+          style={{ paddingTop: 15, cursor: "pointer" }}
+          onClick={() => {
+            window.location.href = `/pack/${value}`;
+          }}
+        >
+          {/* <Jdenticon size="24" value={value} style={{ margin: "auto" }} /> */}
+        </div>
+      )}
     </Box>
   );
 };
 
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    backgroundColor: "white",
+  },
 });
 
 const columns: GridColDef[] = [
@@ -118,7 +122,6 @@ const columns: GridColDef[] = [
 
 const TableGrid: FC<TableGridProps> = ({ nfts }) => {
   const classes = useStyles();
-  console.log(nfts);
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
