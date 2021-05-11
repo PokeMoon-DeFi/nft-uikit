@@ -24,12 +24,7 @@ const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
     setPage(value);
   };
   //@ts-ignore
-  const count =
-    nfts && nfts.length > 0 ? Math.floor(nfts.length / pageSize) + 1 : 0;
-
-  nfts?.forEach((nft) => {
-    nft.glbUrl = "/models/" + nft.imageUrl.replace(".png", ".glb");
-  });
+  const count = nfts && nfts.length > 0 ? Math.ceil(nfts.length / pageSize) : 0;
 
   return (
     <>
@@ -42,7 +37,6 @@ const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
       />
       <Grid container spacing={4} justify="center" {...props}>
         {nfts
-          ?.sort((a, b) => parseInt(b.tokenId) - parseInt(a.tokenId))
           ?.filter(
             (nft, index) =>
               index >= (page - 1) * pageSize && index <= page * pageSize

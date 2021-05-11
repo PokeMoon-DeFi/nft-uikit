@@ -13,14 +13,22 @@ export default {
   component: Gallery,
 } as Meta;
 
-const nfts: PokemoonNft[] = Object.entries(BLAST_OFF_COLLECTION).map(
-  ([key, value]) => {
+const nfts: PokemoonNft[] = Object.entries(BLAST_OFF_COLLECTION)
+  .map(([key, value]) => {
     const { card } = value;
     return { ...value, ...card };
-  }
-);
+  })
+  ?.sort((a, b) => parseInt(b.tokenId) - parseInt(a.tokenId));
+
+nfts?.forEach((nft) => {
+  nft.glbUrl = "/models/" + nft.imageUrl.replace(".png", ".glb");
+});
 
 export const Basic: Story = () => <Gallery nfts={nfts} />;
+
+export const NftBalance: Story = () => (
+  <Gallery nfts={nftBalance.blastOff.cards} />
+);
 
 export const PackId: Story = () => (
   <Page>
