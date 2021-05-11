@@ -91,7 +91,7 @@ const Dashboard: FC<DashboardProps> = (props) => {
   const [activeRanks, setActiveRanks] = React.useState<string[]>([]);
   const [activePacks, setActivePacks] = React.useState<string[]>([]);
   const [searchState, setSearchState] = React.useState<string>("");
-  const [viewState, setViewState] = React.useState<string>("table");
+  const [viewState, setViewState] = React.useState<string>("grid");
 
   const isGrid = viewState === "grid";
 

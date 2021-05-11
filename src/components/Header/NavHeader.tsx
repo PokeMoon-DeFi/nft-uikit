@@ -7,32 +7,16 @@ import StoreOutlinedIcon from "@material-ui/icons/StoreOutlined";
 import PhotoSizeSelectActualIcon from "@material-ui/icons/PhotoSizeSelectActual";
 import Button from "components/Button";
 import styled from "styled-components";
-import Typography from "@material-ui/core/Typography";
 import DialogModal from "components/Modal/DialogModal";
 import Link from "@material-ui/core/Link";
 import { useTheme } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Sidebar from "components/Navigation/Sidebar";
 
 export interface LinkConfigState {
   target: string;
   label: string;
   icon: React.ReactElement;
+  onClick?: () => void;
 }
-
-const linkConfig: LinkConfigState[] = [
-  {
-    target: "/buy",
-    label: "Buy",
-    icon: <StoreOutlinedIcon />,
-  },
-  {
-    target: "/gallery",
-    label: "Collection",
-    icon: <PhotoSizeSelectActualIcon />,
-  },
-];
 
 export interface NavHeaderProps {
   account: string;
@@ -59,6 +43,7 @@ const NavHeader: FC<NavHeaderProps> = ({
   onLogout,
   onConnect,
   linkConfig,
+  children,
 }) => {
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -151,6 +136,7 @@ const NavHeader: FC<NavHeaderProps> = ({
         </Toolbar>
       </AppBar>
       <Toolbar />
+      {children}
       <DialogModal
         open={logoutModalOpen}
         title={"Log Out?"}

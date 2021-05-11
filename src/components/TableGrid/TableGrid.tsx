@@ -30,7 +30,7 @@ const PackIdFormatter = (params: GridCellParams) => {
       style={{
         flex: 1,
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         alignContent: "center",
         textAlign: "center",
         alignItems: "center",
@@ -88,7 +88,7 @@ const columns: GridColDef[] = [
     headerName: "Pack ID",
     headerAlign: "center",
     align: "center",
-    // flex: 1,
+    flex: 1,
     renderCell: PackIdFormatter,
   },
   {

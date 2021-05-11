@@ -6,6 +6,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import styled from "styled-components";
 export interface CarouselProps extends GridProps {
   nfts?: Array<PokemoonNft>;
+  pageSize?: number;
 }
 
 const StyledPagination = styled(Pagination)`
@@ -17,8 +18,7 @@ const StyledPagination = styled(Pagination)`
   }
 `;
 
-const pageSize = 5;
-const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
+const Gallery: React.FC<CarouselProps> = ({ nfts, pageSize = 8, ...props }) => {
   const [page, setPage] = React.useState(1);
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -32,10 +32,16 @@ const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
         count={count}
         page={page}
         onChange={handleChange}
-        style={{ marginBottom: 10 }}
+        style={{ marginBottom: 30, marginTop: 20 }}
         variant={"outlined"}
       />
-      <Grid container spacing={4} justify="center" {...props}>
+      <Grid
+        container
+        spacing={4}
+        justify="space-around"
+        style={{ height: "100%", alignItems: "center" }}
+        {...props}
+      >
         {nfts
           ?.filter(
             (nft, index) =>
@@ -48,7 +54,7 @@ const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
                 display: "flex",
                 justifyContent: "center",
               }}
-              lg={"auto"}
+              xl={"auto"}
               key={index}
             >
               <NftCard
