@@ -4,6 +4,7 @@ import TypeChip from "./TypeChip";
 import { rawMaterialTheme, MaterialTheme } from "../../theme";
 import { useTheme } from "@material-ui/core";
 import { RarityChip } from "./RarityChip";
+import PackChip from "./PackChip";
 
 export default {
   title: "Type Chips",
@@ -35,6 +36,17 @@ export const ChipTag: Story = () => {
     <>
       {supportedRanks.map((rarity) => (
         <RarityChip rarity={rarity} label={rarity} style={{ margin: 4 }} />
+      ))}
+    </>
+  );
+};
+
+export const PackTag: Story = () => {
+  const packs = ["blastOff"];
+  return (
+    <>
+      {packs.map((pack) => (
+        <PackChip pack={pack} />
       ))}
     </>
   );

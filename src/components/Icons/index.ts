@@ -18,3 +18,6 @@ export { default as Fire } from "./types/Fire";
 export { default as Grass } from "./types/Grass";
 export { default as Psychic } from "./types/Psychic";
 export { default as Water } from "./types/Water";
+
+//Packs
+export * from "./packs";
