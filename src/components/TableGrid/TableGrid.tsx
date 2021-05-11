@@ -1,5 +1,10 @@
 import React, { FC } from "react";
-import { DataGrid, GridColDef, GridCellParams } from "@material-ui/data-grid";
+import {
+  DataGrid,
+  GridColDef,
+  GridCellParams,
+  GridValueGetterParams,
+} from "@material-ui/data-grid";
 import { PokemoonNft } from "constants/index";
 import { makeStyles } from "@material-ui/core/styles";
 import { TypeChip, RarityChip, PackChip } from "components/Chip";
@@ -66,12 +71,7 @@ const ButtonCell = (params: GridCellParams) => {
   //@ts-ignore
   const [showModal] = useModal(<InspectorDialog nft={nft} />);
   return (
-    <Button
-      endIcon={<SearchIcon />}
-      onClick={() => {
-        showModal();
-      }}
-    >
+    <Button endIcon={<SearchIcon />} onClick={showModal}>
       Inspect
     </Button>
   );
@@ -134,7 +134,7 @@ const columns: GridColDef[] = [
     align: "center",
     headerName: "Actions",
     width: 120,
-    renderCell: ButtonCell,
+    renderCell: (params: GridCellParams) => <ButtonCell {...params} />,
   },
 ];
 
