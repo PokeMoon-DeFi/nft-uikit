@@ -11,9 +11,11 @@ import { FilterDashboard } from "components/FilterDashboard";
 import { PokemoonNft } from "constants/index";
 import { TableGrid } from "components/TableGrid";
 import { nftBalance } from "utils/nftBalance";
+import { LinkConfigState } from "components/Header/NavHeader";
+import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 
 //TODO: Swap icons for pokemoon stuff
-const linkConfig = [
+const linkConfig: LinkConfigState[] = [
   {
     target: "/buy",
     label: "Buy",
@@ -23,6 +25,11 @@ const linkConfig = [
     target: "/gallery",
     label: "Gallery",
     icon: <PhotoSizeSelectActualIcon />,
+  },
+  {
+    target: "/collection",
+    label: "Collection",
+    icon: <AccountBalanceIcon />,
   },
 ];
 
@@ -79,7 +86,7 @@ const FullDemo: FC = () => {
 
   return (
     <>
-      <NavHeader account={ACCOUNT} />
+      <NavHeader account={ACCOUNT} linkConfig={linkConfig} />
       <Fab account={ACCOUNT} />
       <FilterDashboard
         onViewStateChange={(state) => setViewState(state)}

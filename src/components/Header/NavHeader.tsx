@@ -15,7 +15,13 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Sidebar from "components/Navigation/Sidebar";
 
-const linkConfig = [
+export interface LinkConfigState {
+  target: string;
+  label: string;
+  icon: React.ReactElement;
+}
+
+const linkConfig: LinkConfigState[] = [
   {
     target: "/buy",
     label: "Buy",
@@ -32,6 +38,7 @@ export interface NavHeaderProps {
   account: string;
   onConnect?: () => void;
   onLogout?: () => void;
+  linkConfig: LinkConfigState[];
 }
 
 const StyledLink = styled(Link)`
@@ -47,7 +54,12 @@ const StyledLink = styled(Link)`
   font-family: "Josefin Sans";
 `;
 
-const NavHeader: FC<NavHeaderProps> = ({ account, onLogout, onConnect }) => {
+const NavHeader: FC<NavHeaderProps> = ({
+  account,
+  onLogout,
+  onConnect,
+  linkConfig,
+}) => {
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
   const theme = useTheme();

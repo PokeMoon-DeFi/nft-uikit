@@ -34,3 +34,4 @@ export const Header: React.FC<HeaderProps> = ({
 );
 
 export { default as NavHeader } from "./NavHeader";
+export * from "./NavHeader";

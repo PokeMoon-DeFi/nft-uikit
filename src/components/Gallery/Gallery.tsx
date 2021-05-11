@@ -39,7 +39,7 @@ const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
         {nfts
           ?.filter(
             (nft, index) =>
-              index >= (page - 1) * pageSize && index <= page * pageSize
+              index >= (page - 1) * pageSize && index <= page * pageSize - 1
           )
           .map((nft, index) => (
             <Grid
