@@ -19,7 +19,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
 import TextField from "@material-ui/core/TextField";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Button from "@material-ui/core/Button";
+import Button from "components/Button";
 import TableChartIcon from "@material-ui/icons/TableChart";
 import AppsSharpIcon from "@material-ui/icons/AppsSharp";
 
@@ -65,6 +65,7 @@ interface DashboardProps {
   onTypeFilterChange: (filter: string[]) => void;
   onRarityFilterChange: (filter: string[]) => void;
   onPackFilterChange: (filter: string[]) => void;
+  onSearchFilterChange: (filter: string) => void;
 }
 
 const Dashboard: FC<DashboardProps> = (props) => {
@@ -73,23 +74,30 @@ const Dashboard: FC<DashboardProps> = (props) => {
     onTypeFilterChange,
     onRarityFilterChange,
     onPackFilterChange,
+    onSearchFilterChange,
   } = props;
   const classes = useStyles();
 
-  const supportedTypes: string[] = Object.keys(MaterialTheme.palette.types);
-  const supportedRanks = Object.keys(MaterialTheme.palette.rarity);
+  const supportedTypes: string[] = Object.keys(
+    MaterialTheme.palette.types
+  ).map((key) => capitalize(key));
+
+  const supportedRanks = Object.keys(MaterialTheme.palette.rarity).map((key) =>
+    capitalize(key)
+  );
   const supportedPacks = ["Blast-Off!"];
 
   const [activeTypes, setActiveTypes] = React.useState<string[]>([]);
   const [activeRanks, setActiveRanks] = React.useState<string[]>([]);
   const [activePacks, setActivePacks] = React.useState<string[]>([]);
+  const [searchState, setSearchState] = React.useState<string>("");
   const [viewState, setViewState] = React.useState<string>("table");
 
   const isGrid = viewState === "grid";
 
   const handleTypeChange = (event: any) => {
     const val = event.target.value;
-    onTypeFilterChange(val?.map((v: string) => capitalize(v)));
+    onTypeFilterChange(val);
     setActiveTypes(val);
   };
 
@@ -128,12 +136,20 @@ const Dashboard: FC<DashboardProps> = (props) => {
       }}
     >
       {/* Search Bar */}
-      <TextField
-        style={{ verticalAlign: "baseline" }}
-        label="Search 🔍"
-        placeholder=""
-      />
-
+      <div>
+        <TextField
+          style={{ verticalAlign: "baseline", marginRight: 16 }}
+          label="Search 🔍"
+          placeholder=""
+          onChange={(event) => {
+            const val = event.target.value;
+            if (val !== searchState) {
+              setSearchState(val);
+            }
+          }}
+        />
+        <Button onClick={() => onSearchFilterChange(searchState)}>Go</Button>
+      </div>
       {/* Type Chip */}
       <FormControl className={classes.formControl}>
         <InputLabel>Types</InputLabel>

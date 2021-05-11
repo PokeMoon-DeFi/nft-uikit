@@ -43,6 +43,7 @@ interface FilterState {
   rarities: string[];
   types: string[];
   packs: string[];
+  search: string;
 }
 
 const FullDemo: FC = () => {
@@ -51,6 +52,7 @@ const FullDemo: FC = () => {
     rarities: [],
     types: [],
     packs: [],
+    search: "",
   });
 
   const [userNfts, setUserNfts] = useState<PokemoonNft[]>(
@@ -59,7 +61,7 @@ const FullDemo: FC = () => {
   const [filterNfts, setFilterNfts] = useState<PokemoonNft[]>(userNfts);
 
   useEffect(() => {
-    const { rarities, types, packs } = filterState;
+    const { rarities, types, packs, search } = filterState;
 
     const filteredNfts = userNfts.filter((nft) => {
       if (types && types.length > 0) {
@@ -90,6 +92,9 @@ const FullDemo: FC = () => {
         onPackFilterChange={(filter) =>
           setFilterState((state) => ({ ...state, packs: filter }))
         }
+        onSearchFilterChange={(filter) => {
+          setFilterState((state) => ({ ...state, search: filter }));
+        }}
       />
       <Content maxWidth="md">
         {viewState === "grid" ? (

@@ -5,13 +5,22 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PackViewer from "./PackViewer";
 import PackCollection from "./PackCollection";
 import { nftBalance } from "../../utils/nftBalance";
+import { BLAST_OFF_COLLECTION } from "../../config/constants/nfts/2114";
+import { PokemoonNft } from "../../config/constants/nfts/types";
 
 export default {
   title: "Gallery",
   component: Gallery,
 } as Meta;
 
-export const Basic: Story = () => <Gallery nfts={nftBalance.blastOff.cards} />;
+const nfts: PokemoonNft[] = Object.entries(BLAST_OFF_COLLECTION).map(
+  ([key, value]) => {
+    const { card } = value;
+    return { ...value, ...card };
+  }
+);
+
+export const Basic: Story = () => <Gallery nfts={nfts} />;
 
 export const PackId: Story = () => (
   <Page>

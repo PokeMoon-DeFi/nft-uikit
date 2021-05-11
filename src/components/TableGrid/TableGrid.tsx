@@ -1,10 +1,5 @@
-import React, { FC, ReactElement } from "react";
-import {
-  DataGrid,
-  GridColDef,
-  GridValueGetterParams,
-  GridCellParams,
-} from "@material-ui/data-grid";
+import React, { FC } from "react";
+import { DataGrid, GridColDef, GridCellParams } from "@material-ui/data-grid";
 import { PokemoonNft } from "constants/index";
 import { makeStyles } from "@material-ui/core/styles";
 import { TypeChip, RarityChip } from "components/Chip";
@@ -13,6 +8,8 @@ import Box from "@material-ui/core/Box";
 import Jdenticon from "react-jdenticon";
 import Button from "components/Button";
 import SearchIcon from "@material-ui/icons/Search";
+import useModal from "hooks/useModal";
+import { InspectorDialog } from "components/Modal";
 
 export interface TableGridProps {
   nfts: Array<PokemoonNft>;
@@ -26,13 +23,14 @@ const RarityCellFormatter = ({ value }: GridCellParams) => {
   return <RarityChip rarity={value as string} label={value} />;
 };
 
-const PackIdFormatter = ({ value }: GridCellParams) => {
+const PackIdFormatter = (params: GridCellParams) => {
+  const { value } = params;
   return (
     <Box
       style={{
         flex: 1,
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         alignContent: "center",
         textAlign: "center",
         alignItems: "center",
@@ -41,7 +39,7 @@ const PackIdFormatter = ({ value }: GridCellParams) => {
       #{value}
       {value && (
         <div
-          style={{ paddingTop: 15, cursor: "pointer" }}
+          style={{ paddingTop: 15, cursor: "pointer", marginLeft: 20 }}
           onClick={() => {
             window.location.href = `/pack/${value}`;
           }}
@@ -59,6 +57,22 @@ const useStyles = makeStyles({
   },
 });
 
+const ButtonCell = (params: GridCellParams) => {
+  const nft = params.row;
+  //@ts-ignore
+  const [showModal] = useModal(<InspectorDialog nft={nft} />);
+  return (
+    <Button
+      endIcon={<SearchIcon />}
+      onClick={() => {
+        showModal();
+      }}
+    >
+      Inspect
+    </Button>
+  );
+};
+
 const columns: GridColDef[] = [
   {
     field: "tokenId",
@@ -66,7 +80,7 @@ const columns: GridColDef[] = [
     headerAlign: "center",
     align: "center",
     width: 70,
-    // flex: 1,
+    flex: 1,
     valueFormatter: ({ value }) => `#${value}`,
   },
   {
@@ -83,7 +97,7 @@ const columns: GridColDef[] = [
     align: "center",
     headerName: "Name",
     // width: 140,
-    // flex: 1,
+    flex: 1,
   },
   {
     field: "type",
@@ -110,18 +124,17 @@ const columns: GridColDef[] = [
     align: "center",
   },
   {
-    field: "uniqueId",
+    field: "modalId",
     align: "center",
     headerName: "Actions",
     width: 120,
-    renderCell: () => {
-      return <Button endIcon={<SearchIcon />}>Inspect</Button>;
-    },
+    renderCell: ButtonCell,
   },
 ];
 
 const TableGrid: FC<TableGridProps> = ({ nfts }) => {
   const classes = useStyles();
+
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid

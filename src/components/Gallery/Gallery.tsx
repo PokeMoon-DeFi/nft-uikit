@@ -17,16 +17,19 @@ const StyledPagination = styled(Pagination)`
   }
 `;
 
-const pageSize = 6;
+const pageSize = 5;
 const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
   const [page, setPage] = React.useState(1);
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
+  //@ts-ignore
+  const count =
+    nfts && nfts.length > 0 ? Math.floor(nfts.length / pageSize) + 1 : 0;
   return (
     <>
       <StyledPagination
-        count={pageSize}
+        count={count}
         page={page}
         onChange={handleChange}
         style={{ marginBottom: 10 }}
@@ -34,9 +37,10 @@ const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
       />
       <Grid container spacing={4} justify="center" {...props}>
         {nfts
+          ?.sort((a, b) => parseInt(b.tokenId) - parseInt(a.tokenId))
           ?.filter(
             (nft, index) =>
-              index > (page - 1) * pageSize && index <= page * pageSize
+              index >= (page - 1) * pageSize && index <= page * pageSize
           )
           .map((nft, index) => (
             <Grid

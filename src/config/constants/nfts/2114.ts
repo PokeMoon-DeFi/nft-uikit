@@ -126,7 +126,7 @@ export const BLAST_OFF_CARDS: { [key: number]: any } = {
 /**
  * Maps nft keys (first 2 numbers from tokenId) to nft info
  */
-const BLAST_OFF_COLLECTION: { [key: number]: any } = {
+export const BLAST_OFF_COLLECTION: { [key: number]: any } = {
   11: {
     tokenId: "11",
     imageUrl: "001meownautC.png",

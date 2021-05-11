@@ -1,7 +1,6 @@
 import Chip, { ChipProps } from "@material-ui/core/Chip";
 import { FC } from "react";
 import styled from "styled-components";
-import { withTheme } from "@material-ui/core";
 import {
   Lightning,
   Water,
