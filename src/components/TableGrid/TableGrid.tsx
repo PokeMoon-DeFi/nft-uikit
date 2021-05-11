@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { DataGrid, GridColDef, GridCellParams } from "@material-ui/data-grid";
 import { PokemoonNft } from "constants/index";
 import { makeStyles } from "@material-ui/core/styles";
-import { TypeChip, RarityChip } from "components/Chip";
+import { TypeChip, RarityChip, PackChip } from "components/Chip";
 import Box from "@material-ui/core/Box";
 //@ts-ignore
 import Jdenticon from "react-jdenticon";
@@ -21,6 +21,10 @@ const TypeCellFormatter = ({ value }: GridCellParams) => {
 
 const RarityCellFormatter = ({ value }: GridCellParams) => {
   return <RarityChip rarity={value as string} label={value} />;
+};
+
+const PackCellFormatter = ({ value }: GridCellParams) => {
+  return <PackChip pack={value as string} />;
 };
 
 const PackIdFormatter = (params: GridCellParams) => {
@@ -122,6 +126,8 @@ const columns: GridColDef[] = [
     headerName: "Set",
     headerAlign: "center",
     align: "center",
+    flex: 1,
+    renderCell: PackCellFormatter,
   },
   {
     field: "modalId",
