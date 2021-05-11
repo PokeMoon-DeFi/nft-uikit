@@ -27,9 +27,10 @@ const Gallery: React.FC<CarouselProps> = ({ nfts, ...props }) => {
   const count =
     nfts && nfts.length > 0 ? Math.floor(nfts.length / pageSize) + 1 : 0;
 
-  nfts.forEach((nft) => {
+  nfts?.forEach((nft) => {
     nft.glbUrl = "/models/" + nft.imageUrl.replace(".png", ".glb");
   });
+
   return (
     <>
       <StyledPagination
