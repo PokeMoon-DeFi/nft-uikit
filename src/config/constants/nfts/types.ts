@@ -12,7 +12,7 @@ export interface ArtistInfo {
  */
 export interface PokemoonNft {
   tokenId: string;
-  isPack: boolean;
+  isPack?: boolean;
   set: string;
   imageUrl: string;
   rarity?: string;
@@ -24,6 +24,7 @@ export interface PokemoonNft {
   glbUrl?: string;
   tokenUriResponse?: any;
   artist?: ArtistInfo;
+  packId?: string;
 }
 
 /**

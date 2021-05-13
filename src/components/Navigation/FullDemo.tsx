@@ -86,31 +86,30 @@ const FullDemo: FC = () => {
 
   return (
     <>
-      <NavHeader account={ACCOUNT} linkConfig={linkConfig}>
-        <Fab account={ACCOUNT} linkConfig={linkConfig} />
-        <FilterDashboard
-          onViewStateChange={(state) => setViewState(state)}
-          onTypeFilterChange={(filter) =>
-            setFilterState((state) => ({ ...state, types: filter }))
-          }
-          onRarityFilterChange={(filter) =>
-            setFilterState((state) => ({ ...state, rarities: filter }))
-          }
-          onPackFilterChange={(filter) =>
-            setFilterState((state) => ({ ...state, packs: filter }))
-          }
-          onSearchFilterChange={(filter) => {
-            setFilterState((state) => ({ ...state, search: filter }));
-          }}
-        />
-        <Content maxWidth="md">
-          {viewState === "grid" ? (
-            <Gallery nfts={filterNfts} />
-          ) : (
-            <TableGrid nfts={filterNfts} />
-          )}
-        </Content>
-      </NavHeader>
+      <NavHeader account={ACCOUNT} linkConfig={linkConfig} />
+      <Fab account={ACCOUNT} linkConfig={linkConfig} />
+      <FilterDashboard
+        onViewStateChange={(state) => setViewState(state)}
+        onTypeFilterChange={(filter) =>
+          setFilterState((state) => ({ ...state, types: filter }))
+        }
+        onRarityFilterChange={(filter) =>
+          setFilterState((state) => ({ ...state, rarities: filter }))
+        }
+        onPackFilterChange={(filter) =>
+          setFilterState((state) => ({ ...state, packs: filter }))
+        }
+        onSearchFilterChange={(filter) => {
+          setFilterState((state) => ({ ...state, search: filter }));
+        }}
+      />
+      <Content maxWidth="md">
+        {viewState === "grid" ? (
+          <Gallery nfts={filterNfts} />
+        ) : (
+          <TableGrid nfts={filterNfts} />
+        )}
+      </Content>
     </>
   );
 };

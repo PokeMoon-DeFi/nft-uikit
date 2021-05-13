@@ -56,14 +56,13 @@ const NavHeader: FC<NavHeaderProps> = ({
             "radial-gradient(58.94% 58.94% at 50% 50%, #014482 0%, #210035 100%)",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
-          flexBasis: "10vh",
         }}
         position="fixed"
       >
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Logo
             style={{
-              height: "8vh",
+              height: 70,
               flexShrink: 5,
               minWidth: 150,
               marginRight: 10,
@@ -135,8 +134,6 @@ const NavHeader: FC<NavHeaderProps> = ({
           </Hidden>
         </Toolbar>
       </AppBar>
-      <Toolbar />
-      {children}
       <DialogModal
         open={logoutModalOpen}
         title={"Log Out?"}

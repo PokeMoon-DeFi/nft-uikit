@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import Button from "../Button";
 import Modal from "./DialogModal";
-import { PM_RARITY, PokemoonNft } from "../../constants/nfts";
+import { PokemoonNft } from "../../config/constants/nfts";
 import { Page, Content } from "../layout";
 import SendToAddress from "./SendToAddress";
 import { BLAST_OFF_CARDS } from "../../utils/StoryData";
@@ -33,11 +33,20 @@ export const Demo: Story = () => {
 };
 
 const n: PokemoonNft = {
-  tokenId: "60",
-  imageUrl: "001meownautL.png",
-  card: BLAST_OFF_CARDS[1],
-  rarity: PM_RARITY.L,
-  glbUrl: "/models/006degenmntLx1.glb",
+  tokenId: "11000002",
+  imageUrl: "001meownautC.png",
+  number: 1,
+  name: "Meownaut",
+  type: "Psychic",
+  description:
+    "Legend says that the bioluminescent coin in a Meownaut's chest is the source of its resilience and good fortune.",
+  artist: {
+    name: "Armilo Barrios",
+  },
+  rarity: "Common",
+  glbUrl: "/models/001meownautC.glb",
+  set: "blastOff",
+  packId: "5",
 };
 
 export const Inspect: Story = () => {
