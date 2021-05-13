@@ -20,3 +20,4 @@ export * from "./ConnectScreen";
 export * from "./FilterDashboard";
 export * from "./TableGrid";
 export * from "./VideoPlayer";
+export * from "./ModelViewer";
