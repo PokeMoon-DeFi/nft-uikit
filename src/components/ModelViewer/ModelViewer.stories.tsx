@@ -19,7 +19,7 @@ const n: PokemoonNft = {
     name: "Armilo Barrios",
   },
   rarity: "Common",
-  glbUrl: "/models/001meownautC.glb",
+  glbUrl: "/models/ampedUp/006degenmntL.glb",
   set: "blastOff",
   packId: "5",
 };
@@ -37,7 +37,7 @@ const p: PokemoonNft = {
     instagram: "@ilyaspb2019",
   },
   rarity: "Uncommon",
-  glbUrl: "/models/010kadalaxslimUC.glb",
+  glbUrl: "/models/ampedUp/003graffingL.glb",
   set: "blastOff",
   packId: "5",
 };
@@ -54,7 +54,7 @@ const d: PokemoonNft = {
     instagram: "@morlux_artista",
   },
   rarity: "Common",
-  glbUrl: "/models/011zapduckC.glb",
+  glbUrl: "/models/ampedUp/009artduckoL.glb",
   set: "blastOff",
   packId: "66",
 };
@@ -64,5 +64,7 @@ export const Basic: Story = () => {
 };
 
 export const Carousel: Story = () => {
-  return <ModelCarousel nfts={[n, p, d]} style={{ height: 500 }} />;
+  return (
+    <ModelCarousel nfts={[n, p, d]} modelViewerStyle={{ width: "100%" }} />
+  );
 };

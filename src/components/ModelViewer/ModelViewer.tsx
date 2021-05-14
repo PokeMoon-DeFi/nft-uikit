@@ -17,12 +17,62 @@ import {
   BrightnessContrast,
 } from "@react-three/postprocessing";
 import { useThree } from "@react-three/fiber";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import IconButton from "@material-ui/core/IconButton";
+import styled from "styled-components";
 
 type DivProps = JSX.IntrinsicElements["div"];
 
 export interface ModelViewerProps extends DivProps {
   nft: PokemoonNft;
+  showUI?: boolean;
+  onPrevClick?: () => void;
+  onNextClick?: () => void;
 }
+
+const StyledButton = styled(IconButton)`
+  background: #321133;
+  color: white;
+  border-radius: 83px;
+  font-family: "Josefin Sans", sans-serif;
+  text-align: center;
+  border: 1px solid #c139c5;
+  border-width: 2px;
+  border-style: solid;
+  height: 40px;
+
+  &:disabled {
+    color: white;
+  }
+
+  span {
+    text-transform: none;
+    white-space: nowrap;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: white;
+      color: black;
+      transition: 0.14s ease;
+    }
+  }
+  @media (hover: none) {
+    &:hover {
+      background-color: #321133;
+      color: white;
+      transition: 0.14s ease;
+    }
+  }
+  &:active {
+    background: white;
+    color: black;
+    transition: 0.5s ease;
+    transform: scale(1.1, 1.1);
+    transition: 0.1s ease;
+  }
+`;
 
 interface CardModelProps {
   glbUrl: string;
@@ -46,7 +96,7 @@ const CardModel: FC<CardModelProps> = ({ glbUrl }) => {
 
 const ModelViewer: FC<ModelViewerProps> = ({ nft, ...props }) => {
   const { glbUrl, imageUrl } = nft;
-  const { style } = props;
+  const { style, onPrevClick, onNextClick, showUI } = props;
   const { tier } = useDetectGPU() ?? { tier: undefined };
   const [gpuPending, setGpuPending] = useState(true);
   const renderGPU = useMemo(() => {
@@ -66,11 +116,37 @@ const ModelViewer: FC<ModelViewerProps> = ({ nft, ...props }) => {
       style={{
         backgroundColor: renderGPU ? "black" : "transparent",
         border: renderGPU ? "8px outset #da52de" : "none",
+        position: "relative",
+        display: "flex",
+        ...style,
+        height: 500,
       }}
     >
+      {showUI && (
+        <div
+          style={{
+            position: "absolute",
+            zIndex: 1,
+            width: "100%",
+            bottom: 0,
+            display: "flex",
+            justifyContent: "space-around",
+            marginBottom: 20,
+            paddingLeft: 20,
+            paddingRight: 20,
+          }}
+        >
+          <StyledButton onClick={onPrevClick}>
+            <ArrowBackIosIcon />
+          </StyledButton>
+          <StyledButton onClick={onNextClick}>
+            <ArrowForwardIosIcon />
+          </StyledButton>
+        </div>
+      )}
       {renderGPU && !!glbUrl ? (
-        <Canvas {...props} style={{ ...style, backgroundColor: "black" }}>
-          <PerspectiveCamera position={[0, 1.3, 4]} makeDefault />
+        <Canvas {...props} style={{ backgroundColor: "black", flex: 1 }}>
+          <PerspectiveCamera position={[0, 1.3, 4]} makeDefault fov={60} />
           <OrbitControls target={new THREE.Vector3(0, 1.3, 0)} />
           <directionalLight
             intensity={0.3}

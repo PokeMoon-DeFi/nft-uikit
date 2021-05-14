@@ -43,11 +43,8 @@ const NavHeader: FC<NavHeaderProps> = ({
   onLogout,
   onConnect,
   linkConfig,
-  children,
 }) => {
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
-  const [openSidebar, setOpenSidebar] = useState(false);
-  const theme = useTheme();
   return (
     <>
       <AppBar
@@ -57,7 +54,7 @@ const NavHeader: FC<NavHeaderProps> = ({
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
         }}
-        position="fixed"
+        position="relative"
       >
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Logo

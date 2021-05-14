@@ -1,16 +1,20 @@
 import { FC, useEffect, useState } from "react";
-import { ModelViewer } from "components/ModelViewer";
+import ModelViewer from "./ModelViewer";
 import { PokemoonNft } from "config/constants/nfts";
 import Button from "components/Button";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import styled from "styled-components";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
+import CSS from "csstype";
 
 type DivProps = JSX.IntrinsicElements["div"];
 
 interface ModelCarouselProps extends DivProps {
   nfts: PokemoonNft[];
+  modelViewerStyle?: CSS.Properties;
 }
 
 const StyledButton = styled(IconButton)`
@@ -57,9 +61,11 @@ const StyledButton = styled(IconButton)`
 `;
 
 const ModelCarousel: FC<ModelCarouselProps> = ({ nfts, ...props }) => {
-  const { style } = props;
+  const { style, modelViewerStyle } = props;
+  const theme = useTheme();
   const [index, setIndex] = useState(0);
   const [activeNft, setActiveNft] = useState(nfts[index]);
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const onPrevClick = () => {
     if (index <= 0) {
@@ -81,22 +87,21 @@ const ModelCarousel: FC<ModelCarouselProps> = ({ nfts, ...props }) => {
     <div
       style={{
         display: "flex",
+        flex: 1,
         justifyContent: "space-around",
         flexDirection: "row",
         alignItems: "center",
+        position: "relative",
+        ...style,
       }}
     >
-      <StyledButton onClick={onPrevClick}>
-        <ArrowBackIosIcon />
-      </StyledButton>
       <ModelViewer
         nft={activeNft}
-        style={{ width: 200, ...style }}
-        {...props}
+        showUI
+        onPrevClick={onPrevClick}
+        onNextClick={onNextClick}
+        style={modelViewerStyle}
       />
-      <StyledButton onClick={onNextClick}>
-        <ArrowForwardIosIcon />
-      </StyledButton>
     </div>
   );
 };
