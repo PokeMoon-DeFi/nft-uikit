@@ -64,7 +64,5 @@ export const Basic: Story = () => {
 };
 
 export const Carousel: Story = () => {
-  return (
-    <ModelCarousel nfts={[n, p, d]} modelViewerStyle={{ width: "100%" }} />
-  );
+  return <ModelCarousel nfts={[n, p, d]} modelViewerStyle={{ width: 400 }} />;
 };

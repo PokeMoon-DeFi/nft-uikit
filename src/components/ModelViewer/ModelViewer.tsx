@@ -95,7 +95,7 @@ const CardModel: FC<CardModelProps> = ({ glbUrl }) => {
 };
 
 const ModelViewer: FC<ModelViewerProps> = ({ nft, ...props }) => {
-  const { glbUrl, imageUrl } = nft;
+  const { glbUrl, imageUrl, name } = nft;
   const { style, onPrevClick, onNextClick, showUI } = props;
   const { tier } = useDetectGPU() ?? { tier: undefined };
   const [gpuPending, setGpuPending] = useState(true);
@@ -118,35 +118,49 @@ const ModelViewer: FC<ModelViewerProps> = ({ nft, ...props }) => {
         border: renderGPU ? "8px outset #da52de" : "none",
         position: "relative",
         display: "flex",
-        ...style,
         height: 500,
+        ...style,
       }}
     >
       {showUI && (
-        <div
-          style={{
-            position: "absolute",
-            zIndex: 1,
-            width: "100%",
-            bottom: 0,
-            display: "flex",
-            justifyContent: "space-around",
-            marginBottom: 20,
-            paddingLeft: 20,
-            paddingRight: 20,
-          }}
-        >
-          <StyledButton onClick={onPrevClick}>
-            <ArrowBackIosIcon />
-          </StyledButton>
-          <StyledButton onClick={onNextClick}>
-            <ArrowForwardIosIcon />
-          </StyledButton>
-        </div>
+        <>
+          <div
+            style={{
+              position: "absolute",
+              zIndex: 1,
+              flexBasis: 0.2,
+              color: "white",
+              fontSize: 24,
+              padding: 20,
+            }}
+          >
+            {name}
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              zIndex: 1,
+              width: "100%",
+              bottom: 0,
+              display: "flex",
+              justifyContent: "space-around",
+              marginBottom: 20,
+              paddingLeft: 20,
+              paddingRight: 20,
+            }}
+          >
+            <StyledButton onClick={onPrevClick}>
+              <ArrowBackIosIcon />
+            </StyledButton>
+            <StyledButton onClick={onNextClick}>
+              <ArrowForwardIosIcon />
+            </StyledButton>
+          </div>
+        </>
       )}
       {renderGPU && !!glbUrl ? (
         <Canvas {...props} style={{ backgroundColor: "black", flex: 1 }}>
-          <PerspectiveCamera position={[0, 1.3, 4]} makeDefault fov={60} />
+          <PerspectiveCamera position={[0, 1.3, 4]} makeDefault />
           <OrbitControls target={new THREE.Vector3(0, 1.3, 0)} />
           <directionalLight
             intensity={0.3}
