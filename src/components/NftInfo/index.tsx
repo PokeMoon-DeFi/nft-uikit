@@ -30,6 +30,7 @@ const PrimaryInfo = styled.div`
   padding: 6px;
   margin-bottom: 6px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
 `;
 const NR = styled.div`
   display: flex;
@@ -49,6 +50,7 @@ const Rarity = styled.span`
 const Name = styled.span`
   flex: 1;
   color: #ffffff;
+  margin-left: 10px;
 `;
 
 const SecondaryInfo = styled.div`
@@ -58,6 +60,7 @@ const SecondaryInfo = styled.div`
   margin-bottom: 6px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #ffffff;
+  width: 100%;
 `;
 const PokemoonType = styled.div`
   display: flex;
@@ -77,6 +80,8 @@ const ArtistInfo = styled.div`
   justify-content: center;
   padding: 10px;
   margin-bottom: 6px;
+  width: 100%;
+  font-size: 1.1rem;
 `;
 const ArtistName = styled.span`
   color: #111111;
@@ -95,6 +100,8 @@ const Description = styled.div`
   background-color: #ffffff;
   padding: 12px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  font-size: 1.1rem;
 `;
 const DescriptionText = styled.div`
   text-align: center;
@@ -139,7 +146,7 @@ const NftInfo = ({ nft, handleClose }: InspectorDialogProps) => {
   const TypeIcon = getIcon(type);
 
   return (
-    <Container>
+    <>
       <PrimaryInfo style={{ background: rarityGradient }}>
         <NR>
           <Number>No.{card?.number}</Number>
@@ -148,7 +155,12 @@ const NftInfo = ({ nft, handleClose }: InspectorDialogProps) => {
         <Name>{card?.name}</Name>
       </PrimaryInfo>
       <SecondaryInfo
-        style={{ background: typeColor, fill: fillColor, color: fillColor }}
+        style={{
+          background: typeColor,
+          fill: fillColor,
+          color: fillColor,
+          fontSize: "1.1rem",
+        }}
       >
         <PokemoonType>
           {TypeIcon ? (
@@ -177,7 +189,7 @@ const NftInfo = ({ nft, handleClose }: InspectorDialogProps) => {
           </Button>
         </FooterIcon>
       </Description>
-    </Container>
+    </>
   );
 };
 

@@ -62,17 +62,15 @@ export const InspectCard: React.FC<InspectorDialogProps> = ({
         backgroundImage: bi,
         backgroundSize: "cover",
         padding: 40,
-        alignItems: "center",
         flex: 1,
-        display: "flex",
-        overflow: "hidden",
+        alignItems: "center",
       }}
     >
       <Grid
         item
         style={{
           flex: 1,
-          height: renderGPU ? (!matches ? "50%" : "75vh") : "auto",
+
           padding: 0,
           display: "flex",
           justifyContent: "center",
@@ -82,9 +80,21 @@ export const InspectCard: React.FC<InspectorDialogProps> = ({
         sm={6}
         xs={12}
       >
-        <ModelViewer nft={nft} style={{ flex: 1 }} />
+        <ModelViewer nft={nft} style={{ width: 400 }} />
       </Grid>
-      <Grid item xs={12} sm={6} md={6} lg={3}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        md={6}
+        lg={3}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          flex: 1,
+        }}
+      >
         <NftInfo handleClose={handleClose} nft={nft} />
       </Grid>
     </Grid>
