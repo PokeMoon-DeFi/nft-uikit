@@ -39,10 +39,6 @@ const StyledCardContent = styled(CardContent)<CardContentProps>`
   }}
 `;
 
-const getImageUrl = (imageUrl: string | undefined) => {
-  return `/images/cards/${imageUrl}`;
-};
-
 export const NftCard: FC<CardWrapper> = ({ nft }) => {
   const { imageUrl } = nft;
   const [isLoaded, setLoaded] = useState(false);
@@ -69,7 +65,7 @@ export const NftCard: FC<CardWrapper> = ({ nft }) => {
       <img
         alt="asd"
         onLoad={() => setLoaded(true)}
-        src={getImageUrl(imageUrl)}
+        src={imageUrl}
         style={{ width: "100%" }}
       />
       {!!isLoaded && <Sleeve nft={nft} />}

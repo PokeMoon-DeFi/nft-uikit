@@ -34,6 +34,10 @@ const PackCellFormatter = ({ value }: GridCellParams) => {
 
 const PackIdFormatter = (params: GridCellParams) => {
   const { value } = params;
+  //@ts-ignore
+  const nft: PokemoonNft = params.row;
+  const { set } = nft;
+  console.log(set);
   return (
     <Box
       style={{
@@ -50,7 +54,7 @@ const PackIdFormatter = (params: GridCellParams) => {
         <div
           style={{ paddingTop: 15, cursor: "pointer", marginLeft: 20 }}
           onClick={() => {
-            window.location.href = `/pack/${value}`;
+            window.location.href = `/pack/${set}/${value}`;
           }}
         >
           <Jdenticon size="24" value={value} style={{ margin: "auto" }} />

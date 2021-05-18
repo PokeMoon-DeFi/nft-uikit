@@ -62,37 +62,39 @@ export const InspectCard: React.FC<InspectorDialogProps> = ({
         backgroundImage: bi,
         backgroundSize: "cover",
         padding: 40,
-        flex: 1,
         alignItems: "center",
+        overflow: "auto",
+        flex: 1,
       }}
     >
       <Grid
         item
         style={{
           flex: 1,
-
           padding: 0,
           display: "flex",
           justifyContent: "center",
+          maxWidth: 600,
         }}
-        md={6}
-        lg={4}
-        sm={6}
         xs={12}
+        sm={12}
+        md={12}
+        lg={12}
       >
-        <ModelViewer nft={nft} style={{ width: 400 }} />
+        <ModelViewer nft={nft} style={{ width: "100%" }} />
       </Grid>
       <Grid
         item
         xs={12}
-        sm={6}
-        md={6}
-        lg={3}
+        sm={12}
+        md={12}
+        lg={12}
         style={{
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
           flex: 1,
+          maxWidth: 500,
         }}
       >
         <NftInfo handleClose={handleClose} nft={nft} />

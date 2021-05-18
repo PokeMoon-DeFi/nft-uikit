@@ -62,9 +62,12 @@ const FullDemo: FC = () => {
     search: "",
   });
 
-  const [userNfts, setUserNfts] = useState<PokemoonNft[]>(
-    nftBalance.blastOff.cards
-  );
+  const modifiedBalance = nftBalance.blastOff.cards.map((n) => ({
+    ...n,
+    imageUrl: `/images/cards/${n.set}/${n.imageUrl}`,
+  }));
+
+  const [userNfts, setUserNfts] = useState<PokemoonNft[]>(modifiedBalance);
   const [filterNfts, setFilterNfts] = useState<PokemoonNft[]>(userNfts);
 
   useEffect(() => {
