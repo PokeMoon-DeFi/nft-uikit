@@ -222,7 +222,7 @@ const Dashboard: FC<DashboardProps> = (props) => {
 
       {/* Packs Filter */}
       <FormControl className={classes.formControl}>
-        <InputLabel>Packs</InputLabel>
+        <InputLabel>Sets</InputLabel>
         <Select
           labelId="packs-checkbox"
           id="packs-checkbox"
