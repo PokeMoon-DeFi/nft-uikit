@@ -23,6 +23,7 @@ import { truncateSync } from "node:fs";
 export interface TableGridProps {
   nfts: Array<PokemoonNft>;
   hidePackId?: boolean;
+  getRowId?: GridRowIdGetter;
 }
 
 const TypeCellFormatter = ({ value }: GridCellParams) => {
@@ -166,7 +167,7 @@ const getSetIndex = ({ set, number, rarity }: any) => {
   return m[set] * 100 + number * 10 + r[rarity];
 };
 
-const TableGrid: FC<TableGridProps> = ({ nfts, hidePackId }) => {
+const TableGrid: FC<TableGridProps> = ({ nfts, hidePackId, getRowId }) => {
   const classes = useStyles();
   if (hidePackId) {
     columns = columns.filter((c) => c.field !== "packId");
@@ -177,7 +178,7 @@ const TableGrid: FC<TableGridProps> = ({ nfts, hidePackId }) => {
         rows={nfts}
         columns={columns}
         pageSize={10}
-        getRowId={(row) => getSetIndex(row)}
+        getRowId={!!getRowId ? getRowId : (row) => getSetIndex(row)}
         hideFooterSelectedRowCount={true}
         autoHeight
         loading={!nfts || nfts.length === 0}
