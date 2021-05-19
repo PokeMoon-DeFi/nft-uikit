@@ -86,7 +86,7 @@ const FullDemo: FC = () => {
         {viewState === "grid" ? (
           <Gallery nfts={filterNfts} />
         ) : (
-          <TableGrid nfts={filterNfts} />
+          <TableGrid nfts={filterNfts} hidePackId />
         )}
       </Content>
     </>

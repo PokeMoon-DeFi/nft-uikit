@@ -18,10 +18,11 @@ import Button from "components/Button";
 import SearchIcon from "@material-ui/icons/Search";
 import useModal from "hooks/useModal";
 import { InspectorDialog } from "components/Modal";
+import { truncateSync } from "node:fs";
 
 export interface TableGridProps {
   nfts: Array<PokemoonNft>;
-  getRowId?: GridRowIdGetter;
+  hidePackId?: boolean;
 }
 
 const TypeCellFormatter = ({ value }: GridCellParams) => {
@@ -84,7 +85,7 @@ const ButtonCell = (params: GridCellParams) => {
   );
 };
 
-const columns: GridColDef[] = [
+let columns: GridColDef[] = [
   {
     field: "tokenId",
     headerName: "ID",
@@ -148,19 +149,40 @@ const columns: GridColDef[] = [
   },
 ];
 
-const TableGrid: FC<TableGridProps> = ({ nfts, getRowId, ...props }) => {
-  const classes = useStyles();
+//Take the combined set name, rarity, and pkmoon number to make a uniqueId
+const getSetIndex = ({ set, number, rarity }: any) => {
+  const m = {
+    blastOff: 0,
+    ampedUp: 1,
+  };
+  const r = {
+    Common: 0,
+    Uncommon: 1,
+    Rare: 2,
+    Legendary: 3,
+    Moonlike: 4,
+  };
+  //@ts-ignore
+  return m[set] * 100 + number * 10 + r[rarity];
+};
 
+const TableGrid: FC<TableGridProps> = ({ nfts, hidePackId }) => {
+  const classes = useStyles();
+  if (hidePackId) {
+    columns = columns.filter((c) => c.field !== "packId");
+  }
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={nfts ?? []}
+        rows={nfts}
         columns={columns}
         pageSize={10}
-        getRowId={(row) => row.number}
-        hideFooterSelectedRowCount={false}
+        getRowId={(row) => getSetIndex(row)}
+        hideFooterSelectedRowCount={true}
         autoHeight
+        loading={!nfts || nfts.length === 0}
         className={classes.root}
+        pagination
       />
     </div>
   );
