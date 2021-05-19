@@ -26,7 +26,7 @@ declare module "@material-ui/core/styles/createPalette" {
       water: TypeTheme;
       fighting: TypeTheme;
       colorless: TypeTheme;
-      dark: TypeTheme;
+      darkness: TypeTheme;
       dragon: TypeTheme;
       metal: TypeTheme;
       fairy: TypeTheme;
