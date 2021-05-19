@@ -5,13 +5,14 @@ import { rawMaterialTheme, MaterialTheme } from "../../theme";
 import { useTheme } from "@material-ui/core";
 import { RarityChip } from "./RarityChip";
 import PackChip from "./PackChip";
+import { PM_TYPES } from "../../config/constants/nfts";
 
 export default {
   title: "Type Chips",
 } as Meta;
 
 export const TypeTag: Story = () => {
-  const supportedTypes = Object.keys(MaterialTheme.palette.types);
+  const supportedTypes = Object.keys(PM_TYPES);
 
   return (
     <>
@@ -22,7 +23,7 @@ export const TypeTag: Story = () => {
             label={type}
             type={type}
             style={{ margin: 4 }}
-          ></TypeChip>
+          />
         );
       })}
     </>

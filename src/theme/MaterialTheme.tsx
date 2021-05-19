@@ -52,7 +52,7 @@ declare module "@material-ui/core/styles/createPalette" {
       water: TypeTheme;
       fighting: TypeTheme;
       colorless: TypeTheme;
-      dark: TypeTheme;
+      darkness: TypeTheme;
       dragon: TypeTheme;
       metal: TypeTheme;
       fairy: TypeTheme;
@@ -119,7 +119,7 @@ export const rawMaterialTheme: ThemeOptions = {
       water: { bgColor: "#4f96f1", textColor: "#ffffff" },
       fighting: { bgColor: "#ffdd91", textColor: "#29251d" },
       colorless: { bgColor: "#C8C8C8", textColor: "#ffffff" },
-      dark: { bgColor: "#482663", textColor: "#ffffff" },
+      darkness: { bgColor: "#482663", textColor: "#ffffff" },
       dragon: { bgColor: "#11af9d", textColor: "#ffffff" },
       metal: { bgColor: "#18151d", textColor: "#ffffff" },
       fairy: { bgColor: "#f752d6", textColor: "#ffffff" },
