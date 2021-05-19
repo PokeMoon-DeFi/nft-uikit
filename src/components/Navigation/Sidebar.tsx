@@ -12,12 +12,52 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-
+import { LinkConfigState } from "components/Header/types";
+import Collapse from "@material-ui/core/Collapse";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import ExpandLess from "@material-ui/icons/ExpandLess";
 interface SidebarProps extends SwipeableDrawerProps {
-  linksConfig?: string[];
+  linkConfig: LinkConfigState[];
 }
 
-const Sidebar: FC<SidebarProps> = ({ open, onOpen, onClose }) => {
+interface LinkGroupState {
+  label?: string;
+  icon?: React.ReactElement;
+  linkConfig: LinkConfigState[];
+}
+
+const LinkGroup: FC<LinkGroupState> = ({ linkConfig, label, icon }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <ListItem
+        button
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemText primary={label} />
+        {open ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={open}>
+        <List component="div" disablePadding>
+          {linkConfig.map((item, index) => {
+            const { icon, label } = item;
+            return (
+              <ListItem button key={index}>
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={label}></ListItemText>
+              </ListItem>
+            );
+          })}
+        </List>
+      </Collapse>
+    </>
+  );
+};
+
+const Sidebar: FC<SidebarProps> = ({ open, onOpen, onClose, linkConfig }) => {
   return (
     <SwipeableDrawer
       open={open}
@@ -26,12 +66,20 @@ const Sidebar: FC<SidebarProps> = ({ open, onOpen, onClose }) => {
       onOpen={onOpen}
     >
       <List>
-        <ListItem button key={"safd"}>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary={"eimierime"}></ListItemText>
-        </ListItem>
+        {linkConfig?.map((item, index) => {
+          const { group, icon, label } = item;
+          if (group) {
+            return <LinkGroup linkConfig={group} label={label} icon={icon} />;
+          }
+          return (
+            <ListItem button key={index}>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary={item.label}></ListItemText>
+            </ListItem>
+          );
+        })}
       </List>
     </SwipeableDrawer>
   );

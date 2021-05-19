@@ -10,20 +10,10 @@ import styled from "styled-components";
 import DialogModal from "components/Modal/DialogModal";
 import Link from "@material-ui/core/Link";
 import { useTheme } from "@material-ui/core";
-
-export interface LinkConfigState {
-  target: string;
-  label: string;
-  icon: React.ReactElement;
-  onClick?: () => void;
-}
-
-export interface NavHeaderProps {
-  account: string;
-  onConnect?: () => void;
-  onLogout?: () => void;
-  linkConfig: LinkConfigState[];
-}
+import Sidebar from "components/Navigation/Sidebar";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import { NavHeaderProps } from "./types";
 
 const StyledLink = styled(Link)`
   color: white;
@@ -45,6 +35,7 @@ const NavHeader: FC<NavHeaderProps> = ({
   linkConfig,
 }) => {
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
+  const [openSidebar, setOpenSidebar] = useState(false);
   return (
     <>
       <AppBar
@@ -69,12 +60,9 @@ const NavHeader: FC<NavHeaderProps> = ({
           />
 
           {/* SIDEBAR */}
-          {/* <Hidden smUp>
-            <IconButton onClick={() => setOpenSidebar(true)}>
-              <MenuIcon style={{ fill: "white" }} />
-            </IconButton>
-          </Hidden>
+          {/* <Hidden smUp> */}
           <Sidebar
+            linkConfig={linkConfig}
             open={openSidebar}
             onOpen={() => {
               setOpenSidebar(true);
@@ -82,30 +70,16 @@ const NavHeader: FC<NavHeaderProps> = ({
             onClose={() => {
               setOpenSidebar(false);
             }}
-          /> */}
-          <Hidden xsDown>
-            <div
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                flex: 1,
-                display: "flex",
-                margin: 10,
-                flexDirection: "row",
-              }}
-            >
-              {linkConfig.map((link, index) => (
-                <StyledLink
-                  key={index.toString()}
-                  style={{ margin: 20 }}
-                  onClick={() => {
-                    window.location.href = link.target;
-                  }}
-                >
-                  {link.label}
-                </StyledLink>
-              ))}
-            </div>
+          />
+          {/* </Hidden> */}
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+            }}
+          >
             <div
               style={{
                 flexDirection: "column",
@@ -125,10 +99,37 @@ const NavHeader: FC<NavHeaderProps> = ({
               ) : (
                 <Button onClick={onConnect}>Connect</Button>
               )}
-
-              {/*  <BalanceCounter imgUrl={"/images/balls/MAXRBALL.png"} balance={0} /> */}
             </div>
-          </Hidden>
+
+            <IconButton onClick={() => setOpenSidebar(true)}>
+              <MenuIcon style={{ fill: "white" }} />
+            </IconButton>
+          </div>
+          {/* <Hidden xsDown> */}
+          {/* <div
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              flex: 1,
+              display: "flex",
+              margin: 10,
+              flexDirection: "row",
+            }}
+          >
+            {linkConfig.map((link, index) => (
+              <StyledLink
+                key={index.toString()}
+                style={{ margin: 20 }}
+                onClick={() => {
+                  window.location.href = link.target;
+                }}
+              >
+                {link.label}
+              </StyledLink>
+            ))}
+          </div> */}
+
+          {/* </Hidden> */}
         </Toolbar>
       </AppBar>
       <DialogModal
