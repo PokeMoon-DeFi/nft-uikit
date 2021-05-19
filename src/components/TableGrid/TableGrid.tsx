@@ -2,7 +2,10 @@ import React, { FC } from "react";
 import {
   DataGrid,
   GridColDef,
+  GridRowData,
   GridCellParams,
+  GridRowIdGetter,
+  DataGridProps,
   GridValueGetterParams,
 } from "@material-ui/data-grid";
 import { PokemoonNft } from "constants/index";
@@ -18,6 +21,7 @@ import { InspectorDialog } from "components/Modal";
 
 export interface TableGridProps {
   nfts: Array<PokemoonNft>;
+  getRowId?: GridRowIdGetter;
 }
 
 const TypeCellFormatter = ({ value }: GridCellParams) => {
@@ -37,7 +41,6 @@ const PackIdFormatter = (params: GridCellParams) => {
   //@ts-ignore
   const nft: PokemoonNft = params.row;
   const { set } = nft;
-  console.log(set);
   return (
     <Box
       style={{
@@ -145,7 +148,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-const TableGrid: FC<TableGridProps> = ({ nfts }) => {
+const TableGrid: FC<TableGridProps> = ({ nfts, getRowId, ...props }) => {
   const classes = useStyles();
 
   return (
@@ -154,7 +157,7 @@ const TableGrid: FC<TableGridProps> = ({ nfts }) => {
         rows={nfts ?? []}
         columns={columns}
         pageSize={10}
-        getRowId={(row) => row.tokenId}
+        getRowId={(row) => row.number}
         hideFooterSelectedRowCount={false}
         autoHeight
         className={classes.root}

@@ -22,6 +22,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "components/Button";
 import TableChartIcon from "@material-ui/icons/TableChart";
 import AppsSharpIcon from "@material-ui/icons/AppsSharp";
+import { PM_TYPES } from "config/constants/nfts";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const capitalize = (s: string) => {
   if (typeof s !== "string") return "";
-  return s.charAt(0).toUpperCase() + s.slice(1);
+  return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
 };
 
 interface DashboardProps {
@@ -78,14 +79,14 @@ const Dashboard: FC<DashboardProps> = (props) => {
   } = props;
   const classes = useStyles();
 
-  const supportedTypes: string[] = Object.keys(
-    MaterialTheme.palette.types
-  ).map((key) => capitalize(key));
+  const supportedTypes: string[] = Object.keys(PM_TYPES).map((key) =>
+    capitalize(key)
+  );
 
   const supportedRanks = Object.keys(MaterialTheme.palette.rarity).map((key) =>
     capitalize(key)
   );
-  const supportedPacks = ["Blast-Off!"];
+  const supportedPacks = ["Blast-Off!", "Amped Up"];
 
   const [activeTypes, setActiveTypes] = React.useState<string[]>([]);
   const [activeRanks, setActiveRanks] = React.useState<string[]>([]);

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useMemo } from "react";
 import StoreOutlinedIcon from "@material-ui/icons/StoreOutlined";
 import PhotoSizeSelectActualIcon from "@material-ui/icons/PhotoSizeSelectActual";
 import { Gallery } from "../Gallery";
@@ -13,6 +13,8 @@ import { TableGrid } from "components/TableGrid";
 import { nftBalance } from "utils/nftBalance";
 import { LinkConfigState } from "components/Header/NavHeader";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
+import { getFlatCollection, getFilteredNfts } from "utils";
+import { FilterState } from "components/FilterDashboard";
 
 //TODO: Swap icons for pokemoon stuff
 const linkConfig: LinkConfigState[] = [
@@ -46,13 +48,6 @@ const StyledLinkContainer = styled(Typography)`
 
 const ACCOUNT = "0xce753a7d4C36339B1e427684402bE0D53064FeA6";
 
-interface FilterState {
-  rarities: string[];
-  types: string[];
-  packs: string[];
-  search: string;
-}
-
 const FullDemo: FC = () => {
   const [viewState, setViewState] = useState("table");
   const [filterState, setFilterState] = useState<FilterState>({
@@ -62,30 +57,11 @@ const FullDemo: FC = () => {
     search: "",
   });
 
-  const modifiedBalance = nftBalance.blastOff.cards.map((n) => ({
-    ...n,
-    imageUrl: `/images/cards/${n.set}/${n.imageUrl}`,
-  }));
+  const modifiedBalance = getFlatCollection();
 
-  const [userNfts, setUserNfts] = useState<PokemoonNft[]>(modifiedBalance);
-  const [filterNfts, setFilterNfts] = useState<PokemoonNft[]>(userNfts);
-
-  useEffect(() => {
-    const { rarities, types, packs, search } = filterState;
-
-    const filteredNfts = userNfts.filter((nft) => {
-      if (types && types.length > 0) {
-        const type = nft.type;
-        if (!type || !types.includes(type)) {
-          return false;
-        }
-      }
-
-      return true;
-    });
-
-    setFilterNfts(filteredNfts);
-  }, [filterState, userNfts]);
+  const filterNfts = useMemo(() => {
+    return getFilteredNfts(modifiedBalance, filterState);
+  }, [filterState, modifiedBalance]);
 
   return (
     <>

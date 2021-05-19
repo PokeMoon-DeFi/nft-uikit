@@ -1,4 +1,5 @@
 import { ThemeProvider } from "styled-components";
+import { useEffect } from "react";
 import {
   createPokemoonTheme,
   MaterialTheme,
