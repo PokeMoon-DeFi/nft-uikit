@@ -66,6 +66,7 @@ const StyledChip = styled(Chip)<PackChipProps>`
   background-color: ${({ pack }) => getPackBgColor(pack)};
   fill: ${({ pack }) => getPackFillColor(pack)};
   color: ${({ pack }) => getPackFillColor(pack)};
+  width: 300px;
 `;
 
 const PackChip: FC<PackChipProps> = (props) => {
