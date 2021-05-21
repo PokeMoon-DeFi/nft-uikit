@@ -9,6 +9,8 @@ import {
   Grass,
   Colorless,
   Dragon,
+  Darkness,
+  Item,
 } from "components/Icons/types";
 interface TypeChipProps extends ChipProps {
   type: string;
@@ -60,6 +62,12 @@ const getTypeIcon = (type: string) => {
     }
     case "dragon": {
       return <Dragon {...props} />;
+    }
+    case "darkness": {
+      return <Darkness {...props} />;
+    }
+    case "item": {
+      return <Item {...props} />;
     }
     default: {
       return undefined;
