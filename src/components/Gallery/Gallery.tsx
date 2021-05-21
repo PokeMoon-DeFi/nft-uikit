@@ -26,6 +26,10 @@ const Gallery: React.FC<CarouselProps> = ({ nfts, pageSize = 8, ...props }) => {
   //@ts-ignore
   const count = nfts && nfts.length > 0 ? Math.ceil(nfts.length / pageSize) : 0;
 
+  useEffect(() => {
+    setPage(1);
+  }, [nfts]);
+
   return (
     <>
       <StyledPagination

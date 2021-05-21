@@ -5,6 +5,5 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
     "storybook-addon-designs",
-    "@react-theming/storybook-addon",
   ],
 };
