@@ -108,6 +108,7 @@ const DescriptionText = styled.div`
   font-style: oblique;
   padding: 12px;
   margin-bottom: 12px;
+  white-space: pre-wrap;
 `;
 const FooterIcon = styled.div`
   text-align: center;

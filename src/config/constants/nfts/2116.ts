@@ -23,7 +23,7 @@ export const AMPED_UP_CARDS: { [key: number]: any } = {
     name: "Graffing",
     type: PM_TYPES.DARKNESS,
     description: "The whole world's a canvas.",
-    artist: ARTISTS.LilyPonto,
+    artist: ARTISTS.NinjaGuy,
   },
   4: {
     number: 4,
@@ -43,7 +43,7 @@ export const AMPED_UP_CARDS: { [key: number]: any } = {
     number: 6,
     name: "Degen Meownaut",
     type: PM_TYPES.DARKNESS,
-    description: `Wait he can talk?, Yes but I wouldn’t believe a single word he says.`,
+    description: `Wait he can talk?"\n\n "Yes, but I wouldn’t believe a single word he says.`,
     artist: ARTISTS.NinjaGuy,
   },
   7: {

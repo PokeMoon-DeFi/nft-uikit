@@ -87,9 +87,8 @@ export const getCollection = (pack: string) => {
   }
 };
 
-export const getFlatCollection = () => {
+export const getFlatCollection = (packs: string[]) => {
   const result = [];
-  const packs = ["blastOff", "ampedUp"];
   let lastPackAmount = 0;
 
   for (const pack of packs.reverse()) {

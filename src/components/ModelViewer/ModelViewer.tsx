@@ -89,7 +89,7 @@ const CardModel: FC<CardModelProps> = ({ glbUrl }) => {
     for (const name of names) {
       actions[name].play();
     }
-  }, [ref, mixer, names, actions, glbUrl]);
+  }, [ref, mixer, names, actions, glbUrl, gltf]);
 
   return <>{gltf && <primitive object={scene} ref={ref} dispose={null} />}</>;
 };
