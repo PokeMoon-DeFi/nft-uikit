@@ -8,7 +8,7 @@ import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 import { useTheme } from "@material-ui/core/styles";
 import DialogModal from "components/Modal/DialogModal";
 import Run from "components/Icons/Run";
-import { LinkConfigState } from "components/Header/NavHeader";
+import { LinkConfigState } from "components/Header/types";
 
 export interface FabProps {
   account: string;
@@ -70,6 +70,7 @@ const Fab: FC<FabProps> = ({ account, onConnect, onLogout, linkConfig }) => {
                 if (!!link.onClick) {
                   link.onClick();
                 } else {
+                  // @ts-ignore
                   window.location.href = link.target;
                 }
               }}
