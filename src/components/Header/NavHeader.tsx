@@ -61,7 +61,7 @@ const NavHeader: FC<NavHeaderProps> = ({
 
           {/* SIDEBAR */}
           {/* <Hidden smUp> */}
-          <Sidebar
+          {/* <Sidebar
             linkConfig={linkConfig}
             open={openSidebar}
             onOpen={() => {
@@ -70,16 +70,31 @@ const NavHeader: FC<NavHeaderProps> = ({
             onClose={() => {
               setOpenSidebar(false);
             }}
-          />
+          /> */}
           {/* </Hidden> */}
-          <div
-            style={{
-              flex: 1,
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center",
-            }}
-          >
+          <Hidden xsDown>
+            <div
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                flex: 1,
+                display: "flex",
+                margin: 10,
+                flexDirection: "row",
+              }}
+            >
+              {linkConfig.map((link, index) => (
+                <StyledLink
+                  key={index.toString()}
+                  style={{ margin: 20 }}
+                  onClick={() => {
+                    window.location.href = link.target;
+                  }}
+                >
+                  {link.label}
+                </StyledLink>
+              ))}
+            </div>
             <div
               style={{
                 flexDirection: "column",
@@ -99,12 +114,11 @@ const NavHeader: FC<NavHeaderProps> = ({
               ) : (
                 <Button onClick={onConnect}>Connect</Button>
               )}
-            </div>
 
-            <IconButton onClick={() => setOpenSidebar(true)}>
-              <MenuIcon style={{ fill: "white" }} />
-            </IconButton>
-          </div>
+              {/*  <BalanceCounter imgUrl={"/images/balls/MAXRBALL.png"} balance={0} /> */}
+            </div>
+          </Hidden>
+
           {/* <Hidden xsDown> */}
           {/* <div
             style={{
