@@ -99,10 +99,7 @@ export const BuyInfo = (props: BuyInfoProps) => {
       </PrimaryInfo>
       <Description>
         <Typography variant="h4" style={{ paddingTop: 10 }}>
-          Get ready to Blast Off!
-        </Typography>
-        <Typography style={{ paddingTop: 5 }}>
-          ...with our premier collection of NFTs!
+          Blast Off! is Closed!
         </Typography>
         <Typography style={{ padding: 20, textAlign: "center" }}>
           Spend 100 PB and receive 5 random, incredibly special cards
@@ -112,10 +109,11 @@ export const BuyInfo = (props: BuyInfoProps) => {
           Hang tight; these bad boys will have tons of utilities, abilities, and
           tradability as our platform expands!
         </Typography>
+
         {/* <DescriptionText>
           Packs Minted: {lastPackId} ({lastPackId * 5} Cards)
         </DescriptionText> */}
-        <DescriptionText>Price: {price} PB</DescriptionText>
+        {/* <DescriptionText>Price: {price} PB</DescriptionText>
         {!account ? (
           <Button
             endIcon={<Backpack fontSize="large" />}
@@ -124,18 +122,30 @@ export const BuyInfo = (props: BuyInfoProps) => {
             Connect
           </Button>
         ) : allowance <= 0 ? (
-          <Button endIcon={<Buy />} onClick={onApproveClicked}>
+          <Button disabled endIcon={<Buy />} onClick={onApproveClicked}>
             Approve
           </Button>
         ) : balance >= price ? (
-          <Button endIcon={<Buy />} onClick={onBuyClicked}>
+          <Button endIcon={<Buy />} onClick={onBuyClicked} disabled>
             Buy
           </Button>
         ) : (
           <Button endIcon={<Buy />} disabled>
             Not enough pokeballs 😕
           </Button>
-        )}
+        )} */}
+        <Typography
+          style={{
+            textAlign: "center",
+            fontStyle: "italic",
+          }}
+        >
+          The Blast-Off! NFT Shop is now{" "}
+          <span style={{ fontWeight: "bold" }}>
+            closed as of 19:00 UTC May 23, 2021
+          </span>
+          <p>Keep your eyes peeled for the next release!</p>
+        </Typography>
       </Description>
     </Container>
   );
