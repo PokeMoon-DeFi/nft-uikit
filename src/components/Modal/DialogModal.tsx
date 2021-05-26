@@ -3,7 +3,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
-
+import TextField from "@material-ui/core/TextField";
 import Button from "components/Button";
 
 interface ModalProps extends DialogProps {
@@ -29,6 +29,15 @@ const Modal: React.FC<ModalProps> = ({
         </DialogContent>
       )}
       <DialogActions>
+        <TextField
+          id="standard-number"
+          label="Quantity"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        /
         <Button onClick={handleClose} color="primary">
           Cancel
         </Button>

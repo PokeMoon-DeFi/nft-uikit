@@ -12,6 +12,7 @@ import {
   Darkness,
   Item,
 } from "components/Icons/types";
+import StarIcon from "@material-ui/icons/Star";
 interface TypeChipProps extends ChipProps {
   type: string;
 }
@@ -68,6 +69,9 @@ const getTypeIcon = (type: string) => {
     }
     case "item": {
       return <Item {...props} />;
+    }
+    case "supporter": {
+      return <StarIcon {...props} style={{ marginBottom: 3 }} />;
     }
     default: {
       return undefined;
