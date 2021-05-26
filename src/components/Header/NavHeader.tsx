@@ -88,6 +88,7 @@ const NavHeader: FC<NavHeaderProps> = ({
                   key={index.toString()}
                   style={{ margin: 20 }}
                   onClick={() => {
+                    // @ts-ignore
                     window.location.href = link.target;
                   }}
                 >
