@@ -29,15 +29,6 @@ const Modal: React.FC<ModalProps> = ({
         </DialogContent>
       )}
       <DialogActions>
-        <TextField
-          id="standard-number"
-          label="Quantity"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        /
         <Button onClick={handleClose} color="primary">
           Cancel
         </Button>
