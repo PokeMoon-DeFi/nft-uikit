@@ -15,6 +15,7 @@ type DivProps = JSX.IntrinsicElements["div"];
 interface ModelCarouselProps extends DivProps {
   nfts: PokemoonNft[];
   modelViewerStyle?: CSS.Properties;
+  loadingBall?: string;
 }
 
 const StyledButton = styled(IconButton)`
@@ -60,7 +61,11 @@ const StyledButton = styled(IconButton)`
   }
 `;
 
-const ModelCarousel: FC<ModelCarouselProps> = ({ nfts, ...props }) => {
+const ModelCarousel: FC<ModelCarouselProps> = ({
+  nfts,
+  loadingBall,
+  ...props
+}) => {
   const { style, modelViewerStyle } = props;
   const theme = useTheme();
   const [index, setIndex] = useState(0);
@@ -101,6 +106,7 @@ const ModelCarousel: FC<ModelCarouselProps> = ({ nfts, ...props }) => {
         onPrevClick={onPrevClick}
         onNextClick={onNextClick}
         style={modelViewerStyle}
+        loadingBall={loadingBall}
       />
     </div>
   );

@@ -16,10 +16,12 @@ import {
   Bloom,
   BrightnessContrast,
 } from "@react-three/postprocessing";
+import { Html } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import IconButton from "@material-ui/core/IconButton";
+import { WiggleBall } from "components/Loading";
 import styled from "styled-components";
 
 type DivProps = JSX.IntrinsicElements["div"];
@@ -29,6 +31,7 @@ export interface ModelViewerProps extends DivProps {
   showUI?: boolean;
   onPrevClick?: () => void;
   onNextClick?: () => void;
+  loadingBall: string;
 }
 
 const StyledButton = styled(IconButton)`
@@ -94,7 +97,7 @@ const CardModel: FC<CardModelProps> = ({ glbUrl }) => {
   return <>{gltf && <primitive object={scene} ref={ref} dispose={null} />}</>;
 };
 
-const ModelViewer: FC<ModelViewerProps> = ({ nft, ...props }) => {
+const ModelViewer: FC<ModelViewerProps> = ({ nft, loadingBall, ...props }) => {
   const { glbUrl, imageUrl, name } = nft;
   const { style, onPrevClick, onNextClick, showUI } = props;
   const { tier } = useDetectGPU() ?? { tier: undefined };
@@ -175,7 +178,25 @@ const ModelViewer: FC<ModelViewerProps> = ({ nft, ...props }) => {
             position={new THREE.Vector3(0, 0, -1)}
           />
           <Stars />
-          <Suspense fallback={null}>
+          <Suspense
+            fallback={
+              <Html fullscreen>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    justifyContent: "center",
+                    display: "flex",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <WiggleBall
+                    src={loadingBall ?? "/images/balls/MoonLogo.png"}
+                  />
+                </div>
+              </Html>
+            }
+          >
             {/* @ts-ignore */}
             <CardModel glbUrl={glbUrl} />
           </Suspense>

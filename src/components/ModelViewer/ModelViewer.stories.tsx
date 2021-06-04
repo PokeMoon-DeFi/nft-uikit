@@ -60,9 +60,21 @@ const d: PokemoonNft = {
 };
 
 export const Basic: Story = () => {
-  return <ModelViewer style={{ flex: 1, height: 400 }} nft={n} />;
+  return (
+    <ModelViewer
+      style={{ flex: 1, height: 400 }}
+      nft={n}
+      loadingBall={"/images/balls/MoonLogo.png"}
+    />
+  );
 };
 
 export const Carousel: Story = () => {
-  return <ModelCarousel nfts={[n, p, d]} modelViewerStyle={{ width: 400 }} />;
+  return (
+    <ModelCarousel
+      loadingBall={"/images/balls/MoonLogo.png"}
+      nfts={[n, p, d]}
+      modelViewerStyle={{ width: 400 }}
+    />
+  );
 };
