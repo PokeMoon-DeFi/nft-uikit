@@ -31,7 +31,7 @@ export interface ModelViewerProps extends DivProps {
   showUI?: boolean;
   onPrevClick?: () => void;
   onNextClick?: () => void;
-  loadingBall: string;
+  loadingBall?: string;
 }
 
 const StyledButton = styled(IconButton)`
