@@ -3,6 +3,7 @@ import BLAST_OFF_COLLECTION, {
   BLAST_OFF_CARDS,
 } from "config/constants/nfts/2114";
 import AMPED_UP_COLLECTION from "config/constants/nfts/2116";
+import MEAN_GREENS_COLLECTION from "config/constants/nfts/APB";
 import { PokemoonNft } from "config/constants/nfts/types";
 import blastOffTokenCache from "config/constants/cache/blastOff/tokenIdToPack.json";
 import blastOffPackCache from "config/constants/cache/blastOff/blastOffPacks.json";
@@ -24,7 +25,11 @@ export const renamePack = (name: string) => {
     case "Amped Up": {
       return "ampedUp";
     }
+    case "Mean Greens": {
+      return "meanGreens";
+    }
   }
+  return "";
 };
 
 export const getFilteredNfts = (
@@ -83,6 +88,9 @@ export const getCollection = (pack: string) => {
     }
     case "ampedUp": {
       return AMPED_UP_COLLECTION;
+    }
+    case "meanGreens": {
+      return MEAN_GREENS_COLLECTION;
     }
   }
 };

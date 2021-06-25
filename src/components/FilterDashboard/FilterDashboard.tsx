@@ -23,6 +23,8 @@ import Button from "components/Button";
 import TableChartIcon from "@material-ui/icons/TableChart";
 import AppsSharpIcon from "@material-ui/icons/AppsSharp";
 import { PM_TYPES } from "config/constants/nfts";
+import { PackChip } from "components/Chip";
+import { renamePack } from "utils";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -46,6 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
     chips: {
       display: "flex",
       flexWrap: "wrap",
+      flexDirection: "column",
     },
     chip: {
       margin: 2,
@@ -78,15 +81,16 @@ const Dashboard: FC<DashboardProps> = (props) => {
     onSearchFilterChange,
   } = props;
   const classes = useStyles();
+  const theme = useTheme();
 
   const supportedTypes: string[] = Object.keys(PM_TYPES).map((key) =>
     capitalize(key)
   );
 
-  const supportedRanks = Object.keys(MaterialTheme.palette.rarity).map((key) =>
+  const supportedRanks = Object.keys(theme.palette.rarity).map((key) =>
     capitalize(key)
   );
-  const supportedPacks = ["Blast-Off!", "Amped Up"];
+  const supportedPacks = ["Blast-Off!", "Amped Up", "Mean Greens"];
 
   const [activeTypes, setActiveTypes] = React.useState<string[]>([]);
   const [activeRanks, setActiveRanks] = React.useState<string[]>([]);
@@ -230,13 +234,15 @@ const Dashboard: FC<DashboardProps> = (props) => {
           value={activePacks}
           onChange={handlePackChange}
           input={<Input id="select-pack" />}
-          renderValue={(selected) => (
-            <div className={classes.chips}>
-              {(selected as string[]).map((value) => (
-                <Chip key={value} label={value} className={classes.chip} />
-              ))}
-            </div>
-          )}
+          renderValue={(selected) => {
+            return (
+              <div className={classes.chips}>
+                {(selected as string[]).map((value) => (
+                  <PackChip pack={renamePack(value)} className={classes.chip} />
+                ))}
+              </div>
+            );
+          }}
           MenuProps={MenuProps}
         >
           {supportedPacks.map((pack, index) => {

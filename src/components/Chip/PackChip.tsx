@@ -1,7 +1,8 @@
 import Chip, { ChipProps } from "@material-ui/core/Chip";
 import { FC } from "react";
 import styled from "styled-components";
-import { BlastOff, AmpedUp } from "components/Icons/packs";
+import { BlastOff, AmpedUp, MeanGreens } from "components/Icons/packs";
+import { renamePack } from "utils";
 
 interface PackChipProps extends ChipProps {
   pack: string;
@@ -14,6 +15,9 @@ const getPackIcon = (pack: string) => {
     }
     case "ampedUp": {
       return <AmpedUp />;
+    }
+    case "meanGreens": {
+      return <MeanGreens />;
     }
     default: {
       return undefined;
@@ -29,6 +33,9 @@ const getPackLabel = (pack: string) => {
     case "ampedUp": {
       return "Amped Up";
     }
+    case "meanGreens": {
+      return "Mean Greens";
+    }
     default: {
       return undefined;
     }
@@ -42,6 +49,9 @@ const getPackBgColor = (pack: string) => {
     }
     case "ampedUp": {
       return "#fd5bfd";
+    }
+    case "meanGreens": {
+      return "#90f773";
     }
     default: {
       return undefined;
@@ -66,7 +76,8 @@ const StyledChip = styled(Chip)<PackChipProps>`
   background-color: ${({ pack }) => getPackBgColor(pack)};
   fill: ${({ pack }) => getPackFillColor(pack)};
   color: ${({ pack }) => getPackFillColor(pack)};
-  width: 300px;
+  width: 150px;
+  max-width: 150px;
 `;
 
 const PackChip: FC<PackChipProps> = (props) => {

@@ -69,7 +69,11 @@ const FullDemo: FC = () => {
     search: "",
   });
 
-  const modifiedBalance = getFlatCollection(["blastOff", "ampedUp"]);
+  const modifiedBalance = getFlatCollection([
+    "blastOff",
+    "ampedUp",
+    "meanGreens",
+  ]);
 
   const filterNfts = useMemo(() => {
     return getFilteredNfts(modifiedBalance, filterState);

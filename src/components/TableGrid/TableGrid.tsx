@@ -155,6 +155,7 @@ const getSetIndex = ({ set, number, rarity }: any) => {
   const m = {
     blastOff: 0,
     ampedUp: 1,
+    meanGreens: 2,
   };
   const r = {
     Common: 0,
@@ -164,7 +165,7 @@ const getSetIndex = ({ set, number, rarity }: any) => {
     Moonlike: 4,
   };
   //@ts-ignore
-  return m[set] * 100 + number * 10 + r[rarity];
+  return m[set] * 1000 + number * 10 + r[rarity];
 };
 
 const TableGrid: FC<TableGridProps> = ({ nfts, hidePackId, getRowId }) => {
